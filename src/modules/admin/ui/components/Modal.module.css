@@ -1,0 +1,217 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--admin-z-modal-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--admin-space-3xl);
+  background: var(--admin-surface-overlay);
+  backdrop-filter: blur(6px);
+  animation: admin-fade-in var(--admin-duration-fast) ease;
+}
+
+.modal {
+  width: 100%;
+  max-width: var(--admin-modal-width);
+  padding: var(--admin-space-5xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--admin-surface-modal);
+  backdrop-filter: blur(var(--admin-glass-blur-heavy));
+  box-shadow: var(--admin-shadow-modal);
+  animation: admin-scale-in var(--admin-duration-normal) var(--admin-ease-default);
+}
+
+.large {
+  max-width: var(--admin-modal-width-lg);
+}
+
+.form {
+  max-width: var(--admin-modal-width-form);
+  max-height: calc(100vh - 64px);
+  max-height: calc(100dvh - 64px);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+}
+
+.form.centered {
+  text-align: left;
+}
+
+.formBody {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  margin-bottom: 0;
+  padding: var(--admin-space-3xl) var(--admin-space-4xl);
+  text-align: left;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 138, 166, 0.45) transparent;
+}
+
+.formBody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.formBody::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.formBody::-webkit-scrollbar-thumb {
+  background: rgba(0, 138, 166, 0.35);
+  border-radius: 999px;
+}
+
+.formBody::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 138, 166, 0.55);
+}
+
+.formFooter {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--admin-space-md);
+  padding: var(--admin-space-xl) var(--admin-space-4xl);
+  border-top: 1px solid var(--color-border);
+  background: rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.footer {
+  margin-top: 0;
+}
+
+.scrollable {
+  max-height: calc(100vh - 3rem);
+  max-height: calc(100dvh - 3rem);
+  overflow-y: auto;
+}
+
+.centered {
+  text-align: center;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--admin-space-2xl);
+  border-radius: 50%;
+  background: var(--admin-color-error-bg);
+  color: var(--admin-color-error);
+  border: 1px solid var(--admin-color-error-border);
+}
+
+.iconWrap.info {
+  background: var(--admin-color-info-bg);
+  color: var(--admin-color-info);
+  border-color: var(--admin-color-info-border);
+}
+
+.iconWrap.warning {
+  background: var(--admin-color-warning-bg);
+  color: var(--admin-color-warning);
+  border-color: var(--admin-color-warning-border);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: var(--admin-weight-semibold);
+  color: var(--color-white);
+  margin-bottom: var(--admin-space-md);
+}
+
+.message {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: var(--admin-space-4xl);
+}
+
+.body {
+  margin-bottom: var(--admin-space-4xl);
+}
+
+.actions {
+  display: flex;
+  gap: var(--admin-space-lg);
+  justify-content: center;
+}
+
+.actionsStart {
+  justify-content: flex-start;
+}
+
+.actionsEnd {
+  justify-content: flex-end;
+}
+
+.actionsBetween {
+  justify-content: space-between;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--admin-space-xl);
+  margin-bottom: var(--admin-space-3xl);
+  padding-bottom: var(--admin-space-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-border);
+  transition: var(--admin-transition-hover);
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    padding: var(--admin-space-lg);
+    align-items: flex-end;
+  }
+
+  .form {
+    max-width: 100%;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .formBody {
+    padding: var(--admin-space-2xl) var(--admin-space-2xl);
+  }
+
+  .formFooter {
+    padding: var(--admin-space-lg) var(--admin-space-2xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .modal {
+    animation: none;
+  }
+}

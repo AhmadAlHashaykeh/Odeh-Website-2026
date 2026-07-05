@@ -1,0 +1,78 @@
+.panel {
+  position: sticky;
+  top: calc(var(--navbar-height) + 1.5rem);
+  padding: clamp(1.25rem, 2.5vw, 1.65rem);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.heading {
+  margin: 0 0 1.15rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.list {
+  margin: 0 0 1.35rem;
+  padding: 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.2rem;
+  padding-block: 0.65rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.row:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.value {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--color-white);
+}
+
+.applyBtn {
+  width: 100%;
+}
+
+.closedBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.78rem 1.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  cursor: not-allowed;
+}
+
+@media (max-width: 960px) {
+  .panel {
+    position: static;
+  }
+}

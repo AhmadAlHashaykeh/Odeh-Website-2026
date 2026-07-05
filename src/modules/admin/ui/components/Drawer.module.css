@@ -1,0 +1,106 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--admin-z-drawer-overlay);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  animation: admin-fade-in var(--admin-duration-normal) ease;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: var(--admin-z-drawer);
+  width: min(var(--admin-drawer-width), 100vw);
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--admin-surface-drawer);
+  border-left: 1px solid var(--color-border);
+  box-shadow: var(--admin-shadow-drawer);
+  animation: admin-slide-in-right var(--admin-duration-slow) var(--admin-ease-default);
+}
+
+.large {
+  width: min(var(--admin-drawer-width-lg), 100vw);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--admin-space-xl);
+  padding: var(--admin-space-3xl);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.headerSticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--admin-z-sticky);
+  background: inherit;
+  backdrop-filter: blur(var(--admin-glass-blur));
+}
+
+.headerTitle {
+  font-size: 1.15rem;
+  font-weight: var(--admin-weight-semibold);
+  color: var(--color-white);
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--admin-space-3xl);
+}
+
+.bodyFlush {
+  padding: 0;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--admin-space-md);
+  padding: var(--admin-space-3xl);
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.footerSticky {
+  position: sticky;
+  bottom: 0;
+  z-index: var(--admin-z-sticky);
+  background: inherit;
+  backdrop-filter: blur(var(--admin-glass-blur));
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--color-white);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background var(--admin-duration-fast) var(--admin-ease-default);
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .drawer {
+    animation: none;
+  }
+}

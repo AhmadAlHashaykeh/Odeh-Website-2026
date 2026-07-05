@@ -1,0 +1,50 @@
+.content {
+  padding-block: var(--section-spacing-sm);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 560px;
+  margin-inline: auto;
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.code {
+  margin: 0 0 1rem;
+  font-size: clamp(3.5rem, 12vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(0, 138, 166, 0.35) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.text {
+  margin: 0 0 1.75rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .actions :global(.btn) {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}

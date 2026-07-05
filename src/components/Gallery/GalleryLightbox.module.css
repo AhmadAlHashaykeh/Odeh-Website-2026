@@ -1,0 +1,214 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(3.5rem, 8vw, 5rem) clamp(1rem, 3vw, 2rem);
+  animation: lightboxEnter var(--transition-smooth) forwards;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(8, 8, 8, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: zoom-out;
+}
+
+.imageWrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: min(92vw, 1200px);
+  max-height: min(82vh, 820px);
+  overflow: hidden;
+}
+
+.imageWrapZoomable {
+  cursor: zoom-in;
+}
+
+.imageWrapZoomed {
+  cursor: grab;
+  overflow: visible;
+}
+
+.imageWrapZoomed:active {
+  cursor: grabbing;
+}
+
+.figure {
+  margin: 0;
+  animation: imageEnter var(--transition-smooth) forwards;
+}
+
+.image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 1200px);
+  max-height: min(82vh, 820px);
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  transform-origin: center center;
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.closeBtn {
+  position: absolute;
+  top: clamp(1rem, 2.5vw, 1.5rem);
+  right: clamp(1rem, 2.5vw, 1.5rem);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  background: rgba(43, 43, 43, 0.65);
+  color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.closeBtn:hover {
+  background: rgba(0, 138, 166, 0.2);
+  border-color: rgba(0, 138, 166, 0.35);
+  color: var(--color-accent-light);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  background: rgba(43, 43, 43, 0.65);
+  color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.navBtn:hover {
+  background: rgba(0, 138, 166, 0.2);
+  border-color: rgba(0, 138, 166, 0.35);
+  color: var(--color-accent-light);
+  transform: translateY(calc(-50% - 2px));
+}
+
+.navBtn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.navPrev {
+  left: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.navNext {
+  right: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.counter {
+  position: absolute;
+  bottom: clamp(2.5rem, 5vw, 3.25rem);
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+@keyframes lightboxEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes imageEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .navBtn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .closeBtn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .image {
+    max-width: 94vw;
+    max-height: 72vh;
+  }
+
+  .navPrev {
+    left: 0.5rem;
+  }
+
+  .navNext {
+    right: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .figure {
+    animation: none;
+  }
+
+  .image {
+    transition: none;
+  }
+
+  .navBtn:hover {
+    transform: translateY(-50%);
+  }
+}

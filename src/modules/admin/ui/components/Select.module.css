@@ -1,0 +1,248 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-form-field-gap);
+  min-width: 0;
+}
+
+.label {
+  font-size: var(--admin-font-label);
+  font-weight: var(--admin-weight-semibold);
+  letter-spacing: var(--admin-tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.selectWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.trigger {
+  appearance: none;
+  width: 100%;
+  height: var(--admin-input-height);
+  padding: 0 2rem 0 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 0.82rem;
+  font-weight: var(--admin-weight-normal);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color var(--admin-duration-fast) var(--admin-ease-default),
+    background var(--admin-duration-fast) var(--admin-ease-default),
+    box-shadow var(--admin-duration-fast) var(--admin-ease-default);
+}
+
+.noIcon .trigger {
+  padding-left: 0.85rem;
+}
+
+.withIcon .trigger,
+.selectWrap:has(.icon) .trigger {
+  padding-left: 2.15rem;
+}
+
+.trigger:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  border-color: rgba(0, 138, 166, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: var(--admin-shadow-focus);
+}
+
+.triggerOpen {
+  border-color: rgba(0, 138, 166, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: var(--admin-shadow-focus);
+}
+
+.triggerDisabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.triggerValue {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  position: absolute;
+  right: 0.75rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: transform var(--admin-duration-fast) var(--admin-ease-default);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: var(--color-accent-light);
+}
+
+.filter .trigger {
+  border-radius: var(--radius-full);
+}
+
+.sm .trigger {
+  height: 36px;
+  font-size: 0.8rem;
+}
+
+/* Dropdown menu (portaled) */
+.menu {
+  position: fixed;
+  z-index: 1100;
+  overflow-y: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(160deg, rgba(40, 40, 40, 0.98) 0%, rgba(28, 28, 28, 0.99) 100%);
+  backdrop-filter: blur(var(--admin-glass-blur-heavy));
+  box-shadow: var(--admin-shadow-modal);
+  padding: var(--admin-space-xs);
+  animation: admin-fade-in var(--admin-duration-fast) var(--admin-ease-default);
+}
+
+.menuItem {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-family: var(--font-family);
+  font-size: 0.82rem;
+  font-weight: var(--admin-weight-normal);
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background var(--admin-duration-fast) var(--admin-ease-default),
+    color var(--admin-duration-fast) var(--admin-ease-default);
+}
+
+.menuItem:hover,
+.menuItemHighlighted {
+  background: rgba(0, 138, 166, 0.12);
+  color: var(--color-white);
+}
+
+.menuItemSelected {
+  color: var(--color-accent-light);
+  font-weight: var(--admin-weight-semibold);
+  background: rgba(0, 138, 166, 0.16);
+}
+
+.menuItemSelected:hover,
+.menuItemSelected.menuItemHighlighted {
+  background: rgba(0, 138, 166, 0.22);
+}
+
+/* Multi select (visual) */
+.multi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  min-height: var(--admin-input-height);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+}
+
+.multiTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: var(--admin-weight-medium, 500);
+  color: var(--color-text);
+  background: rgba(0, 138, 166, 0.15);
+  border: 1px solid rgba(0, 138, 166, 0.25);
+}
+
+.multiTagRemove {
+  display: flex;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+.multiPlaceholder {
+  font-size: 0.8rem;
+  color: rgba(168, 168, 168, 0.6);
+  align-self: center;
+}
+
+/* Searchable select (visual only) */
+.searchable {
+  position: relative;
+}
+
+.searchInput {
+  width: 100%;
+  height: var(--admin-input-height);
+  padding: 0 2rem 0 2.15rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: rgba(0, 138, 166, 0.45);
+  box-shadow: var(--admin-shadow-focus);
+}
+
+.menuStatic {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(160deg, rgba(40, 40, 40, 0.98) 0%, rgba(28, 28, 28, 0.99) 100%);
+  backdrop-filter: blur(var(--admin-glass-blur-heavy));
+  box-shadow: var(--admin-shadow-modal);
+  padding: var(--admin-space-xs);
+  animation: admin-fade-in var(--admin-duration-fast) var(--admin-ease-default);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .menuStatic,
+  .chevron {
+    animation: none;
+    transition: none;
+  }
+}

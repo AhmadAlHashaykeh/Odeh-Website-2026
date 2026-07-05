@@ -1,0 +1,36 @@
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  padding: 0.32rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.chip:hover:not(:disabled) {
+  border-color: rgba(0, 138, 166, 0.35);
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(0, 138, 166, 0.08);
+}
+
+.chipActive {
+  border-color: rgba(0, 138, 166, 0.45);
+  background: rgba(0, 138, 166, 0.14);
+  color: #5eead4;
+}
+
+.chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

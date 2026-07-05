@@ -1,0 +1,30 @@
+.modal {
+  max-width: 400px;
+}
+
+.subtitle {
+  margin: 0 0 1.25rem;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.subtitle strong {
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.select {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}

@@ -1,0 +1,346 @@
+.section {
+  padding-block: var(--section-spacing);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 138, 166, 0.2), transparent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: stretch;
+}
+
+.grid > * {
+  min-height: 100%;
+}
+
+/* ── Info panel ── */
+
+.infoPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.015);
+  overflow: hidden;
+}
+
+.infoHeader {
+  padding: clamp(1.25rem, 2.5vw, 1.65rem);
+  padding-bottom: clamp(1rem, 2vw, 1.25rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.infoHeading {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+}
+
+.infoDesc {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.infoBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* ── Shared block header ── */
+
+.blockHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.blockIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  color: var(--color-accent-light);
+  background: rgba(0, 138, 166, 0.08);
+  border: 1px solid rgba(0, 138, 166, 0.15);
+}
+
+.blockTitle {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* ── Office + Hours row ── */
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.metaCell {
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(1.15rem, 2.2vw, 1.45rem);
+  transition: background var(--transition-smooth);
+}
+
+.metaCell:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.metaCell:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.primaryText {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-white);
+  line-height: 1.4;
+}
+
+.secondaryText {
+  margin: 0.18rem 0 0;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+/* ── Direct contacts table ── */
+
+.contactsBlock {
+  flex: 1;
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(1.15rem, 2.2vw, 1.45rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.contactList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.contactItem {
+  display: grid;
+  grid-template-columns: minmax(56px, 72px) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.contactItem:hover {
+  border-color: rgba(0, 138, 166, 0.2);
+  background: rgba(0, 138, 166, 0.035);
+}
+
+.contactName {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  line-height: 1.3;
+}
+
+.contactChannel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  min-width: 0;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.contactChannel:hover .channelValue {
+  color: var(--color-accent-light);
+}
+
+.channelLabel {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.channelValue {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.35;
+  transition: color var(--transition-fast);
+}
+
+.contactChannelEmail .channelValue {
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Social ── */
+
+.socialBlock {
+  margin-top: auto;
+  padding: clamp(1rem, 2vw, 1.25rem) clamp(1.15rem, 2.2vw, 1.45rem);
+}
+
+.socialRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex: 1;
+  min-width: 0;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.socialLink:hover {
+  color: var(--color-accent-light);
+  border-color: rgba(0, 138, 166, 0.3);
+  background: rgba(0, 138, 166, 0.06);
+}
+
+.socialLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.socialLinkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  color: var(--color-accent-light);
+  background: rgba(0, 138, 166, 0.1);
+  border: 1px solid rgba(0, 138, 166, 0.16);
+}
+
+.socialLinkLabel {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid > * {
+    min-height: auto;
+  }
+
+  .infoPanel {
+    height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .metaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .metaCell:first-child {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .contactItem {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+    align-items: start;
+  }
+
+  .contactName {
+    padding-bottom: 0.15rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .contactChannelEmail .channelValue {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    word-break: break-all;
+  }
+
+  .socialRow {
+    flex-direction: column;
+  }
+
+  .socialLink {
+    flex: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 820px) {
+  .contactItem {
+    grid-template-columns: minmax(52px, 64px) 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .contactChannelEmail {
+    grid-column: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .metaCell,
+  .contactItem,
+  .socialLink {
+    transition: none;
+  }
+}

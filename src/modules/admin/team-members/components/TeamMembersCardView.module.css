@@ -1,0 +1,200 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.35rem;
+}
+
+.card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-glass-light);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 138, 166, 0.35);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.3);
+}
+
+.card.selected {
+  border-color: rgba(0, 138, 166, 0.45);
+  box-shadow: 0 0 0 1px rgba(0, 138, 166, 0.2);
+}
+
+.portraitWrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.portraitBtn {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform var(--transition-smooth);
+}
+
+.card:hover .portrait {
+  transform: scale(1.05);
+}
+
+.portraitOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    transparent 35%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.cardTop {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.orderBadge {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 2;
+}
+
+.body {
+  padding: 1.2rem 1.25rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.nameBtn {
+  text-align: left;
+}
+
+.name {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--color-white);
+  line-height: 1.3;
+  transition: color var(--transition-fast);
+}
+
+.nameBtn:hover .name {
+  color: var(--color-accent-light);
+}
+
+.position {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.deptBadge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-accent-light);
+  padding: 0.22rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: rgba(0, 138, 166, 0.12);
+  border: 1px solid rgba(0, 138, 166, 0.25);
+}
+
+.categoryBadge {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 0.22rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.experience,
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.74rem;
+  color: rgba(168, 168, 168, 0.85);
+}
+
+.email {
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.email:hover {
+  color: var(--color-accent-light);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover {
+    transform: none;
+  }
+
+  .card:hover .portrait {
+    transform: none;
+  }
+}

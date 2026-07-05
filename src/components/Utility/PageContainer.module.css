@@ -1,0 +1,12 @@
+.section {
+  padding-block: var(--section-spacing);
+}
+
+.container {
+  width: 100%;
+}
+
+.narrow {
+  max-width: 850px;
+  margin-inline: auto;
+}

@@ -1,0 +1,116 @@
+.button {
+  position: fixed;
+  right: clamp(1rem, 3vw, 1.75rem);
+  bottom: calc(clamp(1.25rem, 3vw, 1.75rem) + env(safe-area-inset-bottom, 0px));
+  z-index: 900;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+
+  color: var(--color-white);
+  background: var(--color-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(0, 138, 166, 0.08);
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition:
+    opacity var(--transition-smooth),
+    visibility var(--transition-smooth),
+    transform var(--transition-smooth),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.icon {
+  display: block;
+  transition: transform var(--transition-fast);
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 138, 166, 0.45);
+  background: rgba(43, 43, 43, 0.88);
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.4),
+    0 0 24px var(--color-accent-glow);
+}
+
+.button:hover .icon {
+  transform: translateY(-2px);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-color: rgba(0, 138, 166, 0.55);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.35),
+    0 0 20px var(--color-accent-glow);
+}
+
+.visible:hover {
+  transform: translateY(-3px);
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .button {
+    width: 44px;
+    height: 44px;
+    right: 1rem;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .icon {
+    transition: none;
+  }
+
+  .button {
+    transform: none;
+  }
+
+  .visible {
+    transform: none;
+  }
+
+  .button:hover,
+  .visible:hover {
+    transform: none;
+  }
+
+  .button:hover .icon {
+    transform: none;
+  }
+}

@@ -1,0 +1,11 @@
+.page {
+  min-height: calc(100vh - var(--navbar-height));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: clamp(3rem, 8vw, 5rem);
+}
+
+.page .container {
+  width: 100%;
+}

@@ -1,0 +1,116 @@
+.card {
+  position: relative;
+}
+
+.cardLink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform var(--transition-smooth);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 15, 0) 35%,
+    rgba(15, 15, 15, 0.55) 100%
+  );
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+
+.cardLink:hover .image,
+.cardLink:focus-visible .image {
+  transform: scale(1.04);
+}
+
+.cardLink:hover .overlay,
+.cardLink:focus-visible .overlay {
+  opacity: 1;
+}
+
+.meta {
+  padding: clamp(1rem, 2vw, 1.35rem) 0.15rem 0;
+}
+
+.title {
+  margin: 0 0 0.45rem;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+}
+
+.count {
+  margin: 0 0 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-accent-light);
+  transition: gap var(--transition-fast), color var(--transition-fast);
+}
+
+.cardLink:hover .action,
+.cardLink:focus-visible .action {
+  gap: 0.65rem;
+  color: var(--color-white);
+}
+
+.actionArrow {
+  transition: transform var(--transition-fast);
+}
+
+.cardLink:hover .actionArrow,
+.cardLink:focus-visible .actionArrow {
+  transform: translateX(3px);
+}
+
+.cardLink:focus-visible {
+  outline: none;
+}
+
+.cardLink:focus-visible .imageWrap {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image,
+  .overlay,
+  .action,
+  .actionArrow {
+    transition: none;
+  }
+
+  .cardLink:hover .image {
+    transform: none;
+  }
+}

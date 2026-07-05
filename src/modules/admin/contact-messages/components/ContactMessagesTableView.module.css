@@ -1,0 +1,124 @@
+.wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-glass-light);
+  backdrop-filter: blur(12px);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1050px;
+}
+
+.table th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.84rem;
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.row {
+  transition: background var(--transition-fast);
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.row.selected {
+  background: rgba(0, 138, 166, 0.06);
+}
+
+.row:last-child td {
+  border-bottom: none;
+}
+
+.checkboxCol {
+  width: 44px;
+  padding-left: 1rem;
+}
+
+.actionsCol {
+  width: 48px;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.senderBtn {
+  text-align: left;
+  transition: color var(--transition-fast);
+}
+
+.senderBtn:hover .name {
+  color: var(--color-accent-light);
+}
+
+.name {
+  display: block;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.email {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: rgba(168, 168, 168, 0.85);
+}
+
+.phone {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.68rem;
+  color: rgba(168, 168, 168, 0.65);
+}
+
+.subjectCell {
+  max-width: 220px;
+}
+
+.subject {
+  display: block;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.muted {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.unassigned {
+  font-style: italic;
+  opacity: 0.65;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    margin: 0 -0.5rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}

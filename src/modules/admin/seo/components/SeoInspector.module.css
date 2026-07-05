@@ -1,0 +1,234 @@
+.inspector {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+  padding: 1.35rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.empty {
+  margin: 0;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.inspectorHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.headerMain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.25;
+}
+
+.scoreBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.scoreBadge.success {
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+}
+
+.scoreBadge.info {
+  background: rgba(99, 179, 237, 0.12);
+  color: #63b3ed;
+}
+
+.scoreBadge.warning {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24;
+}
+
+.scoreBadge.error {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+}
+
+.quickActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.inspectorBody {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.fieldGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.fieldLabel {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.fieldValue {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  word-break: break-word;
+}
+
+.missing {
+  color: rgba(251, 191, 36, 0.85);
+  font-style: italic;
+}
+
+.ogPreview {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 8px;
+  aspect-ratio: 1.91 / 1;
+  object-fit: cover;
+}
+
+.collapsible {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.collapsibleTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.35rem 0;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: left;
+  transition: color 0.2s ease;
+}
+
+.collapsibleTrigger:hover {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.collapsibleTitle {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.collapsibleChevron {
+  opacity: 0.55;
+  transition: transform 0.2s ease;
+}
+
+.collapsibleChevronOpen {
+  transform: rotate(180deg);
+}
+
+.collapsibleContent {
+  animation: collapsibleIn 0.2s ease;
+}
+
+.advancedGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.advancedGrid .section {
+  padding: 0.85rem 0;
+}
+
+@keyframes collapsibleIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .inspectorBody,
+  .advancedGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .inspector {
+    padding: 1rem;
+    gap: 1.25rem;
+  }
+
+  .pageTitle {
+    font-size: 1.1rem;
+  }
+
+  .quickActions {
+    width: 100%;
+  }
+
+  .quickActions button:not(.trigger) {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collapsibleContent {
+    animation: none;
+  }
+}

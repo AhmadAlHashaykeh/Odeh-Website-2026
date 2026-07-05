@@ -1,0 +1,33 @@
+.wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.wrap > div:first-child {
+  min-width: 180px;
+}
+
+.applyBtn {
+  height: 40px;
+  padding: 0 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-white);
+  background: rgba(0, 138, 166, 0.2);
+  border: 1px solid rgba(0, 138, 166, 0.35);
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.applyBtn:hover:not(:disabled) {
+  background: rgba(0, 138, 166, 0.3);
+  border-color: rgba(0, 138, 166, 0.5);
+}
+
+.applyBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

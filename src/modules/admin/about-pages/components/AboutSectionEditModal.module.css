@@ -1,0 +1,127 @@
+.mediaField {
+  margin-bottom: 0.75rem;
+}
+
+.imageList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.imageListItem {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.imageThumb {
+  width: 72px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.imageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.imageOrder {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--color-accent-light);
+}
+
+.imagePath {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  word-break: break-all;
+}
+
+.imageAlt {
+  font-size: 0.68rem;
+  color: rgba(232, 232, 232, 0.7);
+  line-height: 1.4;
+}
+
+.principleFormList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principleFormItem {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.principleFormNum {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  padding-top: 0.35rem;
+}
+
+.principleFormFields {
+  flex: 1;
+  min-width: 0;
+}
+
+.tableFormWrap {
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tableForm {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.tableForm th {
+  padding: 0.55rem 0.65rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+.tableForm td {
+  padding: 0.4rem 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tableForm td input {
+  width: 100%;
+  min-width: 80px;
+}
+
+@media (max-width: 640px) {
+  .principleFormItem {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .imageListItem {
+    flex-direction: column;
+  }
+
+  .imageThumb {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}

@@ -1,0 +1,43 @@
+.confirmModal {
+  max-width: 460px;
+  text-align: center;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto var(--admin-space-2xl);
+  border-radius: 50%;
+  background: var(--admin-color-info-bg);
+  color: var(--admin-color-info);
+  border: 1px solid var(--admin-color-info-border);
+}
+
+.iconWrap.accent {
+  background: rgba(0, 138, 166, 0.12);
+  color: var(--color-accent-light);
+  border-color: rgba(0, 138, 166, 0.28);
+}
+
+.iconWrap.info {
+  background: var(--admin-color-info-bg);
+  color: var(--admin-color-info);
+  border-color: var(--admin-color-info-border);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: var(--admin-weight-semibold);
+  color: var(--color-white);
+  margin: 0 0 var(--admin-space-md);
+}
+
+.message {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0 0 var(--admin-space-4xl);
+}

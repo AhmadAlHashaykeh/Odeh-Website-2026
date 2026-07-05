@@ -1,0 +1,1777 @@
+{
+  "categories": [
+    {
+      "id": "resorts-and-hotels",
+      "slug": "resorts-and-hotels",
+      "title": "Resorts & Hotels",
+      "coverImage": "/assets/projects/categories/resorts-and-hotels.webp",
+      "description": "Luxury hospitality structures engineered for complex geometries, long spans, and demanding site conditions across the region.",
+      "projectCount": 3
+    },
+    {
+      "id": "private-villas",
+      "slug": "private-villas",
+      "title": "Private Villas",
+      "coverImage": "/assets/projects/categories/private-villas.webp",
+      "description": "Bespoke residential villas combining architectural ambition with precise structural detailing and refined material expression.",
+      "projectCount": 20
+    },
+    {
+      "id": "residential-complexes",
+      "slug": "residential-complexes",
+      "title": "Residential Complexes",
+      "coverImage": "/assets/projects/categories/residential-complexes.webp",
+      "description": "Multi-unit residential developments delivered with coordinated structural systems and efficient, buildable solutions.",
+      "projectCount": 3
+    },
+    {
+      "id": "commercial-complexes",
+      "slug": "commercial-complexes",
+      "title": "Commercial Complexes",
+      "coverImage": "/assets/projects/categories/commercial-complexes.webp",
+      "description": "Commercial towers and mixed-use complexes designed for scale, performance, and urban context.",
+      "projectCount": 8
+    },
+    {
+      "id": "institutional-cultural",
+      "slug": "institutional-cultural",
+      "title": "Institutional - Cultural",
+      "coverImage": "/assets/projects/categories/institutional-cultural.webp",
+      "description": "Institutional and cultural landmarks where structural clarity supports bold architectural identity.",
+      "projectCount": 4
+    },
+    {
+      "id": "govermental",
+      "slug": "govermental",
+      "title": "Govermental",
+      "coverImage": "/assets/projects/categories/govermental.webp",
+      "description": "A curated selection of govermental delivered by ODEH & PARTNERS DESIGN.",
+      "projectCount": 2
+    },
+    {
+      "id": "hospitals-and-medical-clinics",
+      "slug": "hospitals-and-medical-clinics",
+      "title": "Hospitals and Medical Clinics",
+      "coverImage": "/assets/projects/categories/hospitals-and-medical-clinics.webp",
+      "description": "Healthcare facilities requiring rigorous structural coordination, vibration control, and flexible planning.",
+      "projectCount": 1
+    },
+    {
+      "id": "mosques",
+      "slug": "mosques",
+      "title": "Mosques",
+      "coverImage": "/assets/projects/categories/mosques.webp",
+      "description": "Sacred architecture supported by thoughtful structural design that honors form, light, and community gathering.",
+      "projectCount": 2
+    },
+    {
+      "id": "fueling-and-car-charging-stations",
+      "slug": "fueling-and-car-charging-stations",
+      "title": "Fueling and Car Charging Stations",
+      "coverImage": "/assets/projects/categories/fueling-and-car-charging-stations.webp",
+      "description": "Specialized canopy and station structures optimized for rapid deployment and operational efficiency.",
+      "projectCount": 2
+    },
+    {
+      "id": "restoration-conservation",
+      "slug": "restoration-conservation",
+      "title": "Restoration-Conservation",
+      "coverImage": "/assets/projects/categories/restoration-conservation.webp",
+      "description": "Heritage restoration and conservation projects balancing historical integrity with modern structural requirements.",
+      "projectCount": 1
+    },
+    {
+      "id": "steel-structures",
+      "slug": "steel-structures",
+      "title": "Steel Structures",
+      "coverImage": "/assets/projects/categories/steel-structures.webp",
+      "description": "Steel-framed structures and long-span systems engineered for strength, precision, and constructability.",
+      "projectCount": 3
+    }
+  ],
+  "projects": [
+    {
+      "id": "himmeh-resort",
+      "slug": "himmeh-resort",
+      "categorySlug": "resorts-and-hotels",
+      "title": "Himmeh Resort",
+      "description": "The main challenges in the design were the arch vaults (the larger of which is over 7m high), multiple cross vaults, tapered cantilevers, and variable thickness slabs.",
+      "coverImage": "/assets/projects/himmeh-resort/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/himmeh-resort/gallery-01.webp",
+          "alt": "Himmeh Resort — image 1"
+        },
+        {
+          "src": "/assets/projects/himmeh-resort/gallery-02.webp",
+          "alt": "Himmeh Resort — image 2"
+        },
+        {
+          "src": "/assets/projects/himmeh-resort/gallery-03.webp",
+          "alt": "Himmeh Resort — image 3"
+        },
+        {
+          "src": "/assets/projects/himmeh-resort/gallery-04.webp",
+          "alt": "Himmeh Resort — image 4"
+        },
+        {
+          "src": "/assets/projects/himmeh-resort/gallery-05.webp",
+          "alt": "Himmeh Resort — image 5"
+        },
+        {
+          "src": "/assets/projects/himmeh-resort/gallery-06.webp",
+          "alt": "Himmeh Resort — image 6"
+        },
+        {
+          "src": "/assets/projects/himmeh-resort/gallery-07.webp",
+          "alt": "Himmeh Resort — image 7"
+        },
+        {
+          "src": "/assets/projects/himmeh-resort/gallery-08.webp",
+          "alt": "Himmeh Resort — image 8"
+        },
+        {
+          "src": "/assets/projects/himmeh-resort/gallery-09.webp",
+          "alt": "Himmeh Resort — image 9"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Hospitality",
+      "area": "7000 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "leen-park",
+      "slug": "leen-park",
+      "categorySlug": "resorts-and-hotels",
+      "title": "Leen Park",
+      "description": "A collection of chalets designed with a luxurious touch, offering premium services in the Dead Sea area.",
+      "coverImage": "/assets/projects/leen-park/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/leen-park/gallery-01.webp",
+          "alt": "Leen Park — image 1"
+        },
+        {
+          "src": "/assets/projects/leen-park/gallery-02.webp",
+          "alt": "Leen Park — image 2"
+        },
+        {
+          "src": "/assets/projects/leen-park/gallery-03.webp",
+          "alt": "Leen Park — image 3"
+        }
+      ],
+      "location": "Jordan, Dead Sea",
+      "type": "Hospitality",
+      "area": "10000 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "fairmont-hotel",
+      "slug": "fairmont-hotel",
+      "categorySlug": "resorts-and-hotels",
+      "title": "Fairmont Hotel",
+      "description": "This project is composed of post-tensioned slabs and encompasses 16 floors above ground, along with 4 basement levels. The foundations were skillfully crafted in the form of raft foundations.",
+      "coverImage": "/assets/projects/fairmont-hotel/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/fairmont-hotel/gallery-01.webp",
+          "alt": "Fairmont Hotel — image 1"
+        },
+        {
+          "src": "/assets/projects/fairmont-hotel/gallery-02.webp",
+          "alt": "Fairmont Hotel — image 2"
+        },
+        {
+          "src": "/assets/projects/fairmont-hotel/gallery-03.webp",
+          "alt": "Fairmont Hotel — image 3"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Hospitality",
+      "area": "55000 m²",
+      "status": "Completed, 2018",
+      "services": "Structural Design"
+    },
+    {
+      "id": "private-villa-mh",
+      "slug": "private-villa-mh",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-MH",
+      "description": "This high-end, luxurious private villa boasts cantilevered concrete slabs extending up to 5 meters. Additionally, it features imposing retaining walls, swimming pools, water tanks, and elegant stone columns.",
+      "coverImage": "/assets/projects/private-villa-mh/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-mh/gallery-01.webp",
+          "alt": "Private Villa-MH — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-mh/gallery-02.webp",
+          "alt": "Private Villa-MH — image 2"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Residential",
+      "area": "4000 m²",
+      "status": "Under Design",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-hh",
+      "slug": "private-villa-hh",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-HH",
+      "description": "The structural design incorporates concrete slabs with spans of up to 12 meters between columns, as well as multiple cantilevered sections extending up to 5 meters. Additionally, a 32-meter-long concrete frame runs along the main facade, directly connected to structural columns via cantilever beams.",
+      "coverImage": "/assets/projects/private-villa-hh/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-01.webp",
+          "alt": "Private Villa-HH — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-02.webp",
+          "alt": "Private Villa-HH — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-03.webp",
+          "alt": "Private Villa-HH — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-04.webp",
+          "alt": "Private Villa-HH — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-05.webp",
+          "alt": "Private Villa-HH — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-06.webp",
+          "alt": "Private Villa-HH — image 6"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-07.webp",
+          "alt": "Private Villa-HH — image 7"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-08.webp",
+          "alt": "Private Villa-HH — image 8"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-09.webp",
+          "alt": "Private Villa-HH — image 9"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-10.webp",
+          "alt": "Private Villa-HH — image 10"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-11.webp",
+          "alt": "Private Villa-HH — image 11"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-12.webp",
+          "alt": "Private Villa-HH — image 12"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-13.webp",
+          "alt": "Private Villa-HH — image 13"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-14.webp",
+          "alt": "Private Villa-HH — image 14"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-15.webp",
+          "alt": "Private Villa-HH — image 15"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-16.webp",
+          "alt": "Private Villa-HH — image 16"
+        },
+        {
+          "src": "/assets/projects/private-villa-hh/gallery-17.webp",
+          "alt": "Private Villa-HH — image 17"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Residential",
+      "area": "1200 m²",
+      "status": "Under Construction",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-ak",
+      "slug": "private-villa-ak",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-AK",
+      "description": "The structural design of this villa stands out with impressive spans of up to 10 meters between columns, complemented by cantilevered sections extending up to 3.5 meters. Furthermore, it features a 22-meter-long bridge on the terrace side and another remarkable 32-meter-long self-supporting bridge overhead.",
+      "coverImage": "/assets/projects/private-villa-ak/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-ak/gallery-01.webp",
+          "alt": "Private Villa-AK — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-ak/gallery-02.webp",
+          "alt": "Private Villa-AK — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-ak/gallery-03.webp",
+          "alt": "Private Villa-AK — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-ak/gallery-04.webp",
+          "alt": "Private Villa-AK — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-ak/gallery-05.webp",
+          "alt": "Private Villa-AK — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-ak/gallery-06.webp",
+          "alt": "Private Villa-AK — image 6"
+        },
+        {
+          "src": "/assets/projects/private-villa-ak/gallery-07.webp",
+          "alt": "Private Villa-AK — image 7"
+        },
+        {
+          "src": "/assets/projects/private-villa-ak/gallery-08.webp",
+          "alt": "Private Villa-AK — image 8"
+        },
+        {
+          "src": "/assets/projects/private-villa-ak/gallery-09.webp",
+          "alt": "Private Villa-AK — image 9"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "1600 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-ra",
+      "slug": "private-villa-ra",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-RA",
+      "description": "The primary structural challenges in this luxury villa are centered around the cantilever, which includes a canopy over a swimming pool spanning 4.7 meters, as well as an unsupported and spiral-shaped staircase that extends for 8 meters",
+      "coverImage": "/assets/projects/private-villa-ra/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-ra/gallery-01.webp",
+          "alt": "Private Villa-RA — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-ra/gallery-02.webp",
+          "alt": "Private Villa-RA — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-ra/gallery-03.webp",
+          "alt": "Private Villa-RA — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-ra/gallery-04.webp",
+          "alt": "Private Villa-RA — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-ra/gallery-05.webp",
+          "alt": "Private Villa-RA — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-ra/gallery-06.webp",
+          "alt": "Private Villa-RA — image 6"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "2000 m²",
+      "status": "Completed, 2018",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-as",
+      "slug": "private-villa-as",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-AS",
+      "description": "A magnificent private villa in Amman, boasting three spacious floors covering a whopping 2000 square meters. The main challenges we faced during its structural design were the impressive cantilevers, reaching an astonishing 8.0 meters in length, and the interior spans coming close to 10.0 meters. Additionally, numerous intricate architectural specifications demanded meticulous coordination across all disciplines.",
+      "coverImage": "/assets/projects/private-villa-as/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-as/gallery-01.webp",
+          "alt": "Private Villa-AS — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-as/gallery-02.webp",
+          "alt": "Private Villa-AS — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-as/gallery-03.webp",
+          "alt": "Private Villa-AS — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-as/gallery-04.webp",
+          "alt": "Private Villa-AS — image 4"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Residential",
+      "area": "2200 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-iy",
+      "slug": "private-villa-iy",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-IY",
+      "description": "The structural design of this villa stands out for its high-span floor slabs, along with the presence of a transfer slab that spans distances of up to 6 by 12 meters. This transfer slab supports columns planted to accommodate three floors above. Additionally, there are cantilevers of up to 3 meters in length.",
+      "coverImage": "/assets/projects/private-villa-iy/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-iy/gallery-01.webp",
+          "alt": "Private Villa-IY — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-iy/gallery-02.webp",
+          "alt": "Private Villa-IY — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-iy/gallery-03.webp",
+          "alt": "Private Villa-IY — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-iy/gallery-04.webp",
+          "alt": "Private Villa-IY — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-iy/gallery-05.webp",
+          "alt": "Private Villa-IY — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-iy/gallery-06.webp",
+          "alt": "Private Villa-IY — image 6"
+        },
+        {
+          "src": "/assets/projects/private-villa-iy/gallery-07.webp",
+          "alt": "Private Villa-IY — image 7"
+        },
+        {
+          "src": "/assets/projects/private-villa-iy/gallery-08.webp",
+          "alt": "Private Villa-IY — image 8"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "1600 m²",
+      "status": "Under Construction",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-dd",
+      "slug": "private-villa-dd",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-DD",
+      "description": "One of the major structural design challenges we encountered in this villa was the use of cantilevered floor slabs with spans of up to 5 meters, in addition to sloping and stone-clad slabs.",
+      "coverImage": "/assets/projects/private-villa-dd/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-dd/gallery-01.webp",
+          "alt": "Private Villa-DD — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-dd/gallery-02.webp",
+          "alt": "Private Villa-DD — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-dd/gallery-03.webp",
+          "alt": "Private Villa-DD — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-dd/gallery-04.webp",
+          "alt": "Private Villa-DD — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-dd/gallery-05.webp",
+          "alt": "Private Villa-DD — image 5"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Residential",
+      "area": "1400 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villas-rk",
+      "slug": "private-villas-rk",
+      "categorySlug": "private-villas",
+      "title": "Private Villas-RK",
+      "description": "&quot;&quot;",
+      "coverImage": "/assets/projects/private-villas-rk/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villas-rk/gallery-01.webp",
+          "alt": "Private Villas-RK — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villas-rk/gallery-02.webp",
+          "alt": "Private Villas-RK — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villas-rk/gallery-03.webp",
+          "alt": "Private Villas-RK — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villas-rk/gallery-04.webp",
+          "alt": "Private Villas-RK — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villas-rk/gallery-05.webp",
+          "alt": "Private Villas-RK — image 5"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "950 m²",
+      "status": "Under Construction",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-dj",
+      "slug": "private-villa-dj",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-DJ",
+      "description": "This Amman private villa spans three floors and covers a whopping 2000 square meters. Our key challenges in the structural design included dealing with impressive cantilevers, reaching up to 8.0 meters, and accommodating expansive interior spans nearing 10.0 meters.",
+      "coverImage": "/assets/projects/private-villa-dj/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-dj/gallery-01.webp",
+          "alt": "Private Villa-DJ — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-dj/gallery-02.webp",
+          "alt": "Private Villa-DJ — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-dj/gallery-03.webp",
+          "alt": "Private Villa-DJ — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-dj/gallery-04.webp",
+          "alt": "Private Villa-DJ — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-dj/gallery-05.webp",
+          "alt": "Private Villa-DJ — image 5"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Residential",
+      "area": "2100 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-eb",
+      "slug": "private-villa-eb",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-EB",
+      "description": "Cantilevers extending up to 5 meters represent one of the foremost structural challenges in the design.",
+      "coverImage": "/assets/projects/private-villa-eb/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-eb/gallery-01.webp",
+          "alt": "Private Villa-EB — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-eb/gallery-02.webp",
+          "alt": "Private Villa-EB — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-eb/gallery-03.webp",
+          "alt": "Private Villa-EB — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-eb/gallery-04.webp",
+          "alt": "Private Villa-EB — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-eb/gallery-05.webp",
+          "alt": "Private Villa-EB — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-eb/gallery-06.webp",
+          "alt": "Private Villa-EB — image 6"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "1200 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-oh",
+      "slug": "private-villa-oh",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-OH",
+      "description": "The concept of the project is that the slab is carried by a 12-meter-long beam, and this slab has planted columns to support the floor above as well.",
+      "coverImage": "/assets/projects/private-villa-oh/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-oh/gallery-01.webp",
+          "alt": "Private Villa-OH — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-oh/gallery-02.webp",
+          "alt": "Private Villa-OH — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-oh/gallery-03.webp",
+          "alt": "Private Villa-OH — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-oh/gallery-04.webp",
+          "alt": "Private Villa-OH — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-oh/gallery-05.webp",
+          "alt": "Private Villa-OH — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-oh/gallery-06.webp",
+          "alt": "Private Villa-OH — image 6"
+        },
+        {
+          "src": "/assets/projects/private-villa-oh/gallery-07.webp",
+          "alt": "Private Villa-OH — image 7"
+        },
+        {
+          "src": "/assets/projects/private-villa-oh/gallery-08.webp",
+          "alt": "Private Villa-OH — image 8"
+        },
+        {
+          "src": "/assets/projects/private-villa-oh/gallery-09.webp",
+          "alt": "Private Villa-OH — image 9"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "750 m²",
+      "status": "Under Construction",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-rs",
+      "slug": "private-villa-rs",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-RS",
+      "description": "One of the significant structural challenges is the presence of a cantilevered sawtooth-shaped spiral staircase with support only on one side, while the rest of the sides are open.",
+      "coverImage": "/assets/projects/private-villa-rs/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-rs/gallery-01.webp",
+          "alt": "Private Villa-RS — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-rs/gallery-02.webp",
+          "alt": "Private Villa-RS — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-rs/gallery-03.webp",
+          "alt": "Private Villa-RS — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-rs/gallery-04.webp",
+          "alt": "Private Villa-RS — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-rs/gallery-05.webp",
+          "alt": "Private Villa-RS — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-rs/gallery-06.webp",
+          "alt": "Private Villa-RS — image 6"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "1100 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-ro",
+      "slug": "private-villa-ro",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-RO",
+      "description": "The project&#039;s standout features include fully planted floors on a transfer slab and the presence of a cantilever canopy spanning 6 meters.",
+      "coverImage": "/assets/projects/private-villa-ro/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-ro/gallery-01.webp",
+          "alt": "Private Villa-RO — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-ro/gallery-02.webp",
+          "alt": "Private Villa-RO — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-ro/gallery-03.webp",
+          "alt": "Private Villa-RO — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-ro/gallery-04.webp",
+          "alt": "Private Villa-RO — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-ro/gallery-05.webp",
+          "alt": "Private Villa-RO — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-ro/gallery-06.webp",
+          "alt": "Private Villa-RO — image 6"
+        },
+        {
+          "src": "/assets/projects/private-villa-ro/gallery-07.webp",
+          "alt": "Private Villa-RO — image 7"
+        },
+        {
+          "src": "/assets/projects/private-villa-ro/gallery-08.webp",
+          "alt": "Private Villa-RO — image 8"
+        },
+        {
+          "src": "/assets/projects/private-villa-ro/gallery-09.webp",
+          "alt": "Private Villa-RO — image 9"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Residential",
+      "area": "1000 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-hm",
+      "slug": "private-villa-hm",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-HM",
+      "description": "The project&#039;s key features include 5-meter cantilevers and a series of planted columns.",
+      "coverImage": "/assets/projects/private-villa-hm/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-01.webp",
+          "alt": "Private Villa-HM — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-02.webp",
+          "alt": "Private Villa-HM — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-03.webp",
+          "alt": "Private Villa-HM — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-04.webp",
+          "alt": "Private Villa-HM — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-05.webp",
+          "alt": "Private Villa-HM — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-06.webp",
+          "alt": "Private Villa-HM — image 6"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-07.webp",
+          "alt": "Private Villa-HM — image 7"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-08.webp",
+          "alt": "Private Villa-HM — image 8"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-09.webp",
+          "alt": "Private Villa-HM — image 9"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-10.webp",
+          "alt": "Private Villa-HM — image 10"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-11.webp",
+          "alt": "Private Villa-HM — image 11"
+        },
+        {
+          "src": "/assets/projects/private-villa-hm/gallery-12.webp",
+          "alt": "Private Villa-HM — image 12"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "1300 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-ym",
+      "slug": "private-villa-ym",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-YM",
+      "description": "The project stands out due to the presence of internal cantilevers reaching 3.5 meters, an external cantilever extending up to 5.6 meters, as well as an interior spiral staircase supported on a central circular column.",
+      "coverImage": "/assets/projects/private-villa-ym/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-ym/gallery-01.webp",
+          "alt": "Private Villa-YM — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-ym/gallery-02.webp",
+          "alt": "Private Villa-YM — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-ym/gallery-03.webp",
+          "alt": "Private Villa-YM — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-ym/gallery-04.webp",
+          "alt": "Private Villa-YM — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-ym/gallery-05.webp",
+          "alt": "Private Villa-YM — image 5"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Residential",
+      "area": "550 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-tr",
+      "slug": "private-villa-tr",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-TR",
+      "description": "One of the key challenges in this project is the presence of cantilevers extending up to 3.7 meters.",
+      "coverImage": "/assets/projects/private-villa-tr/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-01.webp",
+          "alt": "Private Villa-TR — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-02.webp",
+          "alt": "Private Villa-TR — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-03.webp",
+          "alt": "Private Villa-TR — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-04.webp",
+          "alt": "Private Villa-TR — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-05.webp",
+          "alt": "Private Villa-TR — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-06.webp",
+          "alt": "Private Villa-TR — image 6"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-07.webp",
+          "alt": "Private Villa-TR — image 7"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-08.webp",
+          "alt": "Private Villa-TR — image 8"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-09.webp",
+          "alt": "Private Villa-TR — image 9"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-10.webp",
+          "alt": "Private Villa-TR — image 10"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-11.webp",
+          "alt": "Private Villa-TR — image 11"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-12.webp",
+          "alt": "Private Villa-TR — image 12"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-13.webp",
+          "alt": "Private Villa-TR — image 13"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-14.webp",
+          "alt": "Private Villa-TR — image 14"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-15.webp",
+          "alt": "Private Villa-TR — image 15"
+        },
+        {
+          "src": "/assets/projects/private-villa-tr/gallery-16.webp",
+          "alt": "Private Villa-TR — image 16"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "1000 m²",
+      "status": "Under Design",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-j",
+      "slug": "private-villa-j",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-J",
+      "description": "This project is distinguished by the presence of a basement slab containing a swimming pool, with a part of the pool extending about 1.5 meters above ground level. Additionally, there is a cantilevered concrete canopy spanning approximately 3.5 meters. Furthermore, there is an irregularly shaped slab that extends to nearly zero thickness on the sides.\r\nIn addition, there is a free-standing staircase with a triangular cross-section at the bottom. The project also features a collection of cross vaults.",
+      "coverImage": "/assets/projects/private-villa-j/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-j/gallery-01.webp",
+          "alt": "Private Villa-J — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-j/gallery-02.webp",
+          "alt": "Private Villa-J — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-j/gallery-03.webp",
+          "alt": "Private Villa-J — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-j/gallery-04.webp",
+          "alt": "Private Villa-J — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-j/gallery-05.webp",
+          "alt": "Private Villa-J — image 5"
+        },
+        {
+          "src": "/assets/projects/private-villa-j/gallery-06.webp",
+          "alt": "Private Villa-J — image 6"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "3000 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-z",
+      "slug": "private-villa-z",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-Z",
+      "description": "The challenge in this project revolved around incorporating planted structural elements into each floor to meet the architectural requirements. Approximately 20 columns were planted on each floor, with some stone columns utilized to support the nodes in specific areas. The house followed a classical architectural style, characterized by a predominantly arch-based structural system, with many of the columns being constructed from stone rather than concrete.",
+      "coverImage": "/assets/projects/private-villa-z/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-z/gallery-01.webp",
+          "alt": "Private Villa-Z — image 1"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Residential",
+      "area": "3500 m²",
+      "status": "Under Construction",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-mg",
+      "slug": "private-villa-mg",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-MG",
+      "description": "In this project, the exterior walls were constructed using load-bearing walls, resulting in the incorporation of a planted wall on each floor according to the architectural design. Additionally, there are cantilevers extending up to 3.5 meters, each adorned with walls. Moreover, there are internal spans reaching 8 meters, featuring an internal spiral staircase supported solely by the nodes.",
+      "coverImage": "/assets/projects/private-villa-mg/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-mg/gallery-01.webp",
+          "alt": "Private Villa-MG — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-mg/gallery-02.webp",
+          "alt": "Private Villa-MG — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-mg/gallery-03.webp",
+          "alt": "Private Villa-MG — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-mg/gallery-04.webp",
+          "alt": "Private Villa-MG — image 4"
+        },
+        {
+          "src": "/assets/projects/private-villa-mg/gallery-05.webp",
+          "alt": "Private Villa-MG — image 5"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "1100 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "private-villa-rh",
+      "slug": "private-villa-rh",
+      "categorySlug": "private-villas",
+      "title": "Private Villa-RH",
+      "description": "This Spanish-style project stands out with its diverse array of arches.",
+      "coverImage": "/assets/projects/private-villa-rh/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/private-villa-rh/gallery-01.webp",
+          "alt": "Private Villa-RH — image 1"
+        },
+        {
+          "src": "/assets/projects/private-villa-rh/gallery-02.webp",
+          "alt": "Private Villa-RH — image 2"
+        },
+        {
+          "src": "/assets/projects/private-villa-rh/gallery-03.webp",
+          "alt": "Private Villa-RH — image 3"
+        },
+        {
+          "src": "/assets/projects/private-villa-rh/gallery-04.webp",
+          "alt": "Private Villa-RH — image 4"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Residential",
+      "area": "1000 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "sedret-al-ula",
+      "slug": "sedret-al-ula",
+      "categorySlug": "residential-complexes",
+      "title": "Sedret Al-Ula",
+      "description": "This project, situated in the city of Al-Ula, aims to achieve a positive urban transformation for the benefit of both the local and global communities, fostering future resilience and knowledge. The project encompasses various components, including a local mosque, a kindergarten, residential houses units, residential apartment units, and commercial mixed-use units.",
+      "coverImage": "/assets/projects/sedret-al-ula/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/sedret-al-ula/gallery-01.webp",
+          "alt": "Sedret Al-Ula — image 1"
+        },
+        {
+          "src": "/assets/projects/sedret-al-ula/gallery-02.webp",
+          "alt": "Sedret Al-Ula — image 2"
+        },
+        {
+          "src": "/assets/projects/sedret-al-ula/gallery-03.webp",
+          "alt": "Sedret Al-Ula — image 3"
+        },
+        {
+          "src": "/assets/projects/sedret-al-ula/gallery-04.webp",
+          "alt": "Sedret Al-Ula — image 4"
+        },
+        {
+          "src": "/assets/projects/sedret-al-ula/gallery-05.webp",
+          "alt": "Sedret Al-Ula — image 5"
+        },
+        {
+          "src": "/assets/projects/sedret-al-ula/gallery-06.webp",
+          "alt": "Sedret Al-Ula — image 6"
+        },
+        {
+          "src": "/assets/projects/sedret-al-ula/gallery-07.webp",
+          "alt": "Sedret Al-Ula — image 7"
+        }
+      ],
+      "location": "KSA, Al Ula",
+      "type": "Residential",
+      "area": "60000 m²",
+      "status": "Under Design",
+      "services": "Structural Design"
+    },
+    {
+      "id": "jannat-baghdad",
+      "slug": "jannat-baghdad",
+      "categorySlug": "residential-complexes",
+      "title": "Jannat Baghdad",
+      "description": "It is a massive residential project located near the Euphrates River. The project is currently under construction (Piling phase) and is being executed in stages. We are currently in the first stage, which consists of 40 buildings.",
+      "coverImage": "/assets/projects/jannat-baghdad/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/jannat-baghdad/gallery-01.webp",
+          "alt": "Jannat Baghdad — image 1"
+        },
+        {
+          "src": "/assets/projects/jannat-baghdad/gallery-02.webp",
+          "alt": "Jannat Baghdad — image 2"
+        }
+      ],
+      "location": "Iraq",
+      "type": "Residential",
+      "area": "600000 m²",
+      "status": "Under Construction",
+      "services": "Structural Design"
+    },
+    {
+      "id": "amayer-jeddah",
+      "slug": "amayer-jeddah",
+      "categorySlug": "residential-complexes",
+      "title": "Amayer Jeddah",
+      "description": "This project is currently under construction in Jeddah and consists of 9 buildings that share shared parking lots. The foundations are designed with raft foundations, and attempts have been taken to improve the soil&#039;s condition.",
+      "coverImage": "/assets/projects/amayer-jeddah/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/amayer-jeddah/gallery-01.webp",
+          "alt": "Amayer Jeddah — image 1"
+        }
+      ],
+      "location": "KSA, Jeddah",
+      "type": "Residential",
+      "area": "60000 m²",
+      "status": "Under Construction",
+      "services": "Structural Design"
+    },
+    {
+      "id": "abu-deyah",
+      "slug": "abu-deyah",
+      "categorySlug": "commercial-complexes",
+      "title": "Abu Deyah",
+      "description": "The design of the building consists of 10 floors with interior spans reaching up to 9.0 meters, and 4.25-meter cantilever edge slabs.",
+      "coverImage": "/assets/projects/abu-deyah/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/abu-deyah/gallery-01.webp",
+          "alt": "Abu Deyah — image 1"
+        },
+        {
+          "src": "/assets/projects/abu-deyah/gallery-02.webp",
+          "alt": "Abu Deyah — image 2"
+        },
+        {
+          "src": "/assets/projects/abu-deyah/gallery-03.webp",
+          "alt": "Abu Deyah — image 3"
+        },
+        {
+          "src": "/assets/projects/abu-deyah/gallery-04.webp",
+          "alt": "Abu Deyah — image 4"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "9000 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "zahraan",
+      "slug": "zahraan",
+      "categorySlug": "commercial-complexes",
+      "title": "Zahraan",
+      "description": "This project consists of nine floors with a structural system that includes flat slabs and isolated foundations. One of the structural challenges in this project is the presence of a transfer beam system supporting a planted column that bears the load of seven floors above it.",
+      "coverImage": "/assets/projects/zahraan/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/zahraan/gallery-01.webp",
+          "alt": "Zahraan — image 1"
+        },
+        {
+          "src": "/assets/projects/zahraan/gallery-02.webp",
+          "alt": "Zahraan — image 2"
+        },
+        {
+          "src": "/assets/projects/zahraan/gallery-03.webp",
+          "alt": "Zahraan — image 3"
+        },
+        {
+          "src": "/assets/projects/zahraan/gallery-04.webp",
+          "alt": "Zahraan — image 4"
+        },
+        {
+          "src": "/assets/projects/zahraan/gallery-05.webp",
+          "alt": "Zahraan — image 5"
+        },
+        {
+          "src": "/assets/projects/zahraan/gallery-06.webp",
+          "alt": "Zahraan — image 6"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Commercial",
+      "area": "4500 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "al-barakeh-10",
+      "slug": "al-barakeh-10",
+      "categorySlug": "commercial-complexes",
+      "title": "Al-Barakeh 10",
+      "description": "This project encompasses ten floors and employs a structural system featuring flat slabs and isolated foundations. Additionally, there are cantilever spans that extend up to 3.5 meters.",
+      "coverImage": "/assets/projects/al-barakeh-10/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/al-barakeh-10/gallery-01.webp",
+          "alt": "Al-Barakeh 10 — image 1"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "10000 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design"
+    },
+    {
+      "id": "sooq-yard",
+      "slug": "sooq-yard",
+      "categorySlug": "commercial-complexes",
+      "title": "Sooq Yard",
+      "description": "The project entails the construction of a 9-story building utilizing flat slabs and drop panels, all supported by a raft footing foundation. Additionally, the project includes cantilever slabs with spans reaching up to 4.5 meters.",
+      "coverImage": "/assets/projects/sooq-yard/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/sooq-yard/gallery-01.webp",
+          "alt": "Sooq Yard — image 1"
+        },
+        {
+          "src": "/assets/projects/sooq-yard/gallery-02.webp",
+          "alt": "Sooq Yard — image 2"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "14000 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "obaidi-complex",
+      "slug": "obaidi-complex",
+      "categorySlug": "commercial-complexes",
+      "title": "Obaidi Complex",
+      "description": "The project involves constructing a 10-story building with flat slabs and drop panels supported by isolated footings.",
+      "coverImage": "/assets/projects/obaidi-complex/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/obaidi-complex/gallery-01.webp",
+          "alt": "Obaidi Complex — image 1"
+        },
+        {
+          "src": "/assets/projects/obaidi-complex/gallery-02.webp",
+          "alt": "Obaidi Complex — image 2"
+        },
+        {
+          "src": "/assets/projects/obaidi-complex/gallery-03.webp",
+          "alt": "Obaidi Complex — image 3"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "8700 m²",
+      "status": "Completed, 2022",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "al-rayyan",
+      "slug": "al-rayyan",
+      "categorySlug": "commercial-complexes",
+      "title": "Al Rayyan",
+      "description": "This project consists of 10 floors supported by a raft foundation and utilizes a flat slab structural system. It includes internal spans of 9.5 meters and cantilevers reaching up to 4 meters.",
+      "coverImage": "/assets/projects/al-rayyan/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/al-rayyan/gallery-01.webp",
+          "alt": "Al Rayyan — image 1"
+        },
+        {
+          "src": "/assets/projects/al-rayyan/gallery-02.webp",
+          "alt": "Al Rayyan — image 2"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "16000 m²",
+      "status": "Completed, 2018",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "al-bayed",
+      "slug": "al-bayed",
+      "categorySlug": "commercial-complexes",
+      "title": "Al Bayed",
+      "description": "This project comprises seven floors and features a structural system with flat slabs supported by isolated footings.",
+      "coverImage": "/assets/projects/al-bayed/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/al-bayed/gallery-01.webp",
+          "alt": "Al Bayed — image 1"
+        },
+        {
+          "src": "/assets/projects/al-bayed/gallery-02.webp",
+          "alt": "Al Bayed — image 2"
+        },
+        {
+          "src": "/assets/projects/al-bayed/gallery-03.webp",
+          "alt": "Al Bayed — image 3"
+        },
+        {
+          "src": "/assets/projects/al-bayed/gallery-04.webp",
+          "alt": "Al Bayed — image 4"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "4000 m²",
+      "status": "Under construction",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "sherbiny",
+      "slug": "sherbiny",
+      "categorySlug": "commercial-complexes",
+      "title": "Sherbiny",
+      "description": "Sherbiny is a project located in Saudi Arabia that consists of two buildings. The first building is an office building constructed with concrete and supported by raft foundations, featuring four floors with post-tension slabs. The second building is a factory structure with a steel frame, including a hangar, and utilizes isolated footings.",
+      "coverImage": "/assets/projects/sherbiny/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/sherbiny/gallery-01.webp",
+          "alt": "Sherbiny — image 1"
+        },
+        {
+          "src": "/assets/projects/sherbiny/gallery-02.webp",
+          "alt": "Sherbiny — image 2"
+        },
+        {
+          "src": "/assets/projects/sherbiny/gallery-03.webp",
+          "alt": "Sherbiny — image 3"
+        }
+      ],
+      "location": "KSA",
+      "type": "Commercial",
+      "area": "13000 m²",
+      "status": "Under construction",
+      "services": "Structural Design"
+    },
+    {
+      "id": "wadi-al-heedan-visitor-center",
+      "slug": "wadi-al-heedan-visitor-center",
+      "categorySlug": "institutional-cultural",
+      "title": "Wadi Al-Heedan Visitor Center",
+      "description": "One of the major construction challenges in this project was the cantilever concrete slabs extending over considerable distances, along with the primarily rock-mounted bridges.",
+      "coverImage": "/assets/projects/wadi-al-heedan-visitor-center/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/wadi-al-heedan-visitor-center/gallery-01.webp",
+          "alt": "Wadi Al-Heedan Visitor Center — image 1"
+        },
+        {
+          "src": "/assets/projects/wadi-al-heedan-visitor-center/gallery-02.webp",
+          "alt": "Wadi Al-Heedan Visitor Center — image 2"
+        },
+        {
+          "src": "/assets/projects/wadi-al-heedan-visitor-center/gallery-03.webp",
+          "alt": "Wadi Al-Heedan Visitor Center — image 3"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "0 m²",
+      "status": "Completed, 2018",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "wadi-al-mujib-adventures-visitor-center",
+      "slug": "wadi-al-mujib-adventures-visitor-center",
+      "categorySlug": "institutional-cultural",
+      "title": "Wadi Al-Mujib Adventures Visitor Center",
+      "description": "A notable challenge within this project involved the roof, which was constructed using reinforced steel bars meticulously bent to conform to the roof&#039;s distinctive shape.",
+      "coverImage": "/assets/projects/wadi-al-mujib-adventures-visitor-center/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/wadi-al-mujib-adventures-visitor-center/gallery-01.webp",
+          "alt": "Wadi Al-Mujib Adventures Visitor Center — image 1"
+        },
+        {
+          "src": "/assets/projects/wadi-al-mujib-adventures-visitor-center/gallery-02.webp",
+          "alt": "Wadi Al-Mujib Adventures Visitor Center — image 2"
+        },
+        {
+          "src": "/assets/projects/wadi-al-mujib-adventures-visitor-center/gallery-03.webp",
+          "alt": "Wadi Al-Mujib Adventures Visitor Center — image 3"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "990 m²",
+      "status": "Completed",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "royal-academy-for-nature-conservation",
+      "slug": "royal-academy-for-nature-conservation",
+      "categorySlug": "institutional-cultural",
+      "title": "Royal Academy for Nature Conservation",
+      "description": "The project presented significant challenges, including dealing with a substantial cantilever at the building&#039;s elevation, designing slanted columns to support an irregular roof shape, and constructing long-span bridges directly anchored to the rocky edges.",
+      "coverImage": "/assets/projects/royal-academy-for-nature-conservation/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/royal-academy-for-nature-conservation/gallery-01.webp",
+          "alt": "Royal Academy for Nature Conservation — image 1"
+        },
+        {
+          "src": "/assets/projects/royal-academy-for-nature-conservation/gallery-02.webp",
+          "alt": "Royal Academy for Nature Conservation — image 2"
+        },
+        {
+          "src": "/assets/projects/royal-academy-for-nature-conservation/gallery-03.webp",
+          "alt": "Royal Academy for Nature Conservation — image 3"
+        },
+        {
+          "src": "/assets/projects/royal-academy-for-nature-conservation/gallery-04.webp",
+          "alt": "Royal Academy for Nature Conservation — image 4"
+        },
+        {
+          "src": "/assets/projects/royal-academy-for-nature-conservation/gallery-05.webp",
+          "alt": "Royal Academy for Nature Conservation — image 5"
+        }
+      ],
+      "location": "Jordan",
+      "type": "&Quot;&Quot;",
+      "area": "",
+      "status": "Completed",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "yarmouk-visitor-center",
+      "slug": "yarmouk-visitor-center",
+      "categorySlug": "institutional-cultural",
+      "title": "Yarmouk Visitor Center",
+      "description": "This project is in a scenic reserve in northern Jordan, this project consists of a large visitor center with a curved sloping roof, with small lodges nearby. The structural design is characterized by highly irregular curvature, double-shell slabs and walls, and large cantilevered slabs.",
+      "coverImage": "/assets/projects/yarmouk-visitor-center/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/yarmouk-visitor-center/gallery-01.webp",
+          "alt": "Yarmouk Visitor Center — image 1"
+        },
+        {
+          "src": "/assets/projects/yarmouk-visitor-center/gallery-02.webp",
+          "alt": "Yarmouk Visitor Center — image 2"
+        },
+        {
+          "src": "/assets/projects/yarmouk-visitor-center/gallery-03.webp",
+          "alt": "Yarmouk Visitor Center — image 3"
+        },
+        {
+          "src": "/assets/projects/yarmouk-visitor-center/gallery-04.webp",
+          "alt": "Yarmouk Visitor Center — image 4"
+        },
+        {
+          "src": "/assets/projects/yarmouk-visitor-center/gallery-05.webp",
+          "alt": "Yarmouk Visitor Center — image 5"
+        },
+        {
+          "src": "/assets/projects/yarmouk-visitor-center/gallery-06.webp",
+          "alt": "Yarmouk Visitor Center — image 6"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "2600 m²",
+      "status": "Completed, 2023",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "centennial-park",
+      "slug": "centennial-park",
+      "categorySlug": "govermental",
+      "title": "Centennial Park",
+      "description": "A government-affiliated building, one of the structural challenges faced during its design was the presence of a concrete structure reaching a height of approximately 17 meters. Additionally, there is a cantilever inclined concrete section at a distance of 5 meters.",
+      "coverImage": "/assets/projects/centennial-park/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/centennial-park/gallery-01.webp",
+          "alt": "Centennial Park — image 1"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Governmental",
+      "area": "3000 m²",
+      "status": "Under construction",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "crisis-management-center",
+      "slug": "crisis-management-center",
+      "categorySlug": "govermental",
+      "title": "Crisis Management Center.",
+      "description": "The project consists of two buildings connected by steel bridges. In one of the buildings, the structural system comprises a concrete frame with an 18-meter length, and the footings consist of both raft and isolated foundations.",
+      "coverImage": "/assets/projects/crisis-management-center/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/crisis-management-center/gallery-01.webp",
+          "alt": "Crisis Management Center. — image 1"
+        },
+        {
+          "src": "/assets/projects/crisis-management-center/gallery-02.webp",
+          "alt": "Crisis Management Center. — image 2"
+        },
+        {
+          "src": "/assets/projects/crisis-management-center/gallery-03.webp",
+          "alt": "Crisis Management Center. — image 3"
+        },
+        {
+          "src": "/assets/projects/crisis-management-center/gallery-04.webp",
+          "alt": "Crisis Management Center. — image 4"
+        },
+        {
+          "src": "/assets/projects/crisis-management-center/gallery-05.webp",
+          "alt": "Crisis Management Center. — image 5"
+        },
+        {
+          "src": "/assets/projects/crisis-management-center/gallery-06.webp",
+          "alt": "Crisis Management Center. — image 6"
+        },
+        {
+          "src": "/assets/projects/crisis-management-center/gallery-07.webp",
+          "alt": "Crisis Management Center. — image 7"
+        },
+        {
+          "src": "/assets/projects/crisis-management-center/gallery-08.webp",
+          "alt": "Crisis Management Center. — image 8"
+        }
+      ],
+      "location": "KSA",
+      "type": "Residential",
+      "area": "6000 m²",
+      "status": "Completed, 2021",
+      "services": "Structural Design"
+    },
+    {
+      "id": "",
+      "slug": "",
+      "categorySlug": "hospitals-and-medical-clinics",
+      "title": "885",
+      "description": "This project encompassed the successful construction of a 12-story commercial complex, both during its assembly phase and upon its completion. A remarkable highlight of this endeavor is the 9-meter bridge that seamlessly connects the two sections of the building. Another intricate task encountered in this project involved the design of a 100-meter long structure without the utilization of expansion joints. Simultaneously, meticulous consideration was given to addressing all stresses arising from thermal influences.",
+      "coverImage": "/assets/projects//cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects//gallery-01.webp",
+          "alt": "885 — image 1"
+        },
+        {
+          "src": "/assets/projects//gallery-02.webp",
+          "alt": "885 — image 2"
+        },
+        {
+          "src": "/assets/projects//gallery-03.webp",
+          "alt": "885 — image 3"
+        },
+        {
+          "src": "/assets/projects//gallery-04.webp",
+          "alt": "885 — image 4"
+        },
+        {
+          "src": "/assets/projects//gallery-05.webp",
+          "alt": "885 — image 5"
+        },
+        {
+          "src": "/assets/projects//gallery-06.webp",
+          "alt": "885 — image 6"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "50000 m²",
+      "status": "Completed, 2020",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "maaroof-mosque",
+      "slug": "maaroof-mosque",
+      "categorySlug": "mosques",
+      "title": "Maaroof Mosque",
+      "description": "The challenge in this building was the cantilevered concrete section, which extends to approximately 9 meters, while maintaining the required architectural form.",
+      "coverImage": "/assets/projects/maaroof-mosque/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/maaroof-mosque/gallery-01.webp",
+          "alt": "Maaroof Mosque — image 1"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Mosque",
+      "area": "2000 m²",
+      "status": "Under construction",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "wadi-mousa-mosque",
+      "slug": "wadi-mousa-mosque",
+      "categorySlug": "mosques",
+      "title": "Wadi Mousa Mosque",
+      "description": "This mosque consists of two levels: the basement, which includes ablution areas and the imam&#039;s residence, and the ground floor, which houses the prayer hall.\r\nThe challenge in this project is the presence of a dome spanning 25 meters without any internal columns.",
+      "coverImage": "/assets/projects/wadi-mousa-mosque/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/wadi-mousa-mosque/gallery-01.webp",
+          "alt": "Wadi Mousa Mosque — image 1"
+        },
+        {
+          "src": "/assets/projects/wadi-mousa-mosque/gallery-02.webp",
+          "alt": "Wadi Mousa Mosque — image 2"
+        },
+        {
+          "src": "/assets/projects/wadi-mousa-mosque/gallery-03.webp",
+          "alt": "Wadi Mousa Mosque — image 3"
+        },
+        {
+          "src": "/assets/projects/wadi-mousa-mosque/gallery-04.webp",
+          "alt": "Wadi Mousa Mosque — image 4"
+        }
+      ],
+      "location": "Jordan, Petra",
+      "type": "Mosque",
+      "area": "1000 m²",
+      "status": "Completed, 2023.",
+      "services": "Structural Design"
+    },
+    {
+      "id": "jo-petrol",
+      "slug": "jo-petrol",
+      "categorySlug": "fueling-and-car-charging-stations",
+      "title": "Jo petrol",
+      "description": "This is a car fuel station consisting of steel and concrete, and there is also a supermarket for convenience along with a variety of shops providing car maintenance services.",
+      "coverImage": "/assets/projects/jo-petrol/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/jo-petrol/gallery-01.webp",
+          "alt": "Jo petrol — image 1"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "Commercial",
+      "area": "2000 m²",
+      "status": "Completed",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "ev-charger",
+      "slug": "ev-charger",
+      "categorySlug": "fueling-and-car-charging-stations",
+      "title": "EV-Charger",
+      "description": "This is an electric car charging station made of steel, and there is also a supermarket for convenience.",
+      "coverImage": "/assets/projects/ev-charger/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/ev-charger/gallery-01.webp",
+          "alt": "EV-Charger — image 1"
+        },
+        {
+          "src": "/assets/projects/ev-charger/gallery-02.webp",
+          "alt": "EV-Charger — image 2"
+        },
+        {
+          "src": "/assets/projects/ev-charger/gallery-03.webp",
+          "alt": "EV-Charger — image 3"
+        },
+        {
+          "src": "/assets/projects/ev-charger/gallery-04.webp",
+          "alt": "EV-Charger — image 4"
+        },
+        {
+          "src": "/assets/projects/ev-charger/gallery-05.webp",
+          "alt": "EV-Charger — image 5"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Commercial",
+      "area": "2300 m²",
+      "status": "Completed",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "dana-village",
+      "slug": "dana-village",
+      "categorySlug": "restoration-conservation",
+      "title": "Dana Village",
+      "description": "Dana Guesthouse is perched on a cliff within the Dana Biosphere Reserve. Its unique design incorporates suspended and cantilevered sections to overcome unstable soil. The building&#039;s appearance mirrors a half-eroded pomegranate, blending with its natural surroundings. It currently offers 9 hotel rooms, with plans for a future extension of 16 more rooms along the cliff.",
+      "coverImage": "/assets/projects/dana-village/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/dana-village/gallery-01.webp",
+          "alt": "Dana Village — image 1"
+        }
+      ],
+      "location": "Jordan",
+      "type": "Hospitality",
+      "area": "",
+      "status": "Completed",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "al-quds-college",
+      "slug": "al-quds-college",
+      "categorySlug": "steel-structures",
+      "title": "Al-Quds College",
+      "description": "A steel structure designed to accommodate a solar panel system.",
+      "coverImage": "/assets/projects/al-quds-college/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/al-quds-college/gallery-01.webp",
+          "alt": "Al-Quds College — image 1"
+        }
+      ],
+      "location": "Jordan, Amman",
+      "type": "-",
+      "area": "",
+      "status": "Completed",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "army-steel-hanger",
+      "slug": "army-steel-hanger",
+      "categorySlug": "steel-structures",
+      "title": "Army Steel Hanger",
+      "description": "A steel frame structure with a length extending up to 40 meters.",
+      "coverImage": "/assets/projects/army-steel-hanger/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/army-steel-hanger/gallery-01.webp",
+          "alt": "Army Steel Hanger — image 1"
+        }
+      ],
+      "location": "Jordan",
+      "type": "-",
+      "area": "",
+      "status": "Completed",
+      "services": "Structural Design & Site construction supervision"
+    },
+    {
+      "id": "telecommunication-towers",
+      "slug": "telecommunication-towers",
+      "categorySlug": "steel-structures",
+      "title": "Telecommunication Towers",
+      "description": "We are engaged in designing telecommunication towers of varying heights along with their respective foundations..",
+      "coverImage": "/assets/projects/telecommunication-towers/cover.webp",
+      "gallery": [
+        {
+          "src": "/assets/projects/telecommunication-towers/gallery-01.webp",
+          "alt": "Telecommunication Towers — image 1"
+        }
+      ],
+      "location": "-",
+      "type": "-",
+      "area": "",
+      "status": "-",
+      "services": "-"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: admin-shimmer 1.4s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+.full {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.85rem;
+}
+
+.statCard {
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--admin-surface-base);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.statValue {
+  height: 24px;
+  width: 48px;
+}
+
+.statLabel {
+  height: 14px;
+  width: 80px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.15rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--admin-surface-base);
+  flex-wrap: wrap;
+}
+
+.searchShimmer {
+  flex: 1;
+  min-width: 200px;
+  height: 40px;
+  border-radius: var(--radius-full);
+}
+
+.filterShimmer {
+  width: 140px;
+  height: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.cardSkeleton {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.imageShimmer {
+  aspect-ratio: 16 / 11;
+  border-radius: 0;
+}
+
+.cardBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.titleShimmer {
+  height: 20px;
+  width: 65%;
+}
+
+.descShimmer {
+  height: 14px;
+  width: 100%;
+}
+
+.descShimmerShort {
+  height: 14px;
+  width: 80%;
+}
+
+.badgeRow {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.badgeShimmer {
+  width: 72px;
+  height: 24px;
+  border-radius: var(--radius-full);
+}
+
+.thumbRow {
+  display: flex;
+  gap: 0.35rem;
+  padding-top: 0.5rem;
+}
+
+.thumbShimmer {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+}
+
+.tableWrap {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.tableRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.thumbColShimmer {
+  width: 44px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.cellShimmer {
+  flex: 2;
+  height: 16px;
+}
+
+.cellShimmerShort {
+  flex: 1;
+  height: 16px;
+}
+
+@media (max-width: 1100px) {
+  .statsRow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation: none;
+    background: rgba(255, 255, 255, 0.06);
+  }
+}

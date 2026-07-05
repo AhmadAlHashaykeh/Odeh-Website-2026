@@ -1,0 +1,142 @@
+.wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-glass-light);
+  backdrop-filter: blur(12px);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1100px;
+}
+
+.table th {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.84rem;
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.row {
+  transition: background var(--transition-fast);
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.row.selected {
+  background: rgba(0, 138, 166, 0.06);
+}
+
+.row:last-child td {
+  border-bottom: none;
+}
+
+.checkboxCol {
+  width: 44px;
+  padding-left: 1rem;
+}
+
+.actionsCol {
+  width: 48px;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.nameBtn {
+  text-align: left;
+  transition: color var(--transition-fast);
+}
+
+.nameBtn:hover .name {
+  color: var(--color-accent-light);
+}
+
+.name {
+  display: block;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.experience {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: rgba(168, 168, 168, 0.75);
+}
+
+.muted {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.locationCell {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.applications {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+  color: var(--color-accent-light);
+}
+
+.statusBadge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.statusBadge.open {
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.statusBadge.closed {
+  color: rgba(168, 168, 168, 0.9);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
+}
+
+.statusBadge.draft {
+  color: #fcd34d;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    margin: 0 -0.5rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}

@@ -1,0 +1,147 @@
+/**
+ * Admin Design Tokens
+ * Scoped to admin layout — single source of truth for admin UI values.
+ * Import via admin-ui.css in AdminLayout.
+ */
+
+[data-admin-layout] {
+  /* ── Semantic colors ── */
+  --admin-color-success: #4ade80;
+  --admin-color-success-bg: rgba(74, 222, 128, 0.1);
+  --admin-color-success-border: rgba(74, 222, 128, 0.2);
+
+  --admin-color-warning: #fbbf24;
+  --admin-color-warning-bg: rgba(251, 191, 36, 0.1);
+  --admin-color-warning-border: rgba(251, 191, 36, 0.2);
+
+  --admin-color-error: #fb7185;
+  --admin-color-error-bg: rgba(244, 63, 94, 0.12);
+  --admin-color-error-border: rgba(244, 63, 94, 0.25);
+  --admin-color-error-solid: rgba(244, 63, 94, 0.2);
+  --admin-color-error-solid-hover: rgba(244, 63, 94, 0.3);
+
+  --admin-color-info: var(--color-accent-light);
+  --admin-color-info-bg: rgba(0, 138, 166, 0.1);
+  --admin-color-info-border: rgba(0, 138, 166, 0.2);
+
+  --admin-color-neutral-bg: rgba(255, 255, 255, 0.04);
+  --admin-color-neutral-border: var(--color-border);
+
+  --admin-color-featured: #fbbf24;
+  --admin-color-featured-bg: rgba(251, 191, 36, 0.1);
+  --admin-color-featured-border: rgba(251, 191, 36, 0.2);
+
+  --admin-color-new: #a78bfa;
+  --admin-color-new-bg: rgba(167, 139, 250, 0.1);
+  --admin-color-new-border: rgba(167, 139, 250, 0.2);
+
+  /* ── Surfaces & glass ── */
+  --admin-surface-base: rgba(255, 255, 255, 0.02);
+  --admin-surface-raised: var(--color-glass-light);
+  --admin-surface-overlay: rgba(0, 0, 0, 0.6);
+  --admin-surface-modal: linear-gradient(160deg, rgba(40, 40, 40, 0.98) 0%, rgba(28, 28, 28, 0.99) 100%);
+  --admin-surface-drawer: linear-gradient(180deg, rgba(35, 35, 35, 0.99) 0%, rgba(28, 28, 28, 1) 100%);
+  --admin-glass-opacity: 0.72;
+  --admin-glass-blur: 12px;
+  --admin-glass-blur-heavy: 24px;
+
+  /* ── Spacing scale ── */
+  --admin-space-2xs: 0.25rem;
+  --admin-space-xs: 0.35rem;
+  --admin-space-sm: 0.5rem;
+  --admin-space-md: 0.65rem;
+  --admin-space-lg: 0.85rem;
+  --admin-space-xl: 1rem;
+  --admin-space-2xl: 1.25rem;
+  --admin-space-3xl: 1.5rem;
+  --admin-space-4xl: 1.75rem;
+  --admin-space-5xl: 2rem;
+  --admin-space-6xl: 2.5rem;
+
+  /* ── Contextual spacing ── */
+  --admin-section-gap: var(--admin-space-4xl);
+  --admin-card-padding: var(--admin-space-2xl);
+  --admin-card-gap: var(--admin-space-md);
+  --admin-grid-gap: var(--admin-space-xl);
+  --admin-panel-padding: var(--admin-space-2xl);
+  --admin-form-gap: var(--admin-space-lg);
+  --admin-form-field-gap: var(--admin-space-sm);
+  --admin-toolbar-gap: var(--admin-space-lg);
+  --admin-page-padding: 2rem 1.75rem 2.5rem;
+
+  /* ── Typography ── */
+  --admin-font-page-title: clamp(1.5rem, 2.5vw, 1.85rem);
+  --admin-font-section-title: 1.15rem;
+  --admin-font-card-title: 0.95rem;
+  --admin-font-body: 0.84rem;
+  --admin-font-body-lg: 0.9rem;
+  --admin-font-caption: 0.78rem;
+  --admin-font-metadata: 0.72rem;
+  --admin-font-badge: 0.68rem;
+  --admin-font-label: 0.68rem;
+
+  --admin-weight-normal: 500;
+  --admin-weight-semibold: 600;
+  --admin-weight-bold: 700;
+
+  --admin-tracking-label: 0.06em;
+  --admin-tracking-badge: 0.03em;
+
+  /* ── Shadows & elevation ── */
+  --admin-shadow-sm: 0 4px 16px rgba(0, 138, 166, 0.25);
+  --admin-shadow-md: 0 6px 22px rgba(0, 138, 166, 0.35);
+  --admin-shadow-card: 0 12px 32px rgba(0, 0, 0, 0.22);
+  --admin-shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.45);
+  --admin-shadow-drawer: -12px 0 48px rgba(0, 0, 0, 0.4);
+  --admin-shadow-focus: 0 0 0 3px rgba(0, 138, 166, 0.12);
+
+  /* ── Border radius ── */
+  --admin-radius-sm: 8px;
+  --admin-radius-md: 12px;
+  --admin-radius-lg: 14px;
+  --admin-radius-pill: 999px;
+
+  /* ── Motion ── */
+  --admin-duration-fast: 0.25s;
+  --admin-duration-normal: 0.3s;
+  --admin-duration-slow: 0.4s;
+  --admin-ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --admin-ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  --admin-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --admin-transition-fast: var(--admin-duration-fast) var(--admin-ease-default);
+  --admin-transition-hover: transform var(--admin-duration-fast) var(--admin-ease-default),
+    box-shadow var(--admin-duration-fast) var(--admin-ease-default),
+    background var(--admin-duration-fast) var(--admin-ease-default),
+    border-color var(--admin-duration-fast) var(--admin-ease-default),
+    color var(--admin-duration-fast) var(--admin-ease-default);
+
+  /* ── Z-index scale ── */
+  --admin-z-dropdown: 100;
+  --admin-z-popover: 1100;
+  --admin-z-sticky: 200;
+  --admin-z-drawer-overlay: 500;
+  --admin-z-drawer: 501;
+  --admin-z-modal-overlay: 1000;
+  --admin-z-modal: 1001;
+  --admin-z-toast: 1100;
+
+  /* ── Component sizing ── */
+  --admin-input-height: 40px;
+  --admin-input-height-sm: 34px;
+  --admin-input-height-lg: 46px;
+  --admin-btn-height-sm: 34px;
+  --admin-btn-height-md: 40px;
+  --admin-btn-height-lg: 46px;
+  --admin-drawer-width: 520px;
+  --admin-drawer-width-lg: 680px;
+  --admin-modal-width: 420px;
+  --admin-modal-width-lg: 640px;
+  --admin-modal-width-form: 860px;
+}
+
+@media (max-width: 768px) {
+  [data-admin-layout] {
+    --admin-page-padding: 1.25rem 1rem 2rem;
+  }
+}

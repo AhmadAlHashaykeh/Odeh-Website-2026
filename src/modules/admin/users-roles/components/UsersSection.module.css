@@ -1,0 +1,27 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tableWrap {
+  display: block;
+}
+
+.cardWrap {
+  display: block;
+}
+
+.mobileCards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .tableWrap {
+    display: none;
+  }
+
+  .mobileCards {
+    display: block;
+  }
+}

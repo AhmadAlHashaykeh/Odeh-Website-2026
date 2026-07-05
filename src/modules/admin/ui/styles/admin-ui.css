@@ -1,0 +1,90 @@
+@import '../tokens/admin-tokens.css';
+
+/* ── Typography utilities ── */
+
+[data-admin-layout] .admin-page-title {
+  font-size: var(--admin-font-page-title);
+  font-weight: var(--admin-weight-bold);
+  color: var(--color-white);
+  line-height: 1.2;
+}
+
+[data-admin-layout] .admin-section-title {
+  font-size: var(--admin-font-section-title);
+  font-weight: var(--admin-weight-semibold);
+  color: var(--color-white);
+}
+
+[data-admin-layout] .admin-card-title {
+  font-size: var(--admin-font-card-title);
+  font-weight: var(--admin-weight-semibold);
+  color: var(--color-white);
+  line-height: 1.35;
+}
+
+[data-admin-layout] .admin-body {
+  font-size: var(--admin-font-body);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+[data-admin-layout] .admin-caption {
+  font-size: var(--admin-font-caption);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+[data-admin-layout] .admin-metadata {
+  font-size: var(--admin-font-metadata);
+  color: var(--color-text-muted);
+}
+
+[data-admin-layout] .admin-label {
+  font-size: var(--admin-font-label);
+  font-weight: var(--admin-weight-semibold);
+  letter-spacing: var(--admin-tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ── Motion keyframes (shared) ── */
+
+@keyframes admin-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes admin-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes admin-slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes admin-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes admin-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-admin-layout] *,
+  [data-admin-layout] *::before,
+  [data-admin-layout] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

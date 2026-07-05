@@ -1,0 +1,150 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.loading {
+  margin: 0;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+  font-style: italic;
+}
+
+.scoreBanner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: rgba(0, 138, 166, 0.08);
+  border: 1px solid rgba(0, 138, 166, 0.18);
+}
+
+.scoreItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.scoreLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.scoreValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #5eead4;
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreGain {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #6ee7b7;
+}
+
+.compareGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.95rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.column.current {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.column.optimized {
+  background: rgba(0, 138, 166, 0.06);
+  border-color: rgba(0, 138, 166, 0.2);
+}
+
+.columnTitle {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.fieldLabel {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.fieldValue {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.82);
+  word-break: break-word;
+}
+
+.column.optimized .fieldValue {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.keywordsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.sectionLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.keyword {
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: #5eead4;
+  background: rgba(0, 138, 166, 0.1);
+  border: 1px solid rgba(0, 138, 166, 0.2);
+}
+
+.note {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+@media (max-width: 768px) {
+  .compareGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,121 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  transition: var(--admin-transition-hover);
+}
+
+.standard {
+  padding: var(--admin-card-padding);
+  gap: var(--admin-card-gap);
+  background: var(--admin-surface-raised);
+  backdrop-filter: blur(var(--admin-glass-blur));
+}
+
+.statistic {
+  padding: var(--admin-space-xl);
+  gap: var(--admin-space-xs);
+  background: var(--admin-surface-base);
+  border-color: var(--color-border);
+}
+
+.statValue {
+  font-size: 1.35rem;
+  font-weight: var(--admin-weight-bold);
+  color: var(--color-white);
+  line-height: 1.2;
+}
+
+.statLabel {
+  font-size: var(--admin-font-metadata);
+  font-weight: var(--admin-weight-normal);
+  color: var(--color-text-muted);
+}
+
+.interactive {
+  padding: var(--admin-card-padding);
+  gap: var(--admin-card-gap);
+  background: var(--admin-surface-raised);
+  backdrop-filter: blur(var(--admin-glass-blur));
+  cursor: pointer;
+}
+
+.interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 138, 166, 0.3);
+  box-shadow: var(--admin-shadow-card);
+}
+
+.interactive.selected,
+.selected {
+  border-color: rgba(0, 138, 166, 0.4);
+  background: rgba(0, 138, 166, 0.06);
+}
+
+.glass {
+  padding: var(--admin-card-padding);
+  gap: var(--admin-card-gap);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(var(--admin-glass-blur-heavy));
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.panel {
+  padding: var(--admin-panel-padding);
+  gap: var(--admin-space-lg);
+  background: var(--admin-surface-base);
+  border-radius: var(--radius-lg);
+}
+
+.section {
+  padding: var(--admin-space-3xl);
+  gap: var(--admin-space-lg);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 0;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.title {
+  font-size: var(--admin-font-card-title);
+  font-weight: var(--admin-weight-semibold);
+  color: var(--color-white);
+  line-height: 1.35;
+}
+
+.subtitle {
+  font-size: var(--admin-font-caption);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--admin-space-md);
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-md);
+  margin-top: auto;
+  padding-top: var(--admin-space-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive:hover {
+    transform: none;
+  }
+}

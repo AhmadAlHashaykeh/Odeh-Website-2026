@@ -1,0 +1,120 @@
+.wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--admin-surface-raised);
+  backdrop-filter: blur(var(--admin-glass-blur));
+}
+
+.stickyHeader {
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.th {
+  padding: var(--admin-space-lg) var(--admin-space-xl);
+  text-align: left;
+  font-size: var(--admin-font-metadata);
+  font-weight: var(--admin-weight-semibold);
+  letter-spacing: var(--admin-tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.stickyHeader .th {
+  position: sticky;
+  top: 0;
+  z-index: var(--admin-z-sticky);
+  backdrop-filter: blur(var(--admin-glass-blur));
+}
+
+.td {
+  padding: 0.9rem var(--admin-space-xl);
+  font-size: var(--admin-font-body);
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: middle;
+}
+
+.row {
+  transition: background var(--admin-duration-fast) var(--admin-ease-default);
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.row.selected {
+  background: rgba(0, 138, 166, 0.06);
+}
+
+.row:last-child .td {
+  border-bottom: none;
+}
+
+.checkboxCol {
+  width: 44px;
+  padding-left: var(--admin-space-xl);
+  padding-right: var(--admin-space-sm);
+}
+
+.actionsCol {
+  width: 48px;
+  text-align: center;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.titleCell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.titleText {
+  font-weight: var(--admin-weight-semibold);
+  color: var(--color-white);
+}
+
+.subtitleText {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 280px;
+}
+
+.moreBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  transition:
+    color var(--admin-duration-fast) var(--admin-ease-default),
+    background var(--admin-duration-fast) var(--admin-ease-default);
+}
+
+.moreBtn:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.06);
+}

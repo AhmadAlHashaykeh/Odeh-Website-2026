@@ -1,0 +1,231 @@
+.gallery {
+
+  padding: var(--section-spacing-sm) 0 var(--section-padding);
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+
+
+.collage {
+
+  display: grid;
+
+  grid-template-columns: 1.15fr 0.85fr;
+
+  grid-template-rows: 1fr 1fr;
+
+  gap: clamp(0.75rem, 1.4vw, 1rem);
+
+  min-height: clamp(380px, 48vw, 560px);
+
+}
+
+
+
+.revealItem {
+
+  opacity: 1;
+
+  transform: translateY(18px);
+
+  transition:
+
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+
+
+.collage:global(.visible) .revealItem {
+
+  transform: translateY(0);
+
+}
+
+
+
+.collage:global(.visible) .secondaryTop {
+
+  transform: translateX(-8%);
+
+}
+
+
+
+.collage:global(.visible) .secondaryBottom {
+
+  transform: translateX(-4%) translateY(-12%);
+
+}
+
+
+
+.item {
+
+  margin: 0;
+
+  position: relative;
+
+}
+
+
+
+.imageFrame {
+
+  position: relative;
+
+  height: 100%;
+
+  min-height: inherit;
+
+  border-radius: var(--radius-lg);
+
+  overflow: hidden;
+
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+
+}
+
+
+
+.imageFrame img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+
+
+.item:hover .imageFrame img {
+
+  transform: scale(1.04);
+
+}
+
+
+
+.primary {
+
+  grid-row: 1 / -1;
+
+  min-height: clamp(380px, 48vw, 560px);
+
+}
+
+
+
+.secondaryTop {
+
+  grid-row: 1;
+
+  z-index: 1;
+
+}
+
+
+
+.secondaryBottom {
+
+  grid-row: 2;
+
+  z-index: 2;
+
+}
+
+
+
+.collage:global(.visible) .secondaryTop {
+
+  animation: none;
+
+}
+
+
+
+@media (max-width: 900px) {
+
+  .collage {
+
+    grid-template-columns: 1fr;
+
+    grid-template-rows: auto;
+
+    min-height: auto;
+
+  }
+
+
+
+  .primary {
+
+    grid-row: auto;
+
+    min-height: clamp(260px, 58vw, 380px);
+
+  }
+
+
+
+  .secondaryTop,
+
+  .secondaryBottom {
+
+    min-height: clamp(200px, 45vw, 280px);
+
+  }
+
+
+
+  .collage:global(.visible) .secondaryTop,
+
+  .collage:global(.visible) .secondaryBottom {
+
+    transform: translateY(0);
+
+  }
+
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .imageFrame img {
+
+    transition: none;
+
+  }
+
+
+
+  .item:hover .imageFrame img {
+
+    transform: none;
+
+  }
+
+
+
+  .secondaryTop,
+
+  .secondaryBottom {
+
+    transform: none;
+
+  }
+
+}
+
+

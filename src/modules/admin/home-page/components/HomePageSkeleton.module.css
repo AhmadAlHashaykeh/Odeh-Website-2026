@@ -1,0 +1,107 @@
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: admin-shimmer 1.4s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+.full {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.85rem;
+}
+
+.statCard {
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--admin-surface-base);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.statValue {
+  height: 24px;
+  width: 48px;
+}
+
+.statLabel {
+  height: 14px;
+  width: 80px;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  gap: 1.25rem;
+  padding: 1.35rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-glass-light);
+}
+
+.panelMain {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.titleShimmer {
+  height: 22px;
+  width: 180px;
+}
+
+.descShimmer {
+  height: 14px;
+  width: 85%;
+}
+
+.summaryShimmer {
+  height: 56px;
+  width: 100%;
+}
+
+.actionsShimmer {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.btnShimmer {
+  width: 88px;
+  height: 34px;
+}
+
+.previewShimmer {
+  min-height: 200px;
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 1024px) {
+  .panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .statsRow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .statsRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

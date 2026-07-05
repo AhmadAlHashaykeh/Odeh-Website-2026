@@ -1,0 +1,231 @@
+.section {
+
+  padding: var(--section-padding) 0;
+
+  position: relative;
+
+}
+
+
+
+.section::before {
+
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  right: 0;
+
+  height: 1px;
+
+  background: linear-gradient(90deg, transparent, rgba(0, 138, 166, 0.2), transparent);
+
+}
+
+
+
+.grid {
+
+  display: grid;
+
+  grid-template-columns: 1.05fr 0.95fr;
+
+  gap: var(--section-grid-gap);
+
+  align-items: center;
+
+}
+
+
+
+.imageLeft .grid {
+
+  grid-template-columns: 0.95fr 1.05fr;
+
+}
+
+
+
+.imageLeft .content {
+
+  order: 2;
+
+}
+
+
+
+.imageLeft .imageWrap {
+
+  order: 1;
+
+}
+
+
+
+.content {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: clamp(0.85rem, 1.5vw, 1.1rem);
+
+}
+
+
+
+.paragraph {
+
+  margin: 0;
+
+  font-size: clamp(0.88rem, 1.2vw, 0.96rem);
+
+  color: var(--color-text-muted);
+
+  line-height: 1.72;
+
+}
+
+
+
+.paragraph:first-child {
+
+  font-size: clamp(0.95rem, 1.35vw, 1.05rem);
+
+  color: var(--color-text);
+
+  font-weight: 500;
+
+}
+
+
+
+.imageWrap {
+
+  position: relative;
+
+}
+
+
+
+.imageFrame {
+
+  position: relative;
+
+  border-radius: var(--radius-lg);
+
+  overflow: hidden;
+
+  height: clamp(320px, 42vw, 560px);
+
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.32);
+
+}
+
+
+
+.imageFrame img {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+
+
+.imageWrap:hover .imageFrame img {
+
+  transform: scale(1.03);
+
+}
+
+
+
+.imageAccent {
+
+  position: absolute;
+
+  bottom: -12px;
+
+  right: -12px;
+
+  width: 80px;
+
+  height: 80px;
+
+  border-radius: var(--radius-md);
+
+  border: 1px solid rgba(0, 138, 166, 0.35);
+
+  opacity: 0.45;
+
+  z-index: -1;
+
+}
+
+
+
+@media (max-width: 900px) {
+
+  .grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+
+
+  .imageWrap {
+
+    order: -1;
+
+  }
+
+
+
+  .imageLeft .content {
+
+    order: unset;
+
+  }
+
+
+
+  .imageFrame {
+
+    height: clamp(260px, 55vw, 420px);
+
+  }
+
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .imageFrame img {
+
+    transition: none;
+
+  }
+
+
+
+  .imageWrap:hover .imageFrame img {
+
+    transform: none;
+
+  }
+
+}
+
+

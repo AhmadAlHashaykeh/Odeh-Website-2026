@@ -1,0 +1,37 @@
+.listing {
+  padding-block: var(--section-spacing);
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.35rem);
+}
+
+.title {
+  margin: 0 0 var(--stack-heading-desc);
+  font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+}
+
+.lead {
+  margin: 0;
+  max-width: 72ch;
+  font-size: clamp(0.9rem, 1.3vw, 0.96rem);
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
