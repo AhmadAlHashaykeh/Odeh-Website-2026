@@ -48,6 +48,8 @@ class DashboardStatsTest extends TestCase
                     'applications' => 0,
                     'contactMessages' => 0,
                     'publicPages' => 4,
+                    'seoComplete' => 0,
+                    'seoPending' => 0,
                 ],
             ]);
     }

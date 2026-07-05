@@ -9,6 +9,7 @@ use App\Models\Job;
 use App\Models\LegalPage;
 use App\Models\Project;
 use App\Models\ProjectCategory;
+use App\Models\SeoPage;
 use App\Models\Service;
 use App\Models\TeamMember;
 use Illuminate\Http\JsonResponse;
@@ -17,6 +18,15 @@ class DashboardController extends Controller
 {
     public function stats(): JsonResponse
     {
+        $seoComplete = SeoPage::query()
+            ->whereNotNull('meta_title')
+            ->where('meta_title', '!=', '')
+            ->whereNotNull('meta_description')
+            ->where('meta_description', '!=', '')
+            ->count();
+
+        $seoPending = SeoPage::query()->count() - $seoComplete;
+
         return response()->json([
             'data' => [
                 'projects' => Project::query()->count(),
@@ -30,6 +40,8 @@ class DashboardController extends Controller
                 'publicPages' => 4 + LegalPage::query()
                     ->where('publication_status', LegalPagePublicationStatus::Published)
                     ->count(),
+                'seoComplete' => $seoComplete,
+                'seoPending' => $seoPending,
             ],
         ]);
     }

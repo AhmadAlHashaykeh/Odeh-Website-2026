@@ -297,6 +297,8 @@ class ContentCrudTest extends TestCase
                     'careers' => 1,
                     'applications' => 0,
                     'contactMessages' => 0,
+                    'seoComplete' => 0,
+                    'seoPending' => 4,
                 ],
             ]);
     }

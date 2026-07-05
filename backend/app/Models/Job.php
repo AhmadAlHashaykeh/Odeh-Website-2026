@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use App\Concerns\HasUuid;
+use App\Concerns\SyncsSeoRegistry;
 use App\Enums\JobStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model
 {
-    use HasFactory, HasUuid;
+    use HasFactory, HasUuid, SyncsSeoRegistry;
 
     protected $table = 'job_postings';
 

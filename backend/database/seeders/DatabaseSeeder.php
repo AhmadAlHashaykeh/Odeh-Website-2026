@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             ConnectPageSettingSeeder::class,
             WebsiteSettingSeeder::class,
             LegalPageSeeder::class,
+            SeoPageSeeder::class,
         ]);
     }
 }

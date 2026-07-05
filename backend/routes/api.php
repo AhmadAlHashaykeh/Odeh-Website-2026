@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\Admin\LegalPageController;
 use App\Http\Controllers\Api\Admin\NavigationFooterSettingController;
 use App\Http\Controllers\Api\Admin\ProjectCategoryController;
 use App\Http\Controllers\Api\Admin\ProjectController;
+use App\Http\Controllers\Api\Admin\SeoPageController;
 use App\Http\Controllers\Api\Admin\ServiceController;
 use App\Http\Controllers\Api\Admin\TeamMemberController;
 use App\Http\Controllers\Api\Admin\WebsiteSettingController;
@@ -53,4 +54,8 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('legal-pages', [LegalPageController::class, 'index']);
     Route::get('legal-pages/{legalPage:slug}', [LegalPageController::class, 'show']);
     Route::put('legal-pages/{legalPage:slug}', [LegalPageController::class, 'update']);
+
+    Route::get('seo', [SeoPageController::class, 'index']);
+    Route::get('seo/{seoPage}', [SeoPageController::class, 'show']);
+    Route::patch('seo/{seoPage}', [SeoPageController::class, 'update']);
 });

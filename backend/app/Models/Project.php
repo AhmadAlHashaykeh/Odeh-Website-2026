@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Concerns\HasUuid;
+use App\Concerns\SyncsSeoRegistry;
 use App\Enums\ProjectStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Project extends Model
 {
-    use HasFactory, HasUuid;
+    use HasFactory, HasUuid, SyncsSeoRegistry;
 
     protected $fillable = [
         'project_category_id',
