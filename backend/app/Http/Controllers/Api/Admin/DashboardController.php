@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Http\Controllers\Controller;
 use App\Enums\LegalPagePublicationStatus;
 use App\Models\Activity;
+use App\Models\ContactMessage;
 use App\Models\Job;
+use App\Models\JobApplication;
 use App\Models\LegalPage;
 use App\Models\Project;
 use App\Models\ProjectCategory;
@@ -35,8 +37,8 @@ class DashboardController extends Controller
                 'services' => Service::query()->count(),
                 'activities' => Activity::query()->count(),
                 'careers' => Job::query()->count(),
-                'applications' => 0,
-                'contactMessages' => 0,
+                'applications' => JobApplication::query()->count(),
+                'contactMessages' => ContactMessage::query()->count(),
                 'publicPages' => 4 + LegalPage::query()
                     ->where('publication_status', LegalPagePublicationStatus::Published)
                     ->count(),

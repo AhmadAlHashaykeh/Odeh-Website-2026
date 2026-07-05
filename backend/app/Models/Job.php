@@ -7,6 +7,7 @@ use App\Concerns\SyncsSeoRegistry;
 use App\Enums\JobStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Job extends Model
 {
@@ -42,5 +43,10 @@ class Job extends Model
             'closing_date' => 'date',
             'status' => JobStatus::class,
         ];
+    }
+
+    public function applications(): HasMany
+    {
+        return $this->hasMany(JobApplication::class);
     }
 }

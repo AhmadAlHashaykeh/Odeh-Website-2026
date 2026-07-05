@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\ContactMessageController;
+use App\Http\Controllers\Api\Admin\JobApplicationController;
+use App\Http\Controllers\Api\Public\ContactController as PublicContactController;
+use App\Http\Controllers\Api\Public\JobApplicationController as PublicJobApplicationController;
 use App\Http\Controllers\Api\Admin\AboutPageSettingController;
 use App\Http\Controllers\Api\Admin\ActivityController;
 use App\Http\Controllers\Api\Admin\ConnectPageSettingController;
@@ -18,6 +22,11 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\Auth\UserController;
 use Illuminate\Support\Facades\Route;
+
+Route::prefix('public')->group(function () {
+    Route::post('contact', [PublicContactController::class, 'store']);
+    Route::post('jobs/{slug}/applications', [PublicJobApplicationController::class, 'store']);
+});
 
 Route::prefix('auth')->group(function () {
     Route::post('login', LoginController::class);
@@ -58,4 +67,13 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('seo', [SeoPageController::class, 'index']);
     Route::get('seo/{seoPage}', [SeoPageController::class, 'show']);
     Route::patch('seo/{seoPage}', [SeoPageController::class, 'update']);
+
+    Route::get('contact-messages', [ContactMessageController::class, 'index']);
+    Route::get('contact-messages/{contactMessage}', [ContactMessageController::class, 'show']);
+    Route::patch('contact-messages/{contactMessage}', [ContactMessageController::class, 'update']);
+
+    Route::get('job-applications', [JobApplicationController::class, 'index']);
+    Route::get('job-applications/{jobApplication}', [JobApplicationController::class, 'show']);
+    Route::patch('job-applications/{jobApplication}', [JobApplicationController::class, 'update']);
+    Route::get('job-applications/{jobApplication}/cv', [JobApplicationController::class, 'downloadCv']);
 });

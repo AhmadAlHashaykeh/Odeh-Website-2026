@@ -6,6 +6,7 @@ use App\Concerns\HasUuid;
 use App\Enums\UserStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -43,6 +44,11 @@ class User extends Authenticatable
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function assignedContactMessages(): HasMany
+    {
+        return $this->hasMany(ContactMessage::class, 'assigned_user_id');
     }
 
     public function isSuperAdmin(): bool
