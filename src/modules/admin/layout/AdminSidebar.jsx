@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext';
 import AdminIcon from '../components/AdminIcons';
 import {
   adminDashboardItem,
@@ -12,7 +13,6 @@ import styles from './AdminSidebar.module.css';
 
 const CMS_VERSION = '1.0.0';
 const CMS_ENVIRONMENT = import.meta.env.PROD ? 'Production' : 'Development';
-const CMS_USER_ROLE = 'Administrator';
 
 function NavItem({ item, collapsed, nested = false, onNavigate, tooltip }) {
   const linkClassName = ({ isActive }) =>
@@ -170,7 +170,7 @@ function useGroupedNavigation(collapsed, mobileOpen) {
   return (isTablet && mobileOpen) || (!isTablet && !collapsed);
 }
 
-function SidebarFooter({ compact }) {
+function SidebarFooter({ compact, roleName }) {
   if (compact) {
     return (
       <div className={styles.footerCollapsed} aria-label="System information">
@@ -198,7 +198,7 @@ function SidebarFooter({ compact }) {
         </div>
         <div className={styles.footerRow}>
           <span className={styles.footerKey}>Role</span>
-          <span className={styles.footerValue}>{CMS_USER_ROLE}</span>
+          <span className={styles.footerValue}>{roleName}</span>
         </div>
       </div>
     </div>
@@ -206,7 +206,9 @@ function SidebarFooter({ compact }) {
 }
 
 export default function AdminSidebar({ collapsed, mobileOpen, onClose }) {
+  const { role } = useAuth();
   const { pathname } = useLocation();
+  const roleName = role?.name ?? 'Administrator';
   const showGroupedNav = useGroupedNavigation(collapsed, mobileOpen);
   const [expandedGroups, setExpandedGroups] = useState(() => getInitialExpandedGroups(pathname));
 
@@ -304,7 +306,7 @@ export default function AdminSidebar({ collapsed, mobileOpen, onClose }) {
           </ul>
         </nav>
 
-        <SidebarFooter compact={!showGroupedNav} />
+        <SidebarFooter compact={!showGroupedNav} roleName={roleName} />
       </aside>
     </>
   );

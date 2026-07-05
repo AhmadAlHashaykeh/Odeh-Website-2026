@@ -1,5 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminLayout from '../layout/AdminLayout';
+import LoginPage from '../pages/LoginPage';
+import { GuestRoute, ProtectedRoute } from './ProtectedRoute';
 
 /* Dashboard */
 import DashboardPage from '../dashboard/pages/DashboardPage';
@@ -36,7 +38,12 @@ import ListingPreviewPage from '../cms/pages/ListingPreviewPage';
 export default function AdminRoutes() {
   return (
     <Routes>
-      <Route element={<AdminLayout />}>
+      <Route element={<GuestRoute />}>
+        <Route path="login" element={<LoginPage />} />
+      </Route>
+
+      <Route element={<ProtectedRoute />}>
+        <Route element={<AdminLayout />}>
         <Route index element={<Navigate to="dashboard" replace />} />
 
         {/* Dashboard */}
@@ -70,6 +77,7 @@ export default function AdminRoutes() {
 
         {/* Dev preview — not in sidebar nav */}
         <Route path="cms-preview" element={<ListingPreviewPage />} />
+        </Route>
       </Route>
     </Routes>
   );
