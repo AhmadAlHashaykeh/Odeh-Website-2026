@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\Admin\ContactMessageController;
+use App\Http\Controllers\Api\Admin\RoleController;
+use App\Http\Controllers\Api\Admin\RolePermissionController;
+use App\Http\Controllers\Api\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Api\Admin\JobApplicationController;
 use App\Http\Controllers\Api\Public\ContactController as PublicContactController;
 use App\Http\Controllers\Api\Public\JobApplicationController as PublicJobApplicationController;
@@ -76,4 +79,9 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('job-applications/{jobApplication}', [JobApplicationController::class, 'show']);
     Route::patch('job-applications/{jobApplication}', [JobApplicationController::class, 'update']);
     Route::get('job-applications/{jobApplication}/cv', [JobApplicationController::class, 'downloadCv']);
+
+    Route::apiResource('users', AdminUserController::class);
+    Route::apiResource('roles', RoleController::class);
+    Route::get('roles/{role}/permissions', [RolePermissionController::class, 'index']);
+    Route::put('roles/{role}/permissions', [RolePermissionController::class, 'update']);
 });

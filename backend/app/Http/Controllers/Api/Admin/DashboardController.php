@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Controller;
 use App\Enums\LegalPagePublicationStatus;
 use App\Models\Activity;
@@ -14,12 +15,16 @@ use App\Models\ProjectCategory;
 use App\Models\SeoPage;
 use App\Models\Service;
 use App\Models\TeamMember;
+use App\Support\CmsModules;
 use Illuminate\Http\JsonResponse;
 
 class DashboardController extends Controller
 {
+    use AuthorizesCmsModule;
+
     public function stats(): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::DASHBOARD);
         $seoComplete = SeoPage::query()
             ->whereNotNull('meta_title')
             ->where('meta_title', '!=', '')

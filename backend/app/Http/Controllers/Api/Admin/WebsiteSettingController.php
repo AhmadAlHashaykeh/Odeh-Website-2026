@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesSingletonSetting;
 use App\Http\Controllers\Controller;
@@ -9,12 +10,13 @@ use App\Http\Requests\Admin\UpdateWebsiteSettingRequest;
 use App\Http\Requests\Admin\UpdateWebsiteSettingSectionRequest;
 use App\Http\Resources\WebsiteSettingResource;
 use App\Models\WebsiteSetting;
+use App\Support\CmsModules;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class WebsiteSettingController extends Controller
 {
-    use HandlesAdminListing, HandlesSingletonSetting;
+    use AuthorizesCmsModule, HandlesAdminListing, HandlesSingletonSetting;
 
     /** @var array<int, string> */
     private const ALLOWED_SECTIONS = [
@@ -27,6 +29,8 @@ class WebsiteSettingController extends Controller
 
     public function show(): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::WEBSITE_SETTINGS);
+
         $setting = $this->resolveSingleton(WebsiteSetting::class);
 
         return $this->singleResponse(new WebsiteSettingResource($setting));
@@ -34,6 +38,8 @@ class WebsiteSettingController extends Controller
 
     public function update(UpdateWebsiteSettingRequest $request): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::WEBSITE_SETTINGS);
+
         $setting = $this->resolveSingleton(WebsiteSetting::class);
         $setting->update($request->validated());
 
@@ -42,6 +48,8 @@ class WebsiteSettingController extends Controller
 
     public function updateSection(UpdateWebsiteSettingSectionRequest $request, string $section): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::WEBSITE_SETTINGS);
+
         if (! in_array($section, self::ALLOWED_SECTIONS, true)) {
             throw new NotFoundHttpException;
         }

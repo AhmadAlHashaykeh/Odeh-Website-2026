@@ -22,5 +22,11 @@ class AppServiceProvider extends ServiceProvider
 
             return null;
         });
+
+        foreach (['view', 'create', 'update', 'delete'] as $action) {
+            Gate::define("module.{$action}", function (User $user, string $module) use ($action): bool {
+                return $user->hasModulePermission($module, $action);
+            });
+        }
     }
 }

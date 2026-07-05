@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateSeoPageRequest;
 use App\Http\Resources\SeoPageResource;
 use App\Models\SeoPage;
+use App\Support\CmsModules;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class SeoPageController extends Controller
 {
-    use HandlesAdminListing;
+    use AuthorizesCmsModule, HandlesAdminListing;
 
     public function index(Request $request): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::SEO);
+
         $query = SeoPage::query();
 
         $this->applySearch($query, $request->query('search'), [
@@ -47,11 +51,15 @@ class SeoPageController extends Controller
 
     public function show(SeoPage $seoPage): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::SEO);
+
         return $this->singleResponse(new SeoPageResource($seoPage));
     }
 
     public function update(UpdateSeoPageRequest $request, SeoPage $seoPage): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::SEO);
+
         $seoPage->update($request->validated());
 
         return $this->singleResponse(new SeoPageResource($seoPage->fresh()));

@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateContactMessageRequest;
 use App\Http\Resources\ContactMessageResource;
 use App\Models\ContactMessage;
+use App\Support\CmsModules;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ContactMessageController extends Controller
 {
-    use HandlesAdminListing;
+    use AuthorizesCmsModule, HandlesAdminListing;
 
     public function index(Request $request): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::CONTACT_MESSAGES);
+
         $query = ContactMessage::query()->with('assignedUser');
 
         $this->applySearch($query, $request->query('search'), [
@@ -49,6 +53,8 @@ class ContactMessageController extends Controller
 
     public function show(ContactMessage $contactMessage): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::CONTACT_MESSAGES);
+
         $contactMessage->load('assignedUser');
 
         return $this->singleResponse(new ContactMessageResource($contactMessage));
@@ -56,6 +62,8 @@ class ContactMessageController extends Controller
 
     public function update(UpdateContactMessageRequest $request, ContactMessage $contactMessage): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::CONTACT_MESSAGES);
+
         $contactMessage->update($request->validated());
         $contactMessage->load('assignedUser');
 

@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProjectRequest;
 use App\Http\Requests\Admin\UpdateProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
+use App\Support\CmsModules;
 use App\Support\SlugGenerator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    use HandlesAdminListing;
+    use AuthorizesCmsModule, HandlesAdminListing;
 
     public function index(Request $request): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::PROJECTS);
         $query = Project::query()->with('category');
 
         $this->applySearch($query, $request->query('search'), [
@@ -65,6 +68,7 @@ class ProjectController extends Controller
 
     public function store(StoreProjectRequest $request): JsonResponse
     {
+        $this->authorizeModuleCreate(CmsModules::PROJECTS);
         $data = $request->validated();
         $data['slug'] = $this->resolveSlug($data, new Project);
 
@@ -76,6 +80,7 @@ class ProjectController extends Controller
 
     public function show(Project $project): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::PROJECTS);
         $project->load('category');
 
         return $this->singleResponse(new ProjectResource($project));
@@ -83,6 +88,7 @@ class ProjectController extends Controller
 
     public function update(UpdateProjectRequest $request, Project $project): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::PROJECTS);
         $data = $request->validated();
 
         if (array_key_exists('title', $data) || array_key_exists('slug', $data) || array_key_exists('project_category_id', $data)) {
@@ -106,6 +112,7 @@ class ProjectController extends Controller
 
     public function destroy(Project $project): JsonResponse
     {
+        $this->authorizeModuleDelete(CmsModules::PROJECTS);
         $project->delete();
 
         return response()->json(null, 204);

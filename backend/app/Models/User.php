@@ -60,4 +60,44 @@ class User extends Authenticatable
     {
         return $this->status === UserStatus::Active;
     }
+
+    public function hasModulePermission(string $module, string $action): bool
+    {
+        if ($this->isSuperAdmin()) {
+            return true;
+        }
+
+        if ($this->role_id === null) {
+            return false;
+        }
+
+        $permission = RolePermission::query()
+            ->where('role_id', $this->role_id)
+            ->where('module', $module)
+            ->first();
+
+        if ($permission === null) {
+            return false;
+        }
+
+        return match ($action) {
+            'view' => $permission->can_view,
+            'create' => $permission->can_create,
+            'update' => $permission->can_update,
+            'delete' => $permission->can_delete,
+            default => false,
+        };
+    }
+
+    public static function superAdminCount(): int
+    {
+        return static::query()
+            ->whereHas('role', fn ($query) => $query->where('slug', 'super-admin'))
+            ->count();
+    }
+
+    public function isLastSuperAdmin(): bool
+    {
+        return $this->isSuperAdmin() && static::superAdminCount() <= 1;
+    }
 }

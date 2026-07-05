@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateJobApplicationRequest;
 use App\Http\Resources\JobApplicationResource;
 use App\Models\JobApplication;
+use App\Support\CmsModules;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,10 +16,12 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class JobApplicationController extends Controller
 {
-    use HandlesAdminListing;
+    use AuthorizesCmsModule, HandlesAdminListing;
 
     public function index(Request $request): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::APPLICATIONS);
+
         $query = JobApplication::query()->with('job');
 
         if ($search = $request->query('search')) {
@@ -53,6 +57,8 @@ class JobApplicationController extends Controller
 
     public function show(JobApplication $jobApplication): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::APPLICATIONS);
+
         $jobApplication->load('job');
 
         return $this->singleResponse(new JobApplicationResource($jobApplication));
@@ -60,6 +66,8 @@ class JobApplicationController extends Controller
 
     public function update(UpdateJobApplicationRequest $request, JobApplication $jobApplication): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::APPLICATIONS);
+
         $jobApplication->update($request->validated());
         $jobApplication->load('job');
 
@@ -68,6 +76,8 @@ class JobApplicationController extends Controller
 
     public function downloadCv(JobApplication $jobApplication): StreamedResponse|JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::APPLICATIONS);
+
         if (! Storage::disk('private')->exists($jobApplication->cv_path)) {
             return response()->json(['message' => 'CV file not found.'], 404);
         }

@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreJobRequest;
 use App\Http\Requests\Admin\UpdateJobRequest;
 use App\Http\Resources\JobResource;
 use App\Models\Job;
+use App\Support\CmsModules;
 use App\Support\SlugGenerator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    use HandlesAdminListing;
+    use AuthorizesCmsModule, HandlesAdminListing;
 
     public function index(Request $request): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::JOBS);
+
         $query = Job::query();
 
         $this->applySearch($query, $request->query('search'), [
@@ -58,6 +62,8 @@ class JobController extends Controller
 
     public function store(StoreJobRequest $request): JsonResponse
     {
+        $this->authorizeModuleCreate(CmsModules::JOBS);
+
         $data = $request->validated();
         $data['slug'] = $this->resolveSlug($data, new Job);
 
@@ -68,11 +74,15 @@ class JobController extends Controller
 
     public function show(Job $job): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::JOBS);
+
         return $this->singleResponse(new JobResource($job));
     }
 
     public function update(UpdateJobRequest $request, Job $job): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::JOBS);
+
         $data = $request->validated();
 
         if (array_key_exists('title', $data) || array_key_exists('slug', $data)) {
@@ -91,6 +101,8 @@ class JobController extends Controller
 
     public function destroy(Job $job): JsonResponse
     {
+        $this->authorizeModuleDelete(CmsModules::JOBS);
+
         $job->delete();
 
         return response()->json(null, 204);

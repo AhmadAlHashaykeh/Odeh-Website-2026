@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreServiceRequest;
 use App\Http\Requests\Admin\UpdateServiceRequest;
 use App\Http\Resources\ServiceResource;
 use App\Models\Service;
+use App\Support\CmsModules;
 use App\Support\SlugGenerator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    use HandlesAdminListing;
+    use AuthorizesCmsModule, HandlesAdminListing;
 
     public function index(Request $request): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::SERVICES);
+
         $query = Service::query();
 
         $this->applySearch($query, $request->query('search'), ['title', 'slug', 'description']);
@@ -45,6 +49,8 @@ class ServiceController extends Controller
 
     public function store(StoreServiceRequest $request): JsonResponse
     {
+        $this->authorizeModuleCreate(CmsModules::SERVICES);
+
         $data = $request->validated();
         $data['slug'] = $this->resolveSlug($data, new Service);
 
@@ -55,11 +61,15 @@ class ServiceController extends Controller
 
     public function show(Service $service): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::SERVICES);
+
         return $this->singleResponse(new ServiceResource($service));
     }
 
     public function update(UpdateServiceRequest $request, Service $service): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::SERVICES);
+
         $data = $request->validated();
 
         if (array_key_exists('title', $data) || array_key_exists('slug', $data)) {
@@ -78,6 +88,8 @@ class ServiceController extends Controller
 
     public function destroy(Service $service): JsonResponse
     {
+        $this->authorizeModuleDelete(CmsModules::SERVICES);
+
         $service->delete();
 
         return response()->json(null, 204);

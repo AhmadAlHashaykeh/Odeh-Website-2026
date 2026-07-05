@@ -2,22 +2,25 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProjectCategoryRequest;
 use App\Http\Requests\Admin\UpdateProjectCategoryRequest;
 use App\Http\Resources\ProjectCategoryResource;
 use App\Models\ProjectCategory;
+use App\Support\CmsModules;
 use App\Support\SlugGenerator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ProjectCategoryController extends Controller
 {
-    use HandlesAdminListing;
+    use AuthorizesCmsModule, HandlesAdminListing;
 
     public function index(Request $request): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::PROJECT_CATEGORIES);
         $query = ProjectCategory::query()->withCount('projects');
 
         $this->applySearch($query, $request->query('search'), ['title', 'slug', 'description']);
@@ -41,6 +44,7 @@ class ProjectCategoryController extends Controller
 
     public function store(StoreProjectCategoryRequest $request): JsonResponse
     {
+        $this->authorizeModuleCreate(CmsModules::PROJECT_CATEGORIES);
         $data = $request->validated();
         $data['slug'] = $this->resolveSlug($data, new ProjectCategory);
 
@@ -52,6 +56,7 @@ class ProjectCategoryController extends Controller
 
     public function show(ProjectCategory $projectCategory): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::PROJECT_CATEGORIES);
         $projectCategory->loadCount('projects');
 
         return $this->singleResponse(new ProjectCategoryResource($projectCategory));
@@ -59,6 +64,7 @@ class ProjectCategoryController extends Controller
 
     public function update(UpdateProjectCategoryRequest $request, ProjectCategory $projectCategory): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::PROJECT_CATEGORIES);
         $data = $request->validated();
 
         if (array_key_exists('title', $data) || array_key_exists('slug', $data)) {
@@ -78,6 +84,7 @@ class ProjectCategoryController extends Controller
 
     public function destroy(ProjectCategory $projectCategory): JsonResponse
     {
+        $this->authorizeModuleDelete(CmsModules::PROJECT_CATEGORIES);
         $projectCategory->delete();
 
         return response()->json(null, 204);

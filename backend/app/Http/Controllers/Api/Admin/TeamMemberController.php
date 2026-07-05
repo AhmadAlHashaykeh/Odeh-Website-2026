@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreTeamMemberRequest;
 use App\Http\Requests\Admin\UpdateTeamMemberRequest;
 use App\Http\Resources\TeamMemberResource;
 use App\Models\TeamMember;
+use App\Support\CmsModules;
 use App\Support\SlugGenerator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TeamMemberController extends Controller
 {
-    use HandlesAdminListing;
+    use AuthorizesCmsModule, HandlesAdminListing;
 
     public function index(Request $request): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::TEAM_MEMBERS);
+
         $query = TeamMember::query();
 
         $this->applySearch($query, $request->query('search'), [
@@ -49,6 +53,8 @@ class TeamMemberController extends Controller
 
     public function store(StoreTeamMemberRequest $request): JsonResponse
     {
+        $this->authorizeModuleCreate(CmsModules::TEAM_MEMBERS);
+
         $data = $request->validated();
         $data['slug'] = $this->resolveSlug($data, new TeamMember);
 
@@ -59,11 +65,15 @@ class TeamMemberController extends Controller
 
     public function show(TeamMember $teamMember): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::TEAM_MEMBERS);
+
         return $this->singleResponse(new TeamMemberResource($teamMember));
     }
 
     public function update(UpdateTeamMemberRequest $request, TeamMember $teamMember): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::TEAM_MEMBERS);
+
         $data = $request->validated();
 
         if (array_key_exists('full_name', $data) || array_key_exists('slug', $data)) {
@@ -82,6 +92,8 @@ class TeamMemberController extends Controller
 
     public function destroy(TeamMember $teamMember): JsonResponse
     {
+        $this->authorizeModuleDelete(CmsModules::TEAM_MEMBERS);
+
         $teamMember->delete();
 
         return response()->json(null, 204);

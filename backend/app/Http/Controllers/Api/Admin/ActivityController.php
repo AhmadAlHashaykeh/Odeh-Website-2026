@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers\Api\Admin;
 
+use App\Http\Controllers\Api\Admin\Concerns\AuthorizesCmsModule;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesAdminListing;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreActivityRequest;
 use App\Http\Requests\Admin\UpdateActivityRequest;
 use App\Http\Resources\ActivityResource;
 use App\Models\Activity;
+use App\Support\CmsModules;
 use App\Support\SlugGenerator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
-    use HandlesAdminListing;
+    use AuthorizesCmsModule, HandlesAdminListing;
 
     public function index(Request $request): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::ACTIVITIES);
+
         $query = Activity::query();
 
         $this->applySearch($query, $request->query('search'), [
@@ -48,6 +52,8 @@ class ActivityController extends Controller
 
     public function store(StoreActivityRequest $request): JsonResponse
     {
+        $this->authorizeModuleCreate(CmsModules::ACTIVITIES);
+
         $data = $request->validated();
         $data['slug'] = $this->resolveSlug($data, new Activity);
 
@@ -58,11 +64,15 @@ class ActivityController extends Controller
 
     public function show(Activity $activity): JsonResponse
     {
+        $this->authorizeModuleView(CmsModules::ACTIVITIES);
+
         return $this->singleResponse(new ActivityResource($activity));
     }
 
     public function update(UpdateActivityRequest $request, Activity $activity): JsonResponse
     {
+        $this->authorizeModuleUpdate(CmsModules::ACTIVITIES);
+
         $data = $request->validated();
 
         if (array_key_exists('title', $data) || array_key_exists('slug', $data)) {
@@ -81,6 +91,8 @@ class ActivityController extends Controller
 
     public function destroy(Activity $activity): JsonResponse
     {
+        $this->authorizeModuleDelete(CmsModules::ACTIVITIES);
+
         $activity->delete();
 
         return response()->json(null, 204);
