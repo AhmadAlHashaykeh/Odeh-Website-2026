@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Activity;
+use App\Models\Job;
+use App\Models\Project;
+use App\Models\ProjectCategory;
+use App\Models\Service;
+use App\Models\TeamMember;
 use Illuminate\Http\JsonResponse;
 
 class DashboardController extends Controller
@@ -11,12 +17,12 @@ class DashboardController extends Controller
     {
         return response()->json([
             'data' => [
-                'projects' => 0,
-                'categories' => 0,
-                'teamMembers' => 0,
-                'services' => 0,
-                'activities' => 0,
-                'careers' => 0,
+                'projects' => Project::query()->count(),
+                'categories' => ProjectCategory::query()->count(),
+                'teamMembers' => TeamMember::query()->count(),
+                'services' => Service::query()->count(),
+                'activities' => Activity::query()->count(),
+                'careers' => Job::query()->count(),
                 'applications' => 0,
                 'contactMessages' => 0,
             ],
