@@ -47,6 +47,7 @@ class DashboardStatsTest extends TestCase
                     'careers' => 0,
                     'applications' => 0,
                     'contactMessages' => 0,
+                    'publicPages' => 4,
                 ],
             ]);
     }

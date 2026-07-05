@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             SuperAdminSeeder::class,
+            HomePageSettingSeeder::class,
+            AboutPageSettingSeeder::class,
+            NavigationFooterSettingSeeder::class,
+            ConnectPageSettingSeeder::class,
+            WebsiteSettingSeeder::class,
+            LegalPageSeeder::class,
         ]);
     }
 }
