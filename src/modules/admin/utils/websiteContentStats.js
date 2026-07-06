@@ -1,21 +1,13 @@
-import { projectsContent, getAllCategories } from '../../../data/projectsContent';
-import { jobs } from '../../../data/careers';
-import { services } from '../../../data/services';
-import { teamContent } from '../../../data/teamContent';
-import { activitiesContent } from '../../../data/activitiesContent';
-
-/** Counts derived from the same data sources that power the public website. */
+/** Counts for admin dashboard — populated from API stats when available. */
 export function getWebsiteContentStats() {
-  const openJobs = jobs.filter((job) => job.status === 'open').length;
-
   return {
-    projects: projectsContent.projects.length,
-    categories: getAllCategories().length,
-    teamMembers: teamContent.members.length,
-    services: services.length,
-    activities: activitiesContent.activities.length,
-    careers: jobs.length,
-    openPositions: openJobs,
+    projects: 0,
+    categories: 0,
+    teamMembers: 0,
+    services: 0,
+    activities: 0,
+    careers: 0,
+    openPositions: 0,
     publicPages: 0,
   };
 }

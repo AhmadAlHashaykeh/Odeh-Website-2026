@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { featuredProjects } from '../../data/projects';
 import SafeImage from '../SafeImage/SafeImage';
 import styles from './Projects.module.css';
 
@@ -25,7 +24,7 @@ function FeaturedProjectCard({ project, className = '' }) {
       >
         <div className={styles.imageLayer}>
           <SafeImage
-            src={project.image}
+            src={project.image ?? project.coverImage}
             fallbackSrc={project.fallbackImage}
             alt={project.title}
             className={styles.cardImage}
@@ -57,7 +56,7 @@ function SecondaryProjectCard({ project, className = '' }) {
       >
         <div className={styles.imageLayer}>
           <SafeImage
-            src={project.image}
+            src={project.image ?? project.coverImage}
             fallbackSrc={project.fallbackImage}
             alt={project.title}
             className={styles.cardImage}
@@ -77,9 +76,18 @@ function SecondaryProjectCard({ project, className = '' }) {
   );
 }
 
-export default function Projects() {
+export default function Projects({ content = {} }) {
   const headerRef = useScrollReveal();
   const gridRef = useScrollReveal(0.08);
+
+  const sectionLabel = content.sectionLabel ?? 'Selected Projects';
+  const heading = content.heading ?? 'Engineering Excellence Across the Middle East';
+  const headerDesc =
+    content.description ??
+    'Landmark structures and infrastructure delivered with precision — a curated selection from our portfolio across the region.';
+  const featuredProjects = content.projects ?? [];
+  const viewAllLabel = content.viewAllLabel ?? 'View All Projects';
+  const viewAllPath = content.viewAllPath ?? '/projects';
 
   const showcaseProjects = featuredProjects.slice(0, 3);
   const [featured, ...sideStack] = showcaseProjects;
@@ -88,12 +96,9 @@ export default function Projects() {
     <section className={styles.projects} id="projects">
       <div className="container">
         <div ref={headerRef} className={`${styles.header} reveal`}>
-          <span className="section-label">Selected Projects</span>
-          <h2 className={styles.heading}>Engineering Excellence Across the Middle East</h2>
-          <p className={styles.headerDesc}>
-            Landmark structures and infrastructure delivered with precision — a curated selection
-            from our portfolio across the region.
-          </p>
+          <span className="section-label">{sectionLabel}</span>
+          <h2 className={styles.heading}>{heading}</h2>
+          <p className={styles.headerDesc}>{headerDesc}</p>
         </div>
 
         {featured && (
@@ -106,7 +111,7 @@ export default function Projects() {
               <div className={styles.sideStack}>
                 {sideStack.map((project, index) => (
                   <SecondaryProjectCard
-                    key={project.id}
+                    key={project.id ?? project.slug}
                     project={project}
                     className={`${styles.revealCard} reveal-delay-${index + 2}`}
                   />
@@ -117,8 +122,8 @@ export default function Projects() {
         )}
 
         <div className={styles.viewAllFooter}>
-          <Link to="/projects" className={styles.viewAllLink}>
-            View All Projects
+          <Link to={viewAllPath} className={styles.viewAllLink}>
+            {viewAllLabel}
             <span className={styles.viewAllArrow} aria-hidden="true">
               →
             </span>

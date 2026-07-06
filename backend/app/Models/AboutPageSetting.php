@@ -13,6 +13,8 @@ class AboutPageSetting extends Model
         'overview',
         'approach',
         'history',
+        'team',
+        'activities',
     ];
 
     protected function casts(): array
@@ -21,6 +23,8 @@ class AboutPageSetting extends Model
             'overview' => 'array',
             'approach' => 'array',
             'history' => 'array',
+            'team' => 'array',
+            'activities' => 'array',
         ];
     }
 }

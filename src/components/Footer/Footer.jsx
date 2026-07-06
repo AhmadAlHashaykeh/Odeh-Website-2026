@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { footerQuickLinks, socialLinks, contactInfo } from '../../data/navigation';
+import { usePublicSite } from '../../context/PublicSiteContext';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import styles from './Footer.module.css';
 
@@ -106,8 +106,10 @@ function NavGroup({ title, links }) {
 export default function Footer() {
   const mainRef = useScrollReveal(0.08);
   const bottomRef = useScrollReveal(0.05);
+  const { footerQuickLinks, socialLinks, contactInfo } = usePublicSite();
 
   const navGroups = buildNavGroups(footerQuickLinks);
+  const contacts = contactInfo?.contacts ?? [];
 
   return (
     <footer className={styles.footer}>
@@ -159,7 +161,7 @@ export default function Footer() {
             <div className={styles.contact}>
               <h3 className={styles.columnTitle}>Reach Us</h3>
               <div className={styles.contactList}>
-                {contactInfo.contacts.map((contact) => (
+                {contacts.map((contact) => (
                   <div key={contact.email} className={styles.contactItem}>
                     <div className={styles.contactIcon}>
                       <EmailIcon />
@@ -184,7 +186,7 @@ export default function Footer() {
                   </div>
                   <div className={styles.contactBody}>
                     <span className={styles.contactLabel}>Location</span>
-                    <span className={styles.contactValue}>{contactInfo.location}</span>
+                    <span className={styles.contactValue}>{contactInfo?.location ?? ''}</span>
                   </div>
                 </div>
               </div>

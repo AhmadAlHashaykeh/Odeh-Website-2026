@@ -1,7 +1,11 @@
-import { connectContent } from '../../../../data/connectLinks';
-
 const CONTACT_ICONS = new Set(['phone', 'email', 'whatsapp', 'maps']);
 const SOCIAL_ICONS = new Set(['linkedin', 'instagram', 'facebook']);
+
+export const initialConnectPageData = {
+  meta: {},
+  hero: {},
+  links: [],
+};
 
 export const connectPageMeta = {
   title: 'Connect Page',
@@ -106,7 +110,7 @@ export function getEnabledLinks(links = initialConnectPageData.links) {
   return links.filter((link) => link.enabled).sort((a, b) => a.order - b.order);
 }
 
-export function computeConnectPageStatistics(links = connectContent.links, lastUpdated = '—') {
+export function computeConnectPageStatistics(links = [], lastUpdated = '—') {
   const total = links.length;
   const enabled = links.filter((link) => link.enabled).length;
   const internal = links.filter((link) => getConnectLinkType(link) === 'internal').length;

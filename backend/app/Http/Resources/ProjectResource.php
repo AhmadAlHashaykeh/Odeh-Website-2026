@@ -23,6 +23,8 @@ class ProjectResource extends JsonResource
             'location' => $this->location,
             'projectType' => $this->project_type,
             'area' => $this->area,
+            'services' => $this->services,
+            'completionStatus' => $this->completion_status,
             'year' => $this->year,
             'status' => $this->status->value,
             'published' => $this->status->value === 'published',

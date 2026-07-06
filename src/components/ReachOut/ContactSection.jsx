@@ -1,4 +1,4 @@
-import { contactInfo, socialLinks } from '../../data/navigation';
+import { usePublicSite } from '../../context/PublicSiteContext';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import ContactForm from './ContactForm';
 import styles from './ContactSection.module.css';
@@ -93,6 +93,8 @@ function BlockHeader({ icon, title }) {
 
 function ContactInfo() {
   const panelRef = useScrollReveal(0.08);
+  const { contactInfo, socialLinks } = usePublicSite();
+  const contacts = contactInfo?.contacts ?? [];
 
   return (
     <aside ref={panelRef} className={`${styles.infoPanel} reveal`} aria-label="Contact information">
@@ -108,21 +110,21 @@ function ContactInfo() {
         <div className={styles.metaGrid}>
           <article className={styles.metaCell}>
             <BlockHeader icon={<OfficeIcon />} title="Office" />
-            <p className={styles.primaryText}>{contactInfo.officeName}</p>
-            <p className={styles.secondaryText}>{contactInfo.location}</p>
+            <p className={styles.primaryText}>{contactInfo?.officeName}</p>
+            <p className={styles.secondaryText}>{contactInfo?.location}</p>
           </article>
 
           <article className={styles.metaCell}>
             <BlockHeader icon={<ClockIcon />} title="Working Hours" />
-            <p className={styles.primaryText}>{contactInfo.workingHours.days}</p>
-            <p className={styles.secondaryText}>{contactInfo.workingHours.hours}</p>
+            <p className={styles.primaryText}>{contactInfo?.workingHours?.days}</p>
+            <p className={styles.secondaryText}>{contactInfo?.workingHours?.hours}</p>
           </article>
         </div>
 
         <article className={styles.contactsBlock}>
           <BlockHeader icon={<PhoneIcon />} title="Direct Contacts" />
           <ul className={styles.contactList}>
-            {contactInfo.contacts.map((contact) => (
+            {contacts.map((contact) => (
               <li key={contact.email} className={styles.contactItem}>
                 <span className={styles.contactName}>{contactLabel(contact.email)}</span>
                 <a href={`tel:${contact.phone}`} className={styles.contactChannel}>
@@ -144,7 +146,7 @@ function ContactInfo() {
         <article className={styles.socialBlock}>
           <BlockHeader icon={<ShareIcon />} title="Social Media" />
           <div className={styles.socialRow}>
-            {socialLinks.map((social) => {
+            {(socialLinks ?? []).map((social) => {
               const Icon = socialIconMap[social.icon];
               return (
                 <a

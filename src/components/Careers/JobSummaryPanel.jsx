@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { formatJobDate, getJobApplyPath } from '../../data/careers';
+import { formatJobDate, getJobApplyPath } from '../../utils/contentPaths';
 import styles from './JobSummaryPanel.module.css';
 
 function SummaryRow({ label, value }) {

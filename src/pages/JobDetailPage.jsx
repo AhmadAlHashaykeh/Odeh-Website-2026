@@ -1,11 +1,38 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { AboutPageShell } from '../components/AboutSection';
 import { JobDetailHero, JobDetails } from '../components/Careers';
-import { careersContent, getJobBySlug } from '../data/careers';
+import PageLoader from '../components/Utility/PageLoader';
+import { getCareers, getJob } from '../api/public/content';
+import { usePublicQuery } from '../hooks/usePublicQuery';
+import { mapJob } from '../utils/contentMappers';
 
 export default function JobDetailPage() {
   const { slug } = useParams();
-  const job = getJobBySlug(slug);
+  const { data: jobData, loading: jobLoading, error: jobError } = usePublicQuery(
+    () => getJob(slug),
+    [slug],
+  );
+  const { data: careersData, loading: careersLoading } = usePublicQuery(() => getCareers(), []);
+
+  if (jobLoading || careersLoading) {
+    return (
+      <AboutPageShell meta={{ title: 'Careers | ODEH & PARTNERS DESIGN' }}>
+        <PageLoader />
+      </AboutPageShell>
+    );
+  }
+
+  const careersPage = careersData?.data?.page;
+  let job = jobData?.data ? mapJob(jobData.data) : null;
+
+  if (!job && careersData?.data?.jobs) {
+    const fallback = careersData.data.jobs.find((item) => item.slug === slug);
+    job = fallback ? mapJob(fallback) : null;
+  }
+
+  if (jobError && !job) {
+    return <Navigate to="/careers" replace />;
+  }
 
   if (!job) {
     return <Navigate to="/careers" replace />;
@@ -29,7 +56,7 @@ export default function JobDetailPage() {
         department={job.department}
         location={job.location}
         type={job.type}
-        heroImage={careersContent.hero.backgroundImage}
+        heroImage={careersPage?.hero?.backgroundImage}
         breadcrumbs={breadcrumbs}
         ariaLabel={job.title}
       />

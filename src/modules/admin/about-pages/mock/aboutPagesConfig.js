@@ -1,17 +1,3 @@
-import { teamContent } from '../../../../data/teamContent';
-import { activitiesContent } from '../../../../data/activitiesContent';
-
-const adminTeamMembers = (teamContent.members || []).map((member) => ({
-  ...member,
-  fullName: member.name,
-  status: 'active',
-}));
-
-const adminActivities = (activitiesContent.activities || []).map((activity) => ({
-  ...activity,
-  published: true,
-}));
-
 export const aboutPagesMeta = {
   title: 'About Pages',
   description: 'Manage the structured About content used across the public website.',
@@ -191,31 +177,20 @@ export function getPanelData(pagesData, panel) {
   return pagesData[panel.sectionKey][panel.dataKey];
 }
 
-export function computeAboutPagesStatistics(lastUpdated = '—') {
-  const teamCount = teamContent.members.length;
-  const activitiesCount = activitiesContent.activities.length;
-  const visibleTeam = adminTeamMembers.filter((m) => m.status === 'active').length;
-  const publishedActivities = adminActivities.filter((a) => a.published).length;
-
+export function computeAboutPagesStatistics(lastUpdated = '—', teamCount = 0, activitiesCount = 0) {
   return [
     { id: 'pages', value: '3', label: 'About Sections' },
-    { id: 'team', value: String(teamCount), label: 'Team Members', helper: `${visibleTeam} visible` },
-    { id: 'activities', value: String(activitiesCount), label: 'Activities', helper: `${publishedActivities} published` },
+    { id: 'team', value: String(teamCount), label: 'Team Members' },
+    { id: 'activities', value: String(activitiesCount), label: 'Activities' },
     { id: 'seo', value: 'Complete', label: 'SEO Status', helper: 'All pages have meta' },
     { id: 'updated', value: lastUpdated ? String(lastUpdated).split('T')[0] : '—', label: 'Last Updated' },
   ];
 }
 
 export function getTeamOverviewStats() {
-  const total = teamContent.members.length;
-  const visible = adminTeamMembers.filter((m) => m.status === 'active').length;
-  const preview = adminTeamMembers.filter((m) => m.status === 'active').slice(0, 4);
-  return { total, visible, preview };
+  return { total: 0, visible: 0, preview: [] };
 }
 
 export function getActivitiesOverviewStats() {
-  const total = activitiesContent.activities.length;
-  const published = adminActivities.filter((a) => a.published).length;
-  const preview = adminActivities.slice(0, 3);
-  return { total, published, preview };
+  return { total: 0, published: 0, preview: [] };
 }

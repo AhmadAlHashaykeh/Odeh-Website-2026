@@ -1,5 +1,4 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { services } from '../../data/services';
 import Carousel from '../Carousel/Carousel';
 import styles from './Services.module.css';
 
@@ -19,9 +18,16 @@ function ServiceCard({ service }) {
   );
 }
 
-export default function Services() {
+export default function Services({ content = {} }) {
   const headerRef = useScrollReveal();
   const carouselRef = useScrollReveal(0.08);
+
+  const sectionLabel = content.sectionLabel ?? 'What We Do';
+  const heading = content.heading ?? 'Our Services';
+  const description =
+    content.description ??
+    "A dedicated section showcasing the company's primary engineering and consulting services.";
+  const services = content.services ?? [];
 
   return (
     <section className={styles.services} id="services">
@@ -29,19 +35,16 @@ export default function Services() {
       <div className="container">
         <div ref={headerRef} className={`${styles.header} reveal`}>
           <div className={styles.headerInner}>
-            <span className="section-label">What We Do</span>
-            <h2 className={styles.sectionHeading}>Our Services</h2>
-            <p className={styles.sectionDesc}>
-              A dedicated section showcasing the company&apos;s primary engineering and consulting
-              services.
-            </p>
+            <span className="section-label">{sectionLabel}</span>
+            <h2 className={styles.sectionHeading}>{heading}</h2>
+            <p className={styles.sectionDesc}>{description}</p>
           </div>
         </div>
 
         <div ref={carouselRef} className={`${styles.carouselReveal} reveal reveal-delay-1`}>
           <Carousel className={styles.carousel}>
             {services.map((service) => (
-              <ServiceCard key={service.id} service={service} />
+              <ServiceCard key={service.id ?? service.slug} service={service} />
             ))}
           </Carousel>
         </div>

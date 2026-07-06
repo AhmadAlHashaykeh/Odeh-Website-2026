@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { navLinks } from '../../data/navigation';
+import { usePublicSite } from '../../context/PublicSiteContext';
 import { useSmoothScroll } from '../../context/SmoothScrollContext';
 import SearchOverlay from '../SearchOverlay/SearchOverlay';
 import AboutDropdownIcon from './AboutDropdownIcons';
@@ -51,6 +51,7 @@ function ChevronIcon({ className }) {
 
 export default function Navbar() {
   const location = useLocation();
+  const { navLinks } = usePublicSite();
   const { setScrollLocked, subscribeScroll } = useSmoothScroll();
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);

@@ -21,6 +21,7 @@ class WebsiteSettingResource extends JsonResource
             'branding' => $branding,
             'search' => array_merge($placeholders, $limits),
             'integrations' => $integrations,
+            'publicPages' => $this->public_pages ?? [],
             'lastUpdated' => $this->updated_at?->toIso8601String(),
         ];
     }

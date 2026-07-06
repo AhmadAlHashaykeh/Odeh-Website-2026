@@ -8,8 +8,9 @@ import {
   EmptyState,
   SearchResultCard,
 } from '../components/Utility';
-import { getSearchResults } from '../data/searchIndex';
-import { searchContent } from '../data/searchContent';
+import PageLoader from '../components/Utility/PageLoader';
+import { searchContent } from '../api/public/content';
+import { usePublicSite } from '../context/PublicSiteContext';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import styles from './SearchPage.module.css';
@@ -31,22 +32,62 @@ function ClearIcon() {
   );
 }
 
+const FALLBACK_META = {
+  title: 'Search | ODEH & PARTNERS DESIGN',
+  description: 'Search across projects, activities, careers, and pages on the ODEH & PARTNERS DESIGN website.',
+};
+
 export default function SearchPage() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const queryParam = searchParams.get('q') ?? '';
   const [query, setQuery] = useState(queryParam);
+  const [results, setResults] = useState([]);
+  const [resultsLoading, setResultsLoading] = useState(false);
   const debouncedQuery = useDebouncedValue(query, 200);
   const resultsRef = useScrollReveal(0.08);
+  const { publicPages, searchSettings, loading: siteLoading } = usePublicSite();
+
+  const shell = publicPages.search ?? {};
+  const { meta = FALLBACK_META, hero = {}, empty = {} } = shell;
+  const resultsLimit = searchSettings.resultsLimit ?? 50;
+  const placeholder = searchSettings.pagePlaceholder ?? 'Search projects, activities, careers, pages...';
 
   useEffect(() => {
     setQuery(queryParam);
   }, [queryParam]);
 
-  const results = useMemo(
-    () => getSearchResults(debouncedQuery.trim()),
-    [debouncedQuery],
-  );
+  useEffect(() => {
+    const trimmed = debouncedQuery.trim();
+    if (!trimmed) {
+      setResults([]);
+      return undefined;
+    }
+
+    let cancelled = false;
+    setResultsLoading(true);
+
+    searchContent(trimmed, resultsLimit)
+      .then((response) => {
+        if (!cancelled) {
+          setResults(response.data ?? []);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setResults([]);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setResultsLoading(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [debouncedQuery, resultsLimit]);
 
   const hasQuery = debouncedQuery.trim().length > 0;
   const hasResults = results.length > 0;
@@ -76,10 +117,18 @@ export default function SearchPage() {
     setSearchParams({}, { replace: true });
   };
 
-  const { meta, hero, empty } = searchContent;
+  const pageMeta = useMemo(() => meta, [meta]);
+
+  if (siteLoading) {
+    return (
+      <AboutPageShell meta={FALLBACK_META}>
+        <PageLoader />
+      </AboutPageShell>
+    );
+  }
 
   return (
-    <AboutPageShell meta={meta}>
+    <AboutPageShell meta={pageMeta}>
       <InternalPageHero {...hero} />
 
       <PageContainer ariaLabel="Search">
@@ -95,7 +144,7 @@ export default function SearchPage() {
               id="search-query"
               type="search"
               className={styles.searchInput}
-              placeholder="Search projects, activities, careers, pages..."
+              placeholder={placeholder}
               value={query}
               onChange={(event) => updateQuery(event.target.value)}
               autoComplete="off"
@@ -110,7 +159,9 @@ export default function SearchPage() {
 
         {hasQuery && (
           <div ref={resultsRef} className={`${styles.results} reveal`}>
-            {hasResults ? (
+            {resultsLoading ? (
+              <PageLoader />
+            ) : hasResults ? (
               <>
                 <SectionHeading
                   title={`${results.length} result${results.length === 1 ? '' : 's'} for "${debouncedQuery.trim()}"`}
@@ -129,9 +180,9 @@ export default function SearchPage() {
               </>
             ) : (
               <EmptyState
-                heading={empty.heading}
-                primaryLabel={empty.primaryLabel}
-                primaryTo={empty.primaryTo}
+                heading={empty.heading ?? 'No results found.'}
+                primaryLabel={empty.primaryLabel ?? 'Return Home'}
+                primaryTo={empty.primaryTo ?? '/'}
               />
             )}
           </div>

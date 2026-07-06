@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getJobPath } from '../../data/careers';
+import { getJobPath } from '../../utils/contentPaths';
 import styles from './JobCard.module.css';
 
 export default function JobCard({ job }) {

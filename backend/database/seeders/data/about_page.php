@@ -121,4 +121,41 @@ return [
             ],
         ],
     ],
+    'team' => [
+        'meta' => [
+            'title' => 'Team Members | ODEH & PARTNERS DESIGN',
+            'description' => 'Meet the engineers, designers, and professionals at ODEH & PARTNERS DESIGN — the team behind every structure.',
+        ],
+        'hero' => [
+            'label' => 'About Us',
+            'title' => 'Team Members',
+            'subtitle' => 'The Experts Behind Every Structure',
+            'description' => 'Meet the engineers, designers, and professionals whose expertise transforms ambitious ideas into remarkable structural achievements.',
+            'backgroundImage' => '/assets/about/team/hero.webp',
+            'ariaLabel' => 'About Us Team Members',
+            'breadcrumbs' => [
+                ['label' => 'Home', 'path' => '/'],
+                ['label' => 'About Us', 'path' => '/about/overview'],
+                ['label' => 'Team Members'],
+            ],
+        ],
+    ],
+    'activities' => [
+        'meta' => [
+            'title' => 'Activities | ODEH & PARTNERS DESIGN',
+            'description' => 'Explore the moments, milestones, and events that define ODEH & PARTNERS DESIGN — iftar gatherings, site visits, celebrations, and team trips.',
+        ],
+        'hero' => [
+            'label' => 'About Us',
+            'title' => 'Activities',
+            'description' => 'Explore the moments, milestones, and events that define ODEH & PARTNERS DESIGN.',
+            'backgroundImage' => '/assets/about/activities/hero.jpg',
+            'ariaLabel' => 'About Us Activities',
+            'breadcrumbs' => [
+                ['label' => 'Home', 'path' => '/'],
+                ['label' => 'About Us', 'path' => '/about/overview'],
+                ['label' => 'Activities'],
+            ],
+        ],
+    ],
 ];

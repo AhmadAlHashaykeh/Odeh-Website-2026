@@ -46,6 +46,8 @@ class StoreProjectRequest extends FormRequest
             'location' => ['nullable', 'string', 'max:255'],
             'project_type' => ['nullable', 'string', 'max:255'],
             'area' => ['nullable', 'string', 'max:255'],
+            'services' => ['nullable', 'string', 'max:255'],
+            'completion_status' => ['nullable', 'string', 'max:255'],
             'year' => ['nullable', 'integer', 'min:1900', 'max:2100'],
             'status' => ['nullable', Rule::enum(ProjectStatus::class)],
             'is_featured' => ['nullable', 'boolean'],

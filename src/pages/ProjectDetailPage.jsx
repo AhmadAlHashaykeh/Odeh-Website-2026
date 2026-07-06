@@ -6,25 +6,40 @@ import {
   ProjectInfo,
   RelatedProjects,
 } from '../components/SelectedProjects';
-import {
-  getCategoryBySlug,
-  getCategoryTitle,
-  getProjectBySlug,
-  getRelatedProjects,
-} from '../data/projectsContent';
+import PageLoader from '../components/Utility/PageLoader';
+import { getProject, getProjects } from '../api/public/content';
+import { usePublicQuery } from '../hooks/usePublicQuery';
 
 export default function ProjectDetailPage() {
   const { category, project: projectSlug } = useParams();
-  const project = getProjectBySlug(category, projectSlug);
-  const categoryData = getCategoryBySlug(category);
+  const { data: projectData, loading: projectLoading, error: projectError } = usePublicQuery(
+    () => getProject(category, projectSlug),
+    [category, projectSlug],
+  );
+  const { data: projectsData, loading: projectsLoading } = usePublicQuery(() => getProjects(), []);
 
-  if (!project || !categoryData) {
+  if (projectLoading || projectsLoading) {
+    return (
+      <AboutPageShell meta={{ title: 'Project | ODEH & PARTNERS DESIGN' }}>
+        <PageLoader />
+      </AboutPageShell>
+    );
+  }
+
+  const project = projectData?.data;
+  const categories = projectsData?.data?.categories ?? [];
+  const allProjects = projectsData?.data?.projects ?? [];
+  const categoryData = categories.find((item) => item.slug === category);
+
+  if (projectError || !project || !categoryData) {
     return <Navigate to="/projects" replace />;
   }
 
-  const heroImage = project.gallery[0]?.src ?? project.coverImage;
-  const related = getRelatedProjects(category, projectSlug, 3);
-  const categoryTitle = getCategoryTitle(category);
+  const heroImage = project.gallery?.[0]?.src ?? project.coverImage;
+  const related = allProjects
+    .filter((item) => item.categorySlug === category && item.slug !== projectSlug)
+    .slice(0, 3);
+  const categoryTitle = categoryData.title;
 
   const meta = {
     title: `${project.title} | ${categoryTitle} | ODEH & PARTNERS DESIGN`,

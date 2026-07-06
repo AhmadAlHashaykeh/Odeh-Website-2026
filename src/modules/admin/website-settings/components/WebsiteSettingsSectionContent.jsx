@@ -1,6 +1,4 @@
 import { Link } from 'react-router-dom';
-import { buildSearchIndex } from '../../../../data/searchIndex';
-import { socialLinks } from '../../../../data/navigation';
 import AdminIcon from '../../components/AdminIcons';
 import WebsiteSettingCard from './WebsiteSettingCard';
 import WebsiteShortcutCard from './WebsiteShortcutCard';
@@ -193,8 +191,6 @@ function LocalizationSection({ settings, onEdit }) {
 }
 
 function SearchSection({ settings, onEdit }) {
-  const indexedCount = buildSearchIndex().length;
-
   return (
     <SectionGroup title="Search Configuration">
       <WebsiteSettingCard
@@ -212,10 +208,10 @@ function SearchSection({ settings, onEdit }) {
       />
       <WebsiteSettingCard
         title="Indexed Content"
-        description="Search index is built dynamically from projects, services, careers, and pages."
+        description="Search index is built dynamically on the server from projects, services, careers, and pages."
         fields={[
-          { label: 'Indexed Items', value: String(indexedCount) },
-          { label: 'Index Source', value: 'searchIndex.js (content modules)' },
+          { label: 'Index Source', value: 'Public search API' },
+          { label: 'Results Limit', value: String(settings.search.resultsLimit ?? 50) },
         ]}
       />
       <WebsiteSettingCard
@@ -270,11 +266,7 @@ function IntegrationsSection({ settings, onEdit }) {
       <WebsiteSettingCard
         title="Social Links"
         description="Facebook, Instagram, and LinkedIn URLs used in footer and Connect page."
-        fields={socialLinks.map((link) => ({
-          label: link.label,
-          value: link.href,
-          mono: true,
-        }))}
+        fields={[]}
         managedNote="Managed in Navigation & Footer and Connect Page."
       />
       <WebsiteSettingCard

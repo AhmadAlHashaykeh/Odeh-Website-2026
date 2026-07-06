@@ -46,6 +46,8 @@ class UpdateProjectRequest extends FormRequest
             'location' => ['sometimes', 'nullable', 'string', 'max:255'],
             'project_type' => ['sometimes', 'nullable', 'string', 'max:255'],
             'area' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'services' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'completion_status' => ['sometimes', 'nullable', 'string', 'max:255'],
             'year' => ['sometimes', 'nullable', 'integer', 'min:1900', 'max:2100'],
             'status' => ['sometimes', Rule::enum(ProjectStatus::class)],
             'is_featured' => ['sometimes', 'boolean'],

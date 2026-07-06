@@ -14,6 +14,8 @@ class AboutPageSettingResource extends JsonResource
             'overview' => $this->overview,
             'approach' => $this->approach,
             'history' => $this->history,
+            'team' => $this->team,
+            'activities' => $this->activities,
             'lastUpdated' => $this->updated_at?->toIso8601String(),
         ];
     }

@@ -23,6 +23,8 @@ class Project extends Model
         'location',
         'project_type',
         'area',
+        'services',
+        'completion_status',
         'year',
         'status',
         'is_featured',

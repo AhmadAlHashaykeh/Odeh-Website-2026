@@ -2,23 +2,39 @@ import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { AboutPageShell } from '../components/AboutSection';
 import { PageContainer, SuccessState } from '../components/Utility';
-import { thankYouContent } from '../data/thankYouContent';
+import PageLoader from '../components/Utility/PageLoader';
+import { usePublicSite } from '../context/PublicSiteContext';
 import styles from './ThankYouPage.module.css';
+
+const FALLBACK_META = {
+  title: 'Thank You | ODEH & PARTNERS DESIGN',
+  description: 'Thank you for contacting ODEH & PARTNERS DESIGN.',
+};
 
 export default function ThankYouPage() {
   const [searchParams] = useSearchParams();
   const source = searchParams.get('from') ?? 'default';
+  const { publicPages, loading } = usePublicSite();
+  const thankYouContent = publicPages.thankYou ?? {};
 
   const content = useMemo(() => {
-    const base = thankYouContent.default;
+    const base = thankYouContent.default ?? {};
     const variant = thankYouContent[source] ?? {};
 
     return {
       ...base,
       ...variant,
-      meta: thankYouContent.meta,
+      meta: thankYouContent.meta ?? FALLBACK_META,
     };
-  }, [source]);
+  }, [thankYouContent, source]);
+
+  if (loading) {
+    return (
+      <AboutPageShell meta={FALLBACK_META}>
+        <PageLoader />
+      </AboutPageShell>
+    );
+  }
 
   return (
     <AboutPageShell meta={content.meta}>

@@ -19,6 +19,11 @@ class DatabaseSeeder extends Seeder
             WebsiteSettingSeeder::class,
             LegalPageSeeder::class,
             SeoPageSeeder::class,
+            ServiceSeeder::class,
+            ProjectContentSeeder::class,
+            ActivitySeeder::class,
+            TeamMemberSeeder::class,
+            JobPostingSeeder::class,
         ]);
     }
 }

@@ -1,5 +1,3 @@
-import { buildSearchIndex } from '../../../../data/searchIndex';
-
 export const websiteSettingsMeta = {
   title: 'Website Settings',
   description: 'Manage global website configuration shared across the public website.',
@@ -77,7 +75,6 @@ export function computeWebsiteSettingsStatistics(settings, publicPageCount = 0) 
     return [];
   }
 
-  const indexedPages = buildSearchIndex().length;
   const configuredIntegrations = [
     settings.integrations?.googleMapsEmbedUrl,
     settings.integrations?.googleMapsExternalUrl,
@@ -89,7 +86,7 @@ export function computeWebsiteSettingsStatistics(settings, publicPageCount = 0) 
       value: (settings.general?.defaultLanguage ?? 'en').toUpperCase(),
       label: 'Default Language',
     },
-    { id: 'search-index', value: String(indexedPages), label: 'Indexed Search Items' },
+    { id: 'search-index', value: 'API', label: 'Indexed Search Items' },
     {
       id: 'integrations',
       value: configuredIntegrations > 0 ? `${configuredIntegrations} Active` : 'None',

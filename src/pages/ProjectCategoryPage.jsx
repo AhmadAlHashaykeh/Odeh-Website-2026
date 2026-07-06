@@ -1,20 +1,31 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { AboutPageShell } from '../components/AboutSection';
 import { ProjectsHero, ProjectGrid } from '../components/SelectedProjects';
-import {
-  getCategoryBySlug,
-  getProjectsByCategory,
-} from '../data/projectsContent';
+import PageLoader from '../components/Utility/PageLoader';
+import { getProjects } from '../api/public/content';
+import { usePublicQuery } from '../hooks/usePublicQuery';
 
 export default function ProjectCategoryPage() {
   const { category } = useParams();
-  const categoryData = getCategoryBySlug(category);
+  const { data, loading, error } = usePublicQuery(() => getProjects(), []);
 
-  if (!categoryData) {
+  if (loading) {
+    return (
+      <AboutPageShell meta={{ title: 'Projects | ODEH & PARTNERS DESIGN' }}>
+        <PageLoader />
+      </AboutPageShell>
+    );
+  }
+
+  const categories = data?.data?.categories ?? [];
+  const projects = data?.data?.projects ?? [];
+  const categoryData = categories.find((item) => item.slug === category);
+
+  if (error || !categoryData) {
     return <Navigate to="/projects" replace />;
   }
 
-  const projects = getProjectsByCategory(category);
+  const categoryProjects = projects.filter((project) => project.categorySlug === category);
 
   const meta = {
     title: `${categoryData.title} | Selected Projects | ODEH & PARTNERS DESIGN`,
@@ -38,7 +49,7 @@ export default function ProjectCategoryPage() {
         ariaLabel={categoryData.title}
         variant="category"
       />
-      <ProjectGrid projects={projects} />
+      <ProjectGrid projects={categoryProjects} />
     </AboutPageShell>
   );
 }

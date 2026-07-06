@@ -15,6 +15,7 @@ class WebsiteSetting extends Model
         'search_placeholders',
         'search_limits',
         'integrations_maps',
+        'public_pages',
     ];
 
     protected function casts(): array
@@ -25,6 +26,7 @@ class WebsiteSetting extends Model
             'search_placeholders' => 'array',
             'search_limits' => 'array',
             'integrations_maps' => 'array',
+            'public_pages' => 'array',
         ];
     }
 }

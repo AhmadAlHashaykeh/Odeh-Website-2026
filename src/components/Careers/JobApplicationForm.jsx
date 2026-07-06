@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ApiError } from '../../api/client';
 import { submitJobApplication } from '../../api/public/jobApplications';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { getJobApplyThankYouPath, getJobPath } from '../../data/careers';
+import { getJobApplyThankYouPath, getJobPath } from '../../utils/contentPaths';
 import styles from './JobApplicationForm.module.css';
 
 const ACCEPTED_CV_TYPES = [
