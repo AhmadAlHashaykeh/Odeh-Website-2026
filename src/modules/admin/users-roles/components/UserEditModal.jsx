@@ -33,7 +33,7 @@ export default function UserEditModal({ open, user, onClose, onSave, roleOptions
         <h2 id="edit-user-title" className={drawerStyles.title}>
           Edit User
         </h2>
-        <p className={drawerStyles.subtitle}>Update account details for {user.fullName} (preview mode).</p>
+        <p className={drawerStyles.subtitle}>Update account details for {user.fullName}.</p>
       </div>
       <button type="button" className={drawerStyles.closeBtn} onClick={onClose} aria-label="Close">
         <AdminIcon name="close" size={18} />

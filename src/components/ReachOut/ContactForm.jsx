@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { submitContactForm } from '../../api/contact';
+import { submitContactForm, ApiError } from '../../api/contact';
 import styles from './ContactForm.module.css';
 
 const INITIAL_FORM = {
@@ -74,6 +74,7 @@ export default function ContactForm({ label, heading, description, submitLabel }
   const [form, setForm] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (field) => (event) => {
     setForm((current) => ({ ...current, [field]: event.target.value }));
@@ -94,6 +95,7 @@ export default function ContactForm({ label, heading, description, submitLabel }
     if (Object.keys(nextErrors).length > 0) return;
 
     setIsSubmitting(true);
+    setSubmitError('');
 
     try {
       await submitContactForm({
@@ -105,6 +107,19 @@ export default function ContactForm({ label, heading, description, submitLabel }
         message: form.message.trim(),
       });
       navigate('/thank-you?from=contact');
+    } catch (error) {
+      if (error instanceof ApiError && error.errors) {
+        const apiErrors = {};
+        for (const [field, messages] of Object.entries(error.errors)) {
+          const key = field === 'full_name' ? 'fullName' : field;
+          apiErrors[key] = messages[0];
+        }
+        setErrors(apiErrors);
+      } else {
+        setSubmitError(
+          error instanceof ApiError ? error.message : 'Unable to send your message. Please try again.',
+        );
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -208,6 +223,12 @@ export default function ContactForm({ label, heading, description, submitLabel }
               )}
             </FormField>
           </div>
+
+          {submitError && (
+            <p className={styles.error} role="alert">
+              {submitError}
+            </p>
+          )}
 
           <div className={styles.actions}>
             <button type="submit" className="btn btn-primary" disabled={isSubmitting}>

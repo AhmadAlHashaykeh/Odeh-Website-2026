@@ -1,4 +1,21 @@
+import { useCallback } from 'react';
+import { ApiError } from '../../../api/client';
 import { useAdminActionFlows } from '../cms/action-flows/useAdminActionFlows';
+import { useModulePermissions } from './useModulePermissions';
+
+const EDIT_ACTIONS = new Set([
+  'edit',
+  'duplicate',
+  'gallery',
+  'manage',
+  'publish',
+  'hide',
+  'toggle-visibility',
+  'toggle-homepage',
+  'feature',
+  'toggle-status',
+  'copy-email',
+]);
 
 function buildStatusPayload(moduleKey, item, action) {
   switch (action) {
@@ -121,7 +138,9 @@ export function useModuleApiActions({
   apiContext = {},
   enableGallery = false,
 }) {
-  return useAdminActionFlows({
+  const { canCreate, canEdit, canDelete } = useModulePermissions(moduleKey);
+
+  const flows = useAdminActionFlows({
     moduleKey,
     apiContext,
     onDeleteItem: listing.openDeleteForItem,
@@ -149,9 +168,73 @@ export function useModuleApiActions({
       await listing.refresh();
     },
   });
+
+  const openAddForm = useCallback(() => {
+    if (!canCreate) {
+      flows.showFeedback('You do not have permission to create items.', 'error');
+      return;
+    }
+    flows.openAddForm();
+  }, [canCreate, flows]);
+
+  const handleQuickAction = useCallback(
+    (actionId, item) => {
+      if (actionId === 'delete' && !canDelete) {
+        flows.showFeedback('You do not have permission to delete items.', 'error');
+        return;
+      }
+
+      if (EDIT_ACTIONS.has(actionId) && !canEdit) {
+        flows.showFeedback('You do not have permission to edit items.', 'error');
+        return;
+      }
+
+      flows.handleQuickAction(actionId, item);
+    },
+    [canDelete, canEdit, flows],
+  );
+
+  return {
+    ...flows,
+    openAddForm,
+    handleQuickAction,
+    permissions: { canCreate, canEdit, canDelete },
+  };
 }
 
-export async function handleListingDelete(listing, flows) {
+export async function applyBulkUpdates({
+  api,
+  listing,
+  flows,
+  payloadMap,
+  bulkAction,
+}) {
+  const payload = payloadMap[bulkAction];
+  if (!payload) return false;
+
+  const selectedItems = listing.items.filter((item) => listing.selectedIds.has(item.id));
+  if (selectedItems.length === 0) return false;
+
+  try {
+    await Promise.all(selectedItems.map((item) => api.update(item.id, payload)));
+    await listing.refresh();
+    flows.showFeedback(`${selectedItems.length} item(s) updated successfully`);
+    listing.clearSelection();
+    return true;
+  } catch (error) {
+    flows.showFeedback(
+      error instanceof ApiError ? error.message : 'Bulk update failed. Please try again.',
+      'error',
+    );
+    return false;
+  }
+}
+
+export async function handleListingDelete(listing, flows, canDelete = true) {
+  if (!canDelete) {
+    flows.showFeedback('You do not have permission to delete items.', 'error');
+    return;
+  }
   const result = await listing.confirmDelete();
 
   if (result.success) {

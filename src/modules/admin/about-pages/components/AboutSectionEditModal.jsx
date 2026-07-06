@@ -429,7 +429,7 @@ export default function AboutSectionEditModal({
           {title}
         </h2>
         <p className={drawerStyles.modalSubtitle}>
-          Fields match the current public About page component. Changes are preview-only.
+          Update About page content. Changes are saved to the CMS.
         </p>
       </div>
       <button

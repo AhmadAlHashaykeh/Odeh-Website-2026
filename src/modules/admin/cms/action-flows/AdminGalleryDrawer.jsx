@@ -105,14 +105,14 @@ export default function AdminGalleryDrawer({
           <div className={styles.addPlaceholder}>
             <AdminIcon name="add" size={24} />
             <span>Add Image</span>
-            <span className={styles.addHint}>Upload not available in preview</span>
+            <span className={styles.addHint}>File upload coming in a future release</span>
           </div>
         </div>
       </section>
 
       <p className={styles.notice}>
         <AdminIcon name="external" size={14} />
-        Gallery management is visual only. No uploads or reordering in preview mode.
+        Gallery images are displayed from stored URLs. Upload and reorder will be available in a future release.
       </p>
     </Drawer>
   );

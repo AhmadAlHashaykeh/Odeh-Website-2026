@@ -20,7 +20,7 @@ export default function UserInviteModal({ open, onClose, onSave, roleOptions = [
         <h2 id="invite-user-title" className={drawerStyles.title}>
           Invite User
         </h2>
-        <p className={drawerStyles.subtitle}>Send an invitation to a new admin user (preview mode).</p>
+        <p className={drawerStyles.subtitle}>Send an invitation to a new admin user.</p>
       </div>
       <button type="button" className={drawerStyles.closeBtn} onClick={onClose} aria-label="Close">
         <AdminIcon name="close" size={18} />

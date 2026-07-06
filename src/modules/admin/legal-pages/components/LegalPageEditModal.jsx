@@ -1,5 +1,5 @@
 import AdminIcon from '../../components/AdminIcons';
-import { Modal, Button, Form, Input, Badge, Select } from '../../ui';
+import { Modal, Button, Form, Input, Select } from '../../ui';
 import { SeoDelegationNotice } from '../../cms/components';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
@@ -68,13 +68,12 @@ export default function LegalPageEditModal({ open, page, onClose, onSave }) {
           <span className={drawerStyles.headerIcon} aria-hidden="true">
             <AdminIcon name="legal" size={18} />
           </span>
-          <Badge status="info">Preview mode</Badge>
         </div>
         <h2 id="legal-page-modal-title" className={drawerStyles.modalTitle}>
           Edit {page.title}
         </h2>
         <p className={drawerStyles.modalSubtitle}>
-          Fields match the current legal page data model. Changes are preview-only.
+          Update legal page content. Changes are saved to the CMS.
         </p>
       </div>
       <button

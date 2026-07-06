@@ -10,7 +10,7 @@ import {
   AdminActionFlowsHost,
 } from '../../cms/components';
 import * as servicesApi from '../../../../api/services';
-import { useModuleApiActions, handleListingDelete } from '../../hooks/useModuleApiActions';
+import { useModuleApiActions, handleListingDelete, applyBulkUpdates } from '../../hooks/useModuleApiActions';
 import { useServicesListing } from '../hooks/useServicesListing';
 import {
   servicesPageMeta,
@@ -28,12 +28,11 @@ import ServicesEmptyState from '../components/ServicesEmptyState';
 import ServicesSkeleton from '../components/ServicesSkeleton';
 import styles from './ServicesPage.module.css';
 
-const BULK_FEEDBACK = {
-  publish: (count) => `${count} service(s) published (preview mode)`,
-  hide: (count) => `${count} service(s) hidden (preview mode)`,
-  'add-homepage': (count) => `${count} service(s) added to homepage (preview mode)`,
-  'remove-homepage': (count) => `${count} service(s) removed from homepage (preview mode)`,
-  export: (count) => `${count} service(s) exported (preview mode)`,
+const BULK_STATUS_MAP = {
+  publish: { status: 'published' },
+  hide: { status: 'hidden' },
+  'add-homepage': { usedOnHomepage: true },
+  'remove-homepage': { usedOnHomepage: false },
 };
 
 export default function ServicesPage() {
@@ -53,21 +52,32 @@ export default function ServicesPage() {
     description: servicesPageMeta.description,
   });
 
-  const handleBulkApply = () => {
+  const handleBulkApply = async () => {
     if (bulkAction === 'delete') {
+      if (!flows.permissions.canDelete) {
+        flows.showFeedback('You do not have permission to delete items.', 'error');
+        return;
+      }
       listing.openDeleteModal();
       return;
     }
 
-    const message = BULK_FEEDBACK[bulkAction]?.(listing.selectedIds.size);
-    if (message) {
-      flows.showFeedback(message);
-      listing.clearSelection();
+    if (!flows.permissions.canEdit) {
+      flows.showFeedback('You do not have permission to edit items.', 'error');
+      return;
     }
+
+    await applyBulkUpdates({
+      api: servicesApi,
+      listing,
+      flows,
+      payloadMap: BULK_STATUS_MAP,
+      bulkAction,
+    });
   };
 
   const handleDeleteConfirm = async () => {
-    await handleListingDelete(listing, flows);
+    await handleListingDelete(listing, flows, flows.permissions.canDelete);
   };
 
   const showEmpty = !listing.isLoading && listing.paginatedItems.length === 0;
@@ -78,10 +88,11 @@ export default function ServicesPage() {
         title={servicesPageMeta.title}
         description={servicesPageMeta.description}
         breadcrumbs={servicesPageMeta.breadcrumbs}
-        primaryAction={{
-          ...servicesPageMeta.primaryAction,
-          onClick: flows.openAddForm,
-        }}
+        primaryAction={
+          flows.permissions.canCreate
+            ? { ...servicesPageMeta.primaryAction, onClick: flows.openAddForm }
+            : undefined
+        }
         secondaryActions={servicesPageMeta.secondaryActions}
       />
 

@@ -94,25 +94,6 @@ export const accessLevelOptions = [
   { value: 'Limited', label: 'Limited' },
 ];
 
-export const USER_ACTION_FEEDBACK = {
-  view: (name) => `Viewing ${name} (preview mode)`,
-  edit: (name) => `Edit form opened for ${name} (preview mode)`,
-  'resend-invite': (name) => `Invite resent to ${name} (preview mode)`,
-  suspend: (name) => `${name} suspended (preview mode)`,
-  activate: (name) => `${name} activated (preview mode)`,
-  'reset-password': (name) => `Password reset email sent to ${name} (preview mode)`,
-  delete: (name) => `${name} removed (preview mode)`,
-};
-
-export const ROLE_ACTION_FEEDBACK = {
-  view: (name) => `Viewing role "${name}" (preview mode)`,
-  edit: (name) => `Edit form opened for role "${name}" (preview mode)`,
-  duplicate: (name) => `Role "${name}" duplicated (preview mode)`,
-  disable: (name) => `Role "${name}" disabled (preview mode)`,
-  delete: (name) => `Role "${name}" deleted (preview mode)`,
-  create: () => 'Role created (preview mode)',
-};
-
 export const NEW_ROLE_TEMPLATE = {
   id: null,
   name: '',
@@ -121,14 +102,6 @@ export const NEW_ROLE_TEMPLATE = {
   status: 'active',
   userCount: 0,
   permissionCount: 0,
-};
-
-export const BULK_FEEDBACK = {
-  activate: (count) => `${count} user(s) activated (preview mode)`,
-  suspend: (count) => `${count} user(s) suspended (preview mode)`,
-  'resend-invite': (count) => `Invite resent to ${count} user(s) (preview mode)`,
-  export: (count) => `${count} user(s) exported (preview mode)`,
-  delete: (count) => `${count} user(s) deleted (preview mode)`,
 };
 
 export function computeUsersRolesStatistics(users = [], roles = []) {

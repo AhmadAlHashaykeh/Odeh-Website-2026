@@ -50,5 +50,4 @@ export const bulkActionOptions = [
   { value: 'add-homepage', label: 'Add to Homepage' },
   { value: 'remove-homepage', label: 'Remove from Homepage' },
   { value: 'delete', label: 'Delete Selected' },
-  { value: 'export', label: 'Export Selected' },
 ];

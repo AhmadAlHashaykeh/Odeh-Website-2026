@@ -442,7 +442,7 @@ export default function HomePageSectionEditModal({
           {title}
         </h2>
         <p className={drawerStyles.modalSubtitle}>
-          Fields match the current public homepage component. Changes are preview-only.
+          Update homepage section content. Changes are saved to the CMS.
         </p>
       </div>
       <button

@@ -1,0 +1,30 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  padding: var(--admin-space-6);
+}
+
+.card {
+  max-width: 28rem;
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 var(--admin-space-3);
+  font-size: var(--admin-text-xl);
+  font-weight: var(--admin-font-semibold);
+  color: var(--admin-text-primary);
+}
+
+.message {
+  margin: 0 0 var(--admin-space-5);
+  color: var(--admin-text-secondary);
+  line-height: 1.5;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+}

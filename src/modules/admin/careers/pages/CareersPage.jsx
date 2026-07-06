@@ -11,7 +11,7 @@ import {
   AdminActionFlowsHost,
 } from '../../cms/components';
 import * as jobsApi from '../../../../api/jobs';
-import { useModuleApiActions, handleListingDelete } from '../../hooks/useModuleApiActions';
+import { useModuleApiActions, handleListingDelete, applyBulkUpdates } from '../../hooks/useModuleApiActions';
 import { useCareersListing } from '../hooks/useCareersListing';
 import {
   careersPageMeta,
@@ -30,11 +30,10 @@ import CareersEmptyState from '../components/CareersEmptyState';
 import CareersSkeleton from '../components/CareersSkeleton';
 import styles from './CareersPage.module.css';
 
-const BULK_FEEDBACK = {
-  open: (count) => `${count} job(s) opened (preview mode)`,
-  close: (count) => `${count} job(s) closed (preview mode)`,
-  draft: (count) => `${count} job(s) marked as draft (preview mode)`,
-  export: (count) => `${count} job(s) exported (preview mode)`,
+const BULK_STATUS_MAP = {
+  open: { status: 'open' },
+  close: { status: 'closed' },
+  draft: { status: 'draft' },
 };
 
 export default function CareersPage() {
@@ -71,21 +70,32 @@ export default function CareersPage() {
     [listing.departments],
   );
 
-  const handleBulkApply = () => {
+  const handleBulkApply = async () => {
     if (bulkAction === 'delete') {
+      if (!flows.permissions.canDelete) {
+        flows.showFeedback('You do not have permission to delete items.', 'error');
+        return;
+      }
       listing.openDeleteModal();
       return;
     }
 
-    const message = BULK_FEEDBACK[bulkAction]?.(listing.selectedIds.size);
-    if (message) {
-      flows.showFeedback(message);
-      listing.clearSelection();
+    if (!flows.permissions.canEdit) {
+      flows.showFeedback('You do not have permission to edit items.', 'error');
+      return;
     }
+
+    await applyBulkUpdates({
+      api: jobsApi,
+      listing,
+      flows,
+      payloadMap: BULK_STATUS_MAP,
+      bulkAction,
+    });
   };
 
   const handleDeleteConfirm = async () => {
-    await handleListingDelete(listing, flows);
+    await handleListingDelete(listing, flows, flows.permissions.canDelete);
   };
 
   const showEmpty = !listing.isLoading && listing.paginatedItems.length === 0;
@@ -96,10 +106,11 @@ export default function CareersPage() {
         title={careersPageMeta.title}
         description={careersPageMeta.description}
         breadcrumbs={careersPageMeta.breadcrumbs}
-        primaryAction={{
-          ...careersPageMeta.primaryAction,
-          onClick: flows.openAddForm,
-        }}
+        primaryAction={
+          flows.permissions.canCreate
+            ? { ...careersPageMeta.primaryAction, onClick: flows.openAddForm }
+            : undefined
+        }
         secondaryActions={careersPageMeta.secondaryActions}
       />
 

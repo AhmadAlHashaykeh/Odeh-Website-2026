@@ -1,66 +1,132 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ODEH & PARTNERS — CMS Backend API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Laravel 12 REST API powering the ODEH website admin CMS and public form submissions.
 
-## About Laravel
+## Requirements
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- PHP 8.2+
+- Composer 2.x
+- MySQL 8+ (or MariaDB 10.4+)
+- Node.js 18+ (for the frontend SPA in the parent directory)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```bash
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+```
 
-## Learning Laravel
+Configure database credentials in `.env`, then:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+php artisan migrate --seed
+php artisan storage:link
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Environment Variables
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Variable | Description |
+|----------|-------------|
+| `APP_URL` | API base URL (e.g. `http://localhost:8000`) |
+| `APP_DEBUG` | Set `false` in production |
+| `DB_*` | MySQL connection settings |
+| `CORS_ALLOWED_ORIGINS` | Comma-separated frontend origins |
+| `SANCTUM_STATEFUL_DOMAINS` | SPA domains for Sanctum (if using cookies) |
+| `FILESYSTEM_DISK` | `local` for development; S3-compatible disk for production media |
 
-## Laravel Sponsors
+See `.env.example` for the full list.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Database
 
-### Premium Partners
+```bash
+# Fresh install with seed data
+php artisan migrate:fresh --seed
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+# Run migrations only
+php artisan migrate
+```
 
-## Contributing
+Seeders provision roles, permissions, CMS singleton settings, legal pages, SEO registry, and a development super-admin account.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Running the API
 
-## Code of Conduct
+```bash
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+API base URL: `http://localhost:8000/api`
 
-## Security Vulnerabilities
+## Tests
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan test
+```
 
-## License
+Feature tests cover authentication, authorization, CRUD modules, dashboard stats, public contact/job application endpoints, and CMS singleton settings.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## API Authentication
+
+The admin SPA uses **Laravel Sanctum** bearer tokens.
+
+| Endpoint | Method | Auth |
+|----------|--------|------|
+| `/api/auth/login` | POST | Public |
+| `/api/auth/logout` | POST | Bearer token |
+| `/api/auth/user` | GET | Bearer token |
+
+Login request:
+
+```json
+{ "email": "admin@odeh.local", "password": "OdehLocalDev2026!" }
+```
+
+Response includes `token`, `user`, `role`, and a `permissions` map keyed by CMS module.
+
+All `/api/admin/*` routes require a valid bearer token and enforce module-level gates (`view`, `create`, `update`, `delete`).
+
+## Default Admin Account (Development Only)
+
+Created by `SuperAdminSeeder` when running `migrate --seed`:
+
+| Field | Value |
+|-------|-------|
+| Email | `admin@odeh.local` |
+| Password | `OdehLocalDev2026!` |
+| Role | Super Admin |
+
+**Change or remove this account before deploying to production.**
+
+## Public Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/api/public/contact` | POST | Reach Out / contact form |
+| `/api/public/jobs/{slug}/applications` | POST | Job application with CV upload (multipart) |
+
+## Deployment
+
+1. Set `APP_ENV=production`, `APP_DEBUG=false`
+2. Run `composer install --no-dev --optimize-autoloader`
+3. Run `php artisan migrate --force`
+4. Run `php artisan config:cache`, `route:cache`, `view:cache`
+5. Configure web server document root to `public/`
+6. Ensure `storage/` and `bootstrap/cache/` are writable
+7. Configure CORS for the production frontend origin
+8. Use a private disk for CV uploads (`storage/app/private`)
+
+## Project Structure
+
+```
+backend/
+├── app/Http/Controllers/Api/   # REST controllers
+├── app/Http/Requests/          # Form request validation
+├── app/Http/Resources/         # API response transformers
+├── app/Models/                 # Eloquent models
+├── app/Support/CmsModules.php  # Permission module registry
+├── database/migrations/        # Schema
+├── database/seeders/           # Seed data
+├── routes/api.php              # API route definitions
+└── tests/Feature/              # Feature tests
+```

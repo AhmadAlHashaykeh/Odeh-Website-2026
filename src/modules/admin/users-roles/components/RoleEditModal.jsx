@@ -28,8 +28,8 @@ export default function RoleEditModal({ open, mode = 'edit', role, onClose, onSa
         </h2>
         <p className={drawerStyles.subtitle}>
           {isCreate
-            ? 'Define a new role with access level and permissions scope (preview mode).'
-            : `Configure role settings for ${role.name} (preview mode).`}
+            ? 'Define a new role with access level and permissions scope.'
+            : `Configure role settings for ${role.name}.`}
         </p>
       </div>
       <button type="button" className={drawerStyles.closeBtn} onClick={onClose} aria-label="Close">
@@ -125,7 +125,7 @@ export default function RoleEditModal({ open, mode = 'edit', role, onClose, onSa
           <p className={styles.permNote}>
             {isCreate
               ? 'After creating the role, configure module permissions in the Permissions Matrix section.'
-              : 'Permission assignments are managed in the Permissions Matrix section. Changes here do not persist in preview mode.'}
+              : 'Permission assignments are managed in the Permissions Matrix section.'}
           </p>
         </Form.Section>
       </form>

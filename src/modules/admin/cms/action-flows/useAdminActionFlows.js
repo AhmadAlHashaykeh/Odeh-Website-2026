@@ -73,14 +73,7 @@ export function useAdminActionFlows({
   const handleFormSave = useCallback(
     async (formElement) => {
       if (!onFormSave) {
-        const label =
-          formDrawer.mode === 'edit' ? getItemLabel(moduleKey, formDrawer.item) : 'Item';
-        showFeedback(
-          formDrawer.mode === 'edit'
-            ? `Changes saved for "${label}" (preview mode)`
-            : 'Item saved successfully (preview mode)',
-        );
-        closeFormDrawer();
+        showFeedback('Save is not configured for this module.', 'error');
         return;
       }
 
@@ -119,9 +112,7 @@ export function useAdminActionFlows({
 
   const handleGallerySave = useCallback(async () => {
     if (!onGallerySave) {
-      const label = getItemLabel(moduleKey, galleryDrawer.item);
-      showFeedback(`Gallery updated for "${label}" (preview mode)`);
-      closeGalleryDrawer();
+      showFeedback('Gallery save is not available for this module.', 'error');
       return;
     }
 
@@ -154,7 +145,7 @@ export function useAdminActionFlows({
         onConfirm: async () => {
           closeConfirm();
           if (!onDuplicate) {
-            showFeedback(`"${label}" duplicated (preview mode)`);
+            showFeedback('Duplicate is not available for this module.', 'error');
             return;
           }
 
@@ -252,7 +243,7 @@ export function useAdminActionFlows({
         onConfirm: async () => {
           closeConfirm();
           if (!onStatusChange) {
-            showFeedback(`${config.feedback} (preview mode)`);
+            showFeedback('Status update is not available for this module.', 'error');
             return;
           }
 
@@ -324,7 +315,6 @@ export function useAdminActionFlows({
           }
           break;
         case 'view-applications':
-          showFeedback('Applications module is coming next. Preview mode only.', 'info');
           break;
         case 'copy-email':
           if (item?.email) {

@@ -52,7 +52,7 @@ export default function AdminLinkedItemsDrawer({
 
       <p className={styles.notice}>
         <AdminIcon name="external" size={14} />
-        Project assignment is visual only in preview mode.
+        Linked projects are read-only. Manage project assignments from the Projects module.
       </p>
     </Drawer>
   );

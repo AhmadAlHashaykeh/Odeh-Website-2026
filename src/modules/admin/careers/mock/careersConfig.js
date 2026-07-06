@@ -60,5 +60,4 @@ export const bulkActionOptions = [
   { value: 'close', label: 'Close Jobs' },
   { value: 'draft', label: 'Mark as Draft' },
   { value: 'delete', label: 'Delete Selected' },
-  { value: 'export', label: 'Export Selected' },
 ];
