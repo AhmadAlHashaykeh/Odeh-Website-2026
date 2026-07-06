@@ -3,6 +3,7 @@ import { OverviewHero, OverviewContent, OverviewOfficeSlider } from '../componen
 import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getAbout } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 
 const FALLBACK_META = {
   title: 'Overview | About | ODEH & PARTNERS DESIGN',
@@ -11,7 +12,7 @@ const FALLBACK_META = {
 
 export default function AboutOverviewPage() {
   const { data, loading, error } = usePublicQuery(() => getAbout(), []);
-  const overview = data?.data?.overview;
+  const overview = data?.data?.overview ? normalizePublicMedia(data.data.overview) : undefined;
 
   if (loading) {
     return (

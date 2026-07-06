@@ -16,7 +16,7 @@ export default function OverviewContent({ title, description, image }) {
 
           <div ref={imageRef} className={`${styles.imageWrap} reveal reveal-delay-1`}>
             <div className={styles.imageFrame}>
-              <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+              <img src={resolveMediaUrl(image.src)} alt={image.alt} loading="lazy" decoding="async" />
             </div>
           </div>
         </div>

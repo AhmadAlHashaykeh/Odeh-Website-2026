@@ -7,7 +7,7 @@ function NavLogoPreview({ data }) {
   return (
     <div className={styles.logoPreview}>
       <div className={styles.miniNavbar}>
-        <img src={data.src} alt={data.alt} className={styles.logoImg} loading="lazy" />
+        <img src={resolveMediaUrl(data.src)} alt={data.alt} className={styles.logoImg} loading="lazy" />
         <div className={styles.miniNavLinks}>
           <span className={styles.miniNavLink}>Home</span>
           <span className={styles.miniNavLinkActive}>About us</span>
@@ -53,7 +53,7 @@ function NavMenuPreview({ data }) {
 function FooterBrandPreview({ data }) {
   return (
     <div className={styles.footerBrandPreview}>
-      <img src={data.logo.src} alt={data.logo.alt} className={styles.footerLogo} loading="lazy" />
+      <img src={resolveMediaUrl(data.logo.src)} alt={data.logo.alt} className={styles.footerLogo} loading="lazy" />
       <p className={styles.footerBrandText}>{data.text.slice(0, 120)}…</p>
     </div>
   );

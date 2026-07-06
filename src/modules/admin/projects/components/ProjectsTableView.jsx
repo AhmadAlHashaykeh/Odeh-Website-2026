@@ -72,8 +72,7 @@ export default function ProjectsTableView({
                   onClick={() => onProjectClick(project.id)}
                   aria-label={`View ${project.title}`}
                 >
-                  <img
-                    src={project.coverImage}
+                  <img src={resolveMediaUrl(project.coverImage)}
                     alt=""
                     className={styles.thumb}
                     loading="lazy"

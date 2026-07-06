@@ -50,13 +50,17 @@ class ImageUploadTest extends TestCase
         $response->assertOk()
             ->assertJsonPath('data.mimeType', 'image/webp')
             ->assertJsonStructure([
-                'data' => ['path', 'filename', 'mimeType', 'size'],
+                'data' => ['path', 'url', 'filename', 'mimeType', 'size'],
             ]);
 
         $path = $response->json('data.path');
+        $url = $response->json('data.url');
         $this->assertIsString($path);
+        $this->assertIsString($url);
         $this->assertStringStartsWith('/storage/uploads/projects/', $path);
         $this->assertStringEndsWith('.webp', $path);
+        $this->assertStringContainsString('/storage/uploads/projects/', $url);
+        $this->assertStringEndsWith('.webp', $url);
 
         $storagePath = str_replace('/storage/', '', $path);
         Storage::disk('public')->assertExists($storagePath);

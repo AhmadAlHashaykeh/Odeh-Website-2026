@@ -22,7 +22,7 @@ function SlideImage({ image, index, onOpen }) {
         onClick={() => onOpen(index)}
       >
         <div className={styles.imageWrap}>
-          <img src={image.src} alt={image.alt} loading="lazy" draggable={false} decoding="async" />
+          <img src={resolveMediaUrl(image.src)} alt={image.alt} loading="lazy" draggable={false} decoding="async" />
           <span className={styles.expandHint} aria-hidden="true">
             <ExpandIcon />
           </span>

@@ -29,8 +29,7 @@ export default function ActivitiesEditorialGrid({
               onClick={() => onActivityClick(activity.id)}
               aria-label={`View ${activity.title}`}
             >
-              <img
-                src={activity.coverImage}
+              <img src={resolveMediaUrl(activity.coverImage)}
                 alt={activity.title}
                 className={styles.image}
                 loading="lazy"

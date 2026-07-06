@@ -55,8 +55,7 @@ export default function ServicesCardView({
               onClick={() => onServiceClick(service.id)}
               aria-label={`View ${service.title}`}
             >
-              <img
-                src={service.image}
+              <img src={resolveMediaUrl(service.image)}
                 alt={service.title}
                 className={styles.image}
                 loading="lazy"

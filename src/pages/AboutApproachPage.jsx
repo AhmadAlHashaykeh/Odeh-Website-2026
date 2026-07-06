@@ -4,6 +4,7 @@ import { ApproachPrinciples } from '../components/AboutApproach';
 import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getAbout } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 
 const FALLBACK_META = {
   title: 'Approach | About | ODEH & PARTNERS DESIGN',
@@ -12,7 +13,7 @@ const FALLBACK_META = {
 
 export default function AboutApproachPage() {
   const { data, loading, error } = usePublicQuery(() => getAbout(), []);
-  const approach = data?.data?.approach;
+  const approach = data?.data?.approach ? normalizePublicMedia(data.data.approach) : undefined;
 
   if (loading) {
     return (

@@ -25,8 +25,7 @@ export default function CategoriesGridView({
               onClick={() => onCategoryClick(category.id)}
               aria-label={`View ${category.title}`}
             >
-              <img
-                src={category.coverImage}
+              <img src={resolveMediaUrl(category.coverImage)}
                 alt={category.title}
                 className={styles.image}
                 loading="lazy"
@@ -86,8 +85,7 @@ export default function CategoriesGridView({
               <div className={styles.thumbnails}>
                 {category.projectPreviews.slice(0, 4).map((project) => (
                   <img
-                    key={project.id}
-                    src={project.coverImage}
+                    key={project.id} src={resolveMediaUrl(project.coverImage)}
                     alt={project.title}
                     className={styles.thumb}
                     loading="lazy"

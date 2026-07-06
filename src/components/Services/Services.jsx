@@ -6,7 +6,7 @@ function ServiceCard({ service }) {
   return (
     <article className={styles.card}>
       <div className={styles.imageWrap}>
-        <img src={service.image} alt={service.title} loading="lazy" draggable={false} />
+        <img src={resolveMediaUrl(service.image)} alt={service.title} loading="lazy" draggable={false} />
         <div className={styles.imageOverlay} aria-hidden="true" />
         <div className={styles.content}>
           <span className={styles.accentLine} aria-hidden="true" />

@@ -58,7 +58,7 @@ export default function ProjectDetailsDrawer({ project, onClose }) {
         </button>
 
         <div className={styles.coverWrap}>
-          <img src={project.coverImage} alt={project.title} className={styles.cover} />
+          <img src={resolveMediaUrl(project.coverImage)} alt={project.title} className={styles.cover} />
           <div className={styles.coverOverlay} aria-hidden="true" />
           <div className={styles.coverInfo}>
             <span className={styles.category}>{project.category}</span>

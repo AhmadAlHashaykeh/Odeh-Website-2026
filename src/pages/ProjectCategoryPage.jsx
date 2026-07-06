@@ -4,6 +4,7 @@ import { ProjectsHero, ProjectGrid } from '../components/SelectedProjects';
 import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getProjects } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 
 export default function ProjectCategoryPage() {
   const { category } = useParams();
@@ -17,8 +18,8 @@ export default function ProjectCategoryPage() {
     );
   }
 
-  const categories = data?.data?.categories ?? [];
-  const projects = data?.data?.projects ?? [];
+  const categories = (data?.data?.categories ?? []).map(normalizePublicMedia);
+  const projects = (data?.data?.projects ?? []).map(normalizePublicMedia);
   const categoryData = categories.find((item) => item.slug === category);
 
   if (error || !categoryData) {

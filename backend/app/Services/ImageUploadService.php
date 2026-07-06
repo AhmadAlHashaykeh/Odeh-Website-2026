@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Support\PublicMediaUrl;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -28,7 +29,7 @@ class ImageUploadService
     }
 
     /**
-     * @return array{path: string, filename: string, mimeType: string, size: int}
+     * @return array{path: string, url: string, filename: string, mimeType: string, size: int}
      */
     public function upload(UploadedFile $file, string $module, string $field): array
     {
@@ -81,8 +82,12 @@ class ImageUploadService
             throw new RuntimeException('Failed to read uploaded file size.');
         }
 
+        $publicPath = '/storage/'.$relativePath;
+        $reference = PublicMediaUrl::reference($publicPath);
+
         return [
-            'path' => '/storage/'.$relativePath,
+            'path' => $reference['path'],
+            'url' => $reference['url'],
             'filename' => $filename,
             'mimeType' => 'image/webp',
             'size' => $size,

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ApiError } from '../../../../api/client';
 import { uploadImage } from '../../../../api/uploads';
+import { resolveMediaPath, resolveMediaUrl } from '../../../../utils/mediaUrl';
 import { Drawer, Button } from '../../ui';
 import AdminIcon from '../../components/AdminIcons';
 import styles from './AdminGalleryDrawer.module.css';
@@ -27,15 +28,29 @@ export default function AdminGalleryDrawer({
   submitting = false,
 }) {
   const fileInputRef = useRef(null);
-  const [coverImage, setCoverImage] = useState(initialCoverImage || '');
-  const [gallery, setGallery] = useState(Array.isArray(initialGallery) ? initialGallery : []);
+  const [coverImage, setCoverImage] = useState(() => resolveMediaPath(initialCoverImage));
+  const [coverPreviewUrl, setCoverPreviewUrl] = useState(() => resolveMediaUrl(initialCoverImage));
+  const [gallery, setGallery] = useState(() =>
+    (Array.isArray(initialGallery) ? initialGallery : []).map((image) => ({
+      ...image,
+      src: resolveMediaPath(image),
+      url: resolveMediaUrl(image),
+    })),
+  );
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (!open) return;
-    setCoverImage(initialCoverImage || '');
-    setGallery(Array.isArray(initialGallery) ? initialGallery : []);
+    setCoverImage(resolveMediaPath(initialCoverImage));
+    setCoverPreviewUrl(resolveMediaUrl(initialCoverImage));
+    setGallery(
+      (Array.isArray(initialGallery) ? initialGallery : []).map((image) => ({
+        ...image,
+        src: resolveMediaPath(image),
+        url: resolveMediaUrl(image),
+      })),
+    );
     setError('');
   }, [open, initialCoverImage, initialGallery]);
 
@@ -59,7 +74,7 @@ export default function AdminGalleryDrawer({
 
         for (const file of files) {
           const result = await uploadImage(file, uploadModule, 'gallery');
-          uploaded.push({ src: result.path, alt: '' });
+          uploaded.push({ src: result.path, url: result.url, alt: '' });
         }
 
         setGallery((current) => [...current, ...uploaded]);
@@ -85,6 +100,7 @@ export default function AdminGalleryDrawer({
       try {
         const result = await uploadImage(file, uploadModule, 'coverImage');
         setCoverImage(result.path);
+        setCoverPreviewUrl(result.url);
       } catch (uploadError) {
         setError(formatUploadError(uploadError));
       } finally {
@@ -155,9 +171,9 @@ export default function AdminGalleryDrawer({
 
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>Cover Image</h3>
-        {coverImage ? (
+        {coverPreviewUrl || coverImage ? (
           <div className={styles.coverWrap}>
-            <img src={coverImage} alt="Cover" className={styles.cover} />
+            <img src={coverPreviewUrl || resolveMediaUrl(coverImage)} alt="Cover" className={styles.cover} />
             <span className={styles.coverBadge}>
               <AdminIcon name="star" size={12} />
               Current Cover
@@ -194,7 +210,7 @@ export default function AdminGalleryDrawer({
           {gallery.map((image, index) => (
             <div key={`${image.src}-${index}`} className={styles.item}>
               <div className={styles.thumb}>
-                <img src={image.src} alt={image.alt || `Image ${index + 1}`} />
+                <img src={resolveMediaUrl(image)} alt={image.alt || `Image ${index + 1}`} />
               </div>
               <div className={styles.itemActions}>
                 <button

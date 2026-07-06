@@ -67,7 +67,7 @@ export default function ServiceDetailsDrawer({ service, onClose }) {
         </button>
 
         <div className={styles.hero}>
-          <img src={service.image} alt={service.title} className={styles.heroImage} />
+          <img src={resolveMediaUrl(service.image)} alt={service.title} className={styles.heroImage} />
           <div className={styles.heroOverlay} aria-hidden="true" />
           <div className={styles.heroInfo}>
             <span className={styles.slug}>/{service.slug}</span>

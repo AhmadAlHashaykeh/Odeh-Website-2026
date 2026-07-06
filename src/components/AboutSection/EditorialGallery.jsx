@@ -27,8 +27,7 @@ export default function EditorialGallery({ ariaLabel = 'Image gallery', images }
               className={`${styles.item} ${variantClass[image.variant]} ${styles.revealItem} reveal-delay-${index + 1}`}
             >
               <div className={styles.imageFrame}>
-                <img
-                  src={image.src}
+                <img src={resolveMediaUrl(image.src)}
                   alt={image.alt}
                   loading="lazy"
                   width={1400}

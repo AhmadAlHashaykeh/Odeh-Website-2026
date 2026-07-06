@@ -2,6 +2,7 @@ import { apiClient } from '../client';
 
 export interface ImageUploadResult {
   path: string;
+  url: string;
   filename: string;
   mimeType: string;
   size: number;

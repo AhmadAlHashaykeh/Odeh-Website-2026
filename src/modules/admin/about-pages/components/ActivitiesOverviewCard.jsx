@@ -29,7 +29,7 @@ export default function ActivitiesOverviewCard({ stats }) {
         <div className={styles.activityGrid}>
           {stats.preview.map((activity) => (
             <div key={activity.id} className={styles.activityCard}>
-              <img src={activity.coverImage} alt={activity.title} loading="lazy" />
+              <img src={resolveMediaUrl(activity.coverImage)} alt={activity.title} loading="lazy" />
               <div className={styles.activityInfo}>
                 <strong>{activity.title}</strong>
                 <span>{activity.activityDate}</span>

@@ -82,8 +82,7 @@ export default function ServicesTableView({
                   onClick={() => onServiceClick(service.id)}
                   aria-label={`View ${service.title}`}
                 >
-                  <img
-                    src={service.image}
+                  <img src={resolveMediaUrl(service.image)}
                     alt=""
                     className={styles.thumb}
                     loading="lazy"

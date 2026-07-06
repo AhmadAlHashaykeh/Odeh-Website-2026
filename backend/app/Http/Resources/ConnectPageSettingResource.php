@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Support\PublicMediaUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -12,12 +13,12 @@ class ConnectPageSettingResource extends JsonResource
     {
         $linksPayload = $this->links ?? [];
 
-        return [
+        return PublicMediaUrl::transformPayload([
             'meta' => $linksPayload['meta'] ?? null,
             'hero' => $this->hero,
             'tagline' => $this->tagline,
             'links' => $linksPayload['items'] ?? [],
             'lastUpdated' => $this->updated_at?->toIso8601String(),
-        ];
+        ]);
     }
 }

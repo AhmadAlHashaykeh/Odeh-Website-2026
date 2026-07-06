@@ -58,7 +58,7 @@ export default function CategoryDetailsDrawer({ category, onClose }) {
         </button>
 
         <div className={styles.coverWrap}>
-          <img src={category.coverImage} alt={category.title} className={styles.cover} />
+          <img src={resolveMediaUrl(category.coverImage)} alt={category.title} className={styles.cover} />
           <div className={styles.coverOverlay} aria-hidden="true" />
           <div className={styles.coverInfo}>
             <span className={styles.orderLabel}>Display Order #{category.displayOrder}</span>
@@ -112,8 +112,7 @@ export default function CategoryDetailsDrawer({ category, onClose }) {
               <div className={styles.projectGrid}>
                 {category.projectPreviews.map((project) => (
                   <article key={project.id} className={styles.projectCard}>
-                    <img
-                      src={project.coverImage}
+                    <img src={resolveMediaUrl(project.coverImage)}
                       alt={project.title}
                       className={styles.projectImage}
                       loading="lazy"

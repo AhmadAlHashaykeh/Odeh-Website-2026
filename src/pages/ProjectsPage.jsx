@@ -3,6 +3,7 @@ import { ProjectsHero, CategoryGrid } from '../components/SelectedProjects';
 import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getProjects } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 
 const FALLBACK_META = {
   title: 'Selected Projects | ODEH & PARTNERS DESIGN',
@@ -11,8 +12,8 @@ const FALLBACK_META = {
 
 export default function ProjectsPage() {
   const { data, loading, error } = usePublicQuery(() => getProjects(), []);
-  const page = data?.data?.page;
-  const categories = data?.data?.categories ?? [];
+  const page = data?.data?.page ? normalizePublicMedia(data.data.page) : undefined;
+  const categories = (data?.data?.categories ?? []).map(normalizePublicMedia);
 
   if (loading) {
     return (

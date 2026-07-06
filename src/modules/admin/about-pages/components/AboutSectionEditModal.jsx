@@ -186,7 +186,7 @@ function OfficeGalleryForm({ data }) {
         <div className={styles.imageList}>
           {data.images.map((image, index) => (
             <div key={image.src} className={styles.imageListItem}>
-              <img src={image.src} alt={image.alt} className={styles.imageThumb} />
+              <img src={resolveMediaUrl(image.src)} alt={image.alt} className={styles.imageThumb} />
               <div className={styles.imageInfo}>
                 <span className={styles.imageOrder}>#{index + 1}</span>
                 <span className={styles.imagePath}>{image.src}</span>

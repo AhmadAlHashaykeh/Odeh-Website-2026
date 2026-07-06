@@ -64,7 +64,7 @@ export default function TeamMemberDetailsDrawer({ member, onClose }) {
         </button>
 
         <div className={styles.hero}>
-          <img src={member.photo} alt={member.fullName} className={styles.heroImage} />
+          <img src={resolveMediaUrl(member.photo)} alt={member.fullName} className={styles.heroImage} />
           <div className={styles.heroOverlay} aria-hidden="true" />
           <div className={styles.heroInfo}>
             <span className={styles.department}>{member.department}</span>

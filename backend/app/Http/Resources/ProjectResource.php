@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Support\PublicMediaUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -10,14 +11,14 @@ class ProjectResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
-        $gallery = $this->gallery ?? [];
+        $gallery = PublicMediaUrl::transformGallery($this->gallery ?? []);
 
         return [
             'id' => $this->id,
             'title' => $this->title,
             'slug' => $this->slug,
             'description' => $this->description,
-            'coverImage' => $this->cover_image,
+            'coverImage' => PublicMediaUrl::reference($this->cover_image),
             'gallery' => $gallery,
             'galleryCount' => count($gallery),
             'location' => $this->location,

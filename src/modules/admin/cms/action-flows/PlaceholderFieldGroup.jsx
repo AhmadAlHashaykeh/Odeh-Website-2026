@@ -1,6 +1,7 @@
 import { useCallback, useId, useRef, useState } from 'react';
 import { ApiError } from '../../../../api/client';
 import { uploadImage } from '../../../../api/uploads';
+import { resolveMediaPath, resolveMediaUrl } from '../../../../utils/mediaUrl';
 import AdminIcon from '../../components/AdminIcons';
 import styles from './PlaceholderFieldGroup.module.css';
 
@@ -52,15 +53,18 @@ export function CoverImageField({
 }) {
   const inputId = useId();
   const fileInputRef = useRef(null);
-  const [src, setSrc] = useState(initialSrc || '');
+  const [src, setSrc] = useState(() => resolveMediaPath(initialSrc));
+  const [previewUrl, setPreviewUrl] = useState(() => resolveMediaUrl(initialSrc));
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
 
   const canUpload = Boolean(uploadModule && uploadField) && !disabled;
+  const displaySrc = previewUrl || resolveMediaUrl(src);
 
   const updateSrc = useCallback(
-    (nextSrc) => {
+    (nextSrc, nextPreviewUrl = '') => {
       setSrc(nextSrc);
+      setPreviewUrl(nextPreviewUrl || resolveMediaUrl(nextSrc));
       onChange?.(nextSrc);
     },
     [onChange],
@@ -91,7 +95,7 @@ export function CoverImageField({
 
       try {
         const result = await uploadImage(file, uploadModule, uploadField);
-        updateSrc(result.path);
+        updateSrc(result.path, result.url);
       } catch (uploadError) {
         setError(formatUploadError(uploadError));
       } finally {
@@ -104,13 +108,13 @@ export function CoverImageField({
   const handleRemove = useCallback(() => {
     if (disabled || uploading) return;
     setError('');
-    updateSrc('');
+    updateSrc('', '');
   }, [disabled, uploading, updateSrc]);
 
   return (
     <div className={styles.group}>
       <span className={styles.label}>{label}</span>
-      {src ? (
+      {displaySrc ? (
         <button
           type="button"
           className={`${styles.preview} ${styles.coverPreview} ${canUpload ? styles.previewClickable : ''}`}
@@ -118,12 +122,12 @@ export function CoverImageField({
           disabled={!canUpload || uploading}
           aria-label={`Replace ${label}`}
         >
-          <img src={src} alt={alt || label} />
+          <img src={displaySrc} alt={alt || label} />
         </button>
       ) : (
         <ImagePlaceholder onClick={canUpload ? openFilePicker : undefined} uploading={uploading} error={error} />
       )}
-      {src && error && <span className={styles.fieldError}>{error}</span>}
+      {displaySrc && error && <span className={styles.fieldError}>{error}</span>}
       {canUpload && (
         <input
           ref={fileInputRef}
@@ -149,12 +153,12 @@ export function CoverImageField({
             {uploading ? 'Uploading…' : 'Replace'}
           </button>
         )}
-        {(src || canUpload) && (
+        {(displaySrc || canUpload) && (
           <button
             type="button"
             className={`${styles.actionBtnInteractive} ${styles.actionBtnDanger}`}
             onClick={handleRemove}
-            disabled={disabled || uploading || !src}
+            disabled={disabled || uploading || !displaySrc}
           >
             <AdminIcon name="trash" size={12} />
             Remove
@@ -177,7 +181,12 @@ export function GalleryPlaceholder({
   onChange,
 }) {
   const fileInputRef = useRef(null);
-  const [images, setImages] = useState(Array.isArray(initialImages) ? initialImages : []);
+  const [images, setImages] = useState(() =>
+    (Array.isArray(initialImages) ? initialImages : []).map((image) => ({
+      ...image,
+      src: resolveMediaPath(image),
+    })),
+  );
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
 
@@ -220,7 +229,7 @@ export function GalleryPlaceholder({
 
         for (const file of files) {
           const result = await uploadImage(file, uploadModule, uploadField);
-          uploaded.push({ src: result.path, alt: '' });
+          uploaded.push({ src: result.path, url: result.url, alt: '' });
         }
 
         updateImages([...images, ...uploaded]);
@@ -248,7 +257,7 @@ export function GalleryPlaceholder({
         <div className={styles.galleryGrid}>
           {preview.map((image, index) => (
             <div key={`${image.src}-${index}`} className={styles.galleryThumb}>
-              <img src={image.src} alt={image.alt || `Gallery ${index + 1}`} />
+              <img src={resolveMediaUrl(image)} alt={image.alt || `Gallery ${index + 1}`} />
               {canUpload && (
                 <button
                   type="button"

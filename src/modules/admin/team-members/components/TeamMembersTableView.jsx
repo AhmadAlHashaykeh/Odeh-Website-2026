@@ -78,8 +78,7 @@ export default function TeamMembersTableView({
                   onClick={() => onMemberClick(member.id)}
                   aria-label={`View ${member.fullName}`}
                 >
-                  <img
-                    src={member.photo}
+                  <img src={resolveMediaUrl(member.photo)}
                     alt=""
                     className={styles.thumb}
                     loading="lazy"

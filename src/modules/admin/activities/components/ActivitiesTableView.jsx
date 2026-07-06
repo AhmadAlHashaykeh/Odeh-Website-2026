@@ -72,8 +72,7 @@ export default function ActivitiesTableView({
                   onClick={() => onActivityClick(activity.id)}
                   aria-label={`View ${activity.title}`}
                 >
-                  <img
-                    src={activity.coverImage}
+                  <img src={resolveMediaUrl(activity.coverImage)}
                     alt=""
                     className={styles.thumb}
                     loading="lazy"

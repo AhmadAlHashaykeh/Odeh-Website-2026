@@ -29,7 +29,7 @@ export default function TeamOverviewCard({ stats }) {
         <div className={styles.memberGrid}>
           {stats.preview.map((member) => (
             <div key={member.id} className={styles.memberCard}>
-              <img src={member.photo} alt={member.fullName} loading="lazy" />
+              <img src={resolveMediaUrl(member.photo)} alt={member.fullName} loading="lazy" />
               <div className={styles.memberInfo}>
                 <strong>{member.fullName}</strong>
                 <span>{member.position}</span>

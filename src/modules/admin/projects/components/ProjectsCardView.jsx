@@ -33,8 +33,7 @@ export default function ProjectsCardView({
               onClick={() => onProjectClick(project.id)}
               aria-label={`View ${project.title}`}
             >
-              <img
-                src={project.coverImage}
+              <img src={resolveMediaUrl(project.coverImage)}
                 alt={project.title}
                 className={styles.image}
                 loading="lazy"

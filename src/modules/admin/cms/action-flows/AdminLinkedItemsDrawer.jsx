@@ -37,7 +37,7 @@ export default function AdminLinkedItemsDrawer({
             <div key={item.id} className={styles.item}>
               <div className={styles.thumb}>
                 {item.coverImage && (
-                  <img src={item.coverImage} alt="" loading="lazy" />
+                  <img src={resolveMediaUrl(item.coverImage)} alt="" loading="lazy" />
                 )}
               </div>
               <div className={styles.info}>

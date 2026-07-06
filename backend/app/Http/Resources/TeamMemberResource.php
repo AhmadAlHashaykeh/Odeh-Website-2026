@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Support\PublicMediaUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -25,7 +26,7 @@ class TeamMemberResource extends JsonResource
             'category' => $this->category,
             'experience' => $this->experience,
             'experienceYears' => $experienceYears,
-            'photo' => $this->photo,
+            'photo' => PublicMediaUrl::reference($this->photo),
             'email' => $this->email,
             'status' => $this->status->value,
             'displayOrder' => $this->display_order,

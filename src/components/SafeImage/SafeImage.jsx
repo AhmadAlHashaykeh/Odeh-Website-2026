@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './SafeImage.module.css';
 
 export default function SafeImage({
@@ -8,11 +9,11 @@ export default function SafeImage({
   className = '',
   loading = 'lazy',
 }) {
-  const [currentSrc, setCurrentSrc] = useState(src);
+  const [currentSrc, setCurrentSrc] = useState(() => resolveMediaUrl(src));
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    setCurrentSrc(src);
+    setCurrentSrc(resolveMediaUrl(src));
     setFailed(false);
   }, [src]);
 

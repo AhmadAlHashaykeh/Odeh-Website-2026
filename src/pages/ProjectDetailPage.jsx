@@ -9,6 +9,7 @@ import {
 import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getProject, getProjects } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 
 export default function ProjectDetailPage() {
   const { category, project: projectSlug } = useParams();
@@ -26,9 +27,9 @@ export default function ProjectDetailPage() {
     );
   }
 
-  const project = projectData?.data;
-  const categories = projectsData?.data?.categories ?? [];
-  const allProjects = projectsData?.data?.projects ?? [];
+  const project = projectData?.data ? normalizePublicMedia(projectData.data) : undefined;
+  const categories = (projectsData?.data?.categories ?? []).map(normalizePublicMedia);
+  const allProjects = (projectsData?.data?.projects ?? []).map(normalizePublicMedia);
   const categoryData = categories.find((item) => item.slug === category);
 
   if (projectError || !project || !categoryData) {

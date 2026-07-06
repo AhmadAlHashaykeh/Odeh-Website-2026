@@ -281,7 +281,7 @@ function ServicesForm({ data }) {
         <div className={styles.cardList}>
           {data.services.map((service) => (
             <div key={service.id} className={styles.cardListItem}>
-              <img src={service.image} alt={service.title} className={styles.cardThumb} />
+              <img src={resolveMediaUrl(service.image)} alt={service.title} className={styles.cardThumb} />
               <div className={styles.cardInfo}>
                 <span className={styles.cardOrder}>#{service.order}</span>
                 <strong>{service.title}</strong>
@@ -359,7 +359,7 @@ function ProjectsForm({ data }) {
         <div className={styles.cardList}>
           {data.projects.map((project) => (
             <div key={project.id} className={styles.cardListItem}>
-              <img src={project.image} alt={project.title} className={styles.cardThumb} />
+              <img src={resolveMediaUrl(project.image)} alt={project.title} className={styles.cardThumb} />
               <div className={styles.cardInfo}>
                 <span className={styles.cardOrder}>#{project.order}</span>
                 <strong>{project.title}</strong>

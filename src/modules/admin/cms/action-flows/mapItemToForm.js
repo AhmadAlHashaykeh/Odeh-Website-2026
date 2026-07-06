@@ -2,8 +2,21 @@
  * Maps module items to form default values for edit mode.
  */
 
+import { resolveMediaPath } from '../../../../utils/mediaUrl';
+
 function boolLabel(value) {
   return value ? 'Yes' : 'No';
+}
+
+function mapGalleryForForm(gallery) {
+  if (!Array.isArray(gallery)) {
+    return [];
+  }
+
+  return gallery.map((item) => ({
+    ...item,
+    src: resolveMediaPath(item),
+  }));
 }
 
 export function mapItemToFormValues(moduleKey, item) {
@@ -20,8 +33,8 @@ export function mapItemToFormValues(moduleKey, item) {
         area: item.area || '',
         year: item.year || '',
         description: item.description || '',
-        coverImage: item.coverImage || '',
-        gallery: item.gallery || [],
+        coverImage: resolveMediaPath(item.coverImage),
+        gallery: mapGalleryForForm(item.gallery),
         status: item.status || 'draft',
         published: boolLabel(item.published),
         featured: boolLabel(item.featured),
@@ -33,8 +46,8 @@ export function mapItemToFormValues(moduleKey, item) {
         title: item.title || '',
         slug: item.slug || '',
         description: item.description || '',
-        coverImage: item.coverImage || '',
-        featuredImage: item.featuredImage || '',
+        coverImage: resolveMediaPath(item.coverImage),
+        featuredImage: resolveMediaPath(item.featuredImage),
         status: item.status || 'draft',
         published: boolLabel(item.published),
         displayOrder: item.displayOrder || '',
@@ -48,7 +61,7 @@ export function mapItemToFormValues(moduleKey, item) {
         category: item.categoryLabel || item.category || '',
         experience: item.experience || '',
         email: item.email || '',
-        photo: item.photo || '',
+        photo: resolveMediaPath(item.photo),
         status: item.status || 'active',
         displayOrder: item.displayOrder || '',
       };
@@ -60,8 +73,8 @@ export function mapItemToFormValues(moduleKey, item) {
         activityDate: item.activityDate || '',
         location: item.location || '',
         description: item.fullDescription || item.description || '',
-        coverImage: item.coverImage || '',
-        gallery: item.gallery || [],
+        coverImage: resolveMediaPath(item.coverImage),
+        gallery: mapGalleryForForm(item.gallery),
         status: item.status || 'draft',
         published: boolLabel(item.published),
         featured: boolLabel(item.featured),
@@ -73,8 +86,8 @@ export function mapItemToFormValues(moduleKey, item) {
         title: item.title || '',
         slug: item.slug || '',
         description: item.fullDescription || item.description || '',
-        image: item.image || '',
-        icon: item.icon || '',
+        image: resolveMediaPath(item.image),
+        icon: resolveMediaPath(item.icon),
         usedOnHomepage: boolLabel(item.usedOnHomepage),
         displayOrder: item.displayOrder || '',
         status: item.status || 'draft',

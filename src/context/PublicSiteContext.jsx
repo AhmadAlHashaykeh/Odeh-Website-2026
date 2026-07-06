@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { getNavigationFooter, getWebsiteSettings } from '../api/public/content';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 
 const PublicSiteContext = createContext(null);
 
@@ -20,8 +21,8 @@ export function PublicSiteProvider({ children }) {
         ]);
 
         if (!cancelled) {
-          setNavigationFooter(navResponse.data);
-          setWebsiteSettings(settingsResponse.data);
+          setNavigationFooter(normalizePublicMedia(navResponse.data));
+          setWebsiteSettings(normalizePublicMedia(settingsResponse.data));
         }
       } catch (err) {
         if (!cancelled) {

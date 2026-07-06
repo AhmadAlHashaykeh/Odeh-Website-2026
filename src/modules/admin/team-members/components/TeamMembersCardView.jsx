@@ -32,8 +32,7 @@ export default function TeamMembersCardView({
               onClick={() => onMemberClick(member.id)}
               aria-label={`View ${member.fullName}`}
             >
-              <img
-                src={member.photo}
+              <img src={resolveMediaUrl(member.photo)}
                 alt={member.fullName}
                 className={styles.portrait}
                 loading="lazy"

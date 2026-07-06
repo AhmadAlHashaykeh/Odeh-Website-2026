@@ -177,8 +177,7 @@ export default function GallerySlider({
                     className={`${styles.thumb} ${index === activeIndex ? styles.thumbActive : ''}`}
                     onClick={() => goTo(index)}
                   >
-                    <img
-                      src={image.src}
+                    <img src={resolveMediaUrl(image.src)}
                       alt=""
                       aria-hidden="true"
                       loading="lazy"

@@ -73,8 +73,7 @@ export default function CategoriesTableView({
               </TableCell>
               <TableCell className={styles.thumbCol}>
                 <button type="button" onClick={() => onCategoryClick(category.id)}>
-                  <img
-                    src={category.coverImage}
+                  <img src={resolveMediaUrl(category.coverImage)}
                     alt={category.title}
                     className={styles.thumb}
                     loading="lazy"

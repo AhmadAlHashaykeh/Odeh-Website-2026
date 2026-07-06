@@ -34,7 +34,7 @@ function AboutPreview({ data }) {
   return (
     <div className={styles.aboutPreview}>
       <div className={styles.aboutImageWrap}>
-        <img src={data.image} alt={data.imageAlt} loading="lazy" />
+        <img src={resolveMediaUrl(data.image)} alt={data.imageAlt} loading="lazy" />
       </div>
       <div className={styles.aboutText}>
         <span className={styles.previewLabel}>{data.sectionLabel}</span>
@@ -59,7 +59,7 @@ function ServicesPreview({ data }) {
       <div className={styles.thumbGrid}>
         {preview.map((service) => (
           <div key={service.id} className={styles.thumbCard}>
-            <img src={service.image} alt={service.title} loading="lazy" />
+            <img src={resolveMediaUrl(service.image)} alt={service.title} loading="lazy" />
             <span className={styles.thumbLabel}>{service.title}</span>
           </div>
         ))}
@@ -83,7 +83,7 @@ function ProjectsPreview({ data }) {
       <div className={styles.projectsGrid}>
         {featured && (
           <div className={`${styles.projectCard} ${styles.projectFeatured}`}>
-            <img src={featured.image} alt={featured.title} loading="lazy" />
+            <img src={resolveMediaUrl(featured.image)} alt={featured.title} loading="lazy" />
             <div className={styles.projectMeta}>
               <span>{featured.category}</span>
               <strong>{featured.title}</strong>
@@ -94,7 +94,7 @@ function ProjectsPreview({ data }) {
           <div className={styles.projectStack}>
             {secondary.map((project) => (
               <div key={project.id} className={styles.projectCard}>
-                <img src={project.image} alt={project.title} loading="lazy" />
+                <img src={resolveMediaUrl(project.image)} alt={project.title} loading="lazy" />
                 <div className={styles.projectMeta}>
                   <span>{project.category}</span>
                   <strong>{project.title}</strong>

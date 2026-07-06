@@ -10,8 +10,7 @@ export default function ProjectCard({ project, priority = false }) {
         aria-label={`View project: ${project.title}`}
       >
         <div className={styles.imageWrap}>
-          <img
-            src={project.coverImage}
+          <img src={resolveMediaUrl(project.coverImage)}
             alt={project.title}
             className={styles.image}
             loading={priority ? 'eager' : 'lazy'}

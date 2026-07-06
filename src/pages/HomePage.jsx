@@ -8,11 +8,12 @@ import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getHome } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 import styles from './HomePage.module.css';
 
 export default function HomePage() {
   const { data, loading, error } = usePublicQuery(() => getHome(), []);
-  const home = data?.data;
+  const home = data?.data ? normalizePublicMedia(data.data) : undefined;
 
   useSeoMeta('/', {
     title: 'ODEH & PARTNERS DESIGN',

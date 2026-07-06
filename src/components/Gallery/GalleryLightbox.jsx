@@ -204,8 +204,7 @@ export default function GalleryLightbox({
         onPointerCancel={handlePointerUp}
       >
         <figure className={styles.figure} key={image.src}>
-          <img
-            src={image.src}
+          <img src={resolveMediaUrl(image.src)}
             alt={image.alt}
             className={styles.image}
             style={

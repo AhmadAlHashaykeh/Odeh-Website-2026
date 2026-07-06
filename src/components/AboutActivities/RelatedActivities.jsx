@@ -24,8 +24,7 @@ export default function RelatedActivities({ activities }) {
                 aria-label={`View activity: ${activity.title}`}
               >
                 <div className={styles.imageWrap}>
-                  <img
-                    src={activity.coverImage}
+                  <img src={resolveMediaUrl(activity.coverImage)}
                     alt={activity.title}
                     className={styles.image}
                     loading="lazy"
