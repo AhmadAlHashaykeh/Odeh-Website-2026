@@ -7,11 +7,11 @@ import {
   Pagination,
   DeleteModal,
   SelectionToolbar,
-  useAdminActionFlows,
   AdminActionFlowsHost,
 } from '../../cms/components';
+import * as servicesApi from '../../../../api/services';
+import { useModuleApiActions, handleListingDelete } from '../../hooks/useModuleApiActions';
 import { useServicesListing } from '../hooks/useServicesListing';
-import { adminServices } from '../mock/servicesData';
 import {
   servicesPageMeta,
   statusFilterOptions,
@@ -37,12 +37,13 @@ const BULK_FEEDBACK = {
 };
 
 export default function ServicesPage() {
-  const listing = useServicesListing({ items: adminServices, initialPerPage: 12 });
+  const listing = useServicesListing({ initialPerPage: 12 });
   const [bulkAction, setBulkAction] = useState(bulkActionOptions[0]?.value || '');
 
-  const flows = useAdminActionFlows({
+  const flows = useModuleApiActions({
     moduleKey: 'services',
-    onDeleteItem: listing.openDeleteForItem,
+    listing,
+    api: servicesApi,
   });
 
   useAdminBreadcrumbs(servicesPageMeta.topBarBreadcrumbs);
@@ -65,10 +66,8 @@ export default function ServicesPage() {
     }
   };
 
-  const handleDeleteConfirm = () => {
-    listing.closeDeleteModal();
-    listing.clearSelection();
-    flows.showFeedback('Selected service(s) deleted (preview mode)', 'info');
+  const handleDeleteConfirm = async () => {
+    await handleListingDelete(listing, flows);
   };
 
   const showEmpty = !listing.isLoading && listing.paginatedItems.length === 0;
@@ -110,7 +109,7 @@ export default function ServicesPage() {
             viewMode={listing.viewMode}
             onViewChange={listing.setViewMode}
             onRefresh={listing.simulateRefresh}
-            isRefreshing={listing.isLoading}
+            isRefreshing={listing.isRefreshing}
             onBulkActionsClick={listing.openDeleteModal}
             bulkActionsDisabled={listing.selectedIds.size === 0}
           />

@@ -1,8 +1,13 @@
+import { forwardRef } from 'react';
 import styles from './Form.module.css';
 
-export function Form({ children, className = '', onSubmit, ...rest }) {
+export const Form = forwardRef(function Form(
+  { children, className = '', onSubmit, ...rest },
+  ref,
+) {
   return (
     <form
+      ref={ref}
       className={`${styles.form} ${className}`}
       onSubmit={onSubmit}
       noValidate
@@ -11,7 +16,7 @@ export function Form({ children, className = '', onSubmit, ...rest }) {
       {children}
     </form>
   );
-}
+});
 
 export function FormSection({ title, children, className = '' }) {
   return (

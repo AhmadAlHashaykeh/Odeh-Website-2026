@@ -1,10 +1,11 @@
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { Modal, Button, Form, Badge, Input, Select } from '../../ui';
 import AdminIcon from '../../components/AdminIcons';
 import { SeoDelegationNotice } from '../components';
 import { CoverImageField, GalleryPlaceholder } from './PlaceholderFieldGroup';
 import { MODULE_FORM_SCHEMAS } from './moduleFormSchemas';
 import { mapItemToFormValues } from './mapItemToForm';
+import { getFirstFieldError } from './formErrors';
 import inputStyles from '../../ui/components/Input.module.css';
 import styles from './AdminFormDrawer.module.css';
 
@@ -39,8 +40,10 @@ function groupFieldsIntoRows(fields) {
   return rows;
 }
 
-function renderSelect(field, value) {
-  const options = (field.options || []).map((opt) => ({ value: opt, label: opt }));
+function renderSelect(field, value, error, disabled) {
+  const options = (field.options || []).map((opt) =>
+    typeof opt === 'string' ? { value: opt, label: opt } : opt,
+  );
 
   return (
     <Select
@@ -49,37 +52,44 @@ function renderSelect(field, value) {
       defaultValue={value || options[0]?.value}
       options={options}
       ariaLabel={field.label}
+      disabled={disabled}
+      error={error}
     />
   );
 }
 
-function renderField(field, values) {
+function renderField(field, values, fieldErrors, disabled) {
   const value = values[field.name] ?? '';
+  const error = getFirstFieldError(fieldErrors, field.name);
 
   switch (field.type) {
     case 'textarea':
       return (
-        <Input.Field>
+        <Input.Field error={error}>
           <textarea
             id={field.name}
             name={field.name}
             className={`${inputStyles.input} ${inputStyles.textarea}`}
             defaultValue={value}
             rows={field.rows || 4}
+            disabled={disabled}
+            aria-invalid={error ? true : undefined}
           />
         </Input.Field>
       );
     case 'select':
-      return renderSelect(field, value);
+      return renderSelect(field, value, error, disabled);
     case 'number':
       return (
-        <Input.Field>
+        <Input.Field error={error}>
           <input
             id={field.name}
             name={field.name}
             type="number"
             className={inputStyles.input}
             defaultValue={value}
+            disabled={disabled}
+            aria-invalid={error ? true : undefined}
           />
         </Input.Field>
       );
@@ -100,24 +110,28 @@ function renderField(field, values) {
       );
     default:
       return (
-        <Input.Field>
+        <Input.Field error={error}>
           <input
             id={field.name}
             name={field.name}
             type="text"
             className={inputStyles.input}
             defaultValue={value}
+            disabled={disabled}
+            aria-invalid={error ? true : undefined}
           />
         </Input.Field>
       );
   }
 }
 
-function renderFieldGroup(field, values) {
+function renderFieldGroup(field, values, fieldErrors, disabled) {
+  const error = getFirstFieldError(fieldErrors, field.name);
+
   if (field.type === 'cover' || field.type === 'gallery') {
     return (
       <div key={field.name} className={styles.mediaField}>
-        {renderField(field, values)}
+        {renderField(field, values, fieldErrors, disabled)}
       </div>
     );
   }
@@ -128,9 +142,10 @@ function renderFieldGroup(field, values) {
       label={field.label}
       required={field.required}
       helper={field.helper}
+      error={error}
       htmlFor={field.name}
     >
-      {renderField(field, values)}
+      {renderField(field, values, fieldErrors, disabled)}
     </Form.Field>
   );
 }
@@ -142,36 +157,57 @@ export default function AdminFormDrawer({
   mode = 'add',
   item = null,
   onSave,
+  fieldErrors = {},
+  submitting = false,
+  fieldOptions = {},
 }) {
+  const formRef = useRef(null);
   const schema = MODULE_FORM_SCHEMAS[moduleKey];
   const values = useMemo(
     () => (mode === 'edit' ? mapItemToFormValues(moduleKey, item) : {}),
     [moduleKey, mode, item],
   );
 
-  const title = mode === 'edit' ? schema?.editTitle : schema?.addTitle;
+  const resolvedSchema = useMemo(() => {
+    if (!schema) return null;
+
+    return {
+      ...schema,
+      sections: schema.sections.map((section) => ({
+        ...section,
+        fields: section.fields.map((field) => {
+          if (fieldOptions[field.name]) {
+            return { ...field, options: fieldOptions[field.name] };
+          }
+          return field;
+        }),
+      })),
+    };
+  }, [schema, fieldOptions]);
+
+  const title = mode === 'edit' ? resolvedSchema?.editTitle : resolvedSchema?.addTitle;
   const formKey = `${moduleKey}-${mode}-${item?.id ?? 'new'}`;
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.();
+    onSave?.(formRef.current);
   };
 
-  if (!schema) return null;
+  if (!resolvedSchema) return null;
 
   const modalHeader = (
     <div className={styles.modalHeader}>
       <div className={styles.headerContent}>
-        {schema.badge && (
+        {resolvedSchema.badge && (
           <Badge variant="info" className={styles.moduleBadge}>
-            {schema.badge}
+            {resolvedSchema.badge}
           </Badge>
         )}
         <h2 id="admin-form-modal-title" className={styles.modalTitle}>
           {title}
         </h2>
-        {schema.subtitle && (
-          <p className={styles.modalSubtitle}>{schema.subtitle}</p>
+        {resolvedSchema.subtitle && (
+          <p className={styles.modalSubtitle}>{resolvedSchema.subtitle}</p>
         )}
       </div>
       <button
@@ -179,6 +215,7 @@ export default function AdminFormDrawer({
         className={styles.closeBtn}
         onClick={onClose}
         aria-label="Close modal"
+        disabled={submitting}
       >
         <AdminIcon name="close" size={18} />
       </button>
@@ -187,13 +224,15 @@ export default function AdminFormDrawer({
 
   const modalFooter = (
     <>
-      <Button variant="secondary" onClick={onClose}>
+      <Button variant="secondary" onClick={onClose} disabled={submitting}>
         Cancel
       </Button>
       <Button
         variant="primary"
         icon={<AdminIcon name="check" size={16} />}
         onClick={handleSave}
+        loading={submitting}
+        disabled={submitting}
       >
         {mode === 'edit' ? 'Save Changes' : 'Save Item'}
       </Button>
@@ -209,28 +248,32 @@ export default function AdminFormDrawer({
       footer={modalFooter}
       ariaLabelledBy="admin-form-modal-title"
     >
-      <Form key={formKey} onSubmit={handleSave} className={styles.form}>
-        {schema.sections.map((section) => (
+      <Form
+        key={formKey}
+        ref={formRef}
+        onSubmit={handleSave}
+        className={styles.form}
+      >
+        {resolvedSchema.sections.map((section) => (
           <Form.Section key={section.title} title={section.title}>
             {groupFieldsIntoRows(section.fields).map((row, rowIndex) => {
               if (row.length === 1) {
-                return renderFieldGroup(row[0], values);
+                return renderFieldGroup(row[0], values, fieldErrors, submitting);
               }
 
               return (
                 <Form.Row key={`${section.title}-row-${rowIndex}`}>
-                  {row.map((field) => renderFieldGroup(field, values))}
+                  {row.map((field) =>
+                    renderFieldGroup(field, values, fieldErrors, submitting),
+                  )}
                 </Form.Row>
               );
             })}
           </Form.Section>
         ))}
-        {schema.seoDelegation && (
+        {resolvedSchema.seoDelegation && (
           <Form.Section title="SEO">
-            <SeoDelegationNotice
-              seoStatus={item?.seoStatus ?? 'pending'}
-              compact
-            />
+            <SeoDelegationNotice seoStatus={item?.seoStatus ?? 'pending'} compact />
           </Form.Section>
         )}
       </Form>

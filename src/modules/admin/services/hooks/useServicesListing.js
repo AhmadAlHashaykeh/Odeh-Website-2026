@@ -1,191 +1,80 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { adminServices } from '../mock/servicesData';
+import { useCallback, useMemo, useState } from 'react';
+import * as servicesApi from '../../../../api/services';
+import { COMMON_SORT_MAP, mapSortKey } from '../../../../api/utils';
+import { useApiListing } from '../../hooks/useApiListing';
+import { buildCountStatistics } from '../../hooks/listingStatistics';
 
 const ALL = 'all';
 
-function sortServices(items, sortBy) {
-  const sorted = [...items];
+const SORT_MAP = { ...COMMON_SORT_MAP };
 
-  switch (sortBy) {
-    case 'title_asc':
-      return sorted.sort((a, b) => a.title.localeCompare(b.title));
-    case 'title_desc':
-      return sorted.sort((a, b) => b.title.localeCompare(a.title));
-    case 'order_asc':
-      return sorted.sort((a, b) => a.displayOrder - b.displayOrder);
-    case 'updated_asc':
-      return sorted.sort((a, b) => new Date(a.lastUpdated) - new Date(b.lastUpdated));
-    case 'updated_desc':
-    default:
-      return sorted.sort((a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated));
-  }
-}
-
-export function useServicesListing({ items = adminServices, initialPerPage = 12 } = {}) {
-  const [viewMode, setViewMode] = useState('card');
-  const [searchQuery, setSearchQuery] = useState('');
+export function useServicesListing({ initialPerPage = 12 } = {}) {
   const [statusFilter, setStatusFilter] = useState(ALL);
   const [homepageFilter, setHomepageFilter] = useState(ALL);
   const [seoFilter, setSeoFilter] = useState(ALL);
   const [sortBy, setSortBy] = useState('order_asc');
-  const [selectedIds, setSelectedIds] = useState(() => new Set());
-  const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(initialPerPage);
-  const [isLoading, setIsLoading] = useState(false);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [activeServiceId, setActiveServiceId] = useState(null);
 
-  const filteredItems = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
-
-    let result = items.filter((service) => {
-      if (statusFilter !== ALL && service.status !== statusFilter) return false;
-      if (homepageFilter === 'yes' && !service.usedOnHomepage) return false;
-      if (homepageFilter === 'no' && service.usedOnHomepage) return false;
-      if (seoFilter !== ALL && service.seoStatus !== seoFilter) return false;
-
-      if (!query) return true;
-
-      const searchable = [
-        service.title,
-        service.slug,
-        service.description,
-        service.descriptionPreview,
-        service.metaTitle,
-        service.metaDescription,
-      ];
-
-      return searchable.some((value) => value && String(value).toLowerCase().includes(query));
-    });
-
-    return sortServices(result, sortBy);
-  }, [items, searchQuery, statusFilter, homepageFilter, seoFilter, sortBy]);
-
-  const totalPages = Math.max(1, Math.ceil(filteredItems.length / perPage));
-
-  const paginatedItems = useMemo(() => {
-    const start = (currentPage - 1) * perPage;
-    return filteredItems.slice(start, start + perPage);
-  }, [filteredItems, currentPage, perPage]);
-
-  const activeService = useMemo(
-    () => items.find((service) => service.id === activeServiceId) ?? null,
-    [items, activeServiceId],
+  const queryState = useMemo(
+    () => ({ statusFilter, homepageFilter, sortBy }),
+    [statusFilter, homepageFilter, sortBy],
   );
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchQuery, statusFilter, homepageFilter, seoFilter, sortBy, perPage]);
+  const buildQueryParams = useCallback(
+    ({ page, perPage, search, statusFilter: status, homepageFilter: homepage, sortBy: sort }) => {
+      const params = {
+        page,
+        per_page: perPage,
+        sort: mapSortKey(sort, SORT_MAP),
+      };
 
-  useEffect(() => {
-    if (currentPage > totalPages) setCurrentPage(totalPages);
-  }, [currentPage, totalPages]);
+      if (search) params.search = search;
+      if (status !== ALL) params.status = status;
+      if (homepage === 'yes') params.homepage = true;
+      if (homepage === 'no') params.homepage = false;
 
-  const statistics = useMemo(() => {
-    const weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
-
-    return [
-      {
-        id: 'total',
-        label: 'Total Services',
-        value: items.length,
-        helper: 'Engineering offerings',
-      },
-      {
-        id: 'published',
-        label: 'Published',
-        value: items.filter((service) => service.status === 'published').length,
-        helper: 'Live on website',
-      },
-      {
-        id: 'hidden',
-        label: 'Hidden',
-        value: items.filter((service) => service.status === 'hidden').length,
-        helper: 'Not publicly listed',
-      },
-      {
-        id: 'homepage',
-        label: 'Used On Homepage',
-        value: items.filter((service) => service.usedOnHomepage).length,
-        helper: 'Carousel visibility',
-      },
-      {
-        id: 'draft',
-        label: 'Draft',
-        value: items.filter((service) => service.status === 'draft').length,
-        helper: 'In progress',
-      },
-      {
-        id: 'recent',
-        label: 'Recently Updated',
-        value: items.filter((service) => new Date(service.lastUpdated).getTime() >= weekAgo).length,
-        helper: 'Last 7 days',
-      },
-    ];
-  }, [items]);
-
-  const toggleSelect = useCallback((id) => {
-    setSelectedIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  }, []);
-
-  const toggleSelectAll = useCallback(() => {
-    setSelectedIds((prev) => {
-      const pageIds = paginatedItems.map((service) => service.id);
-      const allSelected = pageIds.every((id) => prev.has(id));
-
-      if (allSelected) {
-        const next = new Set(prev);
-        pageIds.forEach((id) => next.delete(id));
-        return next;
-      }
-
-      const next = new Set(prev);
-      pageIds.forEach((id) => next.add(id));
-      return next;
-    });
-  }, [paginatedItems]);
-
-  const clearSelection = useCallback(() => setSelectedIds(new Set()), []);
-
-  const isAllPageSelected = useMemo(
-    () => paginatedItems.length > 0 && paginatedItems.every((service) => selectedIds.has(service.id)),
-    [paginatedItems, selectedIds],
+      return params;
+    },
+    [],
   );
 
-  const isSomePageSelected = useMemo(
-    () => paginatedItems.some((service) => selectedIds.has(service.id)),
-    [paginatedItems, selectedIds],
+  const statisticsFn = useCallback(
+    () =>
+      buildCountStatistics(servicesApi.list, [
+        { id: 'total', label: 'Total Services', helper: 'Service offerings', params: {} },
+        {
+          id: 'published',
+          label: 'Published',
+          helper: 'Visible on website',
+          params: { status: 'published' },
+        },
+        {
+          id: 'homepage',
+          label: 'On Homepage',
+          helper: 'Home carousel',
+          params: { homepage: true },
+        },
+        {
+          id: 'hidden',
+          label: 'Hidden',
+          helper: 'Not publicly visible',
+          params: { status: 'hidden' },
+        },
+      ]),
+    [],
   );
 
-  const simulateRefresh = useCallback(() => {
-    setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 1200);
-  }, []);
-
-  const openDeleteModal = useCallback(() => {
-    if (selectedIds.size > 0) setDeleteModalOpen(true);
-  }, [selectedIds.size]);
-
-  const openDeleteForItem = useCallback((item) => {
-    setSelectedIds(new Set([item.id]));
-    setDeleteModalOpen(true);
-  }, []);
-
-  const closeDeleteModal = useCallback(() => setDeleteModalOpen(false), []);
-
-  const openService = useCallback((id) => setActiveServiceId(id), []);
-  const closeService = useCallback(() => setActiveServiceId(null), []);
+  const listing = useApiListing({
+    listFn: servicesApi.list,
+    destroyFn: servicesApi.destroy,
+    showFn: servicesApi.show,
+    buildQueryParams,
+    queryState,
+    initialPerPage,
+    statisticsFn,
+  });
 
   return {
-    viewMode,
-    setViewMode,
-    searchQuery,
-    setSearchQuery,
+    ...listing,
     statusFilter,
     setStatusFilter,
     homepageFilter,
@@ -194,30 +83,9 @@ export function useServicesListing({ items = adminServices, initialPerPage = 12 
     setSeoFilter,
     sortBy,
     setSortBy,
-    selectedIds,
-    toggleSelect,
-    toggleSelectAll,
-    clearSelection,
-    isAllPageSelected,
-    isSomePageSelected,
-    currentPage,
-    setCurrentPage,
-    perPage,
-    setPerPage,
-    isLoading,
-    simulateRefresh,
-    deleteModalOpen,
-    openDeleteModal,
-    openDeleteForItem,
-    closeDeleteModal,
-    filteredItems,
-    paginatedItems,
-    totalPages,
-    statistics,
-    totalItems: filteredItems.length,
-    activeService,
-    activeServiceId,
-    openService,
-    closeService,
+    simulateRefresh: listing.refresh,
+    activeService: listing.activeItem,
+    openService: listing.openItem,
+    closeService: listing.closeItem,
   };
 }

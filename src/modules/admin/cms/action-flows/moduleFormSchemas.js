@@ -14,7 +14,6 @@ export const MODULE_FORM_SCHEMAS = {
         title: 'Project Details',
         fields: [
           { name: 'title', label: 'Project Title', type: 'text', required: true },
-          { name: 'slug', label: 'Slug', type: 'text', helper: 'URL-friendly identifier' },
           { name: 'category', label: 'Category', type: 'select', options: ['Commercial', 'Residential', 'Hospitality', 'Infrastructure'] },
           { name: 'description', label: 'Description', type: 'textarea', rows: 4, fullWidth: true },
         ],
@@ -58,7 +57,6 @@ export const MODULE_FORM_SCHEMAS = {
         title: 'Category Details',
         fields: [
           { name: 'title', label: 'Category Title', type: 'text', required: true },
-          { name: 'slug', label: 'Slug', type: 'text' },
           { name: 'description', label: 'Description', type: 'textarea', rows: 4, fullWidth: true },
         ],
       },
@@ -130,7 +128,6 @@ export const MODULE_FORM_SCHEMAS = {
         title: 'Service Details',
         fields: [
           { name: 'title', label: 'Title', type: 'text', required: true },
-          { name: 'slug', label: 'Slug', type: 'text', helper: 'URL-friendly identifier' },
           { name: 'description', label: 'Description', type: 'textarea', rows: 4, fullWidth: true },
         ],
       },
@@ -168,7 +165,6 @@ export const MODULE_FORM_SCHEMAS = {
         title: 'Activity Details',
         fields: [
           { name: 'title', label: 'Activity Title', type: 'text', required: true },
-          { name: 'slug', label: 'Slug', type: 'text' },
           { name: 'location', label: 'Location', type: 'text' },
           { name: 'description', label: 'Description', type: 'textarea', rows: 4, fullWidth: true },
         ],
@@ -209,7 +205,6 @@ export const MODULE_FORM_SCHEMAS = {
         title: 'Job Details',
         fields: [
           { name: 'title', label: 'Job Title', type: 'text', required: true },
-          { name: 'slug', label: 'Slug', type: 'text', helper: 'URL-friendly identifier' },
           { name: 'department', label: 'Department', type: 'select', options: ['Structural Engineering', 'BIM & Digital Delivery', 'Site Supervision', 'Estimation & Planning'] },
           { name: 'location', label: 'Location', type: 'text' },
         ],

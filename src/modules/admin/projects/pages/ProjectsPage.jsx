@@ -7,11 +7,11 @@ import {
   Pagination,
   DeleteModal,
   SelectionToolbar,
-  useAdminActionFlows,
   AdminActionFlowsHost,
 } from '../../cms/components';
+import * as projectsApi from '../../../../api/projects';
+import { useModuleApiActions, handleListingDelete } from '../../hooks/useModuleApiActions';
 import { useProjectsListing } from '../hooks/useProjectsListing';
-import { adminProjects } from '../mock/projectsData';
 import {
   projectsPageMeta,
   statusFilterOptions,
@@ -29,12 +29,25 @@ import ProjectsSkeleton from '../components/ProjectsSkeleton';
 import styles from './ProjectsPage.module.css';
 
 export default function ProjectsPage() {
-  const listing = useProjectsListing({ items: adminProjects, initialPerPage: 10 });
+  const listing = useProjectsListing({ initialPerPage: 10 });
   const [bulkAction, setBulkAction] = useState(bulkActionOptions[0]?.value || '');
 
-  const flows = useAdminActionFlows({
+  const fieldOptions = useMemo(
+    () => ({
+      category: listing.categoryRecords.map((category) => ({
+        value: category.title,
+        label: category.title,
+      })),
+    }),
+    [listing.categoryRecords],
+  );
+
+  const flows = useModuleApiActions({
     moduleKey: 'projects',
-    onDeleteItem: listing.openDeleteForItem,
+    listing,
+    api: projectsApi,
+    apiContext: { categories: listing.categoryRecords },
+    enableGallery: true,
   });
 
   useAdminBreadcrumbs(projectsPageMeta.topBarBreadcrumbs);
@@ -72,9 +85,8 @@ export default function ProjectsPage() {
     if (bulkAction === 'delete') listing.openDeleteModal();
   };
 
-  const handleDeleteConfirm = () => {
-    listing.closeDeleteModal();
-    listing.clearSelection();
+  const handleDeleteConfirm = async () => {
+    await handleListingDelete(listing, flows);
   };
 
   const showEmpty = !listing.isLoading && listing.paginatedItems.length === 0;
@@ -125,7 +137,7 @@ export default function ProjectsPage() {
             viewMode={listing.viewMode}
             onViewChange={listing.setViewMode}
             onRefresh={listing.simulateRefresh}
-            isRefreshing={listing.isLoading}
+            isRefreshing={listing.isRefreshing}
             onBulkActionsClick={listing.openDeleteModal}
             bulkActionsDisabled={listing.selectedIds.size === 0}
           />
@@ -202,6 +214,7 @@ export default function ProjectsPage() {
         moduleKey="projects"
         flows={flows}
         showGallery
+        fieldOptions={fieldOptions}
       />
     </div>
   );

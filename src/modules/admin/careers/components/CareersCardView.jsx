@@ -1,5 +1,5 @@
 import AdminIcon from '../../components/AdminIcons';
-import { isClosingSoon } from '../mock/careersData';
+import { isClosingSoon } from '../utils/jobUtils';
 import JobQuickActions from './JobQuickActions';
 import styles from './CareersCardView.module.css';
 

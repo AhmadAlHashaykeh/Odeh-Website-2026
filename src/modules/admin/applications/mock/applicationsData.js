@@ -3,7 +3,12 @@
  * Frontend-only — no API integration.
  */
 
-import { adminJobs } from '../../careers/mock/careersData';
+import { jobs } from '../../../../data/careers';
+
+const adminJobs = jobs.map((job, index) => ({
+  ...job,
+  applicationsCount: ((index % 4) + 1),
+}));
 
 const STATUSES = ['new', 'reviewed', 'shortlisted', 'rejected', 'hired'];
 const SOURCES = ['Website Form', 'LinkedIn', 'Referral', 'Job Board', 'Careers Page'];

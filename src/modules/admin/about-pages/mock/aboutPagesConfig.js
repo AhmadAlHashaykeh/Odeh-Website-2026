@@ -1,7 +1,16 @@
 import { teamContent } from '../../../../data/teamContent';
 import { activitiesContent } from '../../../../data/activitiesContent';
-import { adminTeamMembers } from '../../team-members/mock/teamMembersData';
-import { adminActivities } from '../../activities/mock/activitiesData';
+
+const adminTeamMembers = (teamContent.members || []).map((member) => ({
+  ...member,
+  fullName: member.name,
+  status: 'active',
+}));
+
+const adminActivities = (activitiesContent.activities || []).map((activity) => ({
+  ...activity,
+  published: true,
+}));
 import {
   initialOverviewData,
   initialApproachData,

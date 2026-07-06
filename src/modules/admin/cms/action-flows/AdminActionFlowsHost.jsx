@@ -14,6 +14,7 @@ export default function AdminActionFlowsHost({
   showLinked = false,
   linkedItemsKey = 'projectPreviews',
   linkedTitle = 'Manage Projects',
+  fieldOptions = {},
 }) {
   const galleryItem = flows.galleryDrawer.item;
   const linkedItem = flows.linkedDrawer.item;
@@ -27,6 +28,9 @@ export default function AdminActionFlowsHost({
         mode={flows.formDrawer.mode}
         item={flows.formDrawer.item}
         onSave={flows.handleFormSave}
+        fieldErrors={flows.formErrors}
+        submitting={flows.isSubmitting}
+        fieldOptions={fieldOptions}
       />
 
       {showGallery && (

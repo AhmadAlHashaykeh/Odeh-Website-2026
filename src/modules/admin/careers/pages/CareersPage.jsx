@@ -8,11 +8,11 @@ import {
   Pagination,
   DeleteModal,
   SelectionToolbar,
-  useAdminActionFlows,
   AdminActionFlowsHost,
 } from '../../cms/components';
+import * as jobsApi from '../../../../api/jobs';
+import { useModuleApiActions, handleListingDelete } from '../../hooks/useModuleApiActions';
 import { useCareersListing } from '../hooks/useCareersListing';
-import { adminJobs } from '../mock/careersData';
 import {
   careersPageMeta,
   statusFilterOptions,
@@ -39,12 +39,13 @@ const BULK_FEEDBACK = {
 
 export default function CareersPage() {
   const navigate = useNavigate();
-  const listing = useCareersListing({ items: adminJobs, initialPerPage: 12 });
+  const listing = useCareersListing({ initialPerPage: 12 });
   const [bulkAction, setBulkAction] = useState(bulkActionOptions[0]?.value || '');
 
-  const flows = useAdminActionFlows({
+  const flows = useModuleApiActions({
     moduleKey: 'careers',
-    onDeleteItem: listing.openDeleteForItem,
+    listing,
+    api: jobsApi,
   });
 
   const handleJobAction = useCallback((actionId, item) => {
@@ -83,10 +84,8 @@ export default function CareersPage() {
     }
   };
 
-  const handleDeleteConfirm = () => {
-    listing.closeDeleteModal();
-    listing.clearSelection();
-    flows.showFeedback('Selected job(s) deleted (preview mode)', 'info');
+  const handleDeleteConfirm = async () => {
+    await handleListingDelete(listing, flows);
   };
 
   const showEmpty = !listing.isLoading && listing.paginatedItems.length === 0;
@@ -134,7 +133,7 @@ export default function CareersPage() {
             viewMode={listing.viewMode}
             onViewChange={listing.setViewMode}
             onRefresh={listing.simulateRefresh}
-            isRefreshing={listing.isLoading}
+            isRefreshing={listing.isRefreshing}
             onBulkActionsClick={listing.openDeleteModal}
             bulkActionsDisabled={listing.selectedIds.size === 0}
           />
