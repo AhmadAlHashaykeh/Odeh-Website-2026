@@ -4,19 +4,28 @@ import { useHeroDepth } from '../../hooks/useHeroDepth';
 import { useHeroVideo } from '../../hooks/useHeroVideo';
 import styles from './Hero.module.css';
 
-const HERO_POSTER = '/hero-poster.jpg';
-const HERO_VIDEO = '/video-slider.mp4';
-
-const stats = [
+const DEFAULT_STATS = [
   { value: '1000+', label: 'Projects Delivered' },
   { value: '7+', label: 'Years of Practice' },
   { value: 'Middle East', label: 'Regional Focus' },
 ];
 
-export default function Hero() {
+export default function Hero({ content = {} }) {
   const { heroRef, videoRef } = useHeroDepth();
   const { videoElRef, videoReady, videoFailed } = useHeroVideo();
   const showVideo = videoReady && !videoFailed;
+
+  const posterImage = content.posterImage ?? '/hero-poster.jpg';
+  const videoSrc = content.videoSrc ?? '/video-slider.mp4';
+  const stats = content.stats ?? DEFAULT_STATS;
+  const badge = content.badge ?? 'Trusted Structural Engineering Partner Across the Middle East';
+  const headingMain = content.headingMain ?? 'ODEH & PARTNERS';
+  const headingAccent = content.headingAccent ?? 'DESIGN';
+  const description =
+    content.description ??
+    'Delivering innovative structural engineering and design solutions across the Middle East with expertise, precision, and sustainability.';
+  const primaryCta = content.primaryCta ?? { label: 'Explore Projects', path: '/projects' };
+  const secondaryCta = content.secondaryCta ?? { label: 'Reach Out', path: '/reach-out' };
 
   return (
     <section ref={heroRef} className={styles.hero} aria-label="Hero">
@@ -26,7 +35,7 @@ export default function Hero() {
             <div className={styles.mediaStack}>
               <img
                 className={`${styles.poster} ${showVideo ? styles.posterHidden : ''}`}
-                src={HERO_POSTER}
+                src={posterImage}
                 alt=""
                 aria-hidden="true"
                 fetchPriority="high"
@@ -44,7 +53,7 @@ export default function Hero() {
                 preload="metadata"
                 aria-hidden="true"
               >
-                <source src={HERO_VIDEO} type="video/mp4" />
+                <source src={videoSrc} type="video/mp4" />
               </video>
             </div>
           </div>
@@ -62,11 +71,7 @@ export default function Hero() {
         <div className={styles.main}>
           <div className={styles.badge}>
             <span className={styles.badgeIcon} aria-hidden="true">
-              <svg
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M2 13.5L8 2.5L14 13.5"
                   stroke="currentColor"
@@ -88,21 +93,16 @@ export default function Hero() {
                 />
               </svg>
             </span>
-            <span className={styles.badgeText}>
-              Trusted Structural Engineering Partner Across the Middle East
-            </span>
+            <span className={styles.badgeText}>{badge}</span>
           </div>
 
           <div className={styles.titleBlock}>
             <h1 className={styles.title}>
-              ODEH & PARTNERS <span className={styles.titleAccent}>DESIGN</span>
+              {headingMain} <span className={styles.titleAccent}>{headingAccent}</span>
             </h1>
           </div>
 
-          <p className={styles.description}>
-            Delivering innovative structural engineering and design solutions across the Middle
-            East with expertise, precision, and sustainability.
-          </p>
+          <p className={styles.description}>{description}</p>
 
           <div className={styles.statsStrip} aria-label="Company highlights">
             {stats.map((stat, index) => (
@@ -117,11 +117,11 @@ export default function Hero() {
           </div>
 
           <div className={styles.actions}>
-            <Link to="/projects" className="btn btn-primary">
-              Explore Projects
+            <Link to={primaryCta.path} className="btn btn-primary">
+              {primaryCta.label}
             </Link>
-            <Link to="/reach-out" className="btn btn-secondary">
-              Reach Out
+            <Link to={secondaryCta.path} className="btn btn-secondary">
+              {secondaryCta.label}
             </Link>
           </div>
         </div>

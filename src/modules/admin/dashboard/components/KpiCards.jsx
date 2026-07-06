@@ -1,7 +1,8 @@
+import { useMemo, useState } from 'react';
 import { useScrollReveal } from '../../../../hooks/useScrollReveal';
 import AdminIcon from '../../components/AdminIcons';
 import { useCounterAnimation } from '../../hooks/useCounterAnimation';
-import { kpiCards } from '../mock/dashboardData';
+import { useDashboardStats } from '../hooks/useDashboardStats';
 import styles from './KpiCards.module.css';
 
 function KpiCard({ card, index }) {
@@ -28,10 +29,25 @@ function KpiCard({ card, index }) {
 }
 
 export default function KpiCards() {
+  const { kpiCards, isLoading } = useDashboardStats();
+  const cards = useMemo(() => (isLoading ? [] : kpiCards), [isLoading, kpiCards]);
+
+  if (isLoading) {
+    return (
+      <section className={styles.section} aria-label="Key performance indicators">
+        <div className={styles.grid}>
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} className={`${styles.card} ${styles.skeleton}`} aria-hidden="true" />
+          ))}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={styles.section} aria-label="Key performance indicators">
       <div className={styles.grid}>
-        {kpiCards.map((card, index) => (
+        {cards.map((card, index) => (
           <KpiCard key={card.id} card={card} index={index} />
         ))}
       </div>

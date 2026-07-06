@@ -7,11 +7,11 @@ import {
   Pagination,
   DeleteModal,
   SelectionToolbar,
-  useAdminActionFlows,
   AdminActionFlowsHost,
 } from '../../cms/components';
+import * as teamApi from '../../../../api/team';
+import { useModuleApiActions, handleListingDelete } from '../../hooks/useModuleApiActions';
 import { useTeamMembersListing } from '../hooks/useTeamMembersListing';
-import { adminTeamMembers } from '../mock/teamMembersData';
 import {
   teamMembersPageMeta,
   statusFilterOptions,
@@ -29,12 +29,13 @@ import TeamMembersSkeleton from '../components/TeamMembersSkeleton';
 import styles from './TeamMembersPage.module.css';
 
 export default function TeamMembersPage() {
-  const listing = useTeamMembersListing({ items: adminTeamMembers, initialPerPage: 12 });
+  const listing = useTeamMembersListing({ initialPerPage: 12 });
   const [bulkAction, setBulkAction] = useState(bulkActionOptions[0]?.value || '');
 
-  const flows = useAdminActionFlows({
+  const flows = useModuleApiActions({
     moduleKey: 'team-members',
-    onDeleteItem: listing.openDeleteForItem,
+    listing,
+    api: teamApi,
   });
 
   useAdminBreadcrumbs(teamMembersPageMeta.topBarBreadcrumbs);
@@ -56,9 +57,8 @@ export default function TeamMembersPage() {
     if (bulkAction === 'delete') listing.openDeleteModal();
   };
 
-  const handleDeleteConfirm = () => {
-    listing.closeDeleteModal();
-    listing.clearSelection();
+  const handleDeleteConfirm = async () => {
+    await handleListingDelete(listing, flows);
   };
 
   const showEmpty = !listing.isLoading && listing.paginatedItems.length === 0;
@@ -103,7 +103,7 @@ export default function TeamMembersPage() {
             viewMode={listing.viewMode}
             onViewChange={listing.setViewMode}
             onRefresh={listing.simulateRefresh}
-            isRefreshing={listing.isLoading}
+            isRefreshing={listing.isRefreshing}
             onBulkActionsClick={listing.openDeleteModal}
             bulkActionsDisabled={listing.selectedIds.size === 0}
           />

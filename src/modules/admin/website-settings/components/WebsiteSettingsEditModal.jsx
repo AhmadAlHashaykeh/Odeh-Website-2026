@@ -200,7 +200,7 @@ export default function WebsiteSettingsEditModal({ open, editKey, settings, onCl
         <h2 id="ws-edit-title" className={drawerStyles.title}>
           Edit {title}
         </h2>
-        <p className={drawerStyles.subtitle}>Changes apply in preview mode only.</p>
+        <p className={drawerStyles.subtitle}>Update global website settings.</p>
       </div>
       <button type="button" className={drawerStyles.closeBtn} onClick={onClose} aria-label="Close">
         <AdminIcon name="close" size={18} />

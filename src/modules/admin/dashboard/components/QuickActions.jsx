@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../../../hooks/useScrollReveal';
 import AdminIcon from '../../components/AdminIcons';
-import { quickActions } from '../mock/dashboardData';
 import styles from './QuickActions.module.css';
+
+const quickActions = [
+  { id: 'projects', label: 'Add Project', path: '/admin/projects', icon: 'projects' },
+  { id: 'messages', label: 'View Messages', path: '/admin/contact-messages', icon: 'messages' },
+  { id: 'applications', label: 'Review Applications', path: '/admin/applications', icon: 'applications' },
+  { id: 'seo', label: 'Manage SEO', path: '/admin/seo', icon: 'seo' },
+];
 
 export default function QuickActions() {
   const headingRef = useScrollReveal(0.1);

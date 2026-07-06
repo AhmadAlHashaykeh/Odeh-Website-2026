@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { ApiError } from '../../api/client';
+import { submitJobApplication } from '../../api/public/jobApplications';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { getJobApplyThankYouPath, getJobPath } from '../../data/careers';
+import { getJobApplyThankYouPath, getJobPath } from '../../utils/contentPaths';
 import styles from './JobApplicationForm.module.css';
 
 const ACCEPTED_CV_TYPES = [
@@ -110,6 +112,8 @@ export default function JobApplicationForm({ job }) {
   const [cvFile, setCvFile] = useState(null);
   const [cvName, setCvName] = useState('');
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const fileInputRef = useRef(null);
   const sectionRef = useScrollReveal(0.08);
   const navigate = useNavigate();
@@ -138,13 +142,44 @@ export default function JobApplicationForm({ job }) {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const nextErrors = validateForm(form, cvFile);
     setErrors(nextErrors);
+    setSubmitError('');
 
-    if (Object.keys(nextErrors).length === 0) {
+    if (Object.keys(nextErrors).length > 0) return;
+
+    const formData = new FormData();
+    formData.append('fullName', form.fullName.trim());
+    formData.append('email', form.email.trim());
+    formData.append('phone', form.phone.trim());
+    formData.append('location', form.location.trim());
+    formData.append('yearsOfExperience', form.yearsOfExperience.trim());
+    formData.append('linkedin', form.linkedin.trim());
+    formData.append('coverLetter', form.coverLetter.trim());
+    formData.append('cv', cvFile);
+
+    setIsSubmitting(true);
+
+    try {
+      await submitJobApplication(job.slug, formData);
       navigate(getJobApplyThankYouPath(job), { replace: true, state: { submitted: true } });
+    } catch (error) {
+      if (error instanceof ApiError && error.errors) {
+        const apiErrors = {};
+        for (const [field, messages] of Object.entries(error.errors)) {
+          const key = field === 'linkedin_url' ? 'linkedin' : field === 'years_of_experience' ? 'yearsOfExperience' : field === 'full_name' ? 'fullName' : field === 'cover_letter' ? 'coverLetter' : field;
+          apiErrors[key] = messages[0];
+        }
+        setErrors(apiErrors);
+      } else {
+        setSubmitError(
+          error instanceof ApiError ? error.message : 'Unable to submit your application. Please try again.',
+        );
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -323,12 +358,18 @@ export default function JobApplicationForm({ job }) {
               </div>
             </FormSection>
 
+            {submitError && (
+              <p className={styles.error} role="alert">
+                {submitError}
+              </p>
+            )}
+
             <div className={styles.actions}>
               <Link to={getJobPath(job)} className="btn btn-secondary">
                 Back to Role
               </Link>
-              <button type="submit" className="btn btn-primary">
-                Submit Application
+              <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting…' : 'Submit Application'}
               </button>
             </div>
           </form>

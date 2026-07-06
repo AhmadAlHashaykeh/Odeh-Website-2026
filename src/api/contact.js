@@ -1,5 +1,7 @@
+import { apiClient, ApiError } from './client';
+
 /**
- * Contact form submission — prepared for future API integration.
+ * Submit a public contact / reach-out form message.
  *
  * @param {Object} payload
  * @param {string} payload.fullName
@@ -8,19 +10,10 @@
  * @param {string} [payload.company]
  * @param {string} payload.subject
  * @param {string} payload.message
- * @returns {Promise<{ success: boolean }>}
+ * @returns {Promise<{ message: string }>}
  */
 export async function submitContactForm(payload) {
-  // TODO: Replace with real endpoint when backend is available.
-  // Example:
-  // const response = await fetch('/api/contact', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(payload),
-  // });
-  // if (!response.ok) throw new Error('Submission failed');
-  // return response.json();
-
-  void payload;
-  return Promise.resolve({ success: true });
+  return apiClient.post('/public/contact', payload, { auth: false });
 }
+
+export { ApiError };

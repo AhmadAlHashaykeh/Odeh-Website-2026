@@ -1,7 +1,3 @@
-import { buildSearchIndex } from '../../../../data/searchIndex';
-import { initialSeoPages } from '../../seo/mock/buildSeoPages';
-import { initialWebsiteSettings } from './websiteSettingsData';
-
 export const websiteSettingsMeta = {
   title: 'Website Settings',
   description: 'Manage global website configuration shared across the public website.',
@@ -74,16 +70,23 @@ export const websiteSettingsShortcuts = [
   },
 ];
 
-export function computeWebsiteSettingsStatistics(settings = initialWebsiteSettings) {
-  const indexedPages = buildSearchIndex().length;
+export function computeWebsiteSettingsStatistics(settings, publicPageCount = 0) {
+  if (!settings) {
+    return [];
+  }
+
   const configuredIntegrations = [
-    settings.integrations.googleMapsEmbedUrl,
-    settings.integrations.googleMapsExternalUrl,
+    settings.integrations?.googleMapsEmbedUrl,
+    settings.integrations?.googleMapsExternalUrl,
   ].filter(Boolean).length;
 
   return [
-    { id: 'language', value: settings.general.defaultLanguage.toUpperCase(), label: 'Default Language' },
-    { id: 'search-index', value: String(indexedPages), label: 'Indexed Search Items' },
+    {
+      id: 'language',
+      value: (settings.general?.defaultLanguage ?? 'en').toUpperCase(),
+      label: 'Default Language',
+    },
+    { id: 'search-index', value: 'API', label: 'Indexed Search Items' },
     {
       id: 'integrations',
       value: configuredIntegrations > 0 ? `${configuredIntegrations} Active` : 'None',
@@ -92,7 +95,7 @@ export function computeWebsiteSettingsStatistics(settings = initialWebsiteSettin
     },
     {
       id: 'public-pages',
-      value: String(initialSeoPages.length),
+      value: String(publicPageCount),
       label: 'Public Pages',
       helper: 'Routes with SEO metadata',
     },
@@ -109,8 +112,4 @@ export function getEditableSettingTitle(editKey) {
   };
 
   return titles[editKey] ?? 'Edit Setting';
-}
-
-export function getInitialSettingsData() {
-  return structuredClone(initialWebsiteSettings);
 }

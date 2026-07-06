@@ -5,15 +5,42 @@ import {
   DocumentLayout,
   DocumentSection,
 } from '../components/Utility';
-import { termsContent } from '../data/termsContent';
+import PageLoader from '../components/Utility/PageLoader';
+import { getLegalPage } from '../api/public/content';
+import { usePublicQuery } from '../hooks/usePublicQuery';
 import styles from './LegalDocumentPage.module.css';
 
 function renderParagraphs(paragraphs) {
+  if (!paragraphs?.length) return null;
   return paragraphs.map((text) => <p key={text.slice(0, 24)}>{text}</p>);
 }
 
+const FALLBACK_META = {
+  title: 'Terms and Conditions | ODEH & PARTNERS DESIGN',
+  description: 'Read the terms and conditions governing use of the ODEH & PARTNERS DESIGN website.',
+};
+
 export default function TermsAndConditionsPage() {
-  const { meta, hero, sections, lastUpdated, body } = termsContent;
+  const { data, loading, error } = usePublicQuery(() => getLegalPage('terms-and-conditions'), []);
+  const content = data?.data;
+
+  if (loading) {
+    return (
+      <AboutPageShell meta={FALLBACK_META}>
+        <PageLoader />
+      </AboutPageShell>
+    );
+  }
+
+  if (error || !content) {
+    return (
+      <AboutPageShell meta={FALLBACK_META}>
+        <p>Unable to load page content.</p>
+      </AboutPageShell>
+    );
+  }
+
+  const { meta, hero, sections, lastUpdated, body } = content;
 
   return (
     <AboutPageShell meta={meta}>

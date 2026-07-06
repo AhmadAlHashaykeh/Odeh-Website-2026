@@ -1,8 +1,8 @@
 import MessageQuickActions, { MessageStatusBadge, MessagePriorityBadge } from './MessageQuickActions';
-import { inquiryTypeLabels } from '../mock/contactMessagesData';
 import styles from './ContactMessagesTableView.module.css';
 
 function formatDate(value) {
+  if (!value) return '—';
   return new Date(`${value}T00:00:00`).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
@@ -12,11 +12,6 @@ function formatDate(value) {
 
 export default function ContactMessagesTableView({
   items,
-  selectedIds,
-  onToggleSelect,
-  onToggleSelectAll,
-  isAllSelected,
-  isSomeSelected,
   onMessageClick,
   onViewMessage,
   onAction,
@@ -26,21 +21,8 @@ export default function ContactMessagesTableView({
       <table className={styles.table}>
         <thead>
           <tr>
-            <th className={styles.checkboxCol}>
-              <input
-                type="checkbox"
-                className={styles.checkbox}
-                checked={isAllSelected}
-                ref={(el) => {
-                  if (el) el.indeterminate = isSomeSelected && !isAllSelected;
-                }}
-                onChange={onToggleSelectAll}
-                aria-label="Select all messages on this page"
-              />
-            </th>
             <th>Sender</th>
             <th>Subject</th>
-            <th>Inquiry Type</th>
             <th>Priority</th>
             <th>Status</th>
             <th>Assigned To</th>
@@ -50,19 +32,7 @@ export default function ContactMessagesTableView({
         </thead>
         <tbody>
           {items.map((msg) => (
-            <tr
-              key={msg.id}
-              className={`${styles.row} ${selectedIds.has(msg.id) ? styles.selected : ''}`}
-            >
-              <td className={styles.checkboxCol}>
-                <input
-                  type="checkbox"
-                  className={styles.checkbox}
-                  checked={selectedIds.has(msg.id)}
-                  onChange={() => onToggleSelect(msg.id)}
-                  aria-label={`Select ${msg.senderName}`}
-                />
-              </td>
+            <tr key={msg.id} className={styles.row}>
               <td>
                 <button
                   type="button"
@@ -76,9 +46,6 @@ export default function ContactMessagesTableView({
               </td>
               <td className={styles.subjectCell}>
                 <span className={styles.subject}>{msg.subject}</span>
-              </td>
-              <td className={styles.muted}>
-                {inquiryTypeLabels[msg.inquiryType] || msg.inquiryType}
               </td>
               <td><MessagePriorityBadge priority={msg.priority} /></td>
               <td><MessageStatusBadge status={msg.status} /></td>

@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext';
 import AdminIcon from '../components/AdminIcons';
+import { resolvePermissionModule } from '../hooks/useModulePermissions';
 import {
   adminDashboardItem,
   adminNavigationGroups,
@@ -12,7 +14,6 @@ import styles from './AdminSidebar.module.css';
 
 const CMS_VERSION = '1.0.0';
 const CMS_ENVIRONMENT = import.meta.env.PROD ? 'Production' : 'Development';
-const CMS_USER_ROLE = 'Administrator';
 
 function NavItem({ item, collapsed, nested = false, onNavigate, tooltip }) {
   const linkClassName = ({ isActive }) =>
@@ -170,7 +171,7 @@ function useGroupedNavigation(collapsed, mobileOpen) {
   return (isTablet && mobileOpen) || (!isTablet && !collapsed);
 }
 
-function SidebarFooter({ compact }) {
+function SidebarFooter({ compact, roleName }) {
   if (compact) {
     return (
       <div className={styles.footerCollapsed} aria-label="System information">
@@ -198,7 +199,7 @@ function SidebarFooter({ compact }) {
         </div>
         <div className={styles.footerRow}>
           <span className={styles.footerKey}>Role</span>
-          <span className={styles.footerValue}>{CMS_USER_ROLE}</span>
+          <span className={styles.footerValue}>{roleName}</span>
         </div>
       </div>
     </div>
@@ -206,9 +207,36 @@ function SidebarFooter({ compact }) {
 }
 
 export default function AdminSidebar({ collapsed, mobileOpen, onClose }) {
+  const { role, permissions } = useAuth();
   const { pathname } = useLocation();
+  const roleName = role?.name ?? 'Administrator';
+  const isSuperAdmin = role?.slug === 'super-admin';
   const showGroupedNav = useGroupedNavigation(collapsed, mobileOpen);
   const [expandedGroups, setExpandedGroups] = useState(() => getInitialExpandedGroups(pathname));
+
+  const canViewModule = useMemo(() => {
+    return (moduleId) => {
+      if (isSuperAdmin) return true;
+      const key = resolvePermissionModule(moduleId);
+      return permissions?.[key]?.view === true;
+    };
+  }, [isSuperAdmin, permissions]);
+
+  const visibleDashboardItem = useMemo(
+    () => (canViewModule(adminDashboardItem.id) ? adminDashboardItem : null),
+    [canViewModule],
+  );
+
+  const visibleNavigationGroups = useMemo(
+    () =>
+      adminNavigationGroups
+        .map((group) => ({
+          ...group,
+          items: group.items.filter((item) => canViewModule(item.id)),
+        }))
+        .filter((group) => group.items.length > 0),
+    [canViewModule],
+  );
 
   useEffect(() => {
     const activeGroupId = findNavGroupIdForPath(pathname);
@@ -254,17 +282,21 @@ export default function AdminSidebar({ collapsed, mobileOpen, onClose }) {
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             <li className={styles.navLevelPrimary}>
-              <NavItem item={adminDashboardItem} collapsed={collapsed} onNavigate={onClose} />
+              {visibleDashboardItem && (
+                <NavItem item={visibleDashboardItem} collapsed={collapsed} onNavigate={onClose} />
+              )}
             </li>
 
-            <li className={styles.navLevelDivider} aria-hidden="true">
-              <span className={styles.navLevelDividerLine} />
-            </li>
+            {visibleNavigationGroups.length > 0 && (
+              <li className={styles.navLevelDivider} aria-hidden="true">
+                <span className={styles.navLevelDividerLine} />
+              </li>
+            )}
 
             {showGroupedNav ? (
               <li className={styles.navLevelGroups}>
                 <ul className={styles.navGroupsList}>
-                  {adminNavigationGroups.map((group, index) => (
+                  {visibleNavigationGroups.map((group, index) => (
                     <NavGroup
                       key={group.id}
                       group={group}
@@ -279,7 +311,7 @@ export default function AdminSidebar({ collapsed, mobileOpen, onClose }) {
                 </ul>
               </li>
             ) : (
-              adminNavigationGroups.flatMap((group, index) => [
+              visibleNavigationGroups.flatMap((group, index) => [
                 index > 0 ? (
                   <li
                     key={`divider-${group.id}`}
@@ -304,7 +336,7 @@ export default function AdminSidebar({ collapsed, mobileOpen, onClose }) {
           </ul>
         </nav>
 
-        <SidebarFooter compact={!showGroupedNav} />
+        <SidebarFooter compact={!showGroupedNav} roleName={roleName} />
       </aside>
     </>
   );

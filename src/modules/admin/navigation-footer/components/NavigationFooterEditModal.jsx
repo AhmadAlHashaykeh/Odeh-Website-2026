@@ -446,7 +446,7 @@ export default function NavigationFooterEditModal({
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.(panelId);
+    onSave?.(panelId, e.currentTarget);
   };
 
   const modalHeader = (
@@ -459,7 +459,7 @@ export default function NavigationFooterEditModal({
           {title}
         </h2>
         <p className={drawerStyles.modalSubtitle}>
-          Fields match the current public website components. Changes are preview-only.
+          Update navigation and footer content. Changes are saved to the CMS.
         </p>
       </div>
       <button

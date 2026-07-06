@@ -1,5 +1,5 @@
 import AdminIcon from '../../components/AdminIcons';
-import { Modal, Button, Form, Input, Badge, Select } from '../../ui';
+import { Modal, Button, Form, Input, Select } from '../../ui';
 import { CmsModuleShortcut, SeoDelegationNotice } from '../../cms/components';
 import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
 import { getEditModalTitle } from '../mock/connectPageConfig';
@@ -152,7 +152,7 @@ export default function ConnectPageEditModal({
 
   const handleSave = (event) => {
     event?.preventDefault?.();
-    onSave();
+    onSave(event.currentTarget);
   };
 
   const modalHeader = (
@@ -162,13 +162,12 @@ export default function ConnectPageEditModal({
           <span className={drawerStyles.headerIcon} aria-hidden="true">
             <AdminIcon name="connect" size={18} />
           </span>
-          <Badge status="info">Preview mode</Badge>
         </div>
         <h2 id="connect-page-modal-title" className={drawerStyles.modalTitle}>
           {title}
         </h2>
         <p className={drawerStyles.modalSubtitle}>
-          Fields match the current Connect page data model. Changes are preview-only.
+          Update Connect page content. Changes are saved to the CMS.
         </p>
       </div>
       <button

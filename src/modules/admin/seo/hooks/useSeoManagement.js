@@ -1,20 +1,24 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import * as seoApi from '../../../../api/seo';
+import { ApiError } from '../../../../api/client';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
-import { useSimulatedLoading } from '../../hooks/useSimulatedLoading';
 import { copyToClipboard } from '../../utils/clipboard';
 import { openExternalUrl, resolvePublicUrl } from '../../utils/openExternalUrl';
-import { initialSeoPages } from '../mock/buildSeoPages';
+import { computeSeoStatistics } from '../mock/seoConfig';
 import {
-  computeSeoStatistics,
-  enrichSeoPage,
-  enrichSeoPages,
-  getInitialSeoPage,
-} from '../mock/seoConfig';
-import {
-  computeModuleSummaries,
   getSeoModuleById,
   groupPagesByModuleSection,
+  computeModuleSummaries,
 } from '../mock/seoModules';
+
+function mapSeoPage(page) {
+  return {
+    ...page,
+    name: page.pageName,
+    audit: [],
+    aiSuggestions: [],
+  };
+}
 
 function filterPagesBySearch(pages, query) {
   const normalizedQuery = query.trim().toLowerCase();
@@ -29,16 +33,35 @@ function filterPagesBySearch(pages, query) {
 }
 
 export function useSeoManagement() {
-  const [pages, setPages] = useState(() => structuredClone(initialSeoPages));
-  const isLoading = useSimulatedLoading();
+  const [pages, setPages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
   const [selectedModuleId, setSelectedModuleId] = useState(null);
   const [selectedPageId, setSelectedPageId] = useState(null);
   const [editingPageId, setEditingPageId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchAllModules, setSearchAllModules] = useState(false);
   const [statsScope, setStatsScope] = useState('website');
-  const [showAuditPanel, setShowAuditPanel] = useState(false);
   const { feedback, showFeedback, closeFeedback } = useActionFeedback();
+
+  const loadPages = useCallback(async () => {
+    setIsLoading(true);
+    setLoadError(null);
+
+    try {
+      const response = await seoApi.list({ per_page: 100 });
+      setPages(response.data.map(mapSeoPage));
+    } catch (error) {
+      setLoadError(error instanceof ApiError ? error.message : 'Failed to load SEO pages.');
+      setPages([]);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadPages();
+  }, [loadPages]);
 
   const moduleSummaries = useMemo(() => computeModuleSummaries(pages), [pages]);
   const selectedModule = useMemo(
@@ -51,7 +74,7 @@ export function useSeoManagement() {
     return pages.filter((page) => page.contentModule === selectedModuleId);
   }, [pages, selectedModuleId]);
 
-  const modulePages = useMemo(() => enrichSeoPages(moduleRawPages), [moduleRawPages]);
+  const modulePages = useMemo(() => moduleRawPages, [moduleRawPages]);
 
   const searchScopePages = useMemo(() => {
     const query = searchQuery.trim();
@@ -60,7 +83,7 @@ export function useSeoManagement() {
     }
 
     if (searchAllModules) {
-      return enrichSeoPages(filterPagesBySearch(pages, query));
+      return filterPagesBySearch(pages, query);
     }
 
     return filterPagesBySearch(modulePages, query);
@@ -98,22 +121,6 @@ export function useSeoManagement() {
       }),
     [statsPages, selectedModuleId, statsScope],
   );
-
-  const auditScopePages = useMemo(() => {
-    if (selectedModuleId && statsScope === 'module') {
-      return modulePages;
-    }
-    return enrichSeoPages(pages);
-  }, [modulePages, pages, selectedModuleId, statsScope]);
-
-  const siteAuditSummary = useMemo(() => {
-    const allChecks = auditScopePages.flatMap((page) => page.audit);
-    const pass = allChecks.filter((check) => check.status === 'pass').length;
-    const warn = allChecks.filter((check) => check.status === 'warn').length;
-    const fail = allChecks.filter((check) => check.status === 'fail').length;
-
-    return { pass, warn, fail, total: allChecks.length };
-  }, [auditScopePages]);
 
   const selectModule = useCallback(
     (moduleId) => {
@@ -160,59 +167,37 @@ export function useSeoManagement() {
   }, []);
 
   const saveEdit = useCallback(
-    (updates) => {
+    async (updates) => {
       if (!editingPageId) return;
 
-      setPages((prev) =>
-        prev.map((page) =>
-          page.id === editingPageId
-            ? {
-                ...page,
-                metaTitle: updates.metaTitle ?? page.metaTitle,
-                metaDescription: updates.metaDescription ?? page.metaDescription,
-              }
-            : page,
-        ),
-      );
-      closeEdit();
-      showFeedback('SEO metadata saved (preview mode)', 'info');
+      try {
+        const response = await seoApi.update(editingPageId, {
+          metaTitle: updates.metaTitle,
+          metaDescription: updates.metaDescription,
+        });
+
+        const mapped = mapSeoPage(response.data);
+        setPages((prev) => prev.map((page) => (page.id === editingPageId ? mapped : page)));
+        closeEdit();
+        showFeedback('SEO metadata saved.', 'success');
+      } catch (error) {
+        showFeedback(
+          error instanceof ApiError ? error.message : 'Failed to save SEO metadata.',
+          'error',
+        );
+      }
     },
     [closeEdit, editingPageId, showFeedback],
   );
 
-  const applyAiSuggestion = useCallback(
-    (pageId, updates) => {
-      setPages((prev) =>
-        prev.map((page) =>
-          page.id === pageId
-            ? {
-                ...page,
-                metaTitle: updates.metaTitle ?? page.metaTitle,
-                metaDescription: updates.metaDescription ?? page.metaDescription,
-              }
-            : page,
-        ),
-      );
-      showFeedback('AI suggestion applied locally (preview mode)', 'info');
-    },
-    [showFeedback],
-  );
-
-  const resetPage = useCallback(
-    (pageId) => {
-      const initial = getInitialSeoPage(pageId);
-      if (!initial) return;
-
-      setPages((prev) => prev.map((page) => (page.id === pageId ? initial : page)));
-      showFeedback('Page reset to website defaults (preview mode)', 'info');
-    },
-    [showFeedback],
-  );
+  const resetPage = useCallback(() => {
+    showFeedback('Reload the page to discard unsaved local changes.', 'info');
+  }, [showFeedback]);
 
   const copyPageUrl = useCallback(
     async (route) => {
       await copyToClipboard(resolvePublicUrl(route));
-      showFeedback('URL copied to clipboard (preview mode)', 'success');
+      showFeedback('URL copied to clipboard.', 'success');
     },
     [showFeedback],
   );
@@ -228,16 +213,14 @@ export function useSeoManagement() {
   }, [selectedPage]);
 
   const saveDraft = useCallback(() => {
-    showFeedback('SEO workspace draft saved (preview mode)', 'info');
+    showFeedback('SEO changes are saved per page.', 'info');
   }, [showFeedback]);
 
   const generatePreview = useCallback(() => {
-    showFeedback('Search preview generated (preview mode)', 'info');
-  }, [showFeedback]);
-
-  const toggleAuditPanel = useCallback(() => {
-    setShowAuditPanel((prev) => !prev);
-  }, []);
+    if (selectedPage) {
+      showFeedback(`Preview: ${selectedPage.metaTitle || selectedPage.name}`, 'info');
+    }
+  }, [selectedPage, showFeedback]);
 
   return {
     pages,
@@ -248,6 +231,7 @@ export function useSeoManagement() {
     pageSections,
     searchScopePages,
     isLoading,
+    loadError,
     statistics,
     statsScope,
     setStatsScope,
@@ -259,8 +243,6 @@ export function useSeoManagement() {
     setSearchQuery: setSearchQuerySafe,
     searchAllModules,
     setSearchAllModules,
-    showAuditPanel,
-    siteAuditSummary,
     feedback,
     selectModule,
     clearModule,
@@ -269,16 +251,14 @@ export function useSeoManagement() {
     openEdit,
     closeEdit,
     saveEdit,
-    applyAiSuggestion,
     resetPage,
     copyPageUrl,
     openPage,
     previewSelectedPage,
     saveDraft,
     generatePreview,
-    toggleAuditPanel,
     showFeedback,
     closeFeedback,
-    enrichSeoPage,
+    refresh: loadPages,
   };
 }

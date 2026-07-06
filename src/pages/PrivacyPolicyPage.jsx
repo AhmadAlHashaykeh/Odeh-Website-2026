@@ -5,14 +5,18 @@ import {
   DocumentLayout,
   DocumentSection,
 } from '../components/Utility';
-import { privacyPolicyContent } from '../data/privacyPolicyContent';
+import PageLoader from '../components/Utility/PageLoader';
+import { getLegalPage } from '../api/public/content';
+import { usePublicQuery } from '../hooks/usePublicQuery';
 import styles from './LegalDocumentPage.module.css';
 
 function renderParagraphs(paragraphs) {
+  if (!paragraphs?.length) return null;
   return paragraphs.map((text) => <p key={text.slice(0, 24)}>{text}</p>);
 }
 
 function renderList(items) {
+  if (!items?.length) return null;
   return (
     <ul>
       {items.map((item) => (
@@ -22,8 +26,32 @@ function renderList(items) {
   );
 }
 
+const FALLBACK_META = {
+  title: 'Privacy Policy | ODEH & PARTNERS DESIGN',
+  description: 'Learn how ODEH & PARTNERS DESIGN collects, uses, and protects your personal information.',
+};
+
 export default function PrivacyPolicyPage() {
-  const { meta, hero, sections, lastUpdated, body } = privacyPolicyContent;
+  const { data, loading, error } = usePublicQuery(() => getLegalPage('privacy-policy'), []);
+  const content = data?.data;
+
+  if (loading) {
+    return (
+      <AboutPageShell meta={FALLBACK_META}>
+        <PageLoader />
+      </AboutPageShell>
+    );
+  }
+
+  if (error || !content) {
+    return (
+      <AboutPageShell meta={FALLBACK_META}>
+        <p>Unable to load page content.</p>
+      </AboutPageShell>
+    );
+  }
+
+  const { meta, hero, sections, lastUpdated, body } = content;
 
   return (
     <AboutPageShell meta={meta}>

@@ -1,5 +1,3 @@
-import { initialLegalPagesData } from './legalPagesData';
-
 export const legalPagesMeta = {
   title: 'Legal Pages',
   description: 'Manage legal documents and website compliance pages.',
@@ -18,10 +16,13 @@ export const legalPagesMeta = {
   ],
 };
 
-export function computeLegalPagesStatistics(pages = initialLegalPagesData) {
+export function computeLegalPagesStatistics(pages = []) {
   const published = pages.filter((page) => page.publicationStatus === 'published').length;
   const draft = pages.filter((page) => page.publicationStatus === 'draft').length;
-  const internalLinks = pages.reduce((sum, page) => sum + page.internalLinks.length, 0);
+  const internalLinks = pages.reduce(
+    (sum, page) => sum + (page.internalLinks?.length ?? 0),
+    0,
+  );
   const seoComplete = pages.filter((page) => page.seoStatus === 'complete').length;
   const lastUpdated = pages[0]?.lastUpdated ?? '—';
 
@@ -29,20 +30,15 @@ export function computeLegalPagesStatistics(pages = initialLegalPagesData) {
     { id: 'total', value: String(pages.length), label: 'Total Legal Pages' },
     { id: 'published', value: String(published), label: 'Published' },
     { id: 'draft', value: String(draft), label: 'Draft' },
-    { id: 'updated', value: lastUpdated, label: 'Last Updated' },
+    { id: 'updated', value: lastUpdated ? String(lastUpdated).split('T')[0] : '—', label: 'Last Updated' },
     { id: 'internal-links', value: String(internalLinks), label: 'Internal Links' },
     {
       id: 'seo',
-      value: seoComplete === pages.length ? 'Complete' : 'Partial',
+      value: pages.length === 0 || seoComplete === pages.length ? 'Complete' : 'Partial',
       label: 'SEO Status',
-      helper: `${seoComplete}/${pages.length} pages ready`,
+      helper: pages.length ? `${seoComplete}/${pages.length} pages ready` : 'No pages loaded',
     },
   ];
-}
-
-export function getInitialLegalPage(pageId) {
-  const page = initialLegalPagesData.find((entry) => entry.id === pageId);
-  return page ? structuredClone(page) : null;
 }
 
 export function getSectionBody(page, sectionId) {

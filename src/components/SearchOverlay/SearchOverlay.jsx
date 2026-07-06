@@ -1,6 +1,7 @@
-import { useEffect, useRef, useCallback, useState, useMemo } from 'react';
+import { useEffect, useRef, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getSearchSuggestions } from '../../data/searchIndex';
+import { searchContent } from '../../api/public/content';
+import { usePublicSite } from '../../context/PublicSiteContext';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 import SearchResultIcon from './SearchResultIcon';
 import styles from './SearchOverlay.module.css';
@@ -57,11 +58,36 @@ export default function SearchOverlay({
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const debouncedQuery = useDebouncedValue(query, 150);
+  const { searchSettings } = usePublicSite();
+  const suggestionsLimit = searchSettings.suggestionsLimit ?? 8;
 
-  const suggestions = useMemo(
-    () => getSearchSuggestions(debouncedQuery),
-    [debouncedQuery],
-  );
+  const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    const trimmed = debouncedQuery.trim();
+    if (!trimmed) {
+      setSuggestions([]);
+      return undefined;
+    }
+
+    let cancelled = false;
+
+    searchContent(trimmed, suggestionsLimit)
+      .then((response) => {
+        if (!cancelled) {
+          setSuggestions(response.data ?? []);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setSuggestions([]);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [debouncedQuery, suggestionsLimit]);
 
   const showSuggestions = debouncedQuery.trim().length > 0;
   const hasResults = suggestions.length > 0;

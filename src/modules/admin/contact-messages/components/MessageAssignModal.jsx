@@ -1,26 +1,26 @@
 import { useState } from 'react';
 import { Modal, ModalActions, Button, Select } from '../../ui';
 import AdminIcon from '../../components/AdminIcons';
-import { adminAssigneeOptions } from '../mock/contactMessagesConfig';
 import styles from './MessageAssignModal.module.css';
 
 export default function MessageAssignModal({
   open,
   message,
+  assigneeOptions = [],
   onClose,
   onAssign,
 }) {
-  const [assignee, setAssignee] = useState(adminAssigneeOptions[0]?.value || '');
+  const [assignee, setAssignee] = useState(assigneeOptions[0]?.value || '');
 
   const handleClose = () => {
-    setAssignee(adminAssigneeOptions[0]?.value || '');
+    setAssignee(assigneeOptions[0]?.value || '');
     onClose?.();
   };
 
   const handleAssign = () => {
-    const selected = adminAssigneeOptions.find((opt) => opt.value === assignee);
-    onAssign?.(message, selected?.label || assignee);
-    setAssignee(adminAssigneeOptions[0]?.value || '');
+    const selected = assigneeOptions.find((opt) => opt.value === assignee);
+    onAssign?.(message, assignee, selected?.label || assignee);
+    setAssignee(assigneeOptions[0]?.value || '');
   };
 
   if (!message) return null;
@@ -45,7 +45,7 @@ export default function MessageAssignModal({
         id="message-assignee"
         value={assignee}
         onChange={setAssignee}
-        options={adminAssigneeOptions}
+        options={assigneeOptions}
         className={styles.select}
       />
 
@@ -57,6 +57,7 @@ export default function MessageAssignModal({
           variant="primary"
           icon={<AdminIcon name="team" size={16} />}
           onClick={handleAssign}
+          disabled={!assignee}
         >
           Assign
         </Button>

@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../../../hooks/useScrollReveal';
 import AdminIcon from '../../components/AdminIcons';
-import { contentOverviewCards } from '../mock/dashboardData';
+import { useDashboardStats } from '../hooks/useDashboardStats';
 import styles from './ContentOverview.module.css';
 
 export default function ContentOverview() {
+  const { contentOverviewCards, isLoading } = useDashboardStats();
   const headingRef = useScrollReveal(0.1);
 
   return (
@@ -15,7 +16,7 @@ export default function ContentOverview() {
       </div>
 
       <div className={styles.grid}>
-        {contentOverviewCards.map((card, index) => (
+        {(isLoading ? [] : contentOverviewCards).map((card, index) => (
           <ContentCard key={card.id} card={card} index={index} />
         ))}
       </div>

@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Models;
+
+use App\Concerns\HasUuid;
+use App\Concerns\SyncsSeoRegistry;
+use App\Enums\JobStatus;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Job extends Model
+{
+    use HasFactory, HasUuid, SyncsSeoRegistry;
+
+    protected $table = 'job_postings';
+
+    protected $fillable = [
+        'title',
+        'slug',
+        'department',
+        'location',
+        'employment_type',
+        'work_mode',
+        'experience_level',
+        'posted_date',
+        'closing_date',
+        'short_description',
+        'full_description',
+        'responsibilities',
+        'requirements',
+        'benefits',
+        'status',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'responsibilities' => 'array',
+            'requirements' => 'array',
+            'benefits' => 'array',
+            'posted_date' => 'date',
+            'closing_date' => 'date',
+            'status' => JobStatus::class,
+        ];
+    }
+
+    public function applications(): HasMany
+    {
+        return $this->hasMany(JobApplication::class);
+    }
+}

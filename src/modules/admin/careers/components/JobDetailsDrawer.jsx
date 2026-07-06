@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { SeoDelegationNotice } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
-import { isClosingSoon } from '../mock/careersData';
+import { isClosingSoon } from '../utils/jobUtils';
 import styles from './JobDetailsDrawer.module.css';
 
 function formatDate(value) {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { getSearchBadgeType, getSearchExcerpt } from '../../data/searchIndex';
+import { getSearchBadgeType, getSearchExcerpt } from '../../utils/contentMappers';
 import styles from './SearchResultCard.module.css';
 
 function ArrowIcon() {
@@ -11,7 +11,7 @@ function ArrowIcon() {
 }
 
 export default function SearchResultCard({ item, style }) {
-  const badge = getSearchBadgeType(item);
+  const badge = getSearchBadgeType(item.type);
   const excerpt = getSearchExcerpt(item);
 
   return (

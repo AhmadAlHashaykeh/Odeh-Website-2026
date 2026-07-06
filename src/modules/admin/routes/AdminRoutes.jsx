@@ -1,5 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminLayout from '../layout/AdminLayout';
+import LoginPage from '../pages/LoginPage';
+import { GuestRoute, ProtectedRoute } from './ProtectedRoute';
+import ModulePermissionRoute from './ModulePermissionRoute';
 
 /* Dashboard */
 import DashboardPage from '../dashboard/pages/DashboardPage';
@@ -30,46 +33,159 @@ import SeoManagementPage from '../seo/pages/SeoManagementPage';
 import WebsiteSettingsPage from '../website-settings/pages/WebsiteSettingsPage';
 import UsersRolesPage from '../users-roles/pages/UsersRolesPage';
 
-/* Dev preview */
-import ListingPreviewPage from '../cms/pages/ListingPreviewPage';
-
 export default function AdminRoutes() {
   return (
     <Routes>
-      <Route element={<AdminLayout />}>
-        <Route index element={<Navigate to="dashboard" replace />} />
+      <Route element={<GuestRoute />}>
+        <Route path="login" element={<LoginPage />} />
+      </Route>
 
-        {/* Dashboard */}
-        <Route path="dashboard" element={<DashboardPage />} />
+      <Route element={<ProtectedRoute />}>
+        <Route element={<AdminLayout />}>
+          <Route index element={<Navigate to="dashboard" replace />} />
 
-        {/* Content */}
-        <Route path="projects" element={<ProjectsPage />} />
-        <Route path="project-categories" element={<CategoriesPage />} />
-        <Route path="team-members" element={<TeamMembersPage />} />
-        <Route path="activities" element={<ActivitiesPage />} />
-        <Route path="services" element={<ServicesPage />} />
+          <Route
+            path="dashboard"
+            element={(
+              <ModulePermissionRoute moduleId="dashboard">
+                <DashboardPage />
+              </ModulePermissionRoute>
+            )}
+          />
 
-        {/* Recruitment */}
-        <Route path="careers" element={<CareersPage />} />
-        <Route path="applications" element={<ApplicationsPage />} />
+          <Route
+            path="projects"
+            element={(
+              <ModulePermissionRoute moduleId="projects">
+                <ProjectsPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="project-categories"
+            element={(
+              <ModulePermissionRoute moduleId="project-categories">
+                <CategoriesPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="team-members"
+            element={(
+              <ModulePermissionRoute moduleId="team-members">
+                <TeamMembersPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="activities"
+            element={(
+              <ModulePermissionRoute moduleId="activities">
+                <ActivitiesPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="services"
+            element={(
+              <ModulePermissionRoute moduleId="services">
+                <ServicesPage />
+              </ModulePermissionRoute>
+            )}
+          />
 
-        {/* Communication */}
-        <Route path="contact-messages" element={<ContactMessagesPage />} />
+          <Route
+            path="careers"
+            element={(
+              <ModulePermissionRoute moduleId="careers">
+                <CareersPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="applications"
+            element={(
+              <ModulePermissionRoute moduleId="applications">
+                <ApplicationsPage />
+              </ModulePermissionRoute>
+            )}
+          />
 
-        {/* Website CMS */}
-        <Route path="home-page" element={<HomePageCmsPage />} />
-        <Route path="about-pages" element={<AboutPagesCmsPage />} />
-        <Route path="navigation-footer" element={<NavigationFooterCmsPage />} />
-        <Route path="connect-page" element={<ConnectPageCmsPage />} />
-        <Route path="legal-pages" element={<LegalPagesCmsPage />} />
+          <Route
+            path="contact-messages"
+            element={(
+              <ModulePermissionRoute moduleId="contact-messages">
+                <ContactMessagesPage />
+              </ModulePermissionRoute>
+            )}
+          />
 
-        {/* Settings */}
-        <Route path="seo" element={<SeoManagementPage />} />
-        <Route path="website-settings" element={<WebsiteSettingsPage />} />
-        <Route path="users-roles" element={<UsersRolesPage />} />
+          <Route
+            path="home-page"
+            element={(
+              <ModulePermissionRoute moduleId="home-page">
+                <HomePageCmsPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="about-pages"
+            element={(
+              <ModulePermissionRoute moduleId="about-pages">
+                <AboutPagesCmsPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="navigation-footer"
+            element={(
+              <ModulePermissionRoute moduleId="navigation-footer">
+                <NavigationFooterCmsPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="connect-page"
+            element={(
+              <ModulePermissionRoute moduleId="connect-page">
+                <ConnectPageCmsPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="legal-pages"
+            element={(
+              <ModulePermissionRoute moduleId="legal-pages">
+                <LegalPagesCmsPage />
+              </ModulePermissionRoute>
+            )}
+          />
 
-        {/* Dev preview — not in sidebar nav */}
-        <Route path="cms-preview" element={<ListingPreviewPage />} />
+          <Route
+            path="seo"
+            element={(
+              <ModulePermissionRoute moduleId="seo">
+                <SeoManagementPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="website-settings"
+            element={(
+              <ModulePermissionRoute moduleId="website-settings">
+                <WebsiteSettingsPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="users-roles"
+            element={(
+              <ModulePermissionRoute moduleId="users-roles">
+                <UsersRolesPage />
+              </ModulePermissionRoute>
+            )}
+          />
+        </Route>
       </Route>
     </Routes>
   );

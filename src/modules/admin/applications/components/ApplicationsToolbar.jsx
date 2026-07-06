@@ -8,18 +8,9 @@ export default function ApplicationsToolbar({
   jobFilter,
   onJobFilterChange,
   jobOptions,
-  departmentFilter,
-  onDepartmentFilterChange,
-  departmentOptions,
   statusFilter,
   onStatusFilterChange,
   statusOptions,
-  experienceFilter,
-  onExperienceFilterChange,
-  experienceOptions,
-  submittedDateFilter,
-  onSubmittedDateFilterChange,
-  submittedDateOptions,
   sortBy,
   onSortChange,
   sortOptions,
@@ -27,8 +18,6 @@ export default function ApplicationsToolbar({
   onViewChange,
   onRefresh,
   isRefreshing,
-  onBulkActionsClick,
-  bulkActionsDisabled,
 }) {
   return (
     <div className={styles.toolbar}>
@@ -53,15 +42,6 @@ export default function ApplicationsToolbar({
           >
             <AdminIcon name="refresh" size={16} />
           </button>
-          <button
-            type="button"
-            className={styles.bulkBtn}
-            onClick={onBulkActionsClick}
-            disabled={bulkActionsDisabled}
-          >
-            Bulk Actions
-            <AdminIcon name="chevronDown" size={14} />
-          </button>
         </div>
       </div>
 
@@ -75,36 +55,12 @@ export default function ApplicationsToolbar({
           ariaLabel="Filter by job"
         />
         <FilterDropdown
-          label="Department"
-          value={departmentFilter}
-          onChange={onDepartmentFilterChange}
-          options={departmentOptions}
-          icon="filter"
-          ariaLabel="Filter by department"
-        />
-        <FilterDropdown
           label="Status"
           value={statusFilter}
           onChange={onStatusFilterChange}
           options={statusOptions}
           icon="filter"
           ariaLabel="Filter by application status"
-        />
-        <FilterDropdown
-          label="Experience"
-          value={experienceFilter}
-          onChange={onExperienceFilterChange}
-          options={experienceOptions}
-          icon="team"
-          ariaLabel="Filter by years of experience"
-        />
-        <FilterDropdown
-          label="Submitted"
-          value={submittedDateFilter}
-          onChange={onSubmittedDateFilterChange}
-          options={submittedDateOptions}
-          icon="sort"
-          ariaLabel="Filter by submitted date"
         />
         <FilterDropdown
           label="Sort"

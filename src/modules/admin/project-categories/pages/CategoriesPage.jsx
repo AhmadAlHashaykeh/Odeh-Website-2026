@@ -7,11 +7,11 @@ import {
   Pagination,
   DeleteModal,
   SelectionToolbar,
-  useAdminActionFlows,
   AdminActionFlowsHost,
 } from '../../cms/components';
+import * as projectCategoriesApi from '../../../../api/projectCategories';
+import { useModuleApiActions, handleListingDelete } from '../../hooks/useModuleApiActions';
 import { useCategoriesListing } from '../hooks/useCategoriesListing';
-import { adminCategories } from '../mock/categoriesData';
 import {
   categoriesPageMeta,
   statusFilterOptions,
@@ -29,12 +29,13 @@ import CategoriesSkeleton from '../components/CategoriesSkeleton';
 import styles from './CategoriesPage.module.css';
 
 export default function CategoriesPage() {
-  const listing = useCategoriesListing({ items: adminCategories, initialPerPage: 12 });
+  const listing = useCategoriesListing({ initialPerPage: 12 });
   const [bulkAction, setBulkAction] = useState(bulkActionOptions[0]?.value || '');
 
-  const flows = useAdminActionFlows({
+  const flows = useModuleApiActions({
     moduleKey: 'categories',
-    onDeleteItem: listing.openDeleteForItem,
+    listing,
+    api: projectCategoriesApi,
   });
 
   useAdminBreadcrumbs(categoriesPageMeta.topBarBreadcrumbs);
@@ -48,9 +49,8 @@ export default function CategoriesPage() {
     if (bulkAction === 'delete') listing.openDeleteModal();
   };
 
-  const handleDeleteConfirm = () => {
-    listing.closeDeleteModal();
-    listing.clearSelection();
+  const handleDeleteConfirm = async () => {
+    await handleListingDelete(listing, flows);
   };
 
   const showEmpty = !listing.isLoading && listing.paginatedItems.length === 0;
@@ -92,7 +92,7 @@ export default function CategoriesPage() {
             viewMode={listing.viewMode}
             onViewChange={listing.setViewMode}
             onRefresh={listing.simulateRefresh}
-            isRefreshing={listing.isLoading}
+            isRefreshing={listing.isRefreshing}
             onBulkActionsClick={listing.openDeleteModal}
             bulkActionsDisabled={listing.selectedIds.size === 0}
           />

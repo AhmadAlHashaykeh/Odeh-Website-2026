@@ -1,6 +1,3 @@
-import { computeSeoScore, runSeoAudit } from '../utils/seoAudit';
-import { initialSeoPages } from './buildSeoPages';
-
 export const seoManagementMeta = {
   title: 'SEO Management',
   description: 'Manage metadata, indexing, previews, and search visibility by content module.',
@@ -13,48 +10,29 @@ export const seoManagementMeta = {
     { label: 'Admin', path: '/admin/dashboard' },
     { label: 'SEO Management' },
   ],
-  secondaryActions: [{ label: 'SEO Audit', icon: 'search' }],
+  secondaryActions: [{ label: 'Refresh', icon: 'search' }],
   primaryAction: { label: 'Save Draft', icon: 'check' },
 };
 
-export function enrichSeoPage(page) {
-  const audit = runSeoAudit(page);
-  const seoScore = computeSeoScore(audit);
-
-  return {
-    ...page,
-    audit,
-    seoScore,
-    indexStatus: page.robotsIndex == null ? 'Default' : page.robotsIndex ? 'Index' : 'No Index',
-    hasWarnings: audit.some((check) => check.status === 'fail' || check.status === 'warn'),
-  };
-}
-
-export function enrichSeoPages(pages) {
-  return pages.map(enrichSeoPage);
-}
-
-export function computeSeoStatistics(pages = initialSeoPages, { scope = 'website' } = {}) {
-  const enriched = enrichSeoPages(pages);
-  const completeMetadata = enriched.filter(
+export function computeSeoStatistics(pages = [], { scope = 'website' } = {}) {
+  const completeMetadata = pages.filter(
     (page) => page.metaTitle?.trim() && page.metaDescription?.trim(),
   ).length;
-  const missingSeoData = enriched.filter(
+  const missingSeoData = pages.filter(
     (page) => !page.metaTitle?.trim() || !page.metaDescription?.trim(),
   ).length;
-  const needsAttention = enriched.filter((page) => page.hasWarnings).length;
-  const averageScore =
-    enriched.length > 0
-      ? Math.round(enriched.reduce((sum, page) => sum + page.seoScore, 0) / enriched.length)
-      : 0;
+  const needsAttention = pages.filter(
+    (page) => page.seoStatus && page.seoStatus !== 'complete',
+  ).length;
+  const completeByStatus = pages.filter((page) => page.seoStatus === 'complete').length;
 
   if (scope === 'module') {
     return [
       {
-        id: 'seo-score',
-        value: `${averageScore}%`,
-        label: 'Metadata Quality',
-        helper: `${enriched.length} pages in module`,
+        id: 'complete',
+        value: String(completeMetadata),
+        label: 'Complete Metadata',
+        helper: `${enrichedCountHelper(pages)} pages in module`,
       },
       {
         id: 'missing-seo',
@@ -62,23 +40,22 @@ export function computeSeoStatistics(pages = initialSeoPages, { scope = 'website
         label: 'Missing Metadata',
         helper: 'Pages missing title or description',
       },
-      { id: 'complete', value: String(completeMetadata), label: 'Complete Pages' },
       {
         id: 'needs-attention',
         value: String(needsAttention),
         label: 'Needs Attention',
-        helper: 'Pages with audit warnings',
+        helper: 'Pages not marked complete',
+      },
+      {
+        id: 'seo-status',
+        value: `${completeByStatus}/${pages.length || 0}`,
+        label: 'SEO Status',
+        helper: 'Backend registry status',
       },
     ];
   }
 
   return [
-    {
-      id: 'seo-score',
-      value: `${averageScore}%`,
-      label: 'Metadata Quality',
-      helper: `${enriched.length} public pages`,
-    },
     { id: 'complete', value: String(completeMetadata), label: 'Complete Metadata' },
     {
       id: 'missing-seo',
@@ -90,14 +67,19 @@ export function computeSeoStatistics(pages = initialSeoPages, { scope = 'website
       id: 'needs-attention',
       value: String(needsAttention),
       label: 'Needs Attention',
-      helper: 'Pages with audit warnings',
+      helper: 'Pages not marked complete',
+    },
+    {
+      id: 'seo-status',
+      value: `${completeByStatus}/${pages.length || 0}`,
+      label: 'SEO Status',
+      helper: `${pages.length} public pages`,
     },
   ];
 }
 
-export function getInitialSeoPage(pageId) {
-  const page = initialSeoPages.find((entry) => entry.id === pageId);
-  return page ? structuredClone(page) : null;
+function enrichedCountHelper(pages) {
+  return pages.length;
 }
 
 export const PAGE_TYPE_LABELS = {

@@ -6,23 +6,32 @@ import {
   ActivityNavigation,
   RelatedActivities,
 } from '../components/AboutActivities';
-import {
-  getActivityBySlug,
-  getAdjacentActivities,
-  getRelatedActivities,
-} from '../data/activitiesContent';
+import PageLoader from '../components/Utility/PageLoader';
+import { getActivity } from '../api/public/content';
+import { usePublicQuery } from '../hooks/usePublicQuery';
+import { mapActivity } from '../utils/contentMappers';
 
 export default function AboutActivityDetailPage() {
   const { slug } = useParams();
-  const activity = getActivityBySlug(slug);
+  const { data, loading, error } = usePublicQuery(() => getActivity(slug), [slug]);
 
-  if (!activity) {
+  if (loading) {
+    return (
+      <AboutPageShell meta={{ title: 'Activity | ODEH & PARTNERS DESIGN' }}>
+        <PageLoader />
+      </AboutPageShell>
+    );
+  }
+
+  const activity = data?.data?.activity ? mapActivity(data.data.activity) : null;
+
+  if (error || !activity) {
     return <Navigate to="/about/activities" replace />;
   }
 
-  const { prev, next } = getAdjacentActivities(slug);
-  const related = getRelatedActivities(slug, 3);
-  const heroImage = activity.gallery[0]?.src ?? activity.coverImage;
+  const { prev, next } = data.data.navigation ?? {};
+  const related = (data.data.related ?? []).map(mapActivity);
+  const heroImage = activity.gallery?.[0]?.src ?? activity.coverImage;
 
   const meta = {
     title: `${activity.title} | Activities | ODEH & PARTNERS DESIGN`,

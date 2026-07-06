@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
-import { getJobPath } from '../../data/careers';
+import { getJobPath } from '../../utils/contentPaths';
 import styles from './ApplicationThankYou.module.css';
 
 export default function ApplicationThankYou({ job, backgroundImage, breadcrumbs }) {

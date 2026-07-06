@@ -8,11 +8,11 @@ import {
   Pagination,
   DeleteModal,
   SelectionToolbar,
-  useAdminActionFlows,
   AdminActionFlowsHost,
 } from '../../cms/components';
+import * as jobsApi from '../../../../api/jobs';
+import { useModuleApiActions, handleListingDelete, applyBulkUpdates } from '../../hooks/useModuleApiActions';
 import { useCareersListing } from '../hooks/useCareersListing';
-import { adminJobs } from '../mock/careersData';
 import {
   careersPageMeta,
   statusFilterOptions,
@@ -30,21 +30,21 @@ import CareersEmptyState from '../components/CareersEmptyState';
 import CareersSkeleton from '../components/CareersSkeleton';
 import styles from './CareersPage.module.css';
 
-const BULK_FEEDBACK = {
-  open: (count) => `${count} job(s) opened (preview mode)`,
-  close: (count) => `${count} job(s) closed (preview mode)`,
-  draft: (count) => `${count} job(s) marked as draft (preview mode)`,
-  export: (count) => `${count} job(s) exported (preview mode)`,
+const BULK_STATUS_MAP = {
+  open: { status: 'open' },
+  close: { status: 'closed' },
+  draft: { status: 'draft' },
 };
 
 export default function CareersPage() {
   const navigate = useNavigate();
-  const listing = useCareersListing({ items: adminJobs, initialPerPage: 12 });
+  const listing = useCareersListing({ initialPerPage: 12 });
   const [bulkAction, setBulkAction] = useState(bulkActionOptions[0]?.value || '');
 
-  const flows = useAdminActionFlows({
+  const flows = useModuleApiActions({
     moduleKey: 'careers',
-    onDeleteItem: listing.openDeleteForItem,
+    listing,
+    api: jobsApi,
   });
 
   const handleJobAction = useCallback((actionId, item) => {
@@ -70,23 +70,32 @@ export default function CareersPage() {
     [listing.departments],
   );
 
-  const handleBulkApply = () => {
+  const handleBulkApply = async () => {
     if (bulkAction === 'delete') {
+      if (!flows.permissions.canDelete) {
+        flows.showFeedback('You do not have permission to delete items.', 'error');
+        return;
+      }
       listing.openDeleteModal();
       return;
     }
 
-    const message = BULK_FEEDBACK[bulkAction]?.(listing.selectedIds.size);
-    if (message) {
-      flows.showFeedback(message);
-      listing.clearSelection();
+    if (!flows.permissions.canEdit) {
+      flows.showFeedback('You do not have permission to edit items.', 'error');
+      return;
     }
+
+    await applyBulkUpdates({
+      api: jobsApi,
+      listing,
+      flows,
+      payloadMap: BULK_STATUS_MAP,
+      bulkAction,
+    });
   };
 
-  const handleDeleteConfirm = () => {
-    listing.closeDeleteModal();
-    listing.clearSelection();
-    flows.showFeedback('Selected job(s) deleted (preview mode)', 'info');
+  const handleDeleteConfirm = async () => {
+    await handleListingDelete(listing, flows, flows.permissions.canDelete);
   };
 
   const showEmpty = !listing.isLoading && listing.paginatedItems.length === 0;
@@ -97,10 +106,11 @@ export default function CareersPage() {
         title={careersPageMeta.title}
         description={careersPageMeta.description}
         breadcrumbs={careersPageMeta.breadcrumbs}
-        primaryAction={{
-          ...careersPageMeta.primaryAction,
-          onClick: flows.openAddForm,
-        }}
+        primaryAction={
+          flows.permissions.canCreate
+            ? { ...careersPageMeta.primaryAction, onClick: flows.openAddForm }
+            : undefined
+        }
         secondaryActions={careersPageMeta.secondaryActions}
       />
 
@@ -134,7 +144,7 @@ export default function CareersPage() {
             viewMode={listing.viewMode}
             onViewChange={listing.setViewMode}
             onRefresh={listing.simulateRefresh}
-            isRefreshing={listing.isLoading}
+            isRefreshing={listing.isRefreshing}
             onBulkActionsClick={listing.openDeleteModal}
             bulkActionsDisabled={listing.selectedIds.size === 0}
           />

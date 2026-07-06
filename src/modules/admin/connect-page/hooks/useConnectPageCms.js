@@ -1,29 +1,35 @@
 import { useCallback, useMemo, useState } from 'react';
+import * as connectPageApi from '../../../../api/connectPage';
+import { extractFormValues } from '../../cms/action-flows/mapFormValuesToApi';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
-import { useSimulatedLoading } from '../../hooks/useSimulatedLoading';
+import { useCmsSingleton } from '../../hooks/useCmsSingleton';
 import { copyToClipboard } from '../../utils/clipboard';
 import { openExternalUrl, resolvePublicUrl } from '../../utils/openExternalUrl';
-import { initialConnectPageData } from '../mock/connectPageData';
 import {
   computeConnectPageStatistics,
   getConnectLinkType,
-  getInitialHeaderData,
-  getInitialLinkData,
   getLinksForPanel,
 } from '../mock/connectPageConfig';
 
 export function useConnectPageCms() {
-  const [cmsData, setCmsData] = useState(() => structuredClone(initialConnectPageData));
-  const isLoading = useSimulatedLoading();
+  const singleton = useCmsSingleton({
+    showFn: connectPageApi.show,
+    updateFn: connectPageApi.update,
+  });
   const [editingLinkId, setEditingLinkId] = useState(null);
   const [editingHeader, setEditingHeader] = useState(false);
   const { feedback, showFeedback, closeFeedback } = useActionFeedback();
 
-  const statistics = useMemo(() => computeConnectPageStatistics(cmsData.links), [cmsData.links]);
+  const cmsData = singleton.data ?? { meta: {}, hero: {}, links: [] };
 
   const enabledLinks = useMemo(
     () => cmsData.links.filter((link) => link.enabled).sort((a, b) => a.order - b.order),
     [cmsData.links],
+  );
+
+  const statistics = useMemo(
+    () => computeConnectPageStatistics(cmsData.links, singleton.data?.lastUpdated),
+    [cmsData.links, singleton.data?.lastUpdated],
   );
 
   const openEditHeader = useCallback(() => {
@@ -41,64 +47,83 @@ export function useConnectPageCms() {
     setEditingHeader(false);
   }, []);
 
-  const saveEdit = useCallback(() => {
-    closeEdit();
-    showFeedback('Connect page changes saved (preview mode)', 'info');
-  }, [closeEdit, showFeedback]);
+  const saveEdit = useCallback(
+    async (formElement) => {
+      if (!singleton.data) return;
+
+      const values = formElement ? extractFormValues(formElement) : {};
+      let nextData = { ...singleton.data };
+
+      if (editingHeader) {
+        nextData = {
+          ...nextData,
+          meta: { ...nextData.meta, ...values },
+          hero: { ...nextData.hero, ...values },
+        };
+      } else if (editingLinkId) {
+        nextData = {
+          ...nextData,
+          links: nextData.links.map((link) =>
+            link.id === editingLinkId ? { ...link, ...values } : link,
+          ),
+        };
+      }
+
+      const result = await singleton.update(nextData);
+      closeEdit();
+      showFeedback(
+        result.success ? 'Connect page saved.' : (result.error?.message ?? 'Failed to save.'),
+        result.success ? 'success' : 'error',
+      );
+    },
+    [singleton, editingHeader, editingLinkId, closeEdit, showFeedback],
+  );
 
   const toggleLinkEnabled = useCallback(
-    (linkId) => {
-      setCmsData((prev) => {
-        const next = structuredClone(prev);
-        const link = next.links.find((entry) => entry.id === linkId);
-        if (!link) return prev;
+    async (linkId) => {
+      if (!singleton.data) return;
 
-        link.enabled = !link.enabled;
-        showFeedback(
-          `${link.title} ${link.enabled ? 'enabled' : 'disabled'} (preview mode)`,
-          'info',
-        );
-        return next;
-      });
+      const link = singleton.data.links.find((entry) => entry.id === linkId);
+      if (!link) return;
+
+      const nextData = {
+        ...singleton.data,
+        links: singleton.data.links.map((entry) =>
+          entry.id === linkId ? { ...entry, enabled: !entry.enabled } : entry,
+        ),
+      };
+
+      const result = await singleton.update(nextData);
+      showFeedback(
+        result.success
+          ? `${link.title} ${!link.enabled ? 'enabled' : 'disabled'}.`
+          : 'Failed to update link.',
+        result.success ? 'success' : 'error',
+      );
     },
-    [showFeedback],
+    [singleton, showFeedback],
   );
 
-  const resetLink = useCallback(
-    (linkId) => {
-      const initial = getInitialLinkData(linkId);
-      if (!initial) return;
-
-      setCmsData((prev) => {
-        const next = structuredClone(prev);
-        const index = next.links.findIndex((entry) => entry.id === linkId);
-        if (index === -1) return prev;
-        next.links[index] = initial;
-        return next;
-      });
-
-      showFeedback('Link reset to website defaults (preview mode)', 'info');
-    },
-    [showFeedback],
-  );
+  const resetLink = useCallback(() => {
+    showFeedback('Reload the page to discard unsaved local changes.', 'info');
+  }, [showFeedback]);
 
   const resetHeader = useCallback(() => {
-    const initial = getInitialHeaderData();
-    setCmsData((prev) => ({
-      ...prev,
-      meta: initial.meta,
-      hero: initial.hero,
-    }));
-    showFeedback('Header reset to website defaults (preview mode)', 'info');
+    showFeedback('Reload the page to discard unsaved local changes.', 'info');
   }, [showFeedback]);
 
   const previewConnectPage = useCallback(() => {
     openExternalUrl('/connect');
   }, []);
 
-  const saveDraft = useCallback(() => {
-    showFeedback('Connect page draft saved (preview mode)', 'info');
-  }, [showFeedback]);
+  const saveDraft = useCallback(async () => {
+    if (!singleton.data) return;
+    const result = await singleton.update(singleton.data);
+    showFeedback(
+      result.success ? 'Connect page saved.' : 'Failed to save.',
+      result.success ? 'success' : 'error',
+    );
+  }, [singleton, showFeedback]);
 
   const previewLink = useCallback(
     (link) => {
@@ -132,7 +157,7 @@ export function useConnectPageCms() {
     async (url) => {
       const fullUrl = resolvePublicUrl(url);
       await copyToClipboard(fullUrl);
-      showFeedback('URL copied to clipboard (preview mode)', 'success');
+      showFeedback('URL copied to clipboard.', 'success');
     },
     [showFeedback],
   );
@@ -155,7 +180,9 @@ export function useConnectPageCms() {
   return {
     cmsData,
     enabledLinks,
-    isLoading,
+    isLoading: singleton.isLoading,
+    loadError: singleton.error,
+    isSaving: singleton.isSaving,
     statistics,
     editingLinkId,
     editingLink,

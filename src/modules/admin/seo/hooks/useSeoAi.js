@@ -99,7 +99,7 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
         pages: moduleRawPages,
       });
       setModuleInsights((prev) => ({ ...prev, [selectedModuleId]: insights }));
-      showFeedback?.('Module analysis complete (preview mode)', 'info');
+      showFeedback?.('Module analysis complete (demo)', 'info');
     } finally {
       setLoadingModuleId(null);
     }
@@ -116,7 +116,7 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
         pages: moduleRawPages,
       });
       setImprovementPlans((prev) => ({ ...prev, [selectedModuleId]: plan }));
-      showFeedback?.('Improvement plan generated (preview mode)', 'info');
+      showFeedback?.('Improvement plan generated (demo)', 'info');
     } finally {
       setLoadingPlanModuleId(null);
     }
@@ -149,7 +149,7 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
         tone,
       });
       setPendingOptimization(optimization);
-      showFeedback?.('AI optimization regenerated (preview mode)', 'info');
+      showFeedback?.('AI optimization regenerated (demo)', 'info');
     } finally {
       setLoadingReview(false);
     }
@@ -205,7 +205,7 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
         },
       }));
 
-      showFeedback?.(`${action.label} applied locally (preview mode)`, 'success');
+      showFeedback?.(`${action.label} applied locally (demo)`, 'success');
     },
     [buildApplyPayload, markApplied, selectedPage, showFeedback, tone],
   );
@@ -221,7 +221,7 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
 
       markApplied(selectedPage.id, { metaTitle: true, metaDescription: true, full: true });
       closeReviewModal();
-      showFeedback?.('AI optimization applied locally (preview mode)', 'success');
+      showFeedback?.('AI optimization applied locally (demo)', 'success');
     },
     [closeReviewModal, markApplied, pendingOptimization, selectedPage, showFeedback],
   );
@@ -229,18 +229,18 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
   const copyReviewOptimization = useCallback(async () => {
     if (!pendingOptimization) return;
     await copyToClipboard(formatSuggestionsForCopy(pendingOptimization));
-    showFeedback?.('Optimized text copied to clipboard (preview mode)', 'success');
+    showFeedback?.('Optimized text copied to clipboard (demo)', 'success');
   }, [pendingOptimization, showFeedback]);
 
   const copySuggestions = useCallback(async () => {
     if (!currentPageSuggestion) return;
     await copyToClipboard(formatSuggestionsForCopy(currentPageSuggestion));
-    showFeedback?.('AI suggestions copied to clipboard (preview mode)', 'success');
+    showFeedback?.('AI suggestions copied to clipboard (demo)', 'success');
   }, [currentPageSuggestion, showFeedback]);
 
   const runBatchAction = useCallback(
     (action) => {
-      showFeedback?.(`${action.label} — coming soon (preview mode)`, 'info');
+      showFeedback?.(`${action.label} — coming soon (demo)`, 'info');
     },
     [showFeedback],
   );
@@ -249,7 +249,7 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
     if (!selectedPage) return;
     await fetchPageSuggestions(selectedPage, activeOptimizationGoal, tone);
     await fetchPageAnalysis(selectedPage);
-    showFeedback?.('AI analysis refreshed (preview mode)', 'info');
+    showFeedback?.('AI analysis refreshed (demo)', 'info');
   }, [activeOptimizationGoal, fetchPageAnalysis, fetchPageSuggestions, selectedPage, showFeedback, tone]);
 
   const applyOptimizationMode = useCallback(
@@ -284,7 +284,7 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
       if (action.type === 'analyze') {
         await fetchPageAnalysis(page);
         await fetchPageSuggestions(page);
-        showFeedback?.('Fields analyzed (preview mode)', 'info');
+        showFeedback?.('Fields analyzed (demo)', 'info');
         return;
       }
 
@@ -313,7 +313,7 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
           metaTitle: optimization.metaTitle,
           metaDescription: optimization.metaDescription,
         });
-        showFeedback?.('AI suggestions applied to fields (preview mode)', 'success');
+        showFeedback?.('AI suggestions applied to fields (demo)', 'success');
         return;
       }
 
@@ -322,7 +322,7 @@ export function useSeoAi({ pages, selectedModuleId, selectedModule, selectedPage
       if (fields.includes('metaTitle')) updates.metaTitle = optimization.metaTitle;
       if (fields.includes('metaDescription')) updates.metaDescription = optimization.metaDescription;
       applyFields?.(updates);
-      showFeedback?.(`${action.label} applied to fields (preview mode)`, 'success');
+      showFeedback?.(`${action.label} applied to fields (demo)`, 'success');
     },
     [fetchPageAnalysis, fetchPageSuggestions, selectedPage, showFeedback, tone],
   );

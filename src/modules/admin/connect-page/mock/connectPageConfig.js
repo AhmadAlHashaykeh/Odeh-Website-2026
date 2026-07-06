@@ -1,8 +1,11 @@
-import { connectContent } from '../../../../data/connectLinks';
-import { initialConnectPageData, connectPageLastUpdated } from './connectPageData';
-
 const CONTACT_ICONS = new Set(['phone', 'email', 'whatsapp', 'maps']);
 const SOCIAL_ICONS = new Set(['linkedin', 'instagram', 'facebook']);
+
+export const initialConnectPageData = {
+  meta: {},
+  hero: {},
+  links: [],
+};
 
 export const connectPageMeta = {
   title: 'Connect Page',
@@ -107,7 +110,7 @@ export function getEnabledLinks(links = initialConnectPageData.links) {
   return links.filter((link) => link.enabled).sort((a, b) => a.order - b.order);
 }
 
-export function computeConnectPageStatistics(links = connectContent.links) {
+export function computeConnectPageStatistics(links = [], lastUpdated = '—') {
   const total = links.length;
   const enabled = links.filter((link) => link.enabled).length;
   const internal = links.filter((link) => getConnectLinkType(link) === 'internal').length;
@@ -122,7 +125,7 @@ export function computeConnectPageStatistics(links = connectContent.links) {
     { id: 'internal', value: String(internal), label: 'Internal Links' },
     { id: 'contact', value: String(contact), label: 'Contact Channels' },
     { id: 'social', value: String(social), label: 'Social Links' },
-    { id: 'updated', value: connectPageLastUpdated, label: 'Last Updated' },
+    { id: 'updated', value: lastUpdated ? String(lastUpdated).split('T')[0] : '—', label: 'Last Updated' },
   ];
 }
 
@@ -137,15 +140,4 @@ export function getEditModalTitle(editType) {
     default:
       return 'Edit Connect Link';
   }
-}
-
-export function getInitialLinkData(linkId) {
-  return structuredClone(connectContent.links.find((link) => link.id === linkId) ?? null);
-}
-
-export function getInitialHeaderData() {
-  return structuredClone({
-    meta: connectContent.meta,
-    hero: connectContent.hero,
-  });
 }

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext';
 import AdminIcon from '../components/AdminIcons';
 import styles from './AdminTopBar.module.css';
 
@@ -8,6 +9,7 @@ export default function AdminTopBar({
   sidebarCollapsed,
   onSidebarToggle,
 }) {
+  const { initials, logout, user } = useAuth();
   return (
     <header className={styles.topbar}>
       <div className={styles.left}>
@@ -67,8 +69,8 @@ export default function AdminTopBar({
           <span className={styles.notificationDot} aria-hidden="true" />
         </button>
 
-        <div className={styles.avatar} aria-label="Admin user">
-          <span className={styles.avatarInitials}>OA</span>
+        <div className={styles.avatar} aria-label={user?.fullName ? `Signed in as ${user.fullName}` : 'Admin user'}>
+          <span className={styles.avatarInitials}>{initials}</span>
         </div>
 
         <a href="/" target="_blank" rel="noopener noreferrer" className={styles.previewBtn}>
@@ -76,7 +78,7 @@ export default function AdminTopBar({
           <span>Preview Website</span>
         </a>
 
-        <button type="button" className={styles.logoutBtn} aria-label="Logout">
+        <button type="button" className={styles.logoutBtn} aria-label="Logout" onClick={logout}>
           <AdminIcon name="logout" size={16} />
           <span className={styles.logoutLabel}>Logout</span>
         </button>
