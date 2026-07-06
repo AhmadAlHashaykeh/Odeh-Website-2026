@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Modal, Button, Form, Badge, Input, Select } from '../../ui';
 import AdminIcon from '../../components/AdminIcons';
 import { SeoDelegationNotice } from '../components';
@@ -6,10 +6,26 @@ import { CoverImageField, GalleryPlaceholder } from './PlaceholderFieldGroup';
 import { MODULE_FORM_SCHEMAS } from './moduleFormSchemas';
 import { mapItemToFormValues } from './mapItemToForm';
 import { getFirstFieldError } from './formErrors';
+import { resolveUploadModule } from './uploadModuleMap';
 import inputStyles from '../../ui/components/Input.module.css';
 import styles from './AdminFormDrawer.module.css';
 
 const FULL_WIDTH_TYPES = new Set(['textarea', 'cover', 'gallery']);
+
+function parseGalleryValue(value) {
+  if (Array.isArray(value)) return value;
+
+  if (typeof value === 'string' && value.trim().startsWith('[')) {
+    try {
+      const parsed = JSON.parse(value);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  return [];
+}
 
 function isFullWidth(field) {
   return field.fullWidth || FULL_WIDTH_TYPES.has(field.type);
@@ -58,7 +74,7 @@ function renderSelect(field, value, error, disabled) {
   );
 }
 
-function renderField(field, values, fieldErrors, disabled) {
+function renderField(field, values, fieldErrors, disabled, uploadModule, onUploadingChange) {
   const value = values[field.name] ?? '';
   const error = getFirstFieldError(fieldErrors, field.name);
 
@@ -97,15 +113,25 @@ function renderField(field, values, fieldErrors, disabled) {
       return (
         <CoverImageField
           label={field.label}
+          name={field.name}
           src={typeof value === 'string' ? value : ''}
           alt={values.title || values.fullName || 'Cover'}
+          uploadModule={uploadModule}
+          uploadField={field.name}
+          disabled={disabled}
+          onUploadingChange={onUploadingChange}
         />
       );
     case 'gallery':
       return (
         <GalleryPlaceholder
           label={field.label}
-          images={Array.isArray(value) ? value : []}
+          name={field.name}
+          images={Array.isArray(value) ? value : parseGalleryValue(value)}
+          uploadModule={uploadModule}
+          uploadField={field.name}
+          disabled={disabled}
+          onUploadingChange={onUploadingChange}
         />
       );
     default:
@@ -125,13 +151,13 @@ function renderField(field, values, fieldErrors, disabled) {
   }
 }
 
-function renderFieldGroup(field, values, fieldErrors, disabled) {
+function renderFieldGroup(field, values, fieldErrors, disabled, uploadModule, onUploadingChange) {
   const error = getFirstFieldError(fieldErrors, field.name);
 
   if (field.type === 'cover' || field.type === 'gallery') {
     return (
       <div key={field.name} className={styles.mediaField}>
-        {renderField(field, values, fieldErrors, disabled)}
+        {renderField(field, values, fieldErrors, disabled, uploadModule, onUploadingChange)}
       </div>
     );
   }
@@ -145,7 +171,7 @@ function renderFieldGroup(field, values, fieldErrors, disabled) {
       error={error}
       htmlFor={field.name}
     >
-      {renderField(field, values, fieldErrors, disabled)}
+      {renderField(field, values, fieldErrors, disabled, uploadModule, onUploadingChange)}
     </Form.Field>
   );
 }
@@ -162,7 +188,15 @@ export default function AdminFormDrawer({
   fieldOptions = {},
 }) {
   const formRef = useRef(null);
+  const [activeUploads, setActiveUploads] = useState(0);
   const schema = MODULE_FORM_SCHEMAS[moduleKey];
+  const uploadModule = resolveUploadModule(moduleKey);
+  const isUploading = activeUploads > 0;
+  const saveDisabled = submitting || isUploading;
+
+  const handleUploadingChange = (uploading) => {
+    setActiveUploads((count) => Math.max(0, count + (uploading ? 1 : -1)));
+  };
   const values = useMemo(
     () => (mode === 'edit' ? mapItemToFormValues(moduleKey, item) : {}),
     [moduleKey, mode, item],
@@ -215,7 +249,7 @@ export default function AdminFormDrawer({
         className={styles.closeBtn}
         onClick={onClose}
         aria-label="Close modal"
-        disabled={submitting}
+        disabled={saveDisabled}
       >
         <AdminIcon name="close" size={18} />
       </button>
@@ -224,7 +258,7 @@ export default function AdminFormDrawer({
 
   const modalFooter = (
     <>
-      <Button variant="secondary" onClick={onClose} disabled={submitting}>
+      <Button variant="secondary" onClick={onClose} disabled={saveDisabled}>
         Cancel
       </Button>
       <Button
@@ -232,9 +266,9 @@ export default function AdminFormDrawer({
         icon={<AdminIcon name="check" size={16} />}
         onClick={handleSave}
         loading={submitting}
-        disabled={submitting}
+        disabled={saveDisabled}
       >
-        {mode === 'edit' ? 'Save Changes' : 'Save Item'}
+        {isUploading ? 'Uploading Image…' : mode === 'edit' ? 'Save Changes' : 'Save Item'}
       </Button>
     </>
   );
@@ -258,13 +292,27 @@ export default function AdminFormDrawer({
           <Form.Section key={section.title} title={section.title}>
             {groupFieldsIntoRows(section.fields).map((row, rowIndex) => {
               if (row.length === 1) {
-                return renderFieldGroup(row[0], values, fieldErrors, submitting);
+                return renderFieldGroup(
+                  row[0],
+                  values,
+                  fieldErrors,
+                  saveDisabled,
+                  uploadModule,
+                  handleUploadingChange,
+                );
               }
 
               return (
                 <Form.Row key={`${section.title}-row-${rowIndex}`}>
                   {row.map((field) =>
-                    renderFieldGroup(field, values, fieldErrors, submitting),
+                    renderFieldGroup(
+                      field,
+                      values,
+                      fieldErrors,
+                      saveDisabled,
+                      uploadModule,
+                      handleUploadingChange,
+                    ),
                   )}
                 </Form.Row>
               );

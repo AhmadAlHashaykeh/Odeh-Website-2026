@@ -58,12 +58,24 @@ export function useNavigationFooterCms() {
       } else {
         switch (panelId) {
           case 'nav-logo':
-            nextData.logo = { ...nextData.logo, ...values };
+            nextData.logo = {
+              ...nextData.logo,
+              src: values.src || values['logo-src'] || nextData.logo.src,
+              alt: values['logo-alt'] || nextData.logo.alt,
+            };
             break;
           case 'nav-menu':
             break;
           case 'footer-brand':
-            nextData.footerBrand = { ...nextData.footerBrand, ...values };
+            nextData.footerBrand = {
+              ...nextData.footerBrand,
+              text: values['footer-brand-text'] ?? nextData.footerBrand.text,
+              logo: {
+                ...nextData.footerBrand.logo,
+                src: values['footer-logo-src'] || nextData.footerBrand.logo?.src,
+                alt: nextData.footerBrand.logo?.alt,
+              },
+            };
             break;
           case 'footer-copyright':
             nextData.copyright = { ...nextData.copyright, ...values };

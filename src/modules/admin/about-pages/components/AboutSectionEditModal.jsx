@@ -1,6 +1,6 @@
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input } from '../../ui';
-import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
+import { CoverImageField, GalleryPlaceholder } from '../../cms/action-flows/PlaceholderFieldGroup';
 import { panelEditTitles } from '../mock/aboutPagesConfig';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
@@ -46,7 +46,18 @@ function HeroForm({ data }) {
       </Form.Section>
       <Form.Section title="Background Image">
         <div className={styles.mediaField}>
-          <CoverImageField label="Hero Background" src={data.backgroundImage} alt={data.ariaLabel} />
+          <CoverImageField
+            label="Hero Background"
+            name="backgroundImage"
+            src={data.backgroundImage}
+            alt={data.ariaLabel}
+            uploadModule="about-pages"
+            uploadField="backgroundImage"
+            onChange={(nextSrc) => {
+              const input = document.getElementById('hero-bg');
+              if (input) input.value = nextSrc;
+            }}
+          />
         </div>
         <Form.Field label="Image Path" htmlFor="hero-bg">
           <Input.Field>
@@ -93,7 +104,18 @@ function CompanyIntroForm({ data }) {
       </Form.Section>
       <Form.Section title="Featured Image">
         <div className={styles.mediaField}>
-          <CoverImageField label="Office Image" src={data.image.src} alt={data.image.alt} />
+          <CoverImageField
+            label="Office Image"
+            name="intro-image-src"
+            src={data.image.src}
+            alt={data.image.alt}
+            uploadModule="about-pages"
+            uploadField="image"
+            onChange={(nextSrc) => {
+              const input = document.getElementById('intro-image-src');
+              if (input) input.value = nextSrc;
+            }}
+          />
         </div>
         <Form.Row>
           <Form.Field label="Image Path" htmlFor="intro-image-src">
@@ -152,6 +174,15 @@ function OfficeGalleryForm({ data }) {
         </Form.Field>
       </Form.Section>
       <Form.Section title={`Office Images (${data.images.length})`}>
+        <div className={styles.mediaField}>
+          <GalleryPlaceholder
+            label="Office Gallery"
+            name="gallery-images"
+            images={data.images}
+            uploadModule="about-pages"
+            uploadField="gallery"
+          />
+        </div>
         <div className={styles.imageList}>
           {data.images.map((image, index) => (
             <div key={image.src} className={styles.imageListItem}>

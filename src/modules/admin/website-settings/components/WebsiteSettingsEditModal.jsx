@@ -2,6 +2,7 @@ import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Input } from '../../ui';
 import { getEditableSettingTitle } from '../mock/websiteSettingsConfig';
 import inputStyles from '../../ui/components/Input.module.css';
+import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
 
 function GeneralIdentityForm({ data }) {
@@ -47,6 +48,20 @@ function GeneralIdentityForm({ data }) {
 function FaviconForm({ data }) {
   return (
     <Form.Section title="Favicon">
+      <div className={drawerStyles.mediaField}>
+        <CoverImageField
+          label="Favicon Preview"
+          name="faviconSrc"
+          src={data.branding.favicon.src}
+          alt="Site favicon"
+          uploadModule="website-settings"
+          uploadField="favicon"
+          onChange={(nextSrc) => {
+            const input = document.getElementById('ws-favicon-src');
+            if (input) input.value = nextSrc;
+          }}
+        />
+      </div>
       <Form.Field label="Favicon Path" htmlFor="ws-favicon-src">
         <Input.Field>
           <input

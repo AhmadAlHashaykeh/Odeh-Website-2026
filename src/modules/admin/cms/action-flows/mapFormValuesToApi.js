@@ -25,6 +25,21 @@ function omitEmpty(payload) {
   );
 }
 
+function parseGallery(value) {
+  if (Array.isArray(value)) return value;
+
+  if (typeof value === 'string' && value.trim().startsWith('[')) {
+    try {
+      const parsed = JSON.parse(value);
+      return Array.isArray(parsed) ? parsed : undefined;
+    } catch {
+      return undefined;
+    }
+  }
+
+  return undefined;
+}
+
 export function mapFormValuesToApi(moduleKey, values, context = {}) {
   switch (moduleKey) {
     case 'categories':
@@ -50,7 +65,7 @@ export function mapFormValuesToApi(moduleKey, values, context = {}) {
         projectCategoryId: categoryRecord?.id,
         description: values.description,
         coverImage: values.coverImage,
-        gallery: Array.isArray(values.gallery) ? values.gallery : undefined,
+        gallery: parseGallery(values.gallery),
         location: values.location,
         projectType: values.projectType,
         area: values.area,
@@ -79,7 +94,7 @@ export function mapFormValuesToApi(moduleKey, values, context = {}) {
         location: values.location,
         description: values.description,
         coverImage: values.coverImage,
-        gallery: Array.isArray(values.gallery) ? values.gallery : undefined,
+        gallery: parseGallery(values.gallery),
         status: values.status,
         featured: parseBoolean(values.featured),
         displayOrder: parseNumber(values.displayOrder),

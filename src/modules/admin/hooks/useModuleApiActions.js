@@ -153,8 +153,11 @@ export function useModuleApiActions({
       await listing.refresh();
     },
     onGallerySave: enableGallery
-      ? async (item) => {
-          await api.update(item.id, { gallery: item.gallery });
+      ? async (item, updatedMedia) => {
+          await api.update(item.id, {
+            coverImage: updatedMedia?.coverImage ?? item.coverImage,
+            gallery: updatedMedia?.gallery ?? item.gallery,
+          });
           await listing.refresh();
         }
       : undefined,

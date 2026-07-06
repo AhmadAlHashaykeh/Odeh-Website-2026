@@ -19,6 +19,38 @@ const PANEL_MAP = {
   'history-growth': { sectionKey: 'history', dataKey: 'growthTable' },
 };
 
+function normalizeAboutPanelValues(panelId, currentPanel, values) {
+  const updatedPanel = { ...currentPanel, ...values };
+
+  if (panelId === 'overview-intro') {
+    updatedPanel.image = {
+      ...currentPanel.image,
+      src: values['intro-image-src'] ?? currentPanel.image?.src,
+      alt: values['intro-image-alt'] ?? currentPanel.image?.alt,
+    };
+    delete updatedPanel['intro-image-src'];
+    delete updatedPanel['intro-image-alt'];
+  }
+
+  if (panelId === 'overview-gallery' && typeof values['gallery-images'] === 'string') {
+    try {
+      const parsed = JSON.parse(values['gallery-images']);
+      if (Array.isArray(parsed)) {
+        updatedPanel.images = parsed;
+      }
+    } catch {
+      // Keep existing gallery images when JSON is invalid.
+    }
+    delete updatedPanel['gallery-images'];
+  }
+
+  if (values.backgroundImage) {
+    delete updatedPanel['hero-bg'];
+  }
+
+  return updatedPanel;
+}
+
 export function useAboutPagesCms() {
   const singleton = useCmsSingleton({
     showFn: aboutPagesApi.show,
@@ -52,7 +84,9 @@ export function useAboutPagesCms() {
       const currentPanel = pagesData[sectionKey]?.[dataKey] ?? {};
       const values = formElement ? extractFormValues(formElement) : {};
       const updatedPanel =
-        Object.keys(values).length > 0 ? { ...currentPanel, ...values } : currentPanel;
+        Object.keys(values).length > 0
+          ? normalizeAboutPanelValues(panelId, currentPanel, values)
+          : currentPanel;
 
       const result = await singleton.update({
         ...singleton.data,

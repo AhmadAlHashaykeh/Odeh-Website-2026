@@ -1,21 +1,124 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { ApiError } from '../../../../api/client';
+import { uploadImage } from '../../../../api/uploads';
 import { Drawer, Button } from '../../ui';
 import AdminIcon from '../../components/AdminIcons';
 import styles from './AdminGalleryDrawer.module.css';
+
+const ACCEPTED_TYPES = 'image/jpeg,image/png,image/webp,image/avif';
+
+function formatUploadError(error) {
+  if (error instanceof ApiError) {
+    return error.message;
+  }
+
+  return 'Image upload failed. Please try again.';
+}
 
 export default function AdminGalleryDrawer({
   open,
   onClose,
   title = 'Manage Gallery',
-  coverImage,
-  gallery = [],
+  coverImage: initialCoverImage,
+  gallery: initialGallery = [],
   itemLabel,
+  uploadModule = 'projects',
   onSave,
+  submitting = false,
 }) {
+  const fileInputRef = useRef(null);
+  const [coverImage, setCoverImage] = useState(initialCoverImage || '');
+  const [gallery, setGallery] = useState(Array.isArray(initialGallery) ? initialGallery : []);
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (!open) return;
+    setCoverImage(initialCoverImage || '');
+    setGallery(Array.isArray(initialGallery) ? initialGallery : []);
+    setError('');
+  }, [open, initialCoverImage, initialGallery]);
+
   const images = gallery.length > 0
     ? gallery
     : coverImage
       ? [{ src: coverImage, alt: 'Cover' }]
       : [];
+
+  const saveDisabled = submitting || uploading;
+
+  const uploadFiles = useCallback(
+    async (files) => {
+      if (!files.length) return;
+
+      setError('');
+      setUploading(true);
+
+      try {
+        const uploaded = [];
+
+        for (const file of files) {
+          const result = await uploadImage(file, uploadModule, 'gallery');
+          uploaded.push({ src: result.path, alt: '' });
+        }
+
+        setGallery((current) => [...current, ...uploaded]);
+      } catch (uploadError) {
+        setError(formatUploadError(uploadError));
+      } finally {
+        setUploading(false);
+      }
+    },
+    [uploadModule],
+  );
+
+  const handleCoverReplace = useCallback(
+    async (event) => {
+      const file = event.target.files?.[0];
+      event.target.value = '';
+
+      if (!file) return;
+
+      setError('');
+      setUploading(true);
+
+      try {
+        const result = await uploadImage(file, uploadModule, 'coverImage');
+        setCoverImage(result.path);
+      } catch (uploadError) {
+        setError(formatUploadError(uploadError));
+      } finally {
+        setUploading(false);
+      }
+    },
+    [uploadModule],
+  );
+
+  const handleAddImages = useCallback(
+    async (event) => {
+      const files = Array.from(event.target.files || []);
+      event.target.value = '';
+      await uploadFiles(files);
+    },
+    [uploadFiles],
+  );
+
+  const handleRemove = useCallback((index) => {
+    setGallery((current) => current.filter((_, itemIndex) => itemIndex !== index));
+  }, []);
+
+  const handleSetCover = useCallback((index) => {
+    const image = gallery[index];
+    if (!image?.src) return;
+    setCoverImage(image.src);
+  }, [gallery]);
+
+  const handleSave = useCallback(() => {
+    onSave?.({
+      coverImage,
+      gallery,
+    });
+  }, [coverImage, gallery, onSave]);
 
   return (
     <Drawer
@@ -27,15 +130,17 @@ export default function AdminGalleryDrawer({
       title={title}
       footer={(
         <>
-          <Button variant="secondary" onClick={onClose}>
+          <Button variant="secondary" onClick={onClose} disabled={saveDisabled}>
             Cancel
           </Button>
           <Button
             variant="primary"
             icon={<AdminIcon name="check" size={16} />}
-            onClick={onSave}
+            onClick={handleSave}
+            loading={submitting}
+            disabled={saveDisabled}
           >
-            Save Gallery
+            {uploading ? 'Uploading…' : 'Save Gallery'}
           </Button>
         </>
       )}
@@ -45,6 +150,8 @@ export default function AdminGalleryDrawer({
           Managing gallery for <strong>{itemLabel}</strong>
         </p>
       )}
+
+      {error && <p className={styles.errorNotice}>{error}</p>}
 
       <section className={styles.section}>
         <h3 className={styles.sectionTitle}>Cover Image</h3>
@@ -63,38 +170,48 @@ export default function AdminGalleryDrawer({
           </div>
         )}
         <div className={styles.placeholderActions}>
-          <span className={styles.placeholderBtn}>
+          <label className={styles.placeholderBtnInteractive}>
             <AdminIcon name="upload" size={14} />
-            Replace Cover
-          </span>
+            {uploading ? 'Uploading…' : 'Replace Cover'}
+            <input
+              type="file"
+              accept={ACCEPTED_TYPES}
+              className={styles.hiddenInput}
+              onChange={handleCoverReplace}
+              disabled={saveDisabled}
+            />
+          </label>
         </div>
       </section>
 
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <h3 className={styles.sectionTitle}>Gallery Images</h3>
-          <span className={styles.count}>{images.length} images</span>
+          <span className={styles.count}>{gallery.length} images</span>
         </div>
 
         <div className={styles.grid}>
-          {images.map((image, index) => (
+          {gallery.map((image, index) => (
             <div key={`${image.src}-${index}`} className={styles.item}>
               <div className={styles.thumb}>
                 <img src={image.src} alt={image.alt || `Image ${index + 1}`} />
-                <span className={styles.orderHandle} aria-hidden="true">
-                  <AdminIcon name="more" size={12} />
-                </span>
               </div>
               <div className={styles.itemActions}>
-                <button type="button" className={styles.itemBtn} disabled>
+                <button
+                  type="button"
+                  className={styles.itemBtnInteractive}
+                  onClick={() => handleSetCover(index)}
+                  disabled={saveDisabled}
+                >
                   <AdminIcon name="star" size={12} />
                   Set Cover
                 </button>
-                <button type="button" className={styles.itemBtn} disabled>
-                  <AdminIcon name="upload" size={12} />
-                  Replace
-                </button>
-                <button type="button" className={`${styles.itemBtn} ${styles.removeBtn}`} disabled>
+                <button
+                  type="button"
+                  className={`${styles.itemBtnInteractive} ${styles.removeBtn}`}
+                  onClick={() => handleRemove(index)}
+                  disabled={saveDisabled}
+                >
                   <AdminIcon name="trash" size={12} />
                   Remove
                 </button>
@@ -102,17 +219,26 @@ export default function AdminGalleryDrawer({
             </div>
           ))}
 
-          <div className={styles.addPlaceholder}>
+          <label className={`${styles.addPlaceholder} ${styles.addPlaceholderInteractive}`}>
             <AdminIcon name="add" size={24} />
-            <span>Add Image</span>
-            <span className={styles.addHint}>File upload coming in a future release</span>
-          </div>
+            <span>{uploading ? 'Uploading…' : 'Add Image'}</span>
+            <span className={styles.addHint}>JPG, PNG, or WebP up to 5MB</span>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept={ACCEPTED_TYPES}
+              multiple
+              className={styles.hiddenInput}
+              onChange={handleAddImages}
+              disabled={saveDisabled}
+            />
+          </label>
         </div>
       </section>
 
       <p className={styles.notice}>
         <AdminIcon name="external" size={14} />
-        Gallery images are displayed from stored URLs. Upload and reorder will be available in a future release.
+        Uploaded images are converted to WebP and saved when you click Save Gallery.
       </p>
     </Drawer>
   );

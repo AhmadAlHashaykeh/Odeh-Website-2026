@@ -26,6 +26,7 @@ use App\Http\Controllers\Api\Admin\AboutPageSettingController;
 use App\Http\Controllers\Api\Admin\ActivityController;
 use App\Http\Controllers\Api\Admin\ConnectPageSettingController;
 use App\Http\Controllers\Api\Admin\DashboardController;
+use App\Http\Controllers\Api\Admin\ImageUploadController;
 use App\Http\Controllers\Api\Admin\HomePageSettingController;
 use App\Http\Controllers\Api\Admin\JobController;
 use App\Http\Controllers\Api\Admin\LegalPageController;
@@ -77,6 +78,7 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('dashboard/stats', [DashboardController::class, 'stats']);
+    Route::post('uploads/image', [ImageUploadController::class, 'store']);
 
     Route::apiResource('project-categories', ProjectCategoryController::class);
     Route::apiResource('projects', ProjectController::class);

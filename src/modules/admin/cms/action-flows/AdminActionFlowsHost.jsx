@@ -6,6 +6,7 @@ import {
   ActionFeedback,
 } from './index';
 import { getItemLabel } from './mapItemToForm';
+import { resolveUploadModule } from './uploadModuleMap';
 
 export default function AdminActionFlowsHost({
   moduleKey,
@@ -40,7 +41,9 @@ export default function AdminActionFlowsHost({
           coverImage={galleryItem?.coverImage}
           gallery={galleryItem?.gallery}
           itemLabel={getItemLabel(moduleKey, galleryItem)}
+          uploadModule={resolveUploadModule(moduleKey)}
           onSave={flows.handleGallerySave}
+          submitting={flows.isSubmitting}
         />
       )}
 

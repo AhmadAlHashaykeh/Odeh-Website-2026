@@ -11,7 +11,18 @@ function LogoForm({ data }) {
     <>
       <Form.Section title="Site Logo">
         <div className={styles.mediaField}>
-          <CoverImageField label="Logo Preview" src={data.src} alt={data.alt} />
+          <CoverImageField
+            label="Logo Preview"
+            name="src"
+            src={data.src}
+            alt={data.alt}
+            uploadModule="navigation-footer"
+            uploadField="logo"
+            onChange={(nextSrc) => {
+              const input = document.getElementById('logo-src');
+              if (input) input.value = nextSrc;
+            }}
+          />
         </div>
         <Form.Field label="Logo Path" htmlFor="logo-src">
           <Input.Field>
@@ -142,7 +153,18 @@ function FooterBrandForm({ data }) {
     <>
       <Form.Section title="Footer Brand">
         <div className={styles.mediaField}>
-          <CoverImageField label="Footer Logo" src={data.logo.src} alt={data.logo.alt} />
+          <CoverImageField
+            label="Footer Logo"
+            name="footer-logo-upload"
+            src={data.logo.src}
+            alt={data.logo.alt}
+            uploadModule="navigation-footer"
+            uploadField="footerLogo"
+            onChange={(nextSrc) => {
+              const input = document.getElementById('footer-logo-src');
+              if (input) input.value = nextSrc;
+            }}
+          />
         </div>
         <Form.Field label="Logo Path" htmlFor="footer-logo-src">
           <Input.Field>

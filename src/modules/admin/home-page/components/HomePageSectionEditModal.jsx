@@ -145,7 +145,14 @@ function HeroForm({ data }) {
 
       <Form.Section title="Hero Media">
         <div className={styles.mediaField}>
-          <CoverImageField label="Hero Poster Image" src={data.posterImage} alt="Hero poster" />
+          <CoverImageField
+            label="Hero Poster Image"
+            name="posterImage"
+            src={data.posterImage}
+            alt="Hero poster"
+            uploadModule="home-page"
+            uploadField="posterImage"
+          />
         </div>
         <Form.Field label="Hero Video" htmlFor="hero-video" helper="MP4 source used behind the poster">
           <Input.Field>
