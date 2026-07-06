@@ -108,7 +108,7 @@ export default function CategoryDetailsDrawer({ category, onClose }) {
               </Link>
             </div>
 
-            {category.projectPreviews.length > 0 ? (
+            {(category.projectPreviews?.length ?? 0) > 0 ? (
               <div className={styles.projectGrid}>
                 {category.projectPreviews.map((project) => (
                   <article key={project.id} className={styles.projectCard}>

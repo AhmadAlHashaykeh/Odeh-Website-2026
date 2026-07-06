@@ -5,7 +5,7 @@ import {
   DocumentLayout,
   DocumentSection,
 } from '../components/Utility';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getLegalPage } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import styles from './LegalDocumentPage.module.css';
@@ -27,7 +27,7 @@ export default function TermsAndConditionsPage() {
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="document" />
       </AboutPageShell>
     );
   }

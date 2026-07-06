@@ -6,7 +6,7 @@ import {
   ActivityNavigation,
   RelatedActivities,
 } from '../components/AboutActivities';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getActivity } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import { mapActivity } from '../utils/contentMappers';
@@ -18,7 +18,7 @@ export default function AboutActivityDetailPage() {
   if (loading) {
     return (
       <AboutPageShell meta={{ title: 'Activity | ODEH & PARTNERS DESIGN' }}>
-        <PageLoader />
+        <PublicPageSkeleton variant="detail" />
       </AboutPageShell>
     );
   }

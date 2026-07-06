@@ -1,5 +1,13 @@
 .home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   animation: pageEnter 0.6s ease forwards;
+}
+
+.home main {
+  flex: 1;
+  min-height: calc(100vh - var(--navbar-height));
 }
 
 @media (prefers-reduced-motion: reduce) {

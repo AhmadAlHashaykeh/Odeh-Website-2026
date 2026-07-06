@@ -1,7 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { AboutPageShell } from '../components/AboutSection';
 import { ProjectsHero, ProjectGrid } from '../components/SelectedProjects';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getProjects } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 
@@ -12,7 +12,7 @@ export default function ProjectCategoryPage() {
   if (loading) {
     return (
       <AboutPageShell meta={{ title: 'Projects | ODEH & PARTNERS DESIGN' }}>
-        <PageLoader />
+        <PublicPageSkeleton variant="hero-grid" />
       </AboutPageShell>
     );
   }

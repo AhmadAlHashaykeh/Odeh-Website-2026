@@ -1,7 +1,7 @@
 import { AboutPageShell } from '../components/AboutSection';
 import { OverviewHero } from '../components/AboutOverview';
 import { TeamDirectory } from '../components/AboutTeam';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getTeamMembers } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import { mapTeamMember } from '../utils/contentMappers';
@@ -19,7 +19,7 @@ export default function AboutTeamPage() {
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="team" />
       </AboutPageShell>
     );
   }

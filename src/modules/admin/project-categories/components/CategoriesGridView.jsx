@@ -82,7 +82,7 @@ export default function CategoriesGridView({
 
             <span className={styles.slug}>/{category.slug}</span>
 
-            {category.projectPreviews.length > 0 && (
+            {category.projectPreviews?.length > 0 && (
               <div className={styles.thumbnails}>
                 {category.projectPreviews.slice(0, 4).map((project) => (
                   <img

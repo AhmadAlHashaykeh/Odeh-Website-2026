@@ -4,7 +4,7 @@ import About from '../components/About/About';
 import Services from '../components/Services/Services';
 import Projects from '../components/Projects/Projects';
 import Footer from '../components/Footer/Footer';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getHome } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import { useSeoMeta } from '../hooks/useSeoMeta';
@@ -24,7 +24,9 @@ export default function HomePage() {
     return (
       <div className={styles.home}>
         <Navbar />
-        <PageLoader />
+        <main>
+          <PublicPageSkeleton variant="home" />
+        </main>
         <Footer />
       </div>
     );

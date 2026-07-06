@@ -1,6 +1,6 @@
 import { AboutPageShell } from '../components/AboutSection';
 import { OverviewHero, OverviewContent, OverviewOfficeSlider } from '../components/AboutOverview';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getAbout } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 
@@ -16,7 +16,7 @@ export default function AboutOverviewPage() {
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="hero-content" />
       </AboutPageShell>
     );
   }

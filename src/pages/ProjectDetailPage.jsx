@@ -6,7 +6,7 @@ import {
   ProjectInfo,
   RelatedProjects,
 } from '../components/SelectedProjects';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getProject, getProjects } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 
@@ -21,7 +21,7 @@ export default function ProjectDetailPage() {
   if (projectLoading || projectsLoading) {
     return (
       <AboutPageShell meta={{ title: 'Project | ODEH & PARTNERS DESIGN' }}>
-        <PageLoader />
+        <PublicPageSkeleton variant="detail" />
       </AboutPageShell>
     );
   }

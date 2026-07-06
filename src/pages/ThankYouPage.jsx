@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { AboutPageShell } from '../components/AboutSection';
 import { PageContainer, SuccessState } from '../components/Utility';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { usePublicSite } from '../context/PublicSiteContext';
 import styles from './ThankYouPage.module.css';
 
@@ -31,7 +31,7 @@ export default function ThankYouPage() {
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="centered" />
       </AboutPageShell>
     );
   }

@@ -1,6 +1,6 @@
 import { AboutPageShell } from '../components/AboutSection';
 import { ProjectsHero, CategoryGrid } from '../components/SelectedProjects';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getProjects } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 
@@ -17,7 +17,7 @@ export default function ProjectsPage() {
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="hero-grid" />
       </AboutPageShell>
     );
   }

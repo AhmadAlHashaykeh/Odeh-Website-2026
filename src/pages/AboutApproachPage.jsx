@@ -1,7 +1,7 @@
 import { AboutPageShell } from '../components/AboutSection';
 import { OverviewHero } from '../components/AboutOverview';
 import { ApproachPrinciples } from '../components/AboutApproach';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getAbout } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 
@@ -17,7 +17,7 @@ export default function AboutApproachPage() {
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="hero-content" />
       </AboutPageShell>
     );
   }

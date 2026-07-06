@@ -8,7 +8,7 @@ import {
   EmptyState,
   SearchResultCard,
 } from '../components/Utility';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { searchContent } from '../api/public/content';
 import { usePublicSite } from '../context/PublicSiteContext';
 import { useDebouncedValue } from '../hooks/useDebouncedValue';
@@ -122,7 +122,7 @@ export default function SearchPage() {
   if (siteLoading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="search" />
       </AboutPageShell>
     );
   }
@@ -160,7 +160,7 @@ export default function SearchPage() {
         {hasQuery && (
           <div ref={resultsRef} className={`${styles.results} reveal`}>
             {resultsLoading ? (
-              <PageLoader />
+              <PublicPageSkeleton variant="search-results" />
             ) : hasResults ? (
               <>
                 <SectionHeading
