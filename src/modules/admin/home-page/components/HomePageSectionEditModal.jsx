@@ -5,6 +5,7 @@ import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
 import { sectionEditTitles } from '../mock/homePageConfig';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './HomePageSectionEditModal.module.css';
 
 function StatFields({ stats, prefix }) {

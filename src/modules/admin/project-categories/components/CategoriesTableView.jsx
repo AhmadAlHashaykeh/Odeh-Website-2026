@@ -10,6 +10,7 @@ import {
 } from '../../ui/components/Table';
 import tableStyles from '../../ui/components/Table.module.css';
 import CategoryQuickActions from './CategoryQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './CategoriesTableView.module.css';
 
 function formatDate(value) {

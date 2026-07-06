@@ -1,6 +1,7 @@
 import AdminIcon from '../../components/AdminIcons';
 import { Badge, Button } from '../../ui';
 import { getPanelSummary } from '../mock/navigationFooterConfig';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './NavigationFooterContentPanel.module.css';
 
 function NavLogoPreview({ data }) {

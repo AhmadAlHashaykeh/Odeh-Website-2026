@@ -1,4 +1,5 @@
 import AdminIcon from '../../components/AdminIcons';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './GalleryPreview.module.css';
 
 export default function GalleryPreview({ gallery = [], coverImage }) {

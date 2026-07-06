@@ -1,6 +1,7 @@
 import { StatusBadge } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import ServiceQuickActions from './ServiceQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ServicesTableView.module.css';
 
 function formatDate(value) {

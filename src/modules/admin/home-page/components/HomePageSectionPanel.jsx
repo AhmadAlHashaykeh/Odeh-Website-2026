@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import AdminIcon from '../../components/AdminIcons';
 import { Badge, Button } from '../../ui';
 import { getSectionSummary } from '../mock/homePageConfig';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './HomePageSectionPanel.module.css';
 
 function HeroPreview({ data }) {

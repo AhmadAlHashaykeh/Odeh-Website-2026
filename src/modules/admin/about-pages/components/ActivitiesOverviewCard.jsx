@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import AdminIcon from '../../components/AdminIcons';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ActivitiesOverviewCard.module.css';
 
 export default function ActivitiesOverviewCard({ stats }) {

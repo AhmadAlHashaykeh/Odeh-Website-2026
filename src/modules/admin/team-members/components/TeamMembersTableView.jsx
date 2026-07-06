@@ -1,5 +1,6 @@
 import { StatusBadge } from '../../cms/components';
 import TeamMemberQuickActions from './TeamMemberQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './TeamMembersTableView.module.css';
 
 function formatDate(value) {

@@ -4,6 +4,7 @@ import { CoverImageField, GalleryPlaceholder } from '../../cms/action-flows/Plac
 import { panelEditTitles } from '../mock/aboutPagesConfig';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './AboutSectionEditModal.module.css';
 
 function HeroForm({ data }) {

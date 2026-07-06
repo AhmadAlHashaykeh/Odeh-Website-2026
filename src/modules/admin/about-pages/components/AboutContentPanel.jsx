@@ -1,6 +1,7 @@
 import AdminIcon from '../../components/AdminIcons';
 import { Badge, Button } from '../../ui';
 import { getPanelSummary } from '../mock/aboutPagesConfig';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './AboutContentPanel.module.css';
 
 function AboutHeroPreview({ data }) {

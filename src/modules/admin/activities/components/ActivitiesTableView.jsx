@@ -1,6 +1,7 @@
 import { StatusBadge } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import ActivityQuickActions from './ActivityQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ActivitiesTableView.module.css';
 
 function formatDate(value) {

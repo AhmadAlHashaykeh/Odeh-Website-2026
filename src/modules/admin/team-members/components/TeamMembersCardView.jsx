@@ -1,6 +1,7 @@
 import { StatusBadge } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import TeamMemberQuickActions from './TeamMemberQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './TeamMembersCardView.module.css';
 
 function MemberStatusBadge({ status }) {

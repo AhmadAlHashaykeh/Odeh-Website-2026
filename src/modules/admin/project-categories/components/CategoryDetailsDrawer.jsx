@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { StatusBadge, SeoDelegationNotice } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './CategoryDetailsDrawer.module.css';
 
 function formatDate(value) {

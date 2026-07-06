@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { StatusBadge, SeoDelegationNotice } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ServiceDetailsDrawer.module.css';
 
 function formatDate(value) {

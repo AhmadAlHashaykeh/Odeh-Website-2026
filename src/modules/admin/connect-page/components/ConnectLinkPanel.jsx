@@ -2,6 +2,7 @@ import AdminIcon from '../../components/AdminIcons';
 import { Badge, Button } from '../../ui';
 import { CmsModuleShortcut } from '../../cms/components';
 import ConnectLinkCard from './ConnectLinkCard';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ConnectLinkPanel.module.css';
 
 function HeaderBrandCard({ hero, onEdit, onReset }) {

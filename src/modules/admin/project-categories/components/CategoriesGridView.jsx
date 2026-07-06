@@ -1,6 +1,7 @@
 import { StatusBadge } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import CategoryQuickActions from './CategoryQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './CategoriesGridView.module.css';
 
 export default function CategoriesGridView({

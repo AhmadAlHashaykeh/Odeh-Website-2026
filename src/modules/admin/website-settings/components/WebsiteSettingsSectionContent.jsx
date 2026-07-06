@@ -3,6 +3,7 @@ import AdminIcon from '../../components/AdminIcons';
 import WebsiteSettingCard from './WebsiteSettingCard';
 import WebsiteShortcutCard from './WebsiteShortcutCard';
 import { websiteSettingsShortcuts } from '../mock/websiteSettingsConfig';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './WebsiteSettingsSectionContent.module.css';
 
 function LogoPreview({ logo }) {
