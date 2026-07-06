@@ -6,6 +6,7 @@
  * @param {Array<{ src: string, alt: string, variant: 'primary' | 'secondaryTop' | 'secondaryBottom' }>} props.images
  */
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './EditorialGallery.module.css';
 
 const variantClass = {

@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './OverviewContent.module.css';
 
 export default function OverviewContent({ title, description, image }) {

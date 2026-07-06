@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useSmoothScroll } from '../../context/SmoothScrollContext';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import { ArrowIcon, CloseIcon } from './GalleryIcons';
 import styles from './GalleryLightbox.module.css';
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './RelatedActivities.module.css';
 
 export default function RelatedActivities({ activities }) {

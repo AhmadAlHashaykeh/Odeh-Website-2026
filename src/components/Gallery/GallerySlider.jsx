@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import GalleryLightbox from './GalleryLightbox';
 import { ArrowIcon } from './GalleryIcons';
 import styles from './GallerySlider.module.css';

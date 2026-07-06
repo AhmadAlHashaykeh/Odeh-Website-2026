@@ -1,4 +1,5 @@
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import Carousel from '../Carousel/Carousel';
 import styles from './Services.module.css';
 

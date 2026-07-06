@@ -8,6 +8,7 @@
  * @param {'left' | 'right'} [props.imagePosition='right'] - Image column placement on desktop
  */
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './ContentImageSection.module.css';
 
 export default function ContentImageSection({

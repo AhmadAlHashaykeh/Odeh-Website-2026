@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './CategoryCard.module.css';
 
 export default function CategoryCard({ category, priority = false }) {

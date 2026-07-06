@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import Carousel from '../Carousel/Carousel';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import OfficeGalleryLightbox from './OfficeGalleryLightbox';
 import styles from './OverviewOfficeSlider.module.css';
 
