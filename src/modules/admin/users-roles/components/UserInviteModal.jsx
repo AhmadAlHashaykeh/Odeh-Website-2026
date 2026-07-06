@@ -8,10 +8,10 @@ import {
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
 
-export default function UserInviteModal({ open, onClose, onSave }) {
+export default function UserInviteModal({ open, onClose, onSave, roleOptions = [] }) {
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSave();
+    onSave(event.currentTarget);
   };
 
   const modalHeader = (

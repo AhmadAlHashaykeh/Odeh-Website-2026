@@ -3,8 +3,7 @@ import AdminIcon from '../../components/AdminIcons';
 import {
   contactMessageStatusLabels,
   contactMessagePriorityLabels,
-  inquiryTypeLabels,
-} from '../mock/contactMessagesData';
+} from '../mock/contactMessagesConfig';
 import { MessageStatusBadge, MessagePriorityBadge } from './MessageQuickActions';
 import styles from './MessageDetailsDrawer.module.css';
 
@@ -149,9 +148,6 @@ export default function MessageDetailsDrawer({
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Inquiry Details</h3>
             <div className={styles.inquiryCard}>
-              <span className={styles.inquiryType}>
-                {inquiryTypeLabels[message.inquiryType] || message.inquiryType}
-              </span>
               <span className={styles.inquirySubject}>{message.subject}</span>
             </div>
           </section>
@@ -206,7 +202,6 @@ export default function MessageDetailsDrawer({
             <h3 className={styles.sectionTitle}>Metadata</h3>
             <div className={styles.metaGrid}>
               <MetaRow label="Message ID" value={`#${message.id}`} />
-              <MetaRow label="Inquiry Type" value={inquiryTypeLabels[message.inquiryType]} />
               <MetaRow label="Priority" value={contactMessagePriorityLabels[message.priority]} />
               <MetaRow label="Status" value={contactMessageStatusLabels[message.status]} />
               <MetaRow label="Source Page" value={message.sourcePage} />

@@ -27,20 +27,6 @@ function SecurityCard({ icon, label, value, helper, tone = 'default' }) {
   );
 }
 
-function Notice({ icon, title, message }) {
-  return (
-    <div className={styles.notice}>
-      <div className={styles.noticeIcon}>
-        <AdminIcon name={icon} size={16} />
-      </div>
-      <div>
-        <h4 className={styles.noticeTitle}>{title}</h4>
-        <p className={styles.noticeMessage}>{message}</p>
-      </div>
-    </div>
-  );
-}
-
 export default function SecurityOverview({ overview }) {
   const twoFaPercent = overview.twoFaTotal
     ? Math.round((overview.twoFaEnabled / overview.twoFaTotal) * 100)
@@ -101,24 +87,6 @@ export default function SecurityOverview({ overview }) {
           label="Role Coverage"
           value={`${overview.roleCoverage.assigned}/${overview.roleCoverage.total}`}
           helper="Roles with assigned users"
-        />
-      </div>
-
-      <div className={styles.notices}>
-        <Notice
-          icon="settings"
-          title="Authentication not connected yet"
-          message="User login, session management, and password policies will be integrated when the backend authentication service is deployed."
-        />
-        <Notice
-          icon="users"
-          title="Backend permissions pending"
-          message="Role-based access control will enforce these permission definitions server-side. Current matrix is a visual preview only."
-        />
-        <Notice
-          icon="eye"
-          title="Frontend preview mode"
-          message="All actions on this page are simulated. No data is persisted and no real accounts are modified."
         />
       </div>
     </div>

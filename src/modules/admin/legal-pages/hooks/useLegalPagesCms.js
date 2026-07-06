@@ -1,17 +1,39 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import * as legalPagesApi from '../../../../api/legalPages';
+import { ApiError } from '../../../../api/client';
+import { extractFormValues } from '../../cms/action-flows/mapFormValuesToApi';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
-import { useSimulatedLoading } from '../../hooks/useSimulatedLoading';
 import { copyToClipboard } from '../../utils/clipboard';
 import { openExternalUrl, resolvePublicUrl } from '../../utils/openExternalUrl';
-import { initialLegalPagesData } from '../mock/legalPagesData';
-import { computeLegalPagesStatistics, getInitialLegalPage } from '../mock/legalPagesConfig';
+import { computeLegalPagesStatistics } from '../mock/legalPagesConfig';
 
 export function useLegalPagesCms() {
-  const [pages, setPages] = useState(() => structuredClone(initialLegalPagesData));
-  const isLoading = useSimulatedLoading();
+  const [pages, setPages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
+  const [isSaving, setIsSaving] = useState(false);
   const [previewPageId, setPreviewPageId] = useState(null);
   const [editingPageId, setEditingPageId] = useState(null);
   const { feedback, showFeedback, closeFeedback } = useActionFeedback();
+
+  const loadPages = useCallback(async () => {
+    setIsLoading(true);
+    setLoadError(null);
+
+    try {
+      const response = await legalPagesApi.list();
+      setPages(Array.isArray(response) ? response : []);
+    } catch (error) {
+      setLoadError(error instanceof ApiError ? error.message : 'Failed to load legal pages.');
+      setPages([]);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadPages();
+  }, [loadPages]);
 
   const statistics = useMemo(() => computeLegalPagesStatistics(pages), [pages]);
 
@@ -42,21 +64,40 @@ export function useLegalPagesCms() {
     setEditingPageId(null);
   }, []);
 
-  const saveEdit = useCallback(() => {
-    closeEdit();
-    showFeedback('Legal page saved (preview mode)', 'info');
-  }, [closeEdit, showFeedback]);
+  const saveEdit = useCallback(
+    async (formElement) => {
+      if (!editingPageId) return;
 
-  const resetPage = useCallback(
-    (pageId) => {
-      const initial = getInitialLegalPage(pageId);
-      if (!initial) return;
+      const page = pages.find((entry) => entry.id === editingPageId);
+      if (!page) return;
 
-      setPages((prev) => prev.map((page) => (page.id === pageId ? initial : page)));
-      showFeedback('Page reset to website defaults (preview mode)', 'info');
+      const values = formElement ? extractFormValues(formElement) : {};
+      const payload = Object.keys(values).length > 0 ? { ...page, ...values } : page;
+
+      setIsSaving(true);
+
+      try {
+        const response = await legalPagesApi.update(page.slug, payload);
+        setPages((prev) =>
+          prev.map((entry) => (entry.id === editingPageId ? response.data : entry)),
+        );
+        closeEdit();
+        showFeedback('Legal page saved.', 'success');
+      } catch (error) {
+        showFeedback(
+          error instanceof ApiError ? error.message : 'Failed to save legal page.',
+          'error',
+        );
+      } finally {
+        setIsSaving(false);
+      }
     },
-    [showFeedback],
+    [editingPageId, pages, closeEdit, showFeedback],
   );
+
+  const resetPage = useCallback(() => {
+    showFeedback('Reload the page to discard unsaved local changes.', 'info');
+  }, [showFeedback]);
 
   const previewWebsite = useCallback((path) => {
     openExternalUrl(path);
@@ -69,14 +110,14 @@ export function useLegalPagesCms() {
     }
   }, [pages]);
 
-  const saveDraft = useCallback(() => {
-    showFeedback('Legal pages draft saved (preview mode)', 'info');
+  const saveDraft = useCallback(async () => {
+    showFeedback('Legal pages are saved individually.', 'info');
   }, [showFeedback]);
 
   const copyPageUrl = useCallback(
     async (path) => {
       await copyToClipboard(resolvePublicUrl(path));
-      showFeedback('URL copied to clipboard (preview mode)', 'success');
+      showFeedback('URL copied to clipboard.', 'success');
     },
     [showFeedback],
   );
@@ -84,6 +125,8 @@ export function useLegalPagesCms() {
   return {
     pages,
     isLoading,
+    loadError,
+    isSaving,
     statistics,
     previewPageId,
     previewPage,
@@ -102,5 +145,6 @@ export function useLegalPagesCms() {
     copyPageUrl,
     showFeedback,
     closeFeedback,
+    refresh: loadPages,
   };
 }

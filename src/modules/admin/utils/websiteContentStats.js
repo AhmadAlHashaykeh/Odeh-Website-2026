@@ -3,7 +3,6 @@ import { jobs } from '../../../data/careers';
 import { services } from '../../../data/services';
 import { teamContent } from '../../../data/teamContent';
 import { activitiesContent } from '../../../data/activitiesContent';
-import { initialSeoPages } from '../seo/mock/buildSeoPages';
 
 /** Counts derived from the same data sources that power the public website. */
 export function getWebsiteContentStats() {
@@ -17,6 +16,6 @@ export function getWebsiteContentStats() {
     activities: activitiesContent.activities.length,
     careers: jobs.length,
     openPositions: openJobs,
-    publicPages: initialSeoPages.length,
+    publicPages: 0,
   };
 }

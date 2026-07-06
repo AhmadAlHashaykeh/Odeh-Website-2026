@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import AdminIcon from '../../components/AdminIcons';
-import { applicationStatusLabels } from '../mock/applicationsData';
+import { applicationStatusLabels } from '../mock/applicationsConfig';
 import { ApplicationStatusBadge } from './ApplicationQuickActions';
 import styles from './ApplicationDetailsDrawer.module.css';
 

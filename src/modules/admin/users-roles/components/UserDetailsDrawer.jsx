@@ -1,7 +1,7 @@
 import AdminIcon from '../../components/AdminIcons';
 import { Drawer, Button, Badge } from '../../ui';
 import { getUserPermissionsSummary } from '../mock/usersRolesConfig';
-import { PERMISSION_MODULES } from '../mock/usersRolesData';
+import { PERMISSION_MODULES } from '../mock/usersRolesConfig';
 import styles from './UserDetailsDrawer.module.css';
 
 function formatDate(value) {

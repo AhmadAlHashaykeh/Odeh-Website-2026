@@ -12,7 +12,7 @@ class UserController extends Controller
     public function __invoke(Request $request): JsonResponse
     {
         $user = $request->user();
-        $user->load('role');
+        $user->load(['role.permissions']);
 
         return response()->json([
             'data' => (new AuthenticatedUserResource($user))->resolve(),

@@ -3,7 +3,7 @@ import AdminIcon from '../../components/AdminIcons';
 import {
   contactMessageStatusLabels,
   contactMessagePriorityLabels,
-} from '../mock/contactMessagesData';
+} from '../mock/contactMessagesConfig';
 import styles from './MessageQuickActions.module.css';
 
 function buildActions(message) {
@@ -24,7 +24,6 @@ function buildActions(message) {
     { id: 'assign', label: 'Assign', icon: 'team' },
     { id: 'add-note', label: 'Add Note', icon: 'edit' },
     { id: 'copy-email', label: 'Copy Email', icon: 'messages' },
-    { id: 'delete', label: 'Delete', icon: 'trash', danger: true },
   ];
 }
 

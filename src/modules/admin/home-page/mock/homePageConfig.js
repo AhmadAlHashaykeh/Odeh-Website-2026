@@ -1,11 +1,3 @@
-import {
-  initialHeroSection,
-  initialAboutSection,
-  initialServicesSection,
-  initialProjectsSection,
-  homepageLastUpdated,
-} from './homePageData';
-
 export const homePageMeta = {
   title: 'Home Page',
   description: 'Manage the structured content displayed on the public homepage.',
@@ -72,27 +64,27 @@ export const sectionEditTitles = {
   projects: 'Edit Selected Projects',
 };
 
-export function computeHomePageStatistics(sections) {
+export function computeHomePageStatistics(sections, lastUpdated = '—') {
   const visualAssets =
     2 +
     1 +
-    sections.services.services.length +
-    sections.projects.projects.length;
+    (sections.services?.services?.length ?? 0) +
+    (sections.projects?.projects?.length ?? 0);
 
   return [
     { id: 'sections', value: '4', label: 'Homepage Sections' },
     {
       id: 'services',
-      value: String(sections.services.services.length),
+      value: String(sections.services?.services?.length ?? 0),
       label: 'Services Displayed',
     },
     {
       id: 'projects',
-      value: String(sections.projects.projects.length),
+      value: String(sections.projects?.projects?.length ?? 0),
       label: 'Featured Projects',
     },
     { id: 'visual', value: String(visualAssets), label: 'Visual Assets' },
-    { id: 'updated', value: homepageLastUpdated, label: 'Last Updated' },
+    { id: 'updated', value: lastUpdated ? String(lastUpdated).split('T')[0] : '—', label: 'Last Updated' },
     { id: 'seo', value: 'Complete', label: 'SEO Status', helper: 'Managed in SEO module', link: '/admin/seo' },
   ];
 }
@@ -110,14 +102,4 @@ export function getSectionSummary(sectionId, sectionData) {
     default:
       return '';
   }
-}
-
-export function getInitialSectionData(sectionId) {
-  const map = {
-    hero: initialHeroSection,
-    about: initialAboutSection,
-    services: initialServicesSection,
-    projects: initialProjectsSection,
-  };
-  return map[sectionId] ? structuredClone(map[sectionId]) : null;
 }

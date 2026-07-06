@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import AdminIcon from '../../components/AdminIcons';
-import { applicationStatusLabels } from '../mock/applicationsData';
+import { applicationStatusLabels } from '../mock/applicationsConfig';
 import styles from './ApplicationQuickActions.module.css';
 
 function buildActions(application) {

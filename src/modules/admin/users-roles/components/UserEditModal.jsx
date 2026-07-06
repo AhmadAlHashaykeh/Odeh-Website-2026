@@ -19,12 +19,12 @@ const TWO_FA_OPTIONS = [
   { value: 'disabled', label: 'Disabled' },
 ];
 
-export default function UserEditModal({ open, user, onClose, onSave }) {
+export default function UserEditModal({ open, user, onClose, onSave, roleOptions = [] }) {
   if (!user) return null;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSave();
+    onSave(event.currentTarget);
   };
 
   const modalHeader = (

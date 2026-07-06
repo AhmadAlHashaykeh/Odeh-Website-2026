@@ -58,7 +58,7 @@ export default function LegalPageEditModal({ open, page, onClose, onSave }) {
 
   const handleSave = (event) => {
     event?.preventDefault?.();
-    onSave();
+    onSave(event.currentTarget);
   };
 
   const modalHeader = (

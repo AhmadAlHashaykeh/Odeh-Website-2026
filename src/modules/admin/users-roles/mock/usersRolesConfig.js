@@ -1,4 +1,24 @@
-import { initialRoles, initialUsers } from './usersRolesData';
+export const PERMISSION_MODULES = [
+  { id: 'dashboard', label: 'Dashboard' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'project-categories', label: 'Project Categories' },
+  { id: 'team-members', label: 'Team Members' },
+  { id: 'activities', label: 'Activities' },
+  { id: 'services', label: 'Services' },
+  { id: 'jobs', label: 'Careers' },
+  { id: 'applications', label: 'Applications' },
+  { id: 'contact-messages', label: 'Contact Messages' },
+  { id: 'home-page', label: 'Home Page' },
+  { id: 'about-pages', label: 'About Pages' },
+  { id: 'navigation-footer', label: 'Navigation & Footer' },
+  { id: 'connect-page', label: 'Connect Page' },
+  { id: 'legal-pages', label: 'Legal Pages' },
+  { id: 'seo', label: 'SEO' },
+  { id: 'website-settings', label: 'Website Settings' },
+  { id: 'users-roles', label: 'Users & Roles' },
+];
+
+export const PERMISSION_ACTIONS = ['view', 'create', 'edit', 'delete'];
 
 export const usersRolesMeta = {
   title: 'Users & Roles',
@@ -29,10 +49,7 @@ export const userStatusOptions = [
   { value: 'suspended', label: 'Suspended' },
 ];
 
-export const userRoleFilterOptions = [
-  { value: 'all', label: 'All Roles' },
-  ...initialRoles.map((role) => ({ value: role.id, label: role.name })),
-];
+export const userRoleFilterOptions = [{ value: 'all', label: 'All Roles' }];
 
 export const userSortOptions = [
   { value: 'name_asc', label: 'Name A–Z' },
@@ -49,10 +66,7 @@ export const userBulkActionOptions = [
   { value: 'delete', label: 'Delete' },
 ];
 
-export const roleOptions = initialRoles.map((role) => ({
-  value: role.id,
-  label: role.name,
-}));
+export const roleOptions = [];
 
 export const departmentOptions = [
   { value: 'Executive', label: 'Executive' },
@@ -117,7 +131,7 @@ export const BULK_FEEDBACK = {
   delete: (count) => `${count} user(s) deleted (preview mode)`,
 };
 
-export function computeUsersRolesStatistics(users = initialUsers, roles = initialRoles) {
+export function computeUsersRolesStatistics(users = [], roles = []) {
   const activeUsers = users.filter((u) => u.status === 'active').length;
   const invitedUsers = users.filter((u) => u.status === 'invited').length;
 

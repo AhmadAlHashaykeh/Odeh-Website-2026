@@ -1,5 +1,3 @@
-import { buildNavigationItems, initialNavigationFooterData, navigationFooterLastUpdated } from './navigationFooterData';
-
 export const navigationFooterMeta = {
   title: 'Navigation & Footer',
   description: 'Manage the global website navigation, footer structure, and shared contact information.',
@@ -237,17 +235,16 @@ export function getPanelSummary(panelId, data) {
   }
 }
 
-export function computeNavigationFooterStatistics() {
-  const navItems = buildNavigationItems();
+export function computeNavigationFooterStatistics(cmsData = null, lastUpdated = '—') {
+  const navItems = cmsData?.navigationItems ?? [];
   const topLevel = navItems.length;
   const dropdownItems = navItems.reduce(
     (sum, item) => sum + (item.dropdown?.length ?? 0),
     0,
   );
-  const footerSections = initialNavigationFooterData.footerNavGroups.length + 3;
-  const socialCount = initialNavigationFooterData.socialLinks.length;
-  const contactChannels =
-    initialNavigationFooterData.contact.contacts.length + 2;
+  const footerSections = (cmsData?.footerNavGroups?.length ?? 0) + 3;
+  const socialCount = cmsData?.socialLinks?.length ?? 0;
+  const contactChannels = (cmsData?.contact?.contacts?.length ?? 0) + 2;
 
   return [
     {
@@ -271,39 +268,6 @@ export function computeNavigationFooterStatistics() {
     },
     { id: 'cta', value: 'None', label: 'Global CTA', helper: 'Not used on site' },
     { id: 'seo', value: 'Ready', label: 'SEO Ready', helper: 'Global structure set' },
-    { id: 'updated', value: navigationFooterLastUpdated, label: 'Last Updated' },
+    { id: 'updated', value: lastUpdated ? String(lastUpdated).split('T')[0] : '—', label: 'Last Updated' },
   ];
-}
-
-export function getInitialPanelData(panelId) {
-  const data = structuredClone(initialNavigationFooterData);
-
-  switch (panelId) {
-    case 'nav-logo':
-      return data.logo;
-    case 'nav-menu':
-      return data.navigationItems;
-    case 'footer-brand':
-      return data.footerBrand;
-    case 'footer-nav-get-started':
-      return data.footerNavGroups.find((g) => g.title === 'Get Started');
-    case 'footer-nav-about':
-      return data.footerNavGroups.find((g) => g.title === 'About Us');
-    case 'footer-reach-us':
-      return data.contact;
-    case 'footer-copyright':
-      return data.copyright;
-    case 'contact-office':
-      return {
-        officeName: data.contact.officeName,
-        location: data.contact.location,
-        workingHours: data.contact.workingHours,
-      };
-    case 'contact-direct':
-      return data.contact.contacts;
-    default: {
-      const social = data.socialLinks.find((link) => panelId === `social-${link.icon}`);
-      return social ?? null;
-    }
-  }
 }

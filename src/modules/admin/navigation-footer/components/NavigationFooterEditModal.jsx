@@ -446,7 +446,7 @@ export default function NavigationFooterEditModal({
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.(panelId);
+    onSave?.(panelId, e.currentTarget);
   };
 
   const modalHeader = (

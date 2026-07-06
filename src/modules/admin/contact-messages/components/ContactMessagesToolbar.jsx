@@ -11,15 +11,9 @@ export default function ContactMessagesToolbar({
   priorityFilter,
   onPriorityFilterChange,
   priorityOptions,
-  inquiryTypeFilter,
-  onInquiryTypeFilterChange,
-  inquiryTypeOptions,
   assignedToFilter,
   onAssignedToFilterChange,
   assignedToOptions,
-  submittedDateFilter,
-  onSubmittedDateFilterChange,
-  submittedDateOptions,
   sortBy,
   onSortChange,
   sortOptions,
@@ -27,8 +21,6 @@ export default function ContactMessagesToolbar({
   onViewChange,
   onRefresh,
   isRefreshing,
-  onBulkActionsClick,
-  bulkActionsDisabled,
 }) {
   return (
     <div className={styles.toolbar}>
@@ -53,15 +45,6 @@ export default function ContactMessagesToolbar({
           >
             <AdminIcon name="refresh" size={16} />
           </button>
-          <button
-            type="button"
-            className={styles.bulkBtn}
-            onClick={onBulkActionsClick}
-            disabled={bulkActionsDisabled}
-          >
-            Bulk Actions
-            <AdminIcon name="chevronDown" size={14} />
-          </button>
         </div>
       </div>
 
@@ -83,28 +66,12 @@ export default function ContactMessagesToolbar({
           ariaLabel="Filter by priority"
         />
         <FilterDropdown
-          label="Inquiry Type"
-          value={inquiryTypeFilter}
-          onChange={onInquiryTypeFilterChange}
-          options={inquiryTypeOptions}
-          icon="messages"
-          ariaLabel="Filter by inquiry type"
-        />
-        <FilterDropdown
           label="Assigned To"
           value={assignedToFilter}
           onChange={onAssignedToFilterChange}
           options={assignedToOptions}
           icon="team"
           ariaLabel="Filter by assignee"
-        />
-        <FilterDropdown
-          label="Submitted"
-          value={submittedDateFilter}
-          onChange={onSubmittedDateFilterChange}
-          options={submittedDateOptions}
-          icon="sort"
-          ariaLabel="Filter by submitted date"
         />
         <FilterDropdown
           label="Sort"

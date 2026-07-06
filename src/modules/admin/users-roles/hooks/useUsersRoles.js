@@ -1,37 +1,79 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import * as usersApi from '../../../../api/users';
+import * as rolesApi from '../../../../api/roles';
+import * as rolePermissionsApi from '../../../../api/rolePermissions';
+import { ApiError } from '../../../../api/client';
+import { mapApiErrorsToForm } from '../../cms/action-flows/formErrors';
+import { extractFormValues } from '../../cms/action-flows/mapFormValuesToApi';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
 import {
   computeUsersRolesStatistics,
-  BULK_FEEDBACK,
-  USER_ACTION_FEEDBACK,
-  ROLE_ACTION_FEEDBACK,
   NEW_ROLE_TEMPLATE,
+  PERMISSION_MODULES,
 } from '../mock/usersRolesConfig';
-import { getInitialUsersRolesData, getUserById, getRoleById } from '../mock/usersRolesData';
 
-function sortUsers(users, sortBy) {
-  const sorted = [...users];
-  switch (sortBy) {
-    case 'name_desc':
-      return sorted.sort((a, b) => b.fullName.localeCompare(a.fullName));
-    case 'recent_login':
-      return sorted.sort((a, b) => {
-        if (!a.lastLogin) return 1;
-        if (!b.lastLogin) return -1;
-        return new Date(b.lastLogin) - new Date(a.lastLogin);
-      });
-    case 'created_desc':
-      return sorted.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
-    case 'name_asc':
-    default:
-      return sorted.sort((a, b) => a.fullName.localeCompare(b.fullName));
-  }
+const BACKEND_ACTION_MAP = {
+  view: 'canView',
+  create: 'canCreate',
+  edit: 'canUpdate',
+  delete: 'canDelete',
+};
+
+const UI_ACTIONS = ['view', 'create', 'edit', 'delete'];
+
+function permissionState(granted) {
+  return granted ? 'granted' : 'denied';
+}
+
+function mapPermissionsToMatrix(apiPermissions = []) {
+  const matrix = Object.fromEntries(
+    PERMISSION_MODULES.map((mod) => [
+      mod.id,
+      Object.fromEntries(UI_ACTIONS.map((action) => [action, 'denied'])),
+    ]),
+  );
+
+  apiPermissions.forEach((entry) => {
+    matrix[entry.module] = {
+      view: permissionState(entry.canView),
+      create: permissionState(entry.canCreate),
+      edit: permissionState(entry.canUpdate),
+      delete: permissionState(entry.canDelete),
+      publish: 'denied',
+      manage: 'denied',
+    };
+  });
+
+  return matrix;
+}
+
+function countGrantedPermissions(matrix) {
+  return Object.values(matrix).reduce(
+    (sum, perms) => sum + UI_ACTIONS.filter((action) => perms[action] === 'granted').length,
+    0,
+  );
+}
+
+function matrixToApiPayload(matrix) {
+  return PERMISSION_MODULES.map((mod) => {
+    const perms = matrix[mod.id] ?? {};
+    return {
+      module: mod.id,
+      canView: perms.view === 'granted',
+      canCreate: perms.create === 'granted',
+      canUpdate: perms.edit === 'granted',
+      canDelete: perms.delete === 'granted',
+    };
+  });
 }
 
 export function useUsersRoles() {
-  const [data, setData] = useState(getInitialUsersRolesData);
+  const [users, setUsers] = useState([]);
+  const [roles, setRoles] = useState([]);
+  const [permissionsByRole, setPermissionsByRole] = useState({});
   const [activeSection, setActiveSection] = useState('users');
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
   const { feedback, showFeedback, closeFeedback } = useActionFeedback();
 
   const [viewMode, setViewMode] = useState('table');
@@ -40,76 +82,176 @@ export function useUsersRoles() {
   const [roleFilter, setRoleFilter] = useState('all');
   const [sortBy, setSortBy] = useState('name_asc');
   const [selectedUserIds, setSelectedUserIds] = useState(new Set());
-  const [showEmptyUsers, setShowEmptyUsers] = useState(false);
-  const [showEmptyRoles, setShowEmptyRoles] = useState(false);
 
   const [viewingUserId, setViewingUserId] = useState(null);
   const [editingUserId, setEditingUserId] = useState(null);
   const [inviteModalOpen, setInviteModalOpen] = useState(false);
   const [roleModalMode, setRoleModalMode] = useState(null);
   const [editingRoleId, setEditingRoleId] = useState(null);
-  const [matrixRoleId, setMatrixRoleId] = useState('role-super-admin');
+  const [matrixRoleId, setMatrixRoleId] = useState(null);
+  const [isSavingPermissions, setIsSavingPermissions] = useState(false);
+
+  const loadData = useCallback(async () => {
+    setIsLoading(true);
+    setLoadError(null);
+
+    try {
+      const [usersResponse, rolesResponse] = await Promise.all([
+        usersApi.list({ per_page: 100 }),
+        rolesApi.list({ per_page: 50 }),
+      ]);
+
+      setUsers(usersResponse.data);
+      setRoles(rolesResponse.data);
+
+      if (!matrixRoleId && rolesResponse.data.length > 0) {
+        setMatrixRoleId(rolesResponse.data[0].id);
+      }
+    } catch (error) {
+      setLoadError(error instanceof ApiError ? error.message : 'Failed to load users and roles.');
+    } finally {
+      setIsLoading(false);
+    }
+  }, [matrixRoleId]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 460);
-    return () => clearTimeout(timer);
-  }, []);
+    loadData();
+  }, [loadData]);
 
-  const statistics = useMemo(
-    () => computeUsersRolesStatistics(data.users, data.roles),
-    [data.users, data.roles],
+  useEffect(() => {
+    if (!matrixRoleId) return undefined;
+
+    let cancelled = false;
+
+    rolePermissionsApi
+      .list(matrixRoleId)
+      .then((permissions) => {
+        if (!cancelled) {
+          setPermissionsByRole((prev) => ({
+            ...prev,
+            [matrixRoleId]: mapPermissionsToMatrix(permissions),
+          }));
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setPermissionsByRole((prev) => ({
+            ...prev,
+            [matrixRoleId]: mapPermissionsToMatrix([]),
+          }));
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [matrixRoleId]);
+
+  const rolesWithPermissions = useMemo(
+    () =>
+      roles.map((role) => {
+        const permissions = permissionsByRole[role.id] ?? mapPermissionsToMatrix([]);
+        return {
+          ...role,
+          accessLevel: role.slug === 'super-admin' ? 'Full' : 'Standard',
+          permissions,
+          permissionCount: countGrantedPermissions(permissions),
+        };
+      }),
+    [roles, permissionsByRole],
   );
 
   const filteredUsers = useMemo(() => {
-    let result = data.users;
+    let result = [...users];
+    const query = searchQuery.trim().toLowerCase();
 
-    if (showEmptyUsers) return [];
-
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
+    if (query) {
       result = result.filter(
-        (u) =>
-          u.fullName.toLowerCase().includes(q) ||
-          u.email.toLowerCase().includes(q) ||
-          u.department.toLowerCase().includes(q),
+        (user) =>
+          user.fullName.toLowerCase().includes(query) ||
+          user.email.toLowerCase().includes(query) ||
+          (user.department ?? '').toLowerCase().includes(query),
       );
     }
 
     if (statusFilter !== 'all') {
-      result = result.filter((u) => u.status === statusFilter);
+      result = result.filter((user) => user.status === statusFilter);
     }
 
     if (roleFilter !== 'all') {
-      result = result.filter((u) => u.roleId === roleFilter);
+      result = result.filter((user) => user.roleId === roleFilter);
     }
 
-    return sortUsers(result, sortBy);
-  }, [data.users, searchQuery, statusFilter, roleFilter, sortBy, showEmptyUsers]);
+    switch (sortBy) {
+      case 'name_desc':
+        result.sort((a, b) => b.fullName.localeCompare(a.fullName));
+        break;
+      case 'recent_login':
+        result.sort((a, b) => {
+          if (!a.lastLoginAt) return 1;
+          if (!b.lastLoginAt) return -1;
+          return new Date(b.lastLoginAt) - new Date(a.lastLoginAt);
+        });
+        break;
+      case 'created_desc':
+        result.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        break;
+      default:
+        result.sort((a, b) => a.fullName.localeCompare(b.fullName));
+    }
 
-  const displayRoles = useMemo(
-    () => (showEmptyRoles ? [] : data.roles),
-    [data.roles, showEmptyRoles],
+    return result;
+  }, [users, searchQuery, statusFilter, roleFilter, sortBy]);
+
+  const statistics = useMemo(
+    () => computeUsersRolesStatistics(users, roles),
+    [users, roles],
   );
 
   const viewingUser = useMemo(
-    () => getUserById(data.users, viewingUserId),
-    [data.users, viewingUserId],
+    () => users.find((user) => user.id === viewingUserId) ?? null,
+    [users, viewingUserId],
   );
 
   const editingUser = useMemo(
-    () => getUserById(data.users, editingUserId),
-    [data.users, editingUserId],
+    () => users.find((user) => user.id === editingUserId) ?? null,
+    [users, editingUserId],
   );
 
   const editingRole = useMemo(() => {
     if (roleModalMode === 'create') return NEW_ROLE_TEMPLATE;
-    return getRoleById(data.roles, editingRoleId);
-  }, [roleModalMode, data.roles, editingRoleId]);
+    return rolesWithPermissions.find((role) => role.id === editingRoleId) ?? null;
+  }, [roleModalMode, rolesWithPermissions, editingRoleId]);
 
   const matrixRole = useMemo(
-    () => getRoleById(data.roles, matrixRoleId),
-    [data.roles, matrixRoleId],
+    () => rolesWithPermissions.find((role) => role.id === matrixRoleId) ?? null,
+    [rolesWithPermissions, matrixRoleId],
   );
+
+  const securityOverview = useMemo(() => {
+    const activeUsers = users.filter((user) => user.status === 'active').length;
+    const invitedUsers = users.filter((user) => user.status === 'invited').length;
+    const suspendedUsers = users.filter((user) => user.status === 'suspended').length;
+    const twoFaEnabled = users.filter((user) => user.twoFactorEnabled).length;
+    const lastLoginUser = [...users]
+      .filter((user) => user.lastLoginAt)
+      .sort((a, b) => new Date(b.lastLoginAt) - new Date(a.lastLoginAt))[0];
+
+    return {
+      activeUsers,
+      invitedUsers,
+      suspendedUsers,
+      twoFaEnabled,
+      twoFaTotal: users.length,
+      lastAdminActivity: lastLoginUser
+        ? { name: lastLoginUser.fullName, date: lastLoginUser.lastLoginAt }
+        : null,
+      roleCoverage: {
+        assigned: roles.filter((role) => (role.userCount ?? 0) > 0).length,
+        total: roles.length,
+      },
+    };
+  }, [users, roles]);
 
   const toggleUserSelect = useCallback((userId) => {
     setSelectedUserIds((prev) => {
@@ -123,7 +265,7 @@ export function useUsersRoles() {
   const toggleSelectAllUsers = useCallback(() => {
     setSelectedUserIds((prev) => {
       if (prev.size === filteredUsers.length) return new Set();
-      return new Set(filteredUsers.map((u) => u.id));
+      return new Set(filteredUsers.map((user) => user.id));
     });
   }, [filteredUsers]);
 
@@ -133,10 +275,8 @@ export function useUsersRoles() {
 
   const openInvite = useCallback(() => setInviteModalOpen(true), []);
   const closeInvite = useCallback(() => setInviteModalOpen(false), []);
-
   const openUserView = useCallback((userId) => setViewingUserId(userId), []);
   const closeUserView = useCallback(() => setViewingUserId(null), []);
-
   const openUserEdit = useCallback((userId) => setEditingUserId(userId), []);
   const closeUserEdit = useCallback(() => setEditingUserId(null), []);
 
@@ -156,7 +296,7 @@ export function useUsersRoles() {
   }, []);
 
   const handleUserAction = useCallback(
-    (actionId, user) => {
+    async (actionId, user) => {
       switch (actionId) {
         case 'view':
           openUserView(user.id);
@@ -164,82 +304,207 @@ export function useUsersRoles() {
         case 'edit':
           openUserEdit(user.id);
           break;
-        case 'resend-invite':
         case 'suspend':
-        case 'activate':
-        case 'reset-password':
-        case 'delete':
-          showFeedback(USER_ACTION_FEEDBACK[actionId]?.(user.fullName) ?? 'Action completed (preview mode)');
+        case 'activate': {
+          const status = actionId === 'suspend' ? 'suspended' : 'active';
+          try {
+            await usersApi.update(user.id, { status });
+            await loadData();
+            showFeedback(`${user.fullName} ${status === 'active' ? 'activated' : 'suspended'}.`, 'success');
+          } catch (error) {
+            showFeedback(
+              error instanceof ApiError ? error.message : 'Failed to update user.',
+              'error',
+            );
+          }
           break;
+        }
+        case 'delete': {
+          try {
+            await usersApi.destroy(user.id);
+            await loadData();
+            showFeedback(`${user.fullName} removed.`, 'success');
+          } catch (error) {
+            showFeedback(
+              error instanceof ApiError ? error.message : 'Failed to delete user.',
+              'error',
+            );
+          }
+          break;
+        }
         default:
+          showFeedback('This action is not available.', 'info');
           break;
       }
     },
-    [openUserView, openUserEdit, showFeedback],
+    [openUserView, openUserEdit, loadData, showFeedback],
   );
 
   const handleRoleAction = useCallback(
-    (actionId, role) => {
+    async (actionId, role) => {
       switch (actionId) {
         case 'view':
           setMatrixRoleId(role.id);
           setActiveSection('permissions');
-          showFeedback(ROLE_ACTION_FEEDBACK.view(role.name));
           break;
         case 'edit':
           openRoleEdit(role.id);
           break;
-        case 'duplicate':
-        case 'disable':
-        case 'delete':
-          showFeedback(ROLE_ACTION_FEEDBACK[actionId]?.(role.name) ?? 'Action completed (preview mode)');
+        case 'disable': {
+          try {
+            await rolesApi.update(role.id, {
+              status: role.status === 'active' ? 'disabled' : 'active',
+            });
+            await loadData();
+            showFeedback(`Role "${role.name}" updated.`, 'success');
+          } catch (error) {
+            showFeedback(
+              error instanceof ApiError ? error.message : 'Failed to update role.',
+              'error',
+            );
+          }
           break;
+        }
+        case 'delete': {
+          try {
+            await rolesApi.destroy(role.id);
+            await loadData();
+            showFeedback(`Role "${role.name}" deleted.`, 'success');
+          } catch (error) {
+            showFeedback(
+              error instanceof ApiError ? error.message : 'Failed to delete role.',
+              'error',
+            );
+          }
+          break;
+        }
         default:
+          showFeedback('This action is not available.', 'info');
           break;
       }
     },
-    [openRoleEdit, showFeedback],
+    [openRoleEdit, loadData, showFeedback],
   );
 
-  const handleBulkAction = useCallback(
-    (actionId) => {
-      const count = selectedUserIds.size;
-      const message = BULK_FEEDBACK[actionId]?.(count);
-      if (message) {
-        showFeedback(message);
-        clearUserSelection();
+  const saveInvite = useCallback(
+    async (formElement) => {
+      const values = extractFormValues(formElement);
+      const payload = {
+        fullName: values.fullName,
+        email: values.email,
+        password: values.password || 'ChangeMe123!',
+        roleId: values.roleId,
+        department: values.department,
+        accessScope: values.accessScope,
+        status: 'invited',
+      };
+
+      try {
+        await usersApi.create(payload);
+        closeInvite();
+        await loadData();
+        showFeedback('User invitation sent.', 'success');
+      } catch (error) {
+        const mapped = error instanceof ApiError ? mapApiErrorsToForm(error.errors) : {};
+        const message =
+          Object.values(mapped).flat()[0] ??
+          (error instanceof ApiError ? error.message : 'Failed to invite user.');
+        showFeedback(message, 'error');
       }
     },
-    [selectedUserIds.size, showFeedback, clearUserSelection],
+    [closeInvite, loadData, showFeedback],
   );
 
-  const saveInvite = useCallback(() => {
-    closeInvite();
-    showFeedback('User invitation sent (preview mode)', 'info');
-  }, [closeInvite, showFeedback]);
+  const saveUserEdit = useCallback(
+    async (formElement) => {
+      if (!editingUserId) return;
 
-  const saveUserEdit = useCallback(() => {
-    closeUserEdit();
-    showFeedback('User updated (preview mode)', 'info');
-  }, [closeUserEdit, showFeedback]);
+      const values = extractFormValues(formElement);
+      const payload = {
+        fullName: values.fullName,
+        email: values.email,
+        roleId: values.roleId,
+        department: values.department,
+        status: values.status,
+        accessScope: values.accessScope,
+        twoFactorEnabled: values.twoFactor === 'enabled',
+      };
 
-  const saveRoleEdit = useCallback(() => {
-    const wasCreate = roleModalMode === 'create';
-    closeRoleModal();
-    showFeedback(
-      wasCreate ? ROLE_ACTION_FEEDBACK.create() : 'Role updated (preview mode)',
-      'info',
-    );
-  }, [closeRoleModal, roleModalMode, showFeedback]);
+      try {
+        await usersApi.update(editingUserId, payload);
+        closeUserEdit();
+        await loadData();
+        showFeedback('User updated.', 'success');
+      } catch (error) {
+        const mapped = error instanceof ApiError ? mapApiErrorsToForm(error.errors) : {};
+        const message =
+          Object.values(mapped).flat()[0] ??
+          (error instanceof ApiError ? error.message : 'Failed to update user.');
+        showFeedback(message, 'error');
+      }
+    },
+    [editingUserId, closeUserEdit, loadData, showFeedback],
+  );
+
+  const saveRoleEdit = useCallback(
+    async (formElement) => {
+      const values = extractFormValues(formElement);
+      const payload = {
+        name: values.name,
+        description: values.description,
+        status: values.status,
+      };
+
+      try {
+        if (roleModalMode === 'create') {
+          await rolesApi.create(payload);
+        } else if (editingRoleId) {
+          await rolesApi.update(editingRoleId, payload);
+        }
+
+        closeRoleModal();
+        await loadData();
+        showFeedback(
+          roleModalMode === 'create' ? 'Role created.' : 'Role updated.',
+          'success',
+        );
+      } catch (error) {
+        showFeedback(
+          error instanceof ApiError ? error.message : 'Failed to save role.',
+          'error',
+        );
+      }
+    },
+    [roleModalMode, editingRoleId, closeRoleModal, loadData, showFeedback],
+  );
+
+  const savePermissions = useCallback(
+    async (matrix) => {
+      if (!matrixRoleId) return;
+
+      setIsSavingPermissions(true);
+
+      try {
+        await rolePermissionsApi.update(matrixRoleId, matrixToApiPayload(matrix));
+        await loadData();
+        showFeedback('Permissions saved.', 'success');
+      } catch (error) {
+        showFeedback(
+          error instanceof ApiError ? error.message : 'Failed to save permissions.',
+          'error',
+        );
+      } finally {
+        setIsSavingPermissions(false);
+      }
+    },
+    [matrixRoleId, loadData, showFeedback],
+  );
 
   const saveDraft = useCallback(() => {
-    showFeedback('Users & Roles draft saved (preview mode)', 'info');
+    showFeedback('All changes are saved immediately.', 'info');
   }, [showFeedback]);
 
-  const simulateRefresh = useCallback(() => {
-    setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 420);
-  }, []);
+  const simulateRefresh = useCallback(() => loadData(), [loadData]);
 
   const isAllUsersSelected =
     filteredUsers.length > 0 && selectedUserIds.size === filteredUsers.length;
@@ -250,10 +515,12 @@ export function useUsersRoles() {
     activeSection,
     setActiveSection,
     isLoading,
+    loadError,
     statistics,
     users: filteredUsers,
-    roles: displayRoles,
-    allRoles: data.roles,
+    roles: rolesWithPermissions,
+    allRoles: rolesWithPermissions,
+    roleOptions: rolesWithPermissions.map((role) => ({ value: role.id, label: role.name })),
     viewMode,
     setViewMode,
     searchQuery,
@@ -286,18 +553,16 @@ export function useUsersRoles() {
     matrixRoleId,
     setMatrixRoleId,
     matrixRole,
+    securityOverview,
     handleUserAction,
     handleRoleAction,
-    handleBulkAction,
     saveInvite,
     saveUserEdit,
     saveRoleEdit,
+    savePermissions,
+    isSavingPermissions,
     saveDraft,
     simulateRefresh,
-    showEmptyUsers,
-    setShowEmptyUsers,
-    showEmptyRoles,
-    setShowEmptyRoles,
     feedback,
     closeFeedback,
   };

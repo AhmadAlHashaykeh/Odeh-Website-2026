@@ -1,23 +1,35 @@
 import { useCallback, useMemo, useState } from 'react';
+import * as navigationFooterApi from '../../../../api/navigationFooter';
+import { extractFormValues } from '../../cms/action-flows/mapFormValuesToApi';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
-import { useSimulatedLoading } from '../../hooks/useSimulatedLoading';
+import { useCmsSingleton } from '../../hooks/useCmsSingleton';
 import { openExternalUrl } from '../../utils/openExternalUrl';
-import { initialNavigationFooterData } from '../mock/navigationFooterData';
-import {
-  computeNavigationFooterStatistics,
-  getInitialPanelData,
-  getPanelData,
-} from '../mock/navigationFooterConfig';
+import { computeNavigationFooterStatistics, getPanelData } from '../mock/navigationFooterConfig';
 
 export function useNavigationFooterCms() {
-  const [cmsData, setCmsData] = useState(() => structuredClone(initialNavigationFooterData));
+  const singleton = useCmsSingleton({
+    showFn: navigationFooterApi.show,
+    updateFn: navigationFooterApi.update,
+  });
   const [activeSection, setActiveSection] = useState('main-navigation');
-  const isLoading = useSimulatedLoading();
   const [editingPanelId, setEditingPanelId] = useState(null);
   const [editingNavItemId, setEditingNavItemId] = useState(null);
   const { feedback, showFeedback, closeFeedback } = useActionFeedback();
 
-  const statistics = useMemo(() => computeNavigationFooterStatistics(), []);
+  const cmsData = singleton.data ?? {
+    logo: {},
+    navigationItems: [],
+    footerBrand: {},
+    footerNavGroups: [],
+    contact: {},
+    socialLinks: [],
+    copyright: {},
+  };
+
+  const statistics = useMemo(
+    () => computeNavigationFooterStatistics(cmsData, singleton.data?.lastUpdated),
+    [cmsData, singleton.data?.lastUpdated],
+  );
 
   const openEdit = useCallback((panelId, navItemId = null) => {
     setEditingPanelId(panelId);
@@ -30,85 +42,63 @@ export function useNavigationFooterCms() {
   }, []);
 
   const savePanel = useCallback(
-    (panelId) => {
-      closeEdit();
-      const label = panelId
-        .split('-')
-        .slice(1)
-        .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-        .join(' ');
-      showFeedback(`${label} saved (preview mode)`, 'info');
-    },
-    [closeEdit, showFeedback],
-  );
+    async (panelId, formElement) => {
+      if (!singleton.data) return;
 
-  const resetPanel = useCallback(
-    (panelId) => {
-      const initial = getInitialPanelData(panelId);
-      if (!initial) return;
+      const values = formElement ? extractFormValues(formElement) : {};
+      let nextData = { ...singleton.data };
 
-      setCmsData((prev) => {
-        const next = structuredClone(prev);
-
+      if (panelId === 'nav-menu' && editingNavItemId) {
+        nextData = {
+          ...nextData,
+          navigationItems: nextData.navigationItems.map((item) =>
+            item.id === editingNavItemId ? { ...item, ...values } : item,
+          ),
+        };
+      } else {
         switch (panelId) {
           case 'nav-logo':
-            next.logo = initial;
+            nextData.logo = { ...nextData.logo, ...values };
             break;
           case 'nav-menu':
-            next.navigationItems = initial;
             break;
           case 'footer-brand':
-            next.footerBrand = initial;
-            break;
-          case 'footer-nav-get-started':
-            next.footerNavGroups = next.footerNavGroups.map((group) =>
-              group.title === 'Get Started' ? initial : group,
-            );
-            break;
-          case 'footer-nav-about':
-            next.footerNavGroups = next.footerNavGroups.map((group) =>
-              group.title === 'About Us' ? initial : group,
-            );
-            break;
-          case 'footer-reach-us':
-            next.contact = initial;
+            nextData.footerBrand = { ...nextData.footerBrand, ...values };
             break;
           case 'footer-copyright':
-            next.copyright = initial;
-            break;
-          case 'contact-office':
-            next.contact.officeName = initial.officeName;
-            next.contact.location = initial.location;
-            next.contact.workingHours = initial.workingHours;
-            break;
-          case 'contact-direct':
-            next.contact.contacts = initial;
+            nextData.copyright = { ...nextData.copyright, ...values };
             break;
           default:
-            if (panelId.startsWith('social-')) {
-              const icon = panelId.replace('social-', '');
-              next.socialLinks = next.socialLinks.map((link) =>
-                link.icon === icon ? initial : link,
-              );
-            }
             break;
         }
+      }
 
-        return next;
-      });
-
-      showFeedback('Panel reset to website defaults (preview mode)', 'info');
+      const result = await singleton.update(nextData);
+      closeEdit();
+      showFeedback(
+        result.success ? 'Panel saved.' : (result.error?.message ?? 'Failed to save panel.'),
+        result.success ? 'success' : 'error',
+      );
     },
-    [showFeedback],
+    [singleton, editingNavItemId, closeEdit, showFeedback],
   );
+
+  const resetPanel = useCallback(() => {
+    showFeedback('Reload the page to discard unsaved local changes.', 'info');
+  }, [showFeedback]);
 
   const previewWebsite = useCallback(() => {
     openExternalUrl('/');
   }, []);
 
-  const saveDraft = useCallback(() => {
-    showFeedback('Navigation & footer draft saved (preview mode)', 'info');
-  }, [showFeedback]);
+  const saveDraft = useCallback(async () => {
+    if (!singleton.data) return;
+    const result = await singleton.update(singleton.data);
+    showFeedback(
+      result.success ? 'Navigation & footer saved.' : 'Failed to save.',
+      result.success ? 'success' : 'error',
+    );
+  }, [singleton, showFeedback]);
 
   const previewPanel = useCallback((anchor) => {
     openExternalUrl(anchor);
@@ -121,35 +111,20 @@ export function useNavigationFooterCms() {
   const editingPanelData = useMemo(() => {
     if (!editingPanelId) return null;
 
+    if (editingPanelId === 'nav-menu' && editingNavItemId) {
+      return cmsData.navigationItems.find((item) => item.id === editingNavItemId) ?? null;
+    }
+
     const panelDefs = [
       { id: 'nav-logo', sectionKey: 'logo', dataKey: 'logo' },
       { id: 'nav-menu', sectionKey: 'navigation', dataKey: 'navigationItems' },
       { id: 'footer-brand', sectionKey: 'footerBrand', dataKey: 'footerBrand' },
-      { id: 'footer-nav-get-started', sectionKey: 'footerNav', dataKey: 'getStarted' },
-      { id: 'footer-nav-about', sectionKey: 'footerNav', dataKey: 'aboutUs' },
-      { id: 'footer-reach-us', sectionKey: 'footerContact', dataKey: 'contact' },
       { id: 'footer-copyright', sectionKey: 'copyright', dataKey: 'copyright' },
-      { id: 'contact-office', sectionKey: 'contact', dataKey: 'office' },
-      { id: 'contact-direct', sectionKey: 'contact', dataKey: 'contacts' },
-      ...cmsData.socialLinks.map((link) => ({
-        id: `social-${link.icon}`,
-        sectionKey: 'social',
-        dataKey: link.icon,
-        platform: link.icon,
-      })),
     ];
 
     const panel = panelDefs.find((entry) => entry.id === editingPanelId);
     if (!panel) return null;
-
-    const data = getPanelData(cmsData, { ...panel, id: editingPanelId });
-
-    if (editingPanelId === 'nav-menu' && editingNavItemId) {
-      const navItem = cmsData.navigationItems.find((item) => item.id === editingNavItemId);
-      if (navItem) return navItem;
-    }
-
-    return data;
+    return getPanelData(cmsData, { ...panel, id: editingPanelId });
   }, [editingPanelId, editingNavItemId, cmsData]);
 
   const getPanelDataByDefinition = useCallback(
@@ -161,7 +136,9 @@ export function useNavigationFooterCms() {
     cmsData,
     activeSection,
     setActiveSection,
-    isLoading,
+    isLoading: singleton.isLoading,
+    loadError: singleton.error,
+    isSaving: singleton.isSaving,
     statistics,
     editingPanelId,
     editingNavItemId,

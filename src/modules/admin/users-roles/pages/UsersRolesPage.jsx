@@ -4,6 +4,7 @@ import { PageHeader, StatisticsStrip, ActionFeedback } from '../../cms/component
 import AboutSectionNav from '../../about-pages/components/AboutSectionNav';
 import { useUsersRoles } from '../hooks/useUsersRoles';
 import { usersRolesMeta, usersRolesSectionNav } from '../mock/usersRolesConfig';
+import { useModulePermissions } from '../../hooks/useModulePermissions';
 import UsersRolesSectionContent from '../components/UsersRolesSectionContent';
 import UsersRolesSkeleton from '../components/UsersRolesSkeleton';
 import UserDetailsDrawer from '../components/UserDetailsDrawer';
@@ -14,6 +15,7 @@ import styles from './UsersRolesPage.module.css';
 
 export default function UsersRolesPage() {
   const cms = useUsersRoles();
+  const { canCreate, canEdit, canDelete } = useModulePermissions('users-roles');
 
   useAdminBreadcrumbs(usersRolesMeta.topBarBreadcrumbs);
 
@@ -33,10 +35,11 @@ export default function UsersRolesPage() {
         title={usersRolesMeta.title}
         description={usersRolesMeta.description}
         breadcrumbs={usersRolesMeta.breadcrumbs}
-        primaryAction={{
-          ...usersRolesMeta.primaryAction,
-          onClick: cms.openInvite,
-        }}
+        primaryAction={
+          canCreate
+            ? { ...usersRolesMeta.primaryAction, onClick: cms.openInvite }
+            : undefined
+        }
         secondaryActions={secondaryActions}
       />
 
@@ -82,12 +85,16 @@ export default function UsersRolesPage() {
                 onRoleAction={cms.handleRoleAction}
                 onRoleEdit={cms.openRoleEdit}
                 onAddRole={cms.openRoleCreate}
-                onBulkAction={cms.handleBulkAction}
+                onBulkAction={undefined}
                 simulateRefresh={cms.simulateRefresh}
                 isLoading={cms.isLoading}
                 matrixRole={cms.matrixRole}
                 matrixRoleId={cms.matrixRoleId}
                 setMatrixRoleId={cms.setMatrixRoleId}
+                roleOptions={cms.roleOptions}
+                canEdit={canEdit}
+                onSavePermissions={cms.savePermissions}
+                isSavingPermissions={cms.isSavingPermissions}
               />
             </div>
           </div>
@@ -104,6 +111,7 @@ export default function UsersRolesPage() {
         open={cms.inviteModalOpen}
         onClose={cms.closeInvite}
         onSave={cms.saveInvite}
+        roleOptions={cms.roleOptions}
       />
 
       <UserEditModal
@@ -111,6 +119,7 @@ export default function UsersRolesPage() {
         user={cms.editingUser}
         onClose={cms.closeUserEdit}
         onSave={cms.saveUserEdit}
+        roleOptions={cms.roleOptions}
       />
 
       <RoleEditModal

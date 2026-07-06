@@ -36,6 +36,10 @@ export default function UsersRolesSectionContent({
   matrixRole,
   matrixRoleId,
   setMatrixRoleId,
+  roleOptions = [],
+  canEdit = false,
+  onSavePermissions,
+  isSavingPermissions = false,
 }) {
   return (
     <div className={styles.content}>
@@ -81,6 +85,10 @@ export default function UsersRolesSectionContent({
           role={matrixRole}
           matrixRoleId={matrixRoleId}
           onRoleChange={setMatrixRoleId}
+          roleOptions={roleOptions}
+          canEdit={canEdit}
+          onSave={onSavePermissions}
+          isSaving={isSavingPermissions}
         />
       )}
     </div>

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 import AdminIcon from '../components/AdminIcons';
+import { resolvePermissionModule } from '../hooks/useModulePermissions';
 import {
   adminDashboardItem,
   adminNavigationGroups,
@@ -206,11 +207,36 @@ function SidebarFooter({ compact, roleName }) {
 }
 
 export default function AdminSidebar({ collapsed, mobileOpen, onClose }) {
-  const { role } = useAuth();
+  const { role, permissions } = useAuth();
   const { pathname } = useLocation();
   const roleName = role?.name ?? 'Administrator';
+  const isSuperAdmin = role?.slug === 'super-admin';
   const showGroupedNav = useGroupedNavigation(collapsed, mobileOpen);
   const [expandedGroups, setExpandedGroups] = useState(() => getInitialExpandedGroups(pathname));
+
+  const canViewModule = useMemo(() => {
+    return (moduleId) => {
+      if (isSuperAdmin) return true;
+      const key = resolvePermissionModule(moduleId);
+      return permissions?.[key]?.view === true;
+    };
+  }, [isSuperAdmin, permissions]);
+
+  const visibleDashboardItem = useMemo(
+    () => (canViewModule(adminDashboardItem.id) ? adminDashboardItem : null),
+    [canViewModule],
+  );
+
+  const visibleNavigationGroups = useMemo(
+    () =>
+      adminNavigationGroups
+        .map((group) => ({
+          ...group,
+          items: group.items.filter((item) => canViewModule(item.id)),
+        }))
+        .filter((group) => group.items.length > 0),
+    [canViewModule],
+  );
 
   useEffect(() => {
     const activeGroupId = findNavGroupIdForPath(pathname);
@@ -256,17 +282,21 @@ export default function AdminSidebar({ collapsed, mobileOpen, onClose }) {
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             <li className={styles.navLevelPrimary}>
-              <NavItem item={adminDashboardItem} collapsed={collapsed} onNavigate={onClose} />
+              {visibleDashboardItem && (
+                <NavItem item={visibleDashboardItem} collapsed={collapsed} onNavigate={onClose} />
+              )}
             </li>
 
-            <li className={styles.navLevelDivider} aria-hidden="true">
-              <span className={styles.navLevelDividerLine} />
-            </li>
+            {visibleNavigationGroups.length > 0 && (
+              <li className={styles.navLevelDivider} aria-hidden="true">
+                <span className={styles.navLevelDividerLine} />
+              </li>
+            )}
 
             {showGroupedNav ? (
               <li className={styles.navLevelGroups}>
                 <ul className={styles.navGroupsList}>
-                  {adminNavigationGroups.map((group, index) => (
+                  {visibleNavigationGroups.map((group, index) => (
                     <NavGroup
                       key={group.id}
                       group={group}
@@ -281,7 +311,7 @@ export default function AdminSidebar({ collapsed, mobileOpen, onClose }) {
                 </ul>
               </li>
             ) : (
-              adminNavigationGroups.flatMap((group, index) => [
+              visibleNavigationGroups.flatMap((group, index) => [
                 index > 0 ? (
                   <li
                     key={`divider-${group.id}`}

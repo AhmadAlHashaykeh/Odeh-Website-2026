@@ -11,12 +11,6 @@ const adminActivities = (activitiesContent.activities || []).map((activity) => (
   ...activity,
   published: true,
 }));
-import {
-  initialOverviewData,
-  initialApproachData,
-  initialHistoryData,
-  aboutPagesLastUpdated,
-} from './aboutPagesData';
 
 export const aboutPagesMeta = {
   title: 'About Pages',
@@ -197,42 +191,19 @@ export function getPanelData(pagesData, panel) {
   return pagesData[panel.sectionKey][panel.dataKey];
 }
 
-export function computeAboutPagesStatistics() {
-  const officeImages = initialOverviewData.slider.images.length;
+export function computeAboutPagesStatistics(lastUpdated = '—') {
   const teamCount = teamContent.members.length;
   const activitiesCount = activitiesContent.activities.length;
-  const historyCounters = initialHistoryData.counters.items.length;
-  const growthRows = initialHistoryData.growthTable.rows.length;
   const visibleTeam = adminTeamMembers.filter((m) => m.status === 'active').length;
   const publishedActivities = adminActivities.filter((a) => a.published).length;
 
   return [
-    { id: 'pages', value: '5', label: 'About Pages' },
+    { id: 'pages', value: '3', label: 'About Sections' },
     { id: 'team', value: String(teamCount), label: 'Team Members', helper: `${visibleTeam} visible` },
     { id: 'activities', value: String(activitiesCount), label: 'Activities', helper: `${publishedActivities} published` },
-    { id: 'office', value: String(officeImages), label: 'Office Images' },
-    {
-      id: 'history',
-      value: `${historyCounters} · ${growthRows}`,
-      label: 'History Metrics',
-      helper: 'Counters & growth rows',
-    },
     { id: 'seo', value: 'Complete', label: 'SEO Status', helper: 'All pages have meta' },
-    { id: 'updated', value: aboutPagesLastUpdated, label: 'Last Updated' },
+    { id: 'updated', value: lastUpdated ? String(lastUpdated).split('T')[0] : '—', label: 'Last Updated' },
   ];
-}
-
-export function getInitialPanelData(panelId) {
-  const panel = [...overviewPanels, ...approachPanels, ...historyPanels].find((p) => p.id === panelId);
-  if (!panel) return null;
-
-  const sectionData = {
-    overview: initialOverviewData,
-    approach: initialApproachData,
-    history: initialHistoryData,
-  }[panel.sectionKey];
-
-  return sectionData ? structuredClone(sectionData[panel.dataKey]) : null;
 }
 
 export function getTeamOverviewStats() {

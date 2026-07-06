@@ -152,7 +152,7 @@ export default function ConnectPageEditModal({
 
   const handleSave = (event) => {
     event?.preventDefault?.();
-    onSave();
+    onSave(event.currentTarget);
   };
 
   const modalHeader = (

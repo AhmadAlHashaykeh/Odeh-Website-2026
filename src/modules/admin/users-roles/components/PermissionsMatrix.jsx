@@ -1,7 +1,6 @@
 import AdminIcon from '../../components/AdminIcons';
-import { Select } from '../../ui';
-import { PERMISSION_MODULES, PERMISSION_ACTIONS } from '../mock/usersRolesData';
-import { roleOptions } from '../mock/usersRolesConfig';
+import { Select, Button } from '../../ui';
+import { PERMISSION_MODULES, PERMISSION_ACTIONS } from '../mock/usersRolesConfig';
 import PermissionsEmptyState from './PermissionsEmptyState';
 import styles from './PermissionsMatrix.module.css';
 
@@ -10,8 +9,6 @@ const ACTION_LABELS = {
   create: 'Create',
   edit: 'Edit',
   delete: 'Delete',
-  publish: 'Publish',
-  manage: 'Manage',
 };
 
 function PermissionCell({ state }) {
@@ -22,28 +19,23 @@ function PermissionCell({ state }) {
       </span>
     );
   }
-  if (state === 'partial') {
-    return (
-      <span className={`${styles.cell} ${styles.partial}`} title="Partial">
-        <span className={styles.partialDot} />
-      </span>
-    );
-  }
-  if (state === 'denied') {
-    return (
-      <span className={`${styles.cell} ${styles.denied}`} title="Denied">
-        <AdminIcon name="close" size={12} />
-      </span>
-    );
-  }
+
   return (
-    <span className={`${styles.cell} ${styles.na}`} title="Not applicable">
-      —
+    <span className={`${styles.cell} ${styles.denied}`} title="Denied">
+      <AdminIcon name="close" size={12} />
     </span>
   );
 }
 
-export default function PermissionsMatrix({ role, matrixRoleId, onRoleChange }) {
+export default function PermissionsMatrix({
+  role,
+  matrixRoleId,
+  roleOptions = [],
+  onRoleChange,
+  canEdit = false,
+  onSave,
+  isSaving = false,
+}) {
   if (!role) {
     return <PermissionsEmptyState />;
   }
@@ -54,7 +46,7 @@ export default function PermissionsMatrix({ role, matrixRoleId, onRoleChange }) 
         <div>
           <h2 className={styles.title}>Permissions Matrix</h2>
           <p className={styles.subtitle}>
-            Visual map of module access for the selected role. Hover cells for interaction preview.
+            Module access for the selected role. Permissions are enforced server-side.
           </p>
         </div>
 
@@ -106,26 +98,13 @@ export default function PermissionsMatrix({ role, matrixRoleId, onRoleChange }) 
         </table>
       </div>
 
-      <div className={styles.legend}>
-        <span className={styles.legendItem}>
-          <span className={`${styles.legendIcon} ${styles.granted}`}>
-            <AdminIcon name="check" size={12} />
-          </span>
-          Granted
-        </span>
-        <span className={styles.legendItem}>
-          <span className={`${styles.legendIcon} ${styles.partial}`}>
-            <span className={styles.partialDot} />
-          </span>
-          Partial
-        </span>
-        <span className={styles.legendItem}>
-          <span className={`${styles.legendIcon} ${styles.denied}`}>
-            <AdminIcon name="close" size={10} />
-          </span>
-          Denied
-        </span>
-      </div>
+      {canEdit && onSave && (
+        <div className={styles.saveRow}>
+          <Button variant="primary" onClick={() => onSave(role.permissions)} disabled={isSaving}>
+            {isSaving ? 'Saving…' : 'Save Permissions'}
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

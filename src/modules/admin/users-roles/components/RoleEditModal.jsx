@@ -17,7 +17,7 @@ export default function RoleEditModal({ open, mode = 'edit', role, onClose, onSa
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSave();
+    onSave(event.currentTarget);
   };
 
   const modalHeader = (

@@ -2,7 +2,6 @@ import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input } from '../../ui';
 import { CmsModuleShortcut } from '../../cms/components';
 import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
-import { initialOverviewData } from '../../about-pages/mock/aboutPagesData';
 import { sectionEditTitles } from '../mock/homePageConfig';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
@@ -165,8 +164,6 @@ function HeroForm({ data }) {
 }
 
 function AboutForm({ data }) {
-  const sourceContent = initialOverviewData.content;
-
   return (
     <>
       <Form.Section title="Homepage Section Framing">
@@ -210,18 +207,7 @@ function AboutForm({ data }) {
         </p>
       </Form.Section>
 
-      <Form.Section title="Content Preview (from About Pages)">
-        <div className={styles.sourcePreview}>
-          <div className={styles.mediaField}>
-            <CoverImageField
-              label="About Image"
-              src={sourceContent.image.src}
-              alt={sourceContent.image.alt}
-            />
-          </div>
-          <p className={styles.sourceTitle}>{sourceContent.title}</p>
-          <p className={styles.sourceBody}>{sourceContent.description}</p>
-        </div>
+      <Form.Section title="Related Content">
         <CmsModuleShortcut
           title="Open About Pages"
           description="Edit company introduction, overview hero, and office gallery."
@@ -443,7 +429,7 @@ export default function HomePageSectionEditModal({
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.(sectionId);
+    onSave?.(sectionId, e.currentTarget);
   };
 
   const modalHeader = (

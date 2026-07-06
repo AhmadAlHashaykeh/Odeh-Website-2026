@@ -9,7 +9,6 @@ import SeoStatsScopeSwitch from '../components/SeoStatsScopeSwitch';
 import SeoPageList from '../components/SeoPageList';
 import SeoInspector from '../components/SeoInspector';
 import SeoEditModal from '../components/SeoEditModal';
-import SeoAuditPanel from '../components/SeoAuditPanel';
 import SeoManagementSkeleton from '../components/SeoManagementSkeleton';
 import styles from './SeoManagementPage.module.css';
 
@@ -26,7 +25,7 @@ export default function SeoManagementPage() {
 
   const secondaryActions = seoManagementMeta.secondaryActions.map((action) => ({
     ...action,
-    onClick: seo.toggleAuditPanel,
+    onClick: seo.saveDraft,
   }));
 
   return (
@@ -54,16 +53,6 @@ export default function SeoManagementPage() {
               moduleSelected={inModuleWorkspace}
             />
           </div>
-
-          {seo.showAuditPanel && (
-            <div className={styles.auditSlideDown}>
-              <SeoAuditPanel
-                page={seo.selectedPage}
-                siteSummary={seo.siteAuditSummary}
-                visible
-              />
-            </div>
-          )}
 
           {!inModuleWorkspace ? (
             <SeoModulePicker modules={seo.moduleSummaries} onSelect={seo.selectModule} />

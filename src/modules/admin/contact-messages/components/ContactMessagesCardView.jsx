@@ -1,9 +1,9 @@
 import AdminIcon from '../../components/AdminIcons';
 import MessageQuickActions, { MessageStatusBadge, MessagePriorityBadge } from './MessageQuickActions';
-import { inquiryTypeLabels } from '../mock/contactMessagesData';
 import styles from './ContactMessagesCardView.module.css';
 
 function formatDate(value) {
+  if (!value) return '—';
   return new Date(`${value}T00:00:00`).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
@@ -13,8 +13,6 @@ function formatDate(value) {
 
 export default function ContactMessagesCardView({
   items,
-  selectedIds,
-  onToggleSelect,
   onMessageClick,
   onViewMessage,
   onAction,
@@ -22,18 +20,8 @@ export default function ContactMessagesCardView({
   return (
     <div className={styles.grid}>
       {items.map((msg) => (
-        <article
-          key={msg.id}
-          className={`${styles.card} ${selectedIds.has(msg.id) ? styles.selected : ''}`}
-        >
+        <article key={msg.id} className={styles.card}>
           <div className={styles.header}>
-            <input
-              type="checkbox"
-              className={styles.checkbox}
-              checked={selectedIds.has(msg.id)}
-              onChange={() => onToggleSelect(msg.id)}
-              aria-label={`Select ${msg.senderName}`}
-            />
             <MessageQuickActions
               message={msg}
               onView={onViewMessage}
@@ -51,9 +39,6 @@ export default function ContactMessagesCardView({
             </button>
 
             <span className={styles.subject}>{msg.subject}</span>
-            <span className={styles.inquiryType}>
-              {inquiryTypeLabels[msg.inquiryType] || msg.inquiryType}
-            </span>
 
             <div className={styles.badges}>
               <MessagePriorityBadge priority={msg.priority} />
@@ -71,7 +56,7 @@ export default function ContactMessagesCardView({
               </span>
             </div>
 
-            <p className={styles.preview}>{msg.messagePreview}</p>
+            <p className={styles.preview}>{msg.message?.slice(0, 140)}</p>
           </div>
         </article>
       ))}

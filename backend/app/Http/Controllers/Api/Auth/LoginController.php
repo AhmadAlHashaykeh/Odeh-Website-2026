@@ -31,7 +31,7 @@ class LoginController extends Controller
         }
 
         $user->forceFill(['last_login_at' => now()])->save();
-        $user->load('role');
+        $user->load(['role.permissions']);
 
         $token = $user->createToken('auth-token')->plainTextToken;
 

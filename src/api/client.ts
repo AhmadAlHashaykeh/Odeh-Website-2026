@@ -178,3 +178,37 @@ export const apiClient = {
     return request<T>(path, { ...options, method: 'POST', body: formData });
   },
 };
+
+export async function downloadBlob(path: string, filename: string): Promise<void> {
+  const token = getStoredToken();
+  const headers = new Headers({ Accept: 'application/octet-stream' });
+
+  if (token) {
+    headers.set('Authorization', `Bearer ${token}`);
+  }
+
+  const response = await fetch(buildUrl(path), { headers });
+
+  if (response.status === 401) {
+    unauthorizedHandler?.();
+    throw new ApiError('Unauthorized', 401);
+  }
+
+  if (!response.ok) {
+    const body = await parseJsonBody(response);
+    throw new ApiError(
+      getErrorMessage(body, `Download failed with status ${response.status}`),
+      response.status,
+    );
+  }
+
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
