@@ -48,23 +48,42 @@ Laravel 12 API with Sanctum authentication, role-based permissions, and CRUD end
 - Node.js 18+
 - PHP 8.2+
 - Composer 2.x
-- MySQL 8+
+- MySQL 8+ (XAMPP, WAMP, or standalone)
 
-### 1. Backend
+### 1. MySQL Database
+
+Create the database before starting the backend:
+
+```sql
+CREATE DATABASE odeh_cms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+### 2. Backend
 
 ```bash
 cd backend
 composer install
 cp .env.example .env
 php artisan key:generate
-# Configure DB_* in .env
-php artisan migrate --seed
+php artisan storage:link
+php artisan migrate:fresh --seed
 php artisan serve
 ```
 
-API runs at `http://localhost:8000/api`.
+Default `.env` database settings:
 
-### 2. Frontend
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=odeh_cms
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+API runs at `http://127.0.0.1:8000/api`.
+
+### 3. Frontend
 
 ```bash
 # From repository root
@@ -73,7 +92,11 @@ npm install
 npm run dev
 ```
 
-Set `VITE_API_BASE_URL=http://localhost:8000/api` in `.env`.
+Required frontend `.env`:
+
+```env
+VITE_API_BASE_URL=http://127.0.0.1:8000/api
+```
 
 | URL | Description |
 |-----|-------------|
@@ -81,7 +104,14 @@ Set `VITE_API_BASE_URL=http://localhost:8000/api` in `.env`.
 | `http://localhost:5173/admin/login` | Admin login |
 | `http://localhost:5173/admin/dashboard` | Admin dashboard |
 
-**Development login:** `admin@odeh.local` / `OdehLocalDev2026!`
+### Development Admin (local only)
+
+| Field | Value |
+|-------|-------|
+| Email | `admin@odeh.local` |
+| Password | `OdehLocalDev2026!` |
+
+**Development only — change or remove this account before production.**
 
 ## Build
 

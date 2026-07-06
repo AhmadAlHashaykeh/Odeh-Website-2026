@@ -2,28 +2,36 @@
 
 Laravel 12 REST API powering the ODEH website admin CMS and public form submissions.
 
-## Requirements
+## Installation
+
+### Prerequisites
 
 - PHP 8.2+
 - Composer 2.x
 - MySQL 8+ (or MariaDB 10.4+)
 - Node.js 18+ (for the frontend SPA in the parent directory)
 
-## Installation
+Create the MySQL database before running migrations:
+
+```sql
+CREATE DATABASE odeh_cms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+### Setup
 
 ```bash
 cd backend
 composer install
 cp .env.example .env
 php artisan key:generate
-```
-
-Configure database credentials in `.env`, then:
-
-```bash
-php artisan migrate --seed
 php artisan storage:link
+php artisan migrate:fresh --seed
+php artisan serve
 ```
+
+The default `.env.example` uses MySQL (`odeh_cms` on `127.0.0.1:3306` with user `root` and no password). Adjust `DB_*` values if your local MySQL credentials differ.
+
+API runs at `http://127.0.0.1:8000/api`.
 
 ## Environment Variables
 
@@ -39,6 +47,8 @@ php artisan storage:link
 See `.env.example` for the full list.
 
 ## Database
+
+Local development uses **MySQL** (database name: `odeh_cms`). Automated tests use an in-memory SQLite database configured in `phpunit.xml` only.
 
 ```bash
 # Fresh install with seed data
