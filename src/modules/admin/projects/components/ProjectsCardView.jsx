@@ -1,5 +1,4 @@
 import { StatusBadge } from '../../cms/components';
-import AdminIcon from '../../components/AdminIcons';
 import ProjectQuickActions from './ProjectQuickActions';
 import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ProjectsCardView.module.css';
@@ -52,13 +51,6 @@ export default function ProjectsCardView({
               />
               <ProjectQuickActions project={project} onView={onViewProject} onAction={onAction} />
             </div>
-
-            {project.featured && (
-              <span className={styles.featuredRibbon}>
-                <AdminIcon name="star" size={12} />
-                Featured
-              </span>
-            )}
           </div>
 
           <div className={styles.body}>

@@ -1,0 +1,8 @@
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.contentArea {
+  min-height: 240px;
+}

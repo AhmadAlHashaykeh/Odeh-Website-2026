@@ -1,12 +1,17 @@
 import { useCallback, useMemo, useState } from 'react';
 import * as navigationFooterApi from '../../../../api/navigationFooter';
-import { extractFormValues } from '../../cms/action-flows/mapFormValuesToApi';
+import { usePublicSite } from '../../../../context/PublicSiteContext';
+import {
+  extractFormValues,
+  mapNavigationFooterFromForm,
+} from '../../cms/action-flows/mapFormValuesToApi';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
 import { useCmsSingleton } from '../../hooks/useCmsSingleton';
 import { openExternalUrl } from '../../utils/openExternalUrl';
 import { computeNavigationFooterStatistics, getPanelData } from '../mock/navigationFooterConfig';
 
 export function useNavigationFooterCms() {
+  const { refresh: refreshPublicSite } = usePublicSite();
   const singleton = useCmsSingleton({
     showFn: navigationFooterApi.show,
     updateFn: navigationFooterApi.update,
@@ -46,53 +51,24 @@ export function useNavigationFooterCms() {
       if (!singleton.data) return;
 
       const values = formElement ? extractFormValues(formElement) : {};
-      let nextData = { ...singleton.data };
-
-      if (panelId === 'nav-menu' && editingNavItemId) {
-        nextData = {
-          ...nextData,
-          navigationItems: nextData.navigationItems.map((item) =>
-            item.id === editingNavItemId ? { ...item, ...values } : item,
-          ),
-        };
-      } else {
-        switch (panelId) {
-          case 'nav-logo':
-            nextData.logo = {
-              ...nextData.logo,
-              src: values.src || values['logo-src'] || nextData.logo.src,
-              alt: values['logo-alt'] || nextData.logo.alt,
-            };
-            break;
-          case 'nav-menu':
-            break;
-          case 'footer-brand':
-            nextData.footerBrand = {
-              ...nextData.footerBrand,
-              text: values['footer-brand-text'] ?? nextData.footerBrand.text,
-              logo: {
-                ...nextData.footerBrand.logo,
-                src: values['footer-logo-src'] || nextData.footerBrand.logo?.src,
-                alt: nextData.footerBrand.logo?.alt,
-              },
-            };
-            break;
-          case 'footer-copyright':
-            nextData.copyright = { ...nextData.copyright, ...values };
-            break;
-          default:
-            break;
-        }
-      }
+      const nextData = mapNavigationFooterFromForm(
+        panelId,
+        singleton.data,
+        values,
+        editingNavItemId,
+      );
 
       const result = await singleton.update(nextData);
+      if (result.success) {
+        await refreshPublicSite();
+      }
       closeEdit();
       showFeedback(
         result.success ? 'Panel saved.' : (result.error?.message ?? 'Failed to save panel.'),
         result.success ? 'success' : 'error',
       );
     },
-    [singleton, editingNavItemId, closeEdit, showFeedback],
+    [singleton, editingNavItemId, closeEdit, showFeedback, refreshPublicSite],
   );
 
   const resetPanel = useCallback(() => {
@@ -106,11 +82,14 @@ export function useNavigationFooterCms() {
   const saveDraft = useCallback(async () => {
     if (!singleton.data) return;
     const result = await singleton.update(singleton.data);
+    if (result.success) {
+      await refreshPublicSite();
+    }
     showFeedback(
       result.success ? 'Navigation & footer saved.' : 'Failed to save.',
       result.success ? 'success' : 'error',
     );
-  }, [singleton, showFeedback]);
+  }, [singleton, showFeedback, refreshPublicSite]);
 
   const previewPanel = useCallback((anchor) => {
     openExternalUrl(anchor);

@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import * as legalPagesApi from '../../../../api/legalPages';
 import { ApiError } from '../../../../api/client';
-import { extractFormValues } from '../../cms/action-flows/mapFormValuesToApi';
+import {
+  extractFormValues,
+  mapLegalPageFromForm,
+} from '../../cms/action-flows/mapFormValuesToApi';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
 import { copyToClipboard } from '../../utils/clipboard';
 import { openExternalUrl, resolvePublicUrl } from '../../utils/openExternalUrl';
@@ -72,7 +75,7 @@ export function useLegalPagesCms() {
       if (!page) return;
 
       const values = formElement ? extractFormValues(formElement) : {};
-      const payload = Object.keys(values).length > 0 ? { ...page, ...values } : page;
+      const payload = mapLegalPageFromForm(page, values);
 
       setIsSaving(true);
 

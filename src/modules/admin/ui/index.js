@@ -9,6 +9,7 @@
 export { default as Button } from './components/Button';
 export { default as Input } from './components/Input';
 export { default as Select, MultiSelect, SearchableSelect } from './components/Select';
+export { default as OverflowMenu } from './components/OverflowMenu';
 export { default as Badge } from './components/Badge';
 export { default as Card, StatisticCard } from './components/Card';
 export { default as Modal, ConfirmationModal, ModalActions } from './components/Modal';

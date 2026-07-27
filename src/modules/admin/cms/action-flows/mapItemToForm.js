@@ -31,13 +31,13 @@ export function mapItemToFormValues(moduleKey, item) {
         location: item.location || '',
         projectType: item.projectType || '',
         area: item.area || '',
+        completionStatus: item.completionStatus || '',
         year: item.year || '',
         description: item.description || '',
         coverImage: resolveMediaPath(item.coverImage),
         gallery: mapGalleryForForm(item.gallery),
         status: item.status || 'draft',
         published: boolLabel(item.published),
-        featured: boolLabel(item.featured),
         displayOrder: item.displayOrder || '',
       };
 
@@ -46,8 +46,6 @@ export function mapItemToFormValues(moduleKey, item) {
         title: item.title || '',
         slug: item.slug || '',
         description: item.description || '',
-        coverImage: resolveMediaPath(item.coverImage),
-        featuredImage: resolveMediaPath(item.featuredImage),
         status: item.status || 'draft',
         published: boolLabel(item.published),
         displayOrder: item.displayOrder || '',
@@ -58,11 +56,23 @@ export function mapItemToFormValues(moduleKey, item) {
         fullName: item.fullName || '',
         position: item.position || '',
         department: item.department || '',
-        category: item.categoryLabel || item.category || '',
+        teamCategoryId: item.teamCategoryId || item.category?.id || '',
         experience: item.experience || '',
         email: item.email || '',
         photo: resolveMediaPath(item.photo),
         status: item.status || 'active',
+        displayOrder: item.displayOrder || '',
+      };
+
+    case 'team-categories':
+      return {
+        name: item.name || '',
+        slug: item.slug || '',
+        description: item.description || '',
+        borderColor: item.borderColor || '#7a7f85',
+        icon: resolveMediaPath(item.icon),
+        parentId: item.parentId || '',
+        status: item.isActive === false || item.status === 'inactive' ? 'inactive' : 'active',
         displayOrder: item.displayOrder || '',
       };
 
@@ -127,6 +137,8 @@ export function getItemLabel(moduleKey, item) {
       return item.title;
     case 'team-members':
       return item.fullName;
+    case 'team-categories':
+      return item.name;
     case 'activities':
       return item.title;
     case 'services':

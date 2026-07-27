@@ -10,7 +10,7 @@ import { resolveUploadModule } from './uploadModuleMap';
 import inputStyles from '../../ui/components/Input.module.css';
 import styles from './AdminFormDrawer.module.css';
 
-const FULL_WIDTH_TYPES = new Set(['textarea', 'cover', 'gallery']);
+const FULL_WIDTH_TYPES = new Set(['textarea', 'cover', 'gallery', 'notice', 'color']);
 
 function parseGalleryValue(value) {
   if (Array.isArray(value)) return value;
@@ -54,6 +54,60 @@ function groupFieldsIntoRows(fields) {
 
   if (currentRow.length) rows.push(currentRow);
   return rows;
+}
+
+function ColorBorderField({ field, value, values, error, disabled }) {
+  const initial = value || '#7a7f85';
+  const [color, setColor] = useState(initial);
+  const [previewTitle, setPreviewTitle] = useState(
+    values[field.previewTitleField] || values.name || 'Category Name',
+  );
+
+  return (
+    <div className={styles.colorField}>
+      <Input.Field error={error}>
+        <div className={styles.colorControls}>
+          <input
+            type="color"
+            className={styles.colorPicker}
+            value={/^#[0-9A-Fa-f]{6}$/.test(color) ? color : '#7a7f85'}
+            disabled={disabled}
+            aria-label={`${field.label} picker`}
+            onChange={(event) => {
+              setColor(event.target.value);
+              const nameInput = document.getElementById(field.previewTitleField || 'name');
+              if (nameInput?.value) setPreviewTitle(nameInput.value);
+            }}
+          />
+          <input
+            id={field.name}
+            name={field.name}
+            type="text"
+            className={inputStyles.input}
+            value={color}
+            disabled={disabled}
+            aria-invalid={error ? true : undefined}
+            onChange={(event) => {
+              setColor(event.target.value);
+              const nameInput = document.getElementById(field.previewTitleField || 'name');
+              if (nameInput?.value) setPreviewTitle(nameInput.value);
+            }}
+            placeholder="#c9a66b"
+          />
+        </div>
+      </Input.Field>
+
+      <div
+        className={styles.borderPreview}
+        style={{ '--preview-border': color || '#7a7f85' }}
+        aria-live="polite"
+      >
+        <p className={styles.borderPreviewTitle}>{previewTitle || 'Category Name'}</p>
+        <div className={styles.borderPreviewBar} aria-hidden="true" />
+        <p className={styles.borderPreviewHint}>Border Preview</p>
+      </div>
+    </div>
+  );
 }
 
 function renderSelect(field, value, error, disabled) {
@@ -109,13 +163,23 @@ function renderField(field, values, fieldErrors, disabled, uploadModule, onUploa
           />
         </Input.Field>
       );
+    case 'color':
+      return (
+        <ColorBorderField
+          field={field}
+          value={value}
+          values={values}
+          error={error}
+          disabled={disabled}
+        />
+      );
     case 'cover':
       return (
         <CoverImageField
           label={field.label}
           name={field.name}
           src={typeof value === 'string' ? value : ''}
-          alt={values.title || values.fullName || 'Cover'}
+          alt={values.title || values.fullName || values.name || 'Cover'}
           uploadModule={uploadModule}
           uploadField={field.name}
           disabled={disabled}
@@ -134,6 +198,13 @@ function renderField(field, values, fieldErrors, disabled, uploadModule, onUploa
           onUploadingChange={onUploadingChange}
         />
       );
+    case 'notice':
+      return (
+        <div className={styles.fieldNotice} role="note">
+          {field.title && <p className={styles.fieldNoticeTitle}>{field.title}</p>}
+          <p className={styles.fieldNoticeText}>{field.content}</p>
+        </div>
+      );
     default:
       return (
         <Input.Field error={error}>
@@ -145,6 +216,14 @@ function renderField(field, values, fieldErrors, disabled, uploadModule, onUploa
             defaultValue={value}
             disabled={disabled}
             aria-invalid={error ? true : undefined}
+            onInput={
+              field.name === 'name'
+                ? (event) => {
+                    const preview = document.querySelector(`.${styles.borderPreviewTitle}`);
+                    if (preview) preview.textContent = event.target.value || 'Category Name';
+                  }
+                : undefined
+            }
           />
         </Input.Field>
       );
@@ -157,6 +236,14 @@ function renderFieldGroup(field, values, fieldErrors, disabled, uploadModule, on
   if (field.type === 'cover' || field.type === 'gallery') {
     return (
       <div key={field.name} className={styles.mediaField}>
+        {renderField(field, values, fieldErrors, disabled, uploadModule, onUploadingChange)}
+      </div>
+    );
+  }
+
+  if (field.type === 'notice') {
+    return (
+      <div key={field.name || field.title} className={styles.mediaField}>
         {renderField(field, values, fieldErrors, disabled, uploadModule, onUploadingChange)}
       </div>
     );

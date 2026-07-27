@@ -19,7 +19,7 @@ export default function ProjectDetailHero({
           alt=""
           aria-hidden="true"
           className={styles.bgImage}
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
         />
         <div className={styles.overlay} />

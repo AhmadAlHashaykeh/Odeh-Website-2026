@@ -296,6 +296,8 @@ export function useAdminActionFlows({
         case 'toggle-visibility':
           if (moduleKey === 'services') {
             openStatusConfirm(item, item?.status === 'hidden' ? 'show' : 'hide');
+          } else if (moduleKey === 'team-categories') {
+            openStatusConfirm(item, item?.isActive ? 'hide' : 'show');
           } else {
             openStatusConfirm(
               item,

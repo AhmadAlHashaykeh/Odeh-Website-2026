@@ -28,7 +28,7 @@ export default function PageHero({
           alt=""
           aria-hidden="true"
           className={styles.bgImage}
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
           width={1400}
           height={900}

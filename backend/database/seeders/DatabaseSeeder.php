@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             ProjectContentSeeder::class,
             ActivitySeeder::class,
+            TeamCategorySeeder::class,
             TeamMemberSeeder::class,
             JobPostingSeeder::class,
         ]);

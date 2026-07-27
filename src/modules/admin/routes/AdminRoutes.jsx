@@ -11,6 +11,7 @@ import DashboardPage from '../dashboard/pages/DashboardPage';
 import ProjectsPage from '../projects/pages/ProjectsPage';
 import CategoriesPage from '../project-categories/pages/CategoriesPage';
 import TeamMembersPage from '../team-members/pages/TeamMembersPage';
+import TeamCategoriesPage from '../team-categories/pages/TeamCategoriesPage';
 import ActivitiesPage from '../activities/pages/ActivitiesPage';
 import ServicesPage from '../services/pages/ServicesPage';
 
@@ -66,6 +67,14 @@ export default function AdminRoutes() {
             element={(
               <ModulePermissionRoute moduleId="project-categories">
                 <CategoriesPage />
+              </ModulePermissionRoute>
+            )}
+          />
+          <Route
+            path="team-categories"
+            element={(
+              <ModulePermissionRoute moduleId="team-categories">
+                <TeamCategoriesPage />
               </ModulePermissionRoute>
             )}
           />

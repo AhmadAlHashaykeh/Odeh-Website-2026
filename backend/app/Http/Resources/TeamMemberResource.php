@@ -17,13 +17,29 @@ class TeamMemberResource extends JsonResource
             $experienceYears = (int) $matches[1];
         }
 
+        $categoryPayload = null;
+
+        if ($this->relationLoaded('teamCategory') && $this->teamCategory) {
+            $categoryPayload = [
+                'id' => $this->teamCategory->id,
+                'name' => $this->teamCategory->name,
+                'slug' => $this->teamCategory->slug,
+                'borderColor' => $this->teamCategory->border_color,
+                'displayOrder' => $this->teamCategory->display_order,
+                'description' => $this->teamCategory->description,
+                'isActive' => (bool) $this->teamCategory->is_active,
+            ];
+        }
+
         return [
             'id' => $this->id,
             'slug' => $this->slug,
             'fullName' => $this->full_name,
             'position' => $this->position,
             'department' => $this->department,
-            'category' => $this->category,
+            'category' => $categoryPayload,
+            'categoryLabel' => $this->teamCategory?->name ?? $this->category,
+            'teamCategoryId' => $this->team_category_id,
             'experience' => $this->experience,
             'experienceYears' => $experienceYears,
             'photo' => PublicMediaUrl::reference($this->photo),

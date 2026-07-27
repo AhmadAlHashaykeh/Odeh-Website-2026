@@ -1,0 +1,126 @@
+{
+  "checks": [
+    {
+      "u": "http://localhost/storage/uploads/demo.webp",
+      "status": 404,
+      "ok": false,
+      "ct": "text/html; charset=iso-8859-1"
+    },
+    {
+      "u": "http://127.0.0.1:8000/storage/uploads/demo.webp",
+      "status": 403,
+      "ok": false,
+      "ct": "text/html; charset=utf-8"
+    },
+    {
+      "u": "http://127.0.0.1:5173/assets/projects//cover.webp",
+      "status": 200,
+      "ok": true,
+      "ct": "text/html"
+    },
+    {
+      "u": "http://127.0.0.1:5173/assets/projects/himmeh-resort/cover.webp",
+      "status": 200,
+      "ok": true,
+      "ct": "image/webp"
+    },
+    {
+      "u": "http://127.0.0.1:5173/odeh-logo2.png",
+      "status": 200,
+      "ok": true,
+      "ct": "image/png"
+    },
+    {
+      "u": "http://127.0.0.1:5173/hero-poster.jpg",
+      "status": 200,
+      "ok": true,
+      "ct": "image/jpeg"
+    },
+    {
+      "u": "http://127.0.0.1:5173/video-slider.mp4",
+      "status": 200,
+      "ok": true,
+      "ct": "video/mp4"
+    }
+  ],
+  "searchTotal": 1,
+  "serviceHits": [
+    {
+      "id": "service-9476f141-2468-404a-bd2e-400e01b957b4",
+      "type": "service",
+      "typeLabel": "Service",
+      "title": "Design Solutions",
+      "subtitle": "Engineering Service",
+      "path": "/services/design-solutions",
+      "keywords": [
+        "Expert design services for concrete and steel elements.",
+        "service",
+        "engineering"
+      ]
+    }
+  ],
+  "legalMentionsInNavApi": [],
+  "navKeys": [
+    "logo",
+    "navigationItems",
+    "footerBrand",
+    "footerNavGroups",
+    "footerQuickLinks",
+    "contact",
+    "socialLinks",
+    "copyright",
+    "lastUpdated"
+  ],
+  "disk": {
+    "checked": 318,
+    "missing": 7,
+    "missingList": [
+      {
+        "path": "/assets/projects//cover.webp",
+        "record": "project:",
+        "full": "public\\assets\\projects\\cover.webp"
+      },
+      {
+        "path": "/assets/projects//gallery-01.webp",
+        "record": "project-gallery:",
+        "full": "public\\assets\\projects\\gallery-01.webp"
+      },
+      {
+        "path": "/assets/projects//gallery-02.webp",
+        "record": "project-gallery:",
+        "full": "public\\assets\\projects\\gallery-02.webp"
+      },
+      {
+        "path": "/assets/projects//gallery-03.webp",
+        "record": "project-gallery:",
+        "full": "public\\assets\\projects\\gallery-03.webp"
+      },
+      {
+        "path": "/assets/projects//gallery-04.webp",
+        "record": "project-gallery:",
+        "full": "public\\assets\\projects\\gallery-04.webp"
+      },
+      {
+        "path": "/assets/projects//gallery-05.webp",
+        "record": "project-gallery:",
+        "full": "public\\assets\\projects\\gallery-05.webp"
+      },
+      {
+        "path": "/assets/projects//gallery-06.webp",
+        "record": "project-gallery:",
+        "full": "public\\assets\\projects\\gallery-06.webp"
+      }
+    ]
+  },
+  "counts": {
+    "projects": 49,
+    "services": 7,
+    "team": 23,
+    "activities": 4,
+    "adminProjects": 12,
+    "emptySlugAdmin": 0,
+    "auditTeam": 0
+  },
+  "emptySlugSample": [],
+  "auditTeamSample": []
+}

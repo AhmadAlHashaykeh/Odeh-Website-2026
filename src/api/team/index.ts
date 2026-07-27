@@ -10,8 +10,17 @@ export interface TeamMember {
   fullName: string;
   position?: string | null;
   department?: string | null;
-  category?: string | null;
+  category?: {
+    id: string;
+    name: string;
+    slug: string;
+    borderColor: string;
+    displayOrder: number;
+    description?: string | null;
+    isActive?: boolean;
+  } | null;
   categoryLabel?: string | null;
+  teamCategoryId?: string | null;
   experience?: string | null;
   experienceYears?: number | null;
   email?: string | null;

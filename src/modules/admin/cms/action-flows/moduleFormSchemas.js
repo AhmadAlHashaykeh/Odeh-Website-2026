@@ -14,6 +14,7 @@ export const MODULE_FORM_SCHEMAS = {
         title: 'Project Details',
         fields: [
           { name: 'title', label: 'Project Title', type: 'text', required: true },
+          { name: 'slug', label: 'Slug', type: 'text', helper: 'Leave blank to auto-generate on create. Changing this updates the public URL.' },
           { name: 'category', label: 'Category', type: 'select', options: ['Commercial', 'Residential', 'Hospitality', 'Infrastructure'] },
           { name: 'description', label: 'Description', type: 'textarea', rows: 4, fullWidth: true },
         ],
@@ -31,6 +32,7 @@ export const MODULE_FORM_SCHEMAS = {
           { name: 'location', label: 'Location', type: 'text' },
           { name: 'projectType', label: 'Project Type', type: 'text' },
           { name: 'area', label: 'Area', type: 'text' },
+          { name: 'completionStatus', label: 'Completion Status', type: 'text', helper: 'e.g. Completed, 2023' },
           { name: 'year', label: 'Year', type: 'number' },
         ],
       },
@@ -39,7 +41,6 @@ export const MODULE_FORM_SCHEMAS = {
         fields: [
           { name: 'status', label: 'Status', type: 'select', options: ['published', 'draft', 'archived'] },
           { name: 'published', label: 'Published on Website', type: 'select', options: ['Yes', 'No'] },
-          { name: 'featured', label: 'Featured', type: 'select', options: ['Yes', 'No'] },
           { name: 'displayOrder', label: 'Display Order', type: 'number' },
         ],
       },
@@ -50,7 +51,7 @@ export const MODULE_FORM_SCHEMAS = {
   categories: {
     addTitle: 'Add Category',
     editTitle: 'Edit Category',
-    subtitle: 'Organize project categories with cover imagery and visibility.',
+    subtitle: 'Organize project categories and control visibility on the website.',
     badge: 'Categories',
     sections: [
       {
@@ -61,10 +62,16 @@ export const MODULE_FORM_SCHEMAS = {
         ],
       },
       {
-        title: 'Cover Image',
+        title: 'Category Image',
         fields: [
-          { name: 'coverImage', label: 'Cover Image', type: 'cover', fullWidth: true },
-          { name: 'featuredImage', label: 'Featured Image', type: 'cover', fullWidth: true },
+          {
+            name: 'categoryImageNotice',
+            type: 'notice',
+            fullWidth: true,
+            title: 'Automatic category images',
+            content:
+              'Category images are generated automatically from published projects in this category.',
+          },
         ],
       },
       {
@@ -91,7 +98,14 @@ export const MODULE_FORM_SCHEMAS = {
           { name: 'fullName', label: 'Full Name', type: 'text', required: true },
           { name: 'position', label: 'Position', type: 'text' },
           { name: 'department', label: 'Department', type: 'text' },
-          { name: 'category', label: 'Category', type: 'select', options: ['Leadership', 'Senior Specialist', 'Engineer', 'Technical Support', 'Site Operations'] },
+          {
+            name: 'teamCategoryId',
+            label: 'Category',
+            type: 'select',
+            required: true,
+            options: [],
+            helper: 'Controls the public Team Members grouping and card border colour.',
+          },
           { name: 'experience', label: 'Experience', type: 'text' },
         ],
       },
@@ -116,6 +130,60 @@ export const MODULE_FORM_SCHEMAS = {
       },
     ],
     seoDelegation: true,
+  },
+
+  'team-categories': {
+    addTitle: 'Add Team Category',
+    editTitle: 'Edit Team Category',
+    subtitle: 'Define directory groups and card border colours for the public team page.',
+    badge: 'Team Categories',
+    sections: [
+      {
+        title: 'Category Details',
+        fields: [
+          { name: 'name', label: 'Category Name', type: 'text', required: true },
+          { name: 'slug', label: 'Slug', type: 'text', helper: 'Auto-generated from the name when left blank.' },
+          { name: 'description', label: 'Description', type: 'textarea', rows: 3, fullWidth: true },
+          {
+            name: 'parentId',
+            label: 'Parent Category',
+            type: 'select',
+            options: [{ value: '', label: 'None' }],
+            helper: 'Optional. Reserved for future nested groupings.',
+          },
+        ],
+      },
+      {
+        title: 'Appearance',
+        fields: [
+          {
+            name: 'borderColor',
+            label: 'Border Color',
+            type: 'color',
+            required: true,
+            previewTitleField: 'name',
+            fullWidth: true,
+          },
+          { name: 'icon', label: 'Icon', type: 'cover', fullWidth: true },
+        ],
+      },
+      {
+        title: 'Publishing',
+        fields: [
+          {
+            name: 'status',
+            label: 'Status',
+            type: 'select',
+            options: [
+              { value: 'active', label: 'Active' },
+              { value: 'inactive', label: 'Inactive' },
+            ],
+          },
+          { name: 'displayOrder', label: 'Display Order', type: 'number' },
+        ],
+      },
+    ],
+    seoDelegation: false,
   },
 
   services: {
@@ -205,6 +273,7 @@ export const MODULE_FORM_SCHEMAS = {
         title: 'Job Details',
         fields: [
           { name: 'title', label: 'Job Title', type: 'text', required: true },
+          { name: 'slug', label: 'Slug', type: 'text', helper: 'Leave blank to auto-generate on create. Changing this updates the public URL.' },
           { name: 'department', label: 'Department', type: 'select', options: ['Structural Engineering', 'BIM & Digital Delivery', 'Site Supervision', 'Estimation & Planning'] },
           { name: 'location', label: 'Location', type: 'text' },
         ],

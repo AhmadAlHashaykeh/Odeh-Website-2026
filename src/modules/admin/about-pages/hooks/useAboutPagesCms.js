@@ -1,7 +1,11 @@
 import { useCallback, useMemo, useState } from 'react';
 import * as aboutPagesApi from '../../../../api/aboutPages';
 import { ApiError } from '../../../../api/client';
-import { extractFormValues } from '../../cms/action-flows/mapFormValuesToApi';
+import { resolveMediaPath } from '../../../../utils/mediaUrl';
+import {
+  extractFormValues,
+  mapAboutPanelFromForm,
+} from '../../cms/action-flows/mapFormValuesToApi';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
 import { useCmsSingleton } from '../../hooks/useCmsSingleton';
 import { openExternalUrl } from '../../utils/openExternalUrl';
@@ -17,38 +21,27 @@ const PANEL_MAP = {
   'history-story': { sectionKey: 'history', dataKey: 'story' },
   'history-counters': { sectionKey: 'history', dataKey: 'counters' },
   'history-growth': { sectionKey: 'history', dataKey: 'growthTable' },
+  'team-hero': { sectionKey: 'team', dataKey: 'hero' },
+  'team-meta': { sectionKey: 'team', dataKey: 'meta' },
+  'activities-hero': { sectionKey: 'activities', dataKey: 'hero' },
+  'activities-meta': { sectionKey: 'activities', dataKey: 'meta' },
 };
 
-function normalizeAboutPanelValues(panelId, currentPanel, values) {
-  const updatedPanel = { ...currentPanel, ...values };
+function normalizeAboutSectionForSave(section) {
+  if (!section || typeof section !== 'object') {
+    return section;
+  }
 
-  if (panelId === 'overview-intro') {
-    updatedPanel.image = {
-      ...currentPanel.image,
-      src: values['intro-image-src'] ?? currentPanel.image?.src,
-      alt: values['intro-image-alt'] ?? currentPanel.image?.alt,
+  const next = { ...section };
+
+  if (next.hero && typeof next.hero === 'object' && next.hero.backgroundImage != null) {
+    next.hero = {
+      ...next.hero,
+      backgroundImage: resolveMediaPath(next.hero.backgroundImage),
     };
-    delete updatedPanel['intro-image-src'];
-    delete updatedPanel['intro-image-alt'];
   }
 
-  if (panelId === 'overview-gallery' && typeof values['gallery-images'] === 'string') {
-    try {
-      const parsed = JSON.parse(values['gallery-images']);
-      if (Array.isArray(parsed)) {
-        updatedPanel.images = parsed;
-      }
-    } catch {
-      // Keep existing gallery images when JSON is invalid.
-    }
-    delete updatedPanel['gallery-images'];
-  }
-
-  if (values.backgroundImage) {
-    delete updatedPanel['hero-bg'];
-  }
-
-  return updatedPanel;
+  return next;
 }
 
 export function useAboutPagesCms() {
@@ -60,7 +53,13 @@ export function useAboutPagesCms() {
   const [editingPanelId, setEditingPanelId] = useState(null);
   const { feedback, showFeedback, closeFeedback } = useActionFeedback();
 
-  const pagesData = singleton.data ?? { overview: {}, approach: {}, history: {} };
+  const pagesData = singleton.data ?? {
+    overview: {},
+    approach: {},
+    history: {},
+    team: {},
+    activities: {},
+  };
 
   const statistics = useMemo(
     () => computeAboutPagesStatistics(singleton.data?.lastUpdated),
@@ -83,17 +82,14 @@ export function useAboutPagesCms() {
       const { sectionKey, dataKey } = mapping;
       const currentPanel = pagesData[sectionKey]?.[dataKey] ?? {};
       const values = formElement ? extractFormValues(formElement) : {};
-      const updatedPanel =
-        Object.keys(values).length > 0
-          ? normalizeAboutPanelValues(panelId, currentPanel, values)
-          : currentPanel;
+      const updatedPanel = mapAboutPanelFromForm(panelId, currentPanel, values);
 
       const result = await singleton.update({
         ...singleton.data,
-        [sectionKey]: {
+        [sectionKey]: normalizeAboutSectionForSave({
           ...pagesData[sectionKey],
           [dataKey]: updatedPanel,
-        },
+        }),
       });
 
       closeEdit();

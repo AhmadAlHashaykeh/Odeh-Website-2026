@@ -10,7 +10,7 @@ import {
 } from '../../ui/components/Table';
 import tableStyles from '../../ui/components/Table.module.css';
 import CategoryQuickActions from './CategoryQuickActions';
-import { resolveMediaUrl } from '../../../../utils/mediaUrl';
+import { RotatingCategoryImage } from '../../../../components/SelectedProjects';
 import styles from './CategoriesTableView.module.css';
 
 function formatDate(value) {
@@ -73,11 +73,18 @@ export default function CategoriesTableView({
                 />
               </TableCell>
               <TableCell className={styles.thumbCol}>
-                <button type="button" onClick={() => onCategoryClick(category.id)}>
-                  <img src={resolveMediaUrl(category.coverImage)}
+                <button
+                  type="button"
+                  className={styles.thumbBtn}
+                  onClick={() => onCategoryClick(category.id)}
+                  aria-label={`View ${category.title}`}
+                >
+                  <RotatingCategoryImage
+                    images={category.projectImages}
+                    category={category}
                     alt={category.title}
-                    className={styles.thumb}
-                    loading="lazy"
+                    className={styles.thumbRotator}
+                    imageClassName={styles.thumb}
                   />
                 </button>
               </TableCell>
@@ -87,6 +94,7 @@ export default function CategoriesTableView({
                   <span className={styles.projectCount}>
                     {category.projectCount} {category.projectCount === 1 ? 'project' : 'projects'}
                   </span>
+                  <span className={styles.autoImageHint}>{category.autoImageLabel}</span>
                 </button>
               </TableCell>
               <TableCell>

@@ -23,10 +23,11 @@ import ApplicationDetailsDrawer from '../components/ApplicationDetailsDrawer';
 import ApplicationNoteModal from '../components/ApplicationNoteModal';
 import ApplicationsEmptyState from '../components/ApplicationsEmptyState';
 import ApplicationsSkeleton from '../components/ApplicationsSkeleton';
+import { EmptyState } from '../../ui';
 import styles from './ApplicationsPage.module.css';
 
 const STATUS_CONFIRM = {
-  'status-reviewed': { title: 'Mark as Reviewed', confirmLabel: 'Mark Reviewed', status: 'reviewed' },
+  'status-reviewing': { title: 'Mark as Reviewed', confirmLabel: 'Mark Reviewed', status: 'reviewing' },
   'status-shortlisted': { title: 'Shortlist Candidate', confirmLabel: 'Shortlist', status: 'shortlisted' },
   'status-hired': { title: 'Hire Candidate', confirmLabel: 'Hire', status: 'hired' },
   'status-rejected': { title: 'Reject Application', confirmLabel: 'Reject', status: 'rejected', variant: 'danger' },
@@ -195,7 +196,8 @@ export default function ApplicationsPage() {
     [handleDownloadCv, handleOpenLinkedIn, handleAddNote, openStatusConfirm],
   );
 
-  const showEmpty = !listing.isLoading && listing.paginatedItems.length === 0;
+  const showEmpty =
+    !listing.isLoading && !listing.listError && listing.paginatedItems.length === 0;
 
   return (
     <div className={styles.page}>
@@ -207,6 +209,13 @@ export default function ApplicationsPage() {
 
       {listing.isLoading ? (
         <ApplicationsSkeleton viewMode={listing.viewMode} />
+      ) : listing.listError ? (
+        <EmptyState
+          icon="applications"
+          title="Failed to load applications"
+          description={listing.listError}
+          action={{ label: 'Retry', icon: 'refresh', onClick: listing.refresh }}
+        />
       ) : (
         <>
           <StatisticsStrip statistics={listing.statistics} />
@@ -237,6 +246,11 @@ export default function ApplicationsPage() {
                 {listing.viewMode === 'table' ? (
                   <ApplicationsTableView
                     items={listing.paginatedItems}
+                    selectedIds={listing.selectedIds}
+                    onToggleSelect={listing.toggleSelect}
+                    onToggleSelectAll={listing.toggleSelectAll}
+                    isAllSelected={listing.isAllPageSelected}
+                    isSomeSelected={listing.isSomePageSelected}
                     onApplicationClick={listing.openApplication}
                     onViewApplication={listing.openApplication}
                     onAction={handleQuickAction}
@@ -244,6 +258,8 @@ export default function ApplicationsPage() {
                 ) : (
                   <ApplicationsCardView
                     items={listing.paginatedItems}
+                    selectedIds={listing.selectedIds}
+                    onToggleSelect={listing.toggleSelect}
                     onApplicationClick={listing.openApplication}
                     onViewApplication={listing.openApplication}
                     onAction={handleQuickAction}

@@ -7,6 +7,7 @@ export const FORM_MODULE_UPLOAD_MAP = {
   services: 'services',
   activities: 'activities',
   'team-members': 'team-members',
+  'team-categories': 'team-categories',
 };
 
 export function resolveUploadModule(formModuleKey) {

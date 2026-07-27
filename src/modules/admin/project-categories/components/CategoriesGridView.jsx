@@ -1,6 +1,7 @@
 import { StatusBadge } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import CategoryQuickActions from './CategoryQuickActions';
+import { RotatingCategoryImage } from '../../../../components/SelectedProjects';
 import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './CategoriesGridView.module.css';
 
@@ -26,10 +27,11 @@ export default function CategoriesGridView({
               onClick={() => onCategoryClick(category.id)}
               aria-label={`View ${category.title}`}
             >
-              <img src={resolveMediaUrl(category.coverImage)}
+              <RotatingCategoryImage
+                images={category.projectImages}
+                category={category}
                 alt={category.title}
-                className={styles.image}
-                loading="lazy"
+                imageClassName={styles.image}
               />
               <div className={styles.imageOverlay} aria-hidden="true" />
             </button>
@@ -78,6 +80,7 @@ export default function CategoriesGridView({
               <span className={`${styles.seoBadge} ${styles[category.seoStatus]}`}>
                 SEO {category.seoStatus === 'complete' ? 'Ready' : 'Pending'}
               </span>
+              <span className={styles.autoImageBadge}>{category.autoImageLabel}</span>
             </div>
 
             <span className={styles.slug}>/{category.slug}</span>
@@ -86,7 +89,8 @@ export default function CategoriesGridView({
               <div className={styles.thumbnails}>
                 {category.projectPreviews.slice(0, 4).map((project) => (
                   <img
-                    key={project.id} src={resolveMediaUrl(project.coverImage)}
+                    key={project.id}
+                    src={resolveMediaUrl(project.coverImage)}
                     alt={project.title}
                     className={styles.thumb}
                     loading="lazy"

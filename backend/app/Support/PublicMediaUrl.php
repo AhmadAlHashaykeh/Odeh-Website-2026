@@ -101,14 +101,17 @@ class PublicMediaUrl
             'photo',
             'posterImage',
             'backgroundImage',
-            'icon',
             'image',
             'logoSrc',
             'faviconSrc',
         ];
 
         foreach ($data as $key => $value) {
-            if (in_array($key, $stringImageKeys, true) && is_string($value)) {
+            if ($key === 'icon') {
+                // Service icons may be media paths; social/nav icons are bare keys (e.g. "facebook").
+                // Also unwrap previously corrupted {path,url} icon-key objects.
+                $data[$key] = self::normalizeIconValue($value);
+            } elseif (in_array($key, $stringImageKeys, true) && is_string($value)) {
                 $data[$key] = self::reference($value);
             } elseif (($key === 'gallery' || $key === 'images') && is_array($value)) {
                 $data[$key] = self::transformGallery($value);
@@ -129,5 +132,48 @@ class PublicMediaUrl
     private static function isAbsoluteUrl(string $path): bool
     {
         return str_contains($path, '://');
+    }
+
+    private static function looksLikeMediaPath(string $path): bool
+    {
+        $path = trim($path);
+
+        if ($path === '') {
+            return false;
+        }
+
+        return self::isAbsoluteUrl($path)
+            || str_starts_with($path, '/storage/')
+            || str_starts_with($path, 'storage/')
+            || str_starts_with($path, '/');
+    }
+
+    private static function normalizeIconValue(mixed $value): mixed
+    {
+        if (is_string($value)) {
+            return self::looksLikeMediaPath($value) ? self::reference($value) : $value;
+        }
+
+        if (! is_array($value)) {
+            return $value;
+        }
+
+        $candidate = null;
+        foreach (['path', 'src', 'url'] as $field) {
+            if (isset($value[$field]) && is_string($value[$field]) && trim($value[$field]) !== '') {
+                $candidate = trim($value[$field]);
+                break;
+            }
+        }
+
+        if ($candidate === null) {
+            return $value;
+        }
+
+        if (self::looksLikeMediaPath($candidate)) {
+            return self::reference($candidate);
+        }
+
+        return $candidate;
     }
 }

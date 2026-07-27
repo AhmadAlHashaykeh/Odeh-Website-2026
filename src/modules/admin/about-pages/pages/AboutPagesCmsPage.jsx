@@ -41,14 +41,6 @@ export default function AboutPagesCmsPage() {
   const panels = getPanelsForSection(cms.activeSection);
 
   const renderSectionContent = () => {
-    if (cms.activeSection === 'team') {
-      return <TeamOverviewCard stats={teamStats} />;
-    }
-
-    if (cms.activeSection === 'activities') {
-      return <ActivitiesOverviewCard stats={activitiesStats} />;
-    }
-
     return (
       <div className={styles.panels}>
         {panels.map((panel) => (
@@ -61,6 +53,10 @@ export default function AboutPagesCmsPage() {
             onReset={cms.resetPanel}
           />
         ))}
+        {cms.activeSection === 'team' ? <TeamOverviewCard stats={teamStats} /> : null}
+        {cms.activeSection === 'activities' ? (
+          <ActivitiesOverviewCard stats={activitiesStats} />
+        ) : null}
       </div>
     );
   };

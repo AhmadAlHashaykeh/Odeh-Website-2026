@@ -27,30 +27,18 @@ import ContactMessagesEmptyState from '../components/ContactMessagesEmptyState';
 import ContactMessagesSkeleton from '../components/ContactMessagesSkeleton';
 import styles from './ContactMessagesPage.module.css';
 
-const STATUS_MAP = {
-  'mark-read': 'read',
-  'mark-replied': 'replied',
-  archive: 'archived',
-};
-
 const STATUS_CONFIRM = {
-  'mark-read': {
-    title: 'Mark as Read',
-    message: (name) => `Mark message from "${name}" as read?`,
-    confirmLabel: 'Mark Read',
-    status: 'read',
+  'mark-in-progress': {
+    title: 'Mark In Progress',
+    message: (name) => `Start handling the message from "${name}"?`,
+    confirmLabel: 'Mark In Progress',
+    status: 'in_progress',
   },
-  'mark-replied': {
-    title: 'Mark as Replied',
-    message: (name) => `Mark message from "${name}" as replied?`,
-    confirmLabel: 'Mark Replied',
-    status: 'replied',
-  },
-  archive: {
-    title: 'Archive Message',
-    message: (name) => `Archive message from "${name}"?`,
-    confirmLabel: 'Archive',
-    status: 'archived',
+  'mark-resolved': {
+    title: 'Mark as Resolved',
+    message: (name) => `Mark message from "${name}" as resolved?`,
+    confirmLabel: 'Mark Resolved',
+    status: 'resolved',
   },
 };
 
@@ -200,9 +188,8 @@ export default function ContactMessagesPage() {
   const handleQuickAction = useCallback(
     (actionId, message) => {
       switch (actionId) {
-        case 'mark-read':
-        case 'mark-replied':
-        case 'archive':
+        case 'mark-in-progress':
+        case 'mark-resolved':
           openStatusConfirm(actionId, message);
           break;
         case 'assign':
@@ -298,9 +285,8 @@ export default function ContactMessagesPage() {
       <MessageDetailsDrawer
         message={listing.activeMessage}
         onClose={listing.closeMessage}
-        onMarkRead={(msg) => openStatusConfirm('mark-read', msg)}
-        onMarkReplied={(msg) => openStatusConfirm('mark-replied', msg)}
-        onArchive={(msg) => openStatusConfirm('archive', msg)}
+        onMarkInProgress={(msg) => openStatusConfirm('mark-in-progress', msg)}
+        onMarkResolved={(msg) => openStatusConfirm('mark-resolved', msg)}
         onAssign={handleAssign}
         onAddNote={handleAddNote}
         onCopyEmail={handleCopyEmail}

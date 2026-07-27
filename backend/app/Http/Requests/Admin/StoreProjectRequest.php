@@ -23,6 +23,7 @@ class StoreProjectRequest extends FormRequest
             'categoryId' => 'project_category_id',
             'coverImage' => 'cover_image',
             'projectType' => 'project_type',
+            'completionStatus' => 'completion_status',
             'displayOrder' => 'display_order',
             'isFeatured' => 'is_featured',
         ]);
@@ -36,7 +37,18 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
-            'slug' => ['nullable', 'string', 'max:255'],
+            'slug' => [
+                'nullable',
+                'string',
+                'max:255',
+                Rule::unique('projects', 'slug')->where(function ($query) {
+                    $categoryId = $this->input('project_category_id');
+
+                    return $categoryId === null
+                        ? $query->whereNull('project_category_id')
+                        : $query->where('project_category_id', $categoryId);
+                }),
+            ],
             'project_category_id' => ['nullable', 'uuid', 'exists:project_categories,id'],
             'description' => ['nullable', 'string'],
             'cover_image' => ['nullable', 'string', 'max:2048'],

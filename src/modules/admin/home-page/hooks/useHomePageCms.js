@@ -1,7 +1,10 @@
 import { useCallback, useMemo, useState } from 'react';
 import * as homePageApi from '../../../../api/homePage';
 import { ApiError } from '../../../../api/client';
-import { extractFormValues } from '../../cms/action-flows/mapFormValuesToApi';
+import {
+  extractFormValues,
+  mapHomeSectionFromForm,
+} from '../../cms/action-flows/mapFormValuesToApi';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
 import { useCmsSingleton } from '../../hooks/useCmsSingleton';
 import { copyToClipboard } from '../../utils/clipboard';
@@ -13,11 +16,7 @@ import {
 
 function mergeSectionFromForm(sectionId, currentSection, formElement) {
   const values = extractFormValues(formElement);
-  if (!values || Object.keys(values).length === 0) {
-    return currentSection;
-  }
-
-  return { ...currentSection, ...values };
+  return mapHomeSectionFromForm(sectionId, currentSection, values);
 }
 
 export function useHomePageCms() {

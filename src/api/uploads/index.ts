@@ -23,7 +23,7 @@ export async function uploadImage(
   formData.append('field', field);
 
   const response = await apiClient.postMultipart<ImageUploadResponse>(
-    '/api/admin/uploads/image',
+    '/admin/uploads/image',
     formData,
   );
 

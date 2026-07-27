@@ -1,13 +1,16 @@
+import { useRef } from 'react';
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input } from '../../ui';
 import { CoverImageField, GalleryPlaceholder } from '../../cms/action-flows/PlaceholderFieldGroup';
 import { panelEditTitles } from '../mock/aboutPagesConfig';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
-import { resolveMediaUrl } from '../../../../utils/mediaUrl';
+import { resolveMediaPath, resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './AboutSectionEditModal.module.css';
 
-function HeroForm({ data }) {
+function HeroForm({ data, showSubtitle = false }) {
+  const backgroundPath = resolveMediaPath(data.backgroundImage);
+
   return (
     <>
       <Form.Section title="Page Header">
@@ -33,6 +36,19 @@ function HeroForm({ data }) {
             />
           </Input.Field>
         </Form.Field>
+        {showSubtitle ? (
+          <Form.Field label="Subtitle" htmlFor="hero-subtitle">
+            <Input.Field>
+              <input
+                id="hero-subtitle"
+                name="hero-subtitle"
+                type="text"
+                className={inputStyles.input}
+                defaultValue={data.subtitle}
+              />
+            </Input.Field>
+          </Form.Field>
+        ) : null}
         <Form.Field label="Description" htmlFor="hero-description">
           <Input.Field>
             <textarea
@@ -67,12 +83,41 @@ function HeroForm({ data }) {
               name="hero-bg"
               type="text"
               className={inputStyles.input}
-              defaultValue={data.backgroundImage}
+              defaultValue={backgroundPath}
             />
           </Input.Field>
         </Form.Field>
       </Form.Section>
     </>
+  );
+}
+
+function MetaForm({ data }) {
+  return (
+    <Form.Section title="SEO / Meta">
+      <Form.Field label="Meta Title" htmlFor="meta-title">
+        <Input.Field>
+          <input
+            id="meta-title"
+            name="meta-title"
+            type="text"
+            className={inputStyles.input}
+            defaultValue={data.title}
+          />
+        </Input.Field>
+      </Form.Field>
+      <Form.Field label="Meta Description" htmlFor="meta-description">
+        <Input.Field>
+          <textarea
+            id="meta-description"
+            name="meta-description"
+            className={`${inputStyles.input} ${inputStyles.textarea}`}
+            defaultValue={data.description}
+            rows={3}
+          />
+        </Input.Field>
+      </Form.Field>
+    </Form.Section>
   );
 }
 
@@ -381,6 +426,7 @@ function GrowthTableForm({ data }) {
                   <td>
                     <input
                       type="number"
+                      name={`growth-year-${index}`}
                       className={inputStyles.input}
                       defaultValue={row.year}
                       aria-label={`Year row ${index + 1}`}
@@ -389,6 +435,7 @@ function GrowthTableForm({ data }) {
                   <td>
                     <input
                       type="number"
+                      name={`growth-projects-${index}`}
                       className={inputStyles.input}
                       defaultValue={row.projects}
                       aria-label={`Projects row ${index + 1}`}
@@ -397,6 +444,7 @@ function GrowthTableForm({ data }) {
                   <td>
                     <input
                       type="number"
+                      name={`growth-area-${index}`}
                       className={inputStyles.input}
                       defaultValue={row.area}
                       aria-label={`Area row ${index + 1}`}
@@ -417,7 +465,13 @@ function PanelForm({ panelId, data }) {
     case 'overview-hero':
     case 'approach-hero':
     case 'history-hero':
+    case 'activities-hero':
       return <HeroForm data={data} />;
+    case 'team-hero':
+      return <HeroForm data={data} showSubtitle />;
+    case 'team-meta':
+    case 'activities-meta':
+      return <MetaForm data={data} />;
     case 'overview-intro':
       return <CompanyIntroForm data={data} />;
     case 'overview-gallery':
@@ -442,13 +496,15 @@ export default function AboutSectionEditModal({
   onClose,
   onSave,
 }) {
+  const formRef = useRef(null);
+
   if (!panelId || !panelData) return null;
 
   const title = panelEditTitles[panelId];
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.(panelId, e.currentTarget);
+    onSave?.(panelId, formRef.current);
   };
 
   const modalHeader = (
@@ -499,7 +555,12 @@ export default function AboutSectionEditModal({
       footer={modalFooter}
       ariaLabelledBy="about-panel-modal-title"
     >
-      <Form key={panelId} onSubmit={handleSave} className={`${drawerStyles.form} ${styles.form}`}>
+      <Form
+        key={panelId}
+        ref={formRef}
+        onSubmit={handleSave}
+        className={`${drawerStyles.form} ${styles.form}`}
+      >
         <PanelForm panelId={panelId} data={panelData} />
       </Form>
     </Modal>

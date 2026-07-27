@@ -71,12 +71,6 @@ export default function ProjectDetailsDrawer({ project, onClose }) {
         <div className={styles.content}>
           <div className={styles.statusRow}>
             <StatusBadge status={project.status} />
-            {project.featured && (
-              <span className={styles.featuredBadge}>
-                <AdminIcon name="star" size={12} />
-                Featured
-              </span>
-            )}
             <span className={`${styles.seoBadge} ${styles[project.seoStatus]}`}>
               SEO {project.seoStatus === 'complete' ? 'Ready' : 'Pending'}
             </span>

@@ -169,6 +169,63 @@ class JobApplicationSubmissionTest extends TestCase
         $this->assertStringContainsString('original-cv.pdf', $response->headers->get('content-disposition'));
     }
 
+    public function test_unsupported_job_application_statuses_are_rejected(): void
+    {
+        $application = JobApplication::factory()->create([
+            'job_id' => $this->job->id,
+            'status' => 'new',
+        ]);
+
+        $role = Role::query()->where('slug', 'super-admin')->firstOrFail();
+        Sanctum::actingAs(User::factory()->create(['role_id' => $role->id]));
+
+        foreach (['reviewed', 'read', 'archived', 'pending'] as $invalidStatus) {
+            $response = $this->patchJson("/api/admin/job-applications/{$application->id}", [
+                'status' => $invalidStatus,
+            ]);
+
+            $response->assertUnprocessable()
+                ->assertJsonValidationErrors(['status']);
+        }
+
+        $this->assertDatabaseHas('job_applications', [
+            'id' => $application->id,
+            'status' => 'new',
+        ]);
+    }
+
+    public function test_admin_can_transition_through_supported_application_statuses(): void
+    {
+        $application = JobApplication::factory()->create([
+            'job_id' => $this->job->id,
+            'status' => 'new',
+        ]);
+
+        $role = Role::query()->where('slug', 'super-admin')->firstOrFail();
+        Sanctum::actingAs(User::factory()->create(['role_id' => $role->id]));
+
+        foreach (['reviewing', 'shortlisted', 'hired'] as $status) {
+            $response = $this->patchJson("/api/admin/job-applications/{$application->id}", [
+                'status' => $status,
+            ]);
+
+            $response->assertOk()
+                ->assertJsonPath('data.status', $status);
+
+            $this->assertDatabaseHas('job_applications', [
+                'id' => $application->id,
+                'status' => $status,
+            ]);
+        }
+
+        $response = $this->patchJson("/api/admin/job-applications/{$application->id}", [
+            'status' => 'rejected',
+        ]);
+
+        $response->assertOk()
+            ->assertJsonPath('data.status', 'rejected');
+    }
+
     public function test_missing_cv_returns_404(): void
     {
         $application = JobApplication::factory()->create([

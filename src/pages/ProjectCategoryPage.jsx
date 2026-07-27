@@ -4,6 +4,7 @@ import { ProjectsHero, ProjectGrid } from '../components/SelectedProjects';
 import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getProjects } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { resolveCategoryDisplayImages } from '../utils/categoryProjectImages';
 import { normalizePublicMedia } from '../utils/mediaUrl';
 
 export default function ProjectCategoryPage() {
@@ -27,6 +28,7 @@ export default function ProjectCategoryPage() {
   }
 
   const categoryProjects = projects.filter((project) => project.categorySlug === category);
+  const heroImages = resolveCategoryDisplayImages(categoryData, projects, { publishedOnly: true });
 
   const meta = {
     title: `${categoryData.title} | Selected Projects | ODEH & PARTNERS DESIGN`,
@@ -44,7 +46,7 @@ export default function ProjectCategoryPage() {
       <ProjectsHero
         title={categoryData.title}
         description={categoryData.description}
-        backgroundImage={categoryData.coverImage}
+        backgroundImage={heroImages[0] || undefined}
         projectCount={categoryData.projectCount}
         breadcrumbs={breadcrumbs}
         ariaLabel={categoryData.title}

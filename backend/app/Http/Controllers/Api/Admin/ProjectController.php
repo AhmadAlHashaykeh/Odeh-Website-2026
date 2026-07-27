@@ -91,7 +91,7 @@ class ProjectController extends Controller
         $this->authorizeModuleUpdate(CmsModules::PROJECTS);
         $data = $request->validated();
 
-        if (array_key_exists('title', $data) || array_key_exists('slug', $data) || array_key_exists('project_category_id', $data)) {
+        if (array_key_exists('slug', $data) && filled($data['slug'])) {
             $slugInput = $data;
             if (! array_key_exists('title', $slugInput)) {
                 $slugInput['title'] = $project->title;
@@ -102,6 +102,8 @@ class ProjectController extends Controller
                 $project,
                 $project->id,
             );
+        } else {
+            unset($data['slug']);
         }
 
         $project->update($data);

@@ -1,0 +1,6301 @@
+{
+  "startedAt": "2026-07-27T20:49:36.218Z",
+  "apiBase": "http://127.0.0.1:8000/api",
+  "publicEndpoints": [
+    {
+      "method": "GET",
+      "endpoint": "/public/home",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 387,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/about",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 189,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/navigation-footer",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 188,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/connect",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 188,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/website-settings",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 226,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/reach-out",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 232,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/legal-pages",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 2,
+      "ms": 204,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/seo",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 90,
+      "ms": 205,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/seo/by-route?route=/",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 175,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/project-categories",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 11,
+      "ms": 185,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/projects",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 219,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/services",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 7,
+      "ms": 187,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/activities",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 197,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/team-members",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 229,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/careers",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 216,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/jobs",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 5,
+      "ms": 195,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/search?q=design",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 50,
+      "ms": 205,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    },
+    {
+      "method": "GET",
+      "endpoint": "/public/search/suggestions?q=des",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 8,
+      "ms": 191,
+      "error": null,
+      "keys": [
+        "data"
+      ]
+    }
+  ],
+  "adminEndpoints": [
+    {
+      "method": "GET",
+      "endpoint": "/admin/dashboard/stats",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 222,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/project-categories",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 11,
+      "ms": 215,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/projects",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 49,
+      "ms": 192,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/services",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 7,
+      "ms": 187,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/activities",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 4,
+      "ms": 303,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/team-categories",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 9,
+      "ms": 201,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/team-members",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 23,
+      "ms": 190,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/jobs",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 6,
+      "ms": 206,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/home-page",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 226,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/about-pages",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 189,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/navigation-footer",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 183,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/connect-page",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 189,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/website-settings",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": "object",
+      "ms": 194,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/legal-pages",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 2,
+      "ms": 202,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/seo",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 90,
+      "ms": 268,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/contact-messages",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 1,
+      "ms": 188,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/job-applications",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 1,
+      "ms": 190,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/users",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 1,
+      "ms": 190,
+      "error": null,
+      "textSnippet": null
+    },
+    {
+      "method": "GET",
+      "endpoint": "/admin/roles",
+      "status": 200,
+      "ok": true,
+      "isJson": true,
+      "count": 5,
+      "ms": 295,
+      "error": null,
+      "textSnippet": null
+    }
+  ],
+  "auth": {
+    "loginStatus": 200,
+    "loginOk": true,
+    "hasToken": true,
+    "userKeys": [
+      "id",
+      "fullName",
+      "email",
+      "roleId",
+      "role",
+      "department",
+      "status",
+      "accessScope",
+      "twoFactorEnabled",
+      "lastLoginAt",
+      "createdAt",
+      "updatedAt"
+    ],
+    "userStatus": 200,
+    "userEmail": null,
+    "role": "super-admin",
+    "permissionsSample": null,
+    "unauthenticatedAdminStatus": 401,
+    "invalidLoginStatus": 422
+  },
+  "media": [
+    {
+      "databaseOrApiValue": "/hero-poster.jpg",
+      "finalUrl": "http://127.0.0.1:8000/hero-poster.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "settings"
+      ],
+      "trails": [
+        "data.hero.posterImage.path",
+        "data.hero.posterImage.url",
+        "data.branding.heroPoster"
+      ],
+      "error": null,
+      "kind": "other"
+    },
+    {
+      "databaseOrApiValue": "/video-slider.mp4",
+      "finalUrl": "http://127.0.0.1:8000/video-slider.mp4",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home"
+      ],
+      "trails": [
+        "data.hero.videoSrc"
+      ],
+      "error": null,
+      "kind": "other"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/odeh-about-office.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/odeh-about-office.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home"
+      ],
+      "trails": [
+        "data.about.image.path",
+        "data.about.image.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/services/design-solutions.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/services/design-solutions.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "services"
+      ],
+      "trails": [
+        "data.services.services[0].image.path",
+        "data.services.services[0].image.url",
+        "data[0].image.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/services/site-supervision.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/services/site-supervision.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "services"
+      ],
+      "trails": [
+        "data.services.services[1].image.path",
+        "data.services.services[1].image.url",
+        "data[1].image.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/services/bim-services.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/services/bim-services.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "services"
+      ],
+      "trails": [
+        "data.services.services[2].image.path",
+        "data.services.services[2].image.url",
+        "data[2].image.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/services/design-review.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/services/design-review.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "services"
+      ],
+      "trails": [
+        "data.services.services[3].image.path",
+        "data.services.services[3].image.url",
+        "data[3].image.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/services/quantity-estimation.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/services/quantity-estimation.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "services"
+      ],
+      "trails": [
+        "data.services.services[4].image.path",
+        "data.services.services[4].image.url",
+        "data[4].image.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/services/university-engagements.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/services/university-engagements.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "services"
+      ],
+      "trails": [
+        "data.services.services[5].image.path",
+        "data.services.services[5].image.url",
+        "data[5].image.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/services/retrofitting.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/services/retrofitting.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "services"
+      ],
+      "trails": [
+        "data.services.services[6].image.path",
+        "data.services.services[6].image.url",
+        "data[6].image.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "projects"
+      ],
+      "trails": [
+        "data.projects.projects[0].image.path",
+        "data.projects.projects[0].image.url",
+        "data.projects[0].coverImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/leen-park/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/leen-park/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "projects"
+      ],
+      "trails": [
+        "data.projects.projects[1].image.path",
+        "data.projects.projects[1].image.url",
+        "data.projects[1].coverImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/fairmont-hotel/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/fairmont-hotel/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "home",
+        "projects"
+      ],
+      "trails": [
+        "data.projects.projects[2].image.path",
+        "data.projects.projects[2].image.url",
+        "data.projects[2].coverImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/office/img-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/office/img-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "about",
+        "settings"
+      ],
+      "trails": [
+        "data.overview.hero.backgroundImage.path",
+        "data.overview.hero.backgroundImage.url",
+        "data.overview.slider.images[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/office/img-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/office/img-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "about"
+      ],
+      "trails": [
+        "data.overview.content.image.src",
+        "data.overview.content.image.path",
+        "data.overview.content.image.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/office/img-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/office/img-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "about",
+        "settings"
+      ],
+      "trails": [
+        "data.overview.slider.images[0].src",
+        "data.overview.slider.images[0].path",
+        "data.overview.slider.images[0].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/office/img-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/office/img-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "about"
+      ],
+      "trails": [
+        "data.overview.slider.images[1].src",
+        "data.overview.slider.images[1].path",
+        "data.overview.slider.images[1].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/office/img-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/office/img-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "about"
+      ],
+      "trails": [
+        "data.overview.slider.images[3].src",
+        "data.overview.slider.images[3].path",
+        "data.overview.slider.images[3].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/approach/hero.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/approach/hero.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "about"
+      ],
+      "trails": [
+        "data.approach.hero.backgroundImage.path",
+        "data.approach.hero.backgroundImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/history/hero.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/history/hero.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "about"
+      ],
+      "trails": [
+        "data.history.hero.backgroundImage.path",
+        "data.history.hero.backgroundImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/hero.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/hero.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "about",
+        "team"
+      ],
+      "trails": [
+        "data.team.hero.backgroundImage.path",
+        "data.team.hero.backgroundImage.url",
+        "data.page.hero.backgroundImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/hero.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/hero.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "about",
+        "activities"
+      ],
+      "trails": [
+        "data.activities.hero.backgroundImage.path",
+        "data.activities.hero.backgroundImage.url",
+        "data.page.hero.backgroundImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/odeh-logo2.png",
+      "finalUrl": "http://127.0.0.1:8000/odeh-logo2.png",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "nav",
+        "connect",
+        "settings"
+      ],
+      "trails": [
+        "data.logo.src",
+        "data.logo.path",
+        "data.logo.url"
+      ],
+      "error": null,
+      "kind": "other"
+    },
+    {
+      "databaseOrApiValue": "/assets/company-profile.pdf",
+      "finalUrl": "http://127.0.0.1:8000/assets/company-profile.pdf",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "connect"
+      ],
+      "trails": [
+        "data.links[1].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "https://wa.me/962799200301",
+      "finalUrl": "https://wa.me/962799200301",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/html; charset=\"utf-8\"",
+      "sources": [
+        "connect"
+      ],
+      "trails": [
+        "data.links[7].url"
+      ],
+      "error": null,
+      "kind": "absolute"
+    },
+    {
+      "databaseOrApiValue": "https://linkedin.com",
+      "finalUrl": "https://linkedin.com",
+      "status": 403,
+      "ok": false,
+      "contentType": "text/html; charset=UTF-8",
+      "sources": [
+        "connect"
+      ],
+      "trails": [
+        "data.links[8].url"
+      ],
+      "error": null,
+      "kind": "absolute"
+    },
+    {
+      "databaseOrApiValue": "https://instagram.com",
+      "finalUrl": "https://instagram.com",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/html; charset=\"utf-8\"",
+      "sources": [
+        "connect"
+      ],
+      "trails": [
+        "data.links[9].url"
+      ],
+      "error": null,
+      "kind": "absolute"
+    },
+    {
+      "databaseOrApiValue": "https://facebook.com",
+      "finalUrl": "https://facebook.com",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/html; charset=\"utf-8\"",
+      "sources": [
+        "connect"
+      ],
+      "trails": [
+        "data.links[10].url"
+      ],
+      "error": null,
+      "kind": "absolute"
+    },
+    {
+      "databaseOrApiValue": "https://maps.google.com/?q=Odeh+Design+Office+Amman+Jordan",
+      "finalUrl": "https://maps.google.com/?q=Odeh+Design+Office+Amman+Jordan",
+      "status": 200,
+      "ok": true,
+      "contentType": "text/html; charset=ISO-8859-1",
+      "sources": [
+        "connect",
+        "settings"
+      ],
+      "trails": [
+        "data.links[11].url",
+        "data.integrations.googleMapsExternalUrl"
+      ],
+      "error": null,
+      "kind": "absolute"
+    },
+    {
+      "databaseOrApiValue": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d875.2792572966247!2d35.83548932764389!3d31.99579087476341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca1004033fd4f%3A0x285c02aa79e41619!2sOdeh%20Design%20Office!5e1!3m2!1sen!2sjo!4v1782622481425!5m2!1sen!2sjo",
+      "finalUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d875.2792572966247!2d35.83548932764389!3d31.99579087476341!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca1004033fd4f%3A0x285c02aa79e41619!2sOdeh%20Design%20Office!5e1!3m2!1sen!2sjo!4v1782622481425!5m2!1sen!2sjo",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html",
+      "sources": [
+        "settings"
+      ],
+      "trails": [
+        "data.integrations.googleMapsEmbedUrl"
+      ],
+      "error": null,
+      "kind": "absolute"
+    },
+    {
+      "databaseOrApiValue": "/assets/careers/hero.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/careers/hero.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "settings",
+        "careers"
+      ],
+      "trails": [
+        "data.publicPages.careers.hero.backgroundImage.path",
+        "data.publicPages.careers.hero.backgroundImage.url",
+        "data.page.hero.backgroundImage"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/resorts-and-hotels.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/resorts-and-hotels.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[0].coverImage.path",
+        "data.categories[0].coverImage.url",
+        "data.categories[0].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/private-villas.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/private-villas.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[1].coverImage.path",
+        "data.categories[1].coverImage.url",
+        "data.categories[1].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/residential-complexes.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/residential-complexes.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[2].coverImage.path",
+        "data.categories[2].coverImage.url",
+        "data.categories[2].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/commercial-complexes.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/commercial-complexes.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[3].coverImage.path",
+        "data.categories[3].coverImage.url",
+        "data.categories[3].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/institutional-cultural.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/institutional-cultural.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[4].coverImage.path",
+        "data.categories[4].coverImage.url",
+        "data.categories[4].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/govermental.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/govermental.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[5].coverImage.path",
+        "data.categories[5].coverImage.url",
+        "data.categories[5].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/hospitals-and-medical-clinics.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/hospitals-and-medical-clinics.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[6].coverImage.path",
+        "data.categories[6].coverImage.url",
+        "data.categories[6].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/mosques.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/mosques.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[7].coverImage.path",
+        "data.categories[7].coverImage.url",
+        "data.categories[7].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/fueling-and-car-charging-stations.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/fueling-and-car-charging-stations.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[8].coverImage.path",
+        "data.categories[8].coverImage.url",
+        "data.categories[8].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/restoration-conservation.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/restoration-conservation.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[9].coverImage.path",
+        "data.categories[9].coverImage.url",
+        "data.categories[9].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/categories/steel-structures.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/categories/steel-structures.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects",
+        "categories"
+      ],
+      "trails": [
+        "data.categories[10].coverImage.path",
+        "data.categories[10].coverImage.url",
+        "data.categories[10].featuredImage.path"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[0].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[0].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[0].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[0].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[0].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[0].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[0].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/gallery-08.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/gallery-08.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[0].gallery[7].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/himmeh-resort/gallery-09.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/himmeh-resort/gallery-09.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[0].gallery[8].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/leen-park/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/leen-park/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[1].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/leen-park/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/leen-park/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[1].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/leen-park/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/leen-park/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[1].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/fairmont-hotel/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/fairmont-hotel/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[2].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/fairmont-hotel/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/fairmont-hotel/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[2].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/fairmont-hotel/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/fairmont-hotel/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[2].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-mh/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-mh/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[3].coverImage.path",
+        "data.projects[3].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-mh/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-mh/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[3].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-mh/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-mh/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[3].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].coverImage.path",
+        "data.projects[4].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-08.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-08.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[7].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-09.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-09.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[8].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-10.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-10.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[9].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-11.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-11.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[10].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-12.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-12.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[11].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-13.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-13.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[12].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-14.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-14.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[13].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-15.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-15.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[14].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-16.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-16.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[15].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hh/gallery-17.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hh/gallery-17.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[4].gallery[16].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].coverImage.path",
+        "data.projects[5].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/gallery-08.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/gallery-08.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].gallery[7].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ak/gallery-09.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ak/gallery-09.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[5].gallery[8].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ra/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ra/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[6].coverImage.path",
+        "data.projects[6].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ra/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ra/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[6].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ra/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ra/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[6].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ra/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ra/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[6].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ra/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ra/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[6].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ra/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ra/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[6].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ra/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ra/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[6].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-as/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-as/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[7].coverImage.path",
+        "data.projects[7].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-as/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-as/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[7].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-as/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-as/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[7].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-as/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-as/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[7].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-as/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-as/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[7].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-iy/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-iy/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[8].coverImage.path",
+        "data.projects[8].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-iy/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-iy/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[8].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-iy/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-iy/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[8].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-iy/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-iy/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[8].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-iy/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-iy/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[8].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-iy/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-iy/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[8].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-iy/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-iy/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[8].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-iy/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-iy/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[8].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-iy/gallery-08.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-iy/gallery-08.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[8].gallery[7].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dd/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dd/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[9].coverImage.path",
+        "data.projects[9].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dd/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dd/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[9].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dd/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dd/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[9].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dd/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dd/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[9].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dd/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dd/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[9].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dd/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dd/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[9].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villas-rk/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villas-rk/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[10].coverImage.path",
+        "data.projects[10].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villas-rk/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villas-rk/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[10].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villas-rk/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villas-rk/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[10].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villas-rk/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villas-rk/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[10].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villas-rk/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villas-rk/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[10].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villas-rk/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villas-rk/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[10].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dj/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dj/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[11].coverImage.path",
+        "data.projects[11].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dj/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dj/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[11].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dj/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dj/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[11].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dj/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dj/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[11].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dj/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dj/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[11].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-dj/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-dj/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[11].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-eb/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-eb/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[12].coverImage.path",
+        "data.projects[12].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-eb/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-eb/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[12].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-eb/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-eb/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[12].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-eb/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-eb/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[12].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-eb/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-eb/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[12].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-eb/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-eb/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[12].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-eb/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-eb/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[12].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].coverImage.path",
+        "data.projects[13].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/gallery-08.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/gallery-08.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].gallery[7].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-oh/gallery-09.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-oh/gallery-09.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[13].gallery[8].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rs/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rs/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[14].coverImage.path",
+        "data.projects[14].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rs/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rs/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[14].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rs/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rs/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[14].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rs/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rs/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[14].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rs/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rs/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[14].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rs/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rs/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[14].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rs/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rs/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[14].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].coverImage.path",
+        "data.projects[15].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/gallery-08.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/gallery-08.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].gallery[7].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ro/gallery-09.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ro/gallery-09.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[15].gallery[8].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].coverImage.path",
+        "data.projects[16].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-08.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-08.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[7].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-09.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-09.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[8].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-10.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-10.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[9].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-11.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-11.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[10].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-hm/gallery-12.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-hm/gallery-12.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[16].gallery[11].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ym/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ym/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[17].coverImage.path",
+        "data.projects[17].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ym/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ym/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[17].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ym/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ym/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[17].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ym/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ym/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[17].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ym/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ym/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[17].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-ym/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-ym/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[17].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].coverImage.path",
+        "data.projects[18].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-08.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-08.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[7].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-09.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-09.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[8].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-10.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-10.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[9].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-11.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-11.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[10].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-12.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-12.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[11].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-13.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-13.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[12].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-14.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-14.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[13].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-15.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-15.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[14].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-tr/gallery-16.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-tr/gallery-16.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[18].gallery[15].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-j/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-j/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[19].coverImage.path",
+        "data.projects[19].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-j/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-j/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[19].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-j/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-j/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[19].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-j/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-j/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[19].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-j/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-j/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[19].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-j/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-j/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[19].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-j/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-j/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[19].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-z/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-z/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[20].coverImage.path",
+        "data.projects[20].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-z/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-z/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[20].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-mg/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-mg/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[21].coverImage.path",
+        "data.projects[21].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-mg/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-mg/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[21].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-mg/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-mg/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[21].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-mg/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-mg/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[21].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-mg/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-mg/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[21].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-mg/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-mg/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[21].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rh/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rh/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[22].coverImage.path",
+        "data.projects[22].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rh/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rh/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[22].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rh/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rh/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[22].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rh/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rh/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[22].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/private-villa-rh/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/private-villa-rh/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[22].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sedret-al-ula/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sedret-al-ula/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[23].coverImage.path",
+        "data.projects[23].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sedret-al-ula/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sedret-al-ula/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[23].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sedret-al-ula/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sedret-al-ula/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[23].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sedret-al-ula/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sedret-al-ula/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[23].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sedret-al-ula/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sedret-al-ula/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[23].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sedret-al-ula/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sedret-al-ula/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[23].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sedret-al-ula/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sedret-al-ula/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[23].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sedret-al-ula/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sedret-al-ula/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[23].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/jannat-baghdad/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/jannat-baghdad/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[24].coverImage.path",
+        "data.projects[24].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/jannat-baghdad/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/jannat-baghdad/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[24].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/jannat-baghdad/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/jannat-baghdad/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[24].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/amayer-jeddah/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/amayer-jeddah/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[25].coverImage.path",
+        "data.projects[25].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/amayer-jeddah/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/amayer-jeddah/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[25].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/abu-deyah/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/abu-deyah/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[26].coverImage.path",
+        "data.projects[26].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/abu-deyah/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/abu-deyah/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[26].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/abu-deyah/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/abu-deyah/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[26].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/abu-deyah/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/abu-deyah/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[26].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/abu-deyah/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/abu-deyah/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[26].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/zahraan/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/zahraan/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[27].coverImage.path",
+        "data.projects[27].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/zahraan/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/zahraan/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[27].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/zahraan/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/zahraan/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[27].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/zahraan/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/zahraan/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[27].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/zahraan/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/zahraan/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[27].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/zahraan/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/zahraan/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[27].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/zahraan/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/zahraan/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[27].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-barakeh-10/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-barakeh-10/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[28].coverImage.path",
+        "data.projects[28].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-barakeh-10/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-barakeh-10/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[28].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sooq-yard/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sooq-yard/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[29].coverImage.path",
+        "data.projects[29].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sooq-yard/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sooq-yard/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[29].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sooq-yard/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sooq-yard/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[29].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/obaidi-complex/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/obaidi-complex/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[30].coverImage.path",
+        "data.projects[30].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/obaidi-complex/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/obaidi-complex/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[30].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/obaidi-complex/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/obaidi-complex/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[30].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/obaidi-complex/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/obaidi-complex/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[30].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-rayyan/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-rayyan/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[31].coverImage.path",
+        "data.projects[31].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-rayyan/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-rayyan/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[31].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-rayyan/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-rayyan/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[31].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-bayed/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-bayed/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[32].coverImage.path",
+        "data.projects[32].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-bayed/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-bayed/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[32].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-bayed/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-bayed/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[32].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-bayed/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-bayed/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[32].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-bayed/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-bayed/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[32].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sherbiny/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sherbiny/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[33].coverImage.path",
+        "data.projects[33].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sherbiny/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sherbiny/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[33].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sherbiny/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sherbiny/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[33].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/sherbiny/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/sherbiny/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[33].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-al-heedan-visitor-center/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-al-heedan-visitor-center/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[34].coverImage.path",
+        "data.projects[34].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-al-heedan-visitor-center/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-al-heedan-visitor-center/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[34].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-al-heedan-visitor-center/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-al-heedan-visitor-center/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[34].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-al-heedan-visitor-center/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-al-heedan-visitor-center/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[34].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-al-mujib-adventures-visitor-center/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-al-mujib-adventures-visitor-center/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[35].coverImage.path",
+        "data.projects[35].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-al-mujib-adventures-visitor-center/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-al-mujib-adventures-visitor-center/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[35].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-al-mujib-adventures-visitor-center/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-al-mujib-adventures-visitor-center/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[35].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-al-mujib-adventures-visitor-center/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-al-mujib-adventures-visitor-center/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[35].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/royal-academy-for-nature-conservation/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/royal-academy-for-nature-conservation/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[36].coverImage.path",
+        "data.projects[36].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/royal-academy-for-nature-conservation/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/royal-academy-for-nature-conservation/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[36].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/royal-academy-for-nature-conservation/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/royal-academy-for-nature-conservation/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[36].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/royal-academy-for-nature-conservation/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/royal-academy-for-nature-conservation/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[36].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/royal-academy-for-nature-conservation/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/royal-academy-for-nature-conservation/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[36].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/royal-academy-for-nature-conservation/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/royal-academy-for-nature-conservation/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[36].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/yarmouk-visitor-center/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/yarmouk-visitor-center/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[37].coverImage.path",
+        "data.projects[37].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/yarmouk-visitor-center/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/yarmouk-visitor-center/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[37].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/yarmouk-visitor-center/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/yarmouk-visitor-center/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[37].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/yarmouk-visitor-center/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/yarmouk-visitor-center/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[37].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/yarmouk-visitor-center/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/yarmouk-visitor-center/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[37].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/yarmouk-visitor-center/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/yarmouk-visitor-center/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[37].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/yarmouk-visitor-center/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/yarmouk-visitor-center/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[37].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/centennial-park/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/centennial-park/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[38].coverImage.path",
+        "data.projects[38].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/centennial-park/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/centennial-park/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[38].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/crisis-management-center/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/crisis-management-center/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[39].coverImage.path",
+        "data.projects[39].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/crisis-management-center/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/crisis-management-center/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[39].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/crisis-management-center/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/crisis-management-center/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[39].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/crisis-management-center/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/crisis-management-center/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[39].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/crisis-management-center/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/crisis-management-center/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[39].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/crisis-management-center/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/crisis-management-center/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[39].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/crisis-management-center/gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/crisis-management-center/gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[39].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/crisis-management-center/gallery-07.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/crisis-management-center/gallery-07.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[39].gallery[6].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/crisis-management-center/gallery-08.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/crisis-management-center/gallery-08.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[39].gallery[7].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects//cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects//cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[40].coverImage.path",
+        "data.projects[40].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects//gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects//gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[40].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects//gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects//gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[40].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects//gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects//gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[40].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects//gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects//gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[40].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects//gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects//gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[40].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects//gallery-06.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects//gallery-06.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[40].gallery[5].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/maaroof-mosque/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/maaroof-mosque/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[41].coverImage.path",
+        "data.projects[41].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/maaroof-mosque/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/maaroof-mosque/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[41].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-mousa-mosque/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-mousa-mosque/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[42].coverImage.path",
+        "data.projects[42].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-mousa-mosque/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-mousa-mosque/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[42].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-mousa-mosque/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-mousa-mosque/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[42].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-mousa-mosque/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-mousa-mosque/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[42].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/wadi-mousa-mosque/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/wadi-mousa-mosque/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[42].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/jo-petrol/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/jo-petrol/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[43].coverImage.path",
+        "data.projects[43].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/jo-petrol/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/jo-petrol/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[43].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/ev-charger/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/ev-charger/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[44].coverImage.path",
+        "data.projects[44].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/ev-charger/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/ev-charger/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[44].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/ev-charger/gallery-02.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/ev-charger/gallery-02.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[44].gallery[1].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/ev-charger/gallery-03.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/ev-charger/gallery-03.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[44].gallery[2].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/ev-charger/gallery-04.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/ev-charger/gallery-04.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[44].gallery[3].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/ev-charger/gallery-05.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/ev-charger/gallery-05.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[44].gallery[4].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/dana-village/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/dana-village/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[45].coverImage.path",
+        "data.projects[45].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/dana-village/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/dana-village/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[45].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-quds-college/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-quds-college/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[46].coverImage.path",
+        "data.projects[46].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/al-quds-college/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/al-quds-college/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[46].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/army-steel-hanger/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/army-steel-hanger/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[47].coverImage.path",
+        "data.projects[47].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/army-steel-hanger/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/army-steel-hanger/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[47].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/telecommunication-towers/cover.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/telecommunication-towers/cover.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[48].coverImage.path",
+        "data.projects[48].coverImage.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/projects/telecommunication-towers/gallery-01.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/projects/telecommunication-towers/gallery-01.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "projects"
+      ],
+      "trails": [
+        "data.projects[48].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/1694430952_7798.jpeg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/1694430952_7798.jpeg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].coverImage.path",
+        "data.activities[0].coverImage.url",
+        "data.activities[0].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694503570575.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694503570575.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[1].src",
+        "data.activities[0].gallery[1].path",
+        "data.activities[0].gallery[1].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694503570209.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694503570209.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[2].src",
+        "data.activities[0].gallery[2].path",
+        "data.activities[0].gallery[2].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_169450357087.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_169450357087.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[3].src",
+        "data.activities[0].gallery[3].path",
+        "data.activities[0].gallery[3].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694503570655.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694503570655.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[4].src",
+        "data.activities[0].gallery[4].path",
+        "data.activities[0].gallery[4].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694503570574.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694503570574.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[5].src",
+        "data.activities[0].gallery[5].path",
+        "data.activities[0].gallery[5].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694503570118.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694503570118.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[6].src",
+        "data.activities[0].gallery[6].path",
+        "data.activities[0].gallery[6].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694503570991.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694503570991.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[7].src",
+        "data.activities[0].gallery[7].path",
+        "data.activities[0].gallery[7].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694503570947.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694503570947.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[8].src",
+        "data.activities[0].gallery[8].path",
+        "data.activities[0].gallery[8].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694503570609.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694503570609.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[9].src",
+        "data.activities[0].gallery[9].path",
+        "data.activities[0].gallery[9].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694503570838.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694503570838.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[10].src",
+        "data.activities[0].gallery[10].path",
+        "data.activities[0].gallery[10].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694504843573.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694504843573.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[0].gallery[11].src",
+        "data.activities[0].gallery[11].path",
+        "data.activities[0].gallery[11].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/1694505128_4048.jpeg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/1694505128_4048.jpeg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[1].coverImage.path",
+        "data.activities[1].coverImage.url",
+        "data.activities[1].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_169450512837.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_169450512837.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[1].gallery[1].src",
+        "data.activities[1].gallery[1].path",
+        "data.activities[1].gallery[1].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694505128269.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694505128269.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[1].gallery[2].src",
+        "data.activities[1].gallery[2].path",
+        "data.activities[1].gallery[2].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/1694504294_6706.jpeg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/1694504294_6706.jpeg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[2].coverImage.path",
+        "data.activities[2].coverImage.url",
+        "data.activities[2].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694505680583.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694505680583.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[2].gallery[1].src",
+        "data.activities[2].gallery[1].path",
+        "data.activities[2].gallery[1].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694505711440.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694505711440.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[2].gallery[2].src",
+        "data.activities[2].gallery[2].path",
+        "data.activities[2].gallery[2].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694505902798.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694505902798.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[2].gallery[3].src",
+        "data.activities[2].gallery[3].path",
+        "data.activities[2].gallery[3].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/1694428846_3967.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/1694428846_3967.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[3].coverImage.path",
+        "data.activities[3].coverImage.url",
+        "data.activities[3].gallery[0].src"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694428846299.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694428846299.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[3].gallery[1].src",
+        "data.activities[3].gallery[1].path",
+        "data.activities[3].gallery[1].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694428846502.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694428846502.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[3].gallery[2].src",
+        "data.activities[3].gallery[2].path",
+        "data.activities[3].gallery[2].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/activities/activity_1694505373998.jpg",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/activities/activity_1694505373998.jpg",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "activities"
+      ],
+      "trails": [
+        "data.activities[3].gallery[3].src",
+        "data.activities[3].gallery[3].path",
+        "data.activities[3].gallery[3].url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/mohammad-odeh.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/mohammad-odeh.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[0].photo.path",
+        "data.members[0].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/mohammad-al-najjar.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/mohammad-al-najjar.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[1].photo.path",
+        "data.members[1].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/yazan-abu-al-hayja.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/yazan-abu-al-hayja.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[2].photo.path",
+        "data.members[2].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/basel-abu-asal.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/basel-abu-asal.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[3].photo.path",
+        "data.members[3].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/khalid-dawodi.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/khalid-dawodi.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[4].photo.path",
+        "data.members[4].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/mahmoud-saleh.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/mahmoud-saleh.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[5].photo.path",
+        "data.members[5].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/mazin-hijazi.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/mazin-hijazi.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[6].photo.path",
+        "data.members[6].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/yazan-abu-alia.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/yazan-abu-alia.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[7].photo.path",
+        "data.members[7].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/tarek-ammouri.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/tarek-ammouri.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[8].photo.path",
+        "data.members[8].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/abdullah-odat.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/abdullah-odat.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[9].photo.path",
+        "data.members[9].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/abdulrahman-jadallah.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/abdulrahman-jadallah.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[10].photo.path",
+        "data.members[10].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/malek-al-attar.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/malek-al-attar.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[11].photo.path",
+        "data.members[11].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/zaid-al-nwerat.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/zaid-al-nwerat.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[12].photo.path",
+        "data.members[12].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/mohammed-al-yousef.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/mohammed-al-yousef.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[13].photo.path",
+        "data.members[13].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/mohammed-al-faqi.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/mohammed-al-faqi.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[14].photo.path",
+        "data.members[14].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/mohammad-bani-ahmad.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/mohammad-bani-ahmad.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[15].photo.path",
+        "data.members[15].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/ahmad-mustafa.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/ahmad-mustafa.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[16].photo.path",
+        "data.members[16].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/mohammad-kuzmar.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/mohammad-kuzmar.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[17].photo.path",
+        "data.members[17].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/hamzeh-sawalmeh.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/hamzeh-sawalmeh.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[18].photo.path",
+        "data.members[18].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/ashraf.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/ashraf.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[19].photo.path",
+        "data.members[19].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    },
+    {
+      "databaseOrApiValue": "/assets/about/team/mohammad-yaghi.webp",
+      "finalUrl": "http://127.0.0.1:8000/assets/about/team/mohammad-yaghi.webp",
+      "status": 404,
+      "ok": false,
+      "contentType": "text/html; charset=utf-8",
+      "sources": [
+        "team"
+      ],
+      "trails": [
+        "data.members[20].photo.path",
+        "data.members[20].photo.url"
+      ],
+      "error": null,
+      "kind": "frontend-asset"
+    }
+  ],
+  "detailEndpoints": [
+    {
+      "endpoint": "/public/jobs/internship-structural-engineering",
+      "status": 200,
+      "ok": true,
+      "title": "Internship — Structural Engineering"
+    },
+    {
+      "endpoint": "/public/jobs/quantity-estimation-engineer",
+      "status": 200,
+      "ok": true,
+      "title": "Quantity Estimation Engineer"
+    },
+    {
+      "endpoint": "/public/jobs/bim-modeler",
+      "status": 200,
+      "ok": true,
+      "title": "BIM Modeler"
+    },
+    {
+      "endpoint": "/public/jobs/site-supervision-engineer",
+      "status": 200,
+      "ok": true,
+      "title": "Site Supervision Engineer"
+    },
+    {
+      "endpoint": "/public/jobs/structural-design-engineer",
+      "status": 200,
+      "ok": true,
+      "title": "Structural Design Engineer"
+    },
+    {
+      "endpoint": "/public/legal-pages/privacy-policy",
+      "status": 200,
+      "ok": true,
+      "title": "Privacy Policy"
+    },
+    {
+      "endpoint": "/public/legal-pages/terms-and-conditions",
+      "status": 200,
+      "ok": true,
+      "title": "Terms & Conditions"
+    }
+  ],
+  "invalidSlugChecks": [
+    {
+      "endpoint": "/public/projects/no-cat/no-project",
+      "status": 404,
+      "ok": false,
+      "isJson": true
+    },
+    {
+      "endpoint": "/public/activities/does-not-exist-xyz",
+      "status": 404,
+      "ok": false,
+      "isJson": true
+    },
+    {
+      "endpoint": "/public/jobs/does-not-exist-xyz",
+      "status": 404,
+      "ok": false,
+      "isJson": true
+    },
+    {
+      "endpoint": "/public/legal-pages/does-not-exist-xyz",
+      "status": 404,
+      "ok": false,
+      "isJson": true
+    }
+  ],
+  "mediaSummary": {
+    "total": 369,
+    "working": 4,
+    "broken": 365,
+    "storageBroken": 0,
+    "assetBroken": 360,
+    "absoluteBroken": 2
+  },
+  "finishedAt": "2026-07-27T20:51:05.734Z"
+}

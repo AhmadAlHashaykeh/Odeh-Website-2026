@@ -1,0 +1,691 @@
+{
+  "discovered": {
+    "categories": 11,
+    "projects": 0,
+    "activities": 0,
+    "jobs": 5,
+    "dynamicRoutes": 21
+  },
+  "publicShell": [
+    {
+      "url": "http://127.0.0.1:5173/",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 6,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/about/overview",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 5,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/about/approach",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 5,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/about/history",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 5,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/about/team-members",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/about/activities",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 131,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/reach-out",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/search",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 5,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/privacy-policy",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/terms-and-conditions",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/terms",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/thank-you",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 5,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/connect",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/about/unknown-section",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/services/design-solutions",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/services/site-supervision",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/does-not-exist-page-xyz",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/resorts-hotels",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/private-villas",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/residential-complexes",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/commercial-complexes",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/institutional-cultural",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/govermental",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/hospitals-and-medical-clinics",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/mosques",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/fueling-and-car-charging-stations",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/restoration-conservation",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/projects/steel-structures",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 4,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/internship-structural-engineering",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/internship-structural-engineering/apply",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/quantity-estimation-engineer",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/quantity-estimation-engineer/apply",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/bim-modeler",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/bim-modeler/apply",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/site-supervision-engineer",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/site-supervision-engineer/apply",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/structural-design-engineer",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/careers/structural-design-engineer/apply",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 1,
+      "hasRoot": true,
+      "len": 1198
+    }
+  ],
+  "adminShell": [
+    {
+      "url": "http://127.0.0.1:5173/admin/login",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/dashboard",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/projects",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/project-categories",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/team-categories",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/team-members",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/activities",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/services",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/careers",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/applications",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/contact-messages",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/home-page",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/about-pages",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/navigation-footer",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/connect-page",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/legal-pages",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/seo",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/website-settings",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/users-roles",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 3,
+      "hasRoot": true,
+      "len": 1198
+    },
+    {
+      "url": "http://127.0.0.1:5173/admin/missing-module-xyz",
+      "status": 200,
+      "ok": true,
+      "redirected": false,
+      "location": null,
+      "ms": 2,
+      "hasRoot": true,
+      "len": 1198
+    }
+  ],
+  "mediaChecks": [
+    {
+      "apiValue": "/assets/services/design-solutions.webp",
+      "finalUrl": "http://127.0.0.1:5173/assets/services/design-solutions.webp",
+      "status": 200,
+      "ok": true,
+      "ct": "image/webp"
+    },
+    {
+      "apiValue": "/assets/services/site-supervision.webp",
+      "finalUrl": "http://127.0.0.1:5173/assets/services/site-supervision.webp",
+      "status": 200,
+      "ok": true,
+      "ct": "image/webp"
+    },
+    {
+      "apiValue": "/assets/services/bim-services.webp",
+      "finalUrl": "http://127.0.0.1:5173/assets/services/bim-services.webp",
+      "status": 200,
+      "ok": true,
+      "ct": "image/webp"
+    },
+    {
+      "apiValue": "/assets/services/design-review.webp",
+      "finalUrl": "http://127.0.0.1:5173/assets/services/design-review.webp",
+      "status": 200,
+      "ok": true,
+      "ct": "image/webp"
+    },
+    {
+      "apiValue": "/assets/services/quantity-estimation.webp",
+      "finalUrl": "http://127.0.0.1:5173/assets/services/quantity-estimation.webp",
+      "status": 200,
+      "ok": true,
+      "ct": "image/webp"
+    },
+    {
+      "apiValue": "/assets/services/university-engagements.webp",
+      "finalUrl": "http://127.0.0.1:5173/assets/services/university-engagements.webp",
+      "status": 200,
+      "ok": true,
+      "ct": "image/webp"
+    },
+    {
+      "apiValue": "/assets/services/retrofitting.webp",
+      "finalUrl": "http://127.0.0.1:5173/assets/services/retrofitting.webp",
+      "status": 200,
+      "ok": true,
+      "ct": "image/webp"
+    }
+  ],
+  "mediaSummary": {
+    "total": 7,
+    "working": 7,
+    "broken": 0,
+    "brokenSamples": []
+  },
+  "categorySlugs": [
+    "resorts-hotels",
+    "private-villas",
+    "residential-complexes",
+    "commercial-complexes",
+    "institutional-cultural",
+    "govermental",
+    "hospitals-and-medical-clinics",
+    "mosques",
+    "fueling-and-car-charging-stations",
+    "restoration-conservation",
+    "steel-structures"
+  ],
+  "jobSlugs": [
+    "internship-structural-engineering",
+    "quantity-estimation-engineer",
+    "bim-modeler",
+    "site-supervision-engineer",
+    "structural-design-engineer"
+  ],
+  "activitySlugs": []
+}

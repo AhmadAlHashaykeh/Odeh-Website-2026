@@ -27,8 +27,24 @@ export const adminNavigationGroups = [
         enabled: true,
       },
       { id: 'services', label: 'Services', path: '/admin/services', icon: 'services', enabled: true },
-      { id: 'team-members', label: 'Team Members', path: '/admin/team-members', icon: 'team', enabled: true },
       { id: 'activities', label: 'Activities', path: '/admin/activities', icon: 'activities', enabled: true },
+    ],
+  },
+  {
+    id: 'about',
+    title: 'About',
+    icon: 'about',
+    defaultExpanded: false,
+    items: [
+      { id: 'about-pages', label: 'About Pages', path: '/admin/about-pages', icon: 'about', enabled: true },
+      {
+        id: 'team-categories',
+        label: 'Team Categories',
+        path: '/admin/team-categories',
+        icon: 'categories',
+        enabled: true,
+      },
+      { id: 'team-members', label: 'Team Members', path: '/admin/team-members', icon: 'team', enabled: true },
     ],
   },
   {
@@ -69,7 +85,6 @@ export const adminNavigationGroups = [
     defaultExpanded: false,
     items: [
       { id: 'home-page', label: 'Home Page', path: '/admin/home-page', icon: 'home', enabled: true },
-      { id: 'about-pages', label: 'About Pages', path: '/admin/about-pages', icon: 'about', enabled: true },
       {
         id: 'navigation-footer',
         label: 'Navigation & Footer',

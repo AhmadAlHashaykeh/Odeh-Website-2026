@@ -48,7 +48,7 @@ export const sectionDefinitions = [
   {
     id: 'projects',
     name: 'Selected Projects Preview',
-    description: 'Editorial grid featuring three curated portfolio projects with a view-all link.',
+    description: 'Editorial grid featuring three randomly selected published portfolio projects with a view-all link.',
     status: 'published',
     anchor: '/#projects',
     previewType: 'projects',
@@ -81,7 +81,7 @@ export function computeHomePageStatistics(sections, lastUpdated = '—') {
     {
       id: 'projects',
       value: String(sections.projects?.projects?.length ?? 0),
-      label: 'Featured Projects',
+      label: 'Selected Projects',
     },
     { id: 'visual', value: String(visualAssets), label: 'Visual Assets' },
     { id: 'updated', value: lastUpdated ? String(lastUpdated).split('T')[0] : '—', label: 'Last Updated' },
@@ -98,7 +98,7 @@ export function getSectionSummary(sectionId, sectionData) {
     case 'services':
       return `${sectionData.heading} — ${sectionData.services.length} service cards in carousel`;
     case 'projects':
-      return `${sectionData.heading} — ${sectionData.projects.length} featured projects`;
+      return `${sectionData.heading} — ${sectionData.projects.length} selected projects`;
     default:
       return '';
   }

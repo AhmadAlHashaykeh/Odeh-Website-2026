@@ -14,9 +14,8 @@ export const contactMessagesPageMeta = {
 
 export const contactMessageStatusLabels = {
   new: 'New',
-  read: 'Read',
-  replied: 'Replied',
-  archived: 'Archived',
+  in_progress: 'In Progress',
+  resolved: 'Resolved',
 };
 
 export const contactMessagePriorityLabels = {
@@ -28,9 +27,8 @@ export const contactMessagePriorityLabels = {
 export const statusFilterOptions = [
   { value: 'all', label: 'All Statuses' },
   { value: 'new', label: 'New' },
-  { value: 'read', label: 'Read' },
-  { value: 'replied', label: 'Replied' },
-  { value: 'archived', label: 'Archived' },
+  { value: 'in_progress', label: 'In Progress' },
+  { value: 'resolved', label: 'Resolved' },
 ];
 
 export const priorityFilterOptions = [

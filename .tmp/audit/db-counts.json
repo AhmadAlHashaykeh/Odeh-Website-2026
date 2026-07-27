@@ -1,0 +1,1250 @@
+{
+    "counts": {
+        "services": {
+            "total": 7,
+            "active": 7,
+            "soft": 0,
+            "columns": [
+                "id",
+                "title",
+                "slug",
+                "description",
+                "image",
+                "icon",
+                "used_on_homepage",
+                "display_order",
+                "status",
+                "created_at",
+                "updated_at"
+            ],
+            "statuses": {
+                "published": 7
+            }
+        },
+        "project_categories": {
+            "total": 11,
+            "active": 11,
+            "soft": 0,
+            "columns": [
+                "id",
+                "title",
+                "slug",
+                "description",
+                "cover_image",
+                "featured_image",
+                "status",
+                "display_order",
+                "created_at",
+                "updated_at"
+            ],
+            "statuses": {
+                "published": 11
+            }
+        },
+        "projects": {
+            "total": 49,
+            "active": 49,
+            "soft": 0,
+            "columns": [
+                "id",
+                "project_category_id",
+                "title",
+                "slug",
+                "description",
+                "cover_image",
+                "gallery",
+                "location",
+                "project_type",
+                "area",
+                "services",
+                "completion_status",
+                "year",
+                "status",
+                "is_featured",
+                "display_order",
+                "created_at",
+                "updated_at"
+            ],
+            "statuses": {
+                "published": 49
+            }
+        },
+        "activities": {
+            "total": 4,
+            "active": 4,
+            "soft": 0,
+            "columns": [
+                "id",
+                "title",
+                "slug",
+                "location",
+                "description",
+                "cover_image",
+                "gallery",
+                "activity_date",
+                "status",
+                "is_featured",
+                "display_order",
+                "created_at",
+                "updated_at"
+            ],
+            "statuses": {
+                "published": 4
+            }
+        },
+        "team_categories": {
+            "total": 9,
+            "active": 9,
+            "soft": 0,
+            "columns": [
+                "id",
+                "name",
+                "slug",
+                "description",
+                "border_color",
+                "icon",
+                "parent_id",
+                "display_order",
+                "is_active",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "team_members": {
+            "total": 23,
+            "active": 23,
+            "soft": 0,
+            "columns": [
+                "id",
+                "full_name",
+                "slug",
+                "position",
+                "department",
+                "category",
+                "team_category_id",
+                "experience",
+                "photo",
+                "email",
+                "status",
+                "display_order",
+                "created_at",
+                "updated_at"
+            ],
+            "statuses": {
+                "active": 23
+            }
+        },
+        "jobs": {
+            "total": 0,
+            "active": null,
+            "soft": 0,
+            "columns": [
+                "id",
+                "queue",
+                "payload",
+                "attempts",
+                "reserved_at",
+                "available_at",
+                "created_at"
+            ]
+        },
+        "job_applications": {
+            "total": 1,
+            "active": 1,
+            "soft": 0,
+            "columns": [
+                "id",
+                "job_id",
+                "full_name",
+                "email",
+                "phone",
+                "location",
+                "years_of_experience",
+                "linkedin_url",
+                "cover_letter",
+                "cv_path",
+                "cv_original_name",
+                "cv_size",
+                "status",
+                "admin_notes",
+                "created_at",
+                "updated_at"
+            ],
+            "statuses": {
+                "new": 1
+            }
+        },
+        "about_page_settings": {
+            "total": 1,
+            "active": null,
+            "soft": 0,
+            "columns": [
+                "id",
+                "overview",
+                "approach",
+                "history",
+                "team",
+                "activities",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "legal_pages": {
+            "total": 2,
+            "active": null,
+            "soft": 0,
+            "columns": [
+                "id",
+                "slug",
+                "title",
+                "hero",
+                "sections",
+                "publication_status",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "contact_messages": {
+            "total": 1,
+            "active": 0,
+            "soft": 0,
+            "columns": [
+                "id",
+                "full_name",
+                "email",
+                "phone",
+                "company",
+                "subject",
+                "message",
+                "status",
+                "priority",
+                "assigned_user_id",
+                "admin_notes",
+                "created_at",
+                "updated_at"
+            ],
+            "statuses": {
+                "resolved": 1
+            }
+        },
+        "navigation_footer_settings": {
+            "total": 1,
+            "active": null,
+            "soft": 0,
+            "columns": [
+                "id",
+                "logo",
+                "navigation_items",
+                "footer_brand",
+                "footer_groups",
+                "contact_office",
+                "direct_contacts",
+                "social_links",
+                "copyright",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "seo_pages": {
+            "total": 90,
+            "active": null,
+            "soft": 0,
+            "columns": [
+                "id",
+                "route",
+                "page_name",
+                "page_type",
+                "content_module",
+                "content_uuid",
+                "meta_title",
+                "meta_description",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "website_settings": {
+            "total": 1,
+            "active": null,
+            "soft": 0,
+            "columns": [
+                "id",
+                "general_identity",
+                "branding_favicon",
+                "search_placeholders",
+                "search_limits",
+                "integrations_maps",
+                "public_pages",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "home_page_settings": {
+            "total": 1,
+            "active": null,
+            "soft": 0,
+            "columns": [
+                "id",
+                "hero",
+                "about",
+                "services",
+                "projects",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "connect_page_settings": {
+            "total": 1,
+            "active": null,
+            "soft": 0,
+            "columns": [
+                "id",
+                "hero",
+                "tagline",
+                "links",
+                "created_at",
+                "updated_at"
+            ]
+        },
+        "users": {
+            "total": 1,
+            "active": 1,
+            "soft": 0,
+            "columns": [
+                "id",
+                "full_name",
+                "email",
+                "password",
+                "role_id",
+                "department",
+                "status",
+                "access_scope",
+                "two_factor_enabled",
+                "last_login_at",
+                "created_at",
+                "updated_at"
+            ],
+            "statuses": {
+                "active": 1
+            }
+        },
+        "roles": {
+            "total": 5,
+            "active": 5,
+            "soft": 0,
+            "columns": [
+                "id",
+                "name",
+                "slug",
+                "description",
+                "status",
+                "created_at",
+                "updated_at"
+            ],
+            "statuses": {
+                "active": 5
+            }
+        },
+        "role_permissions": {
+            "total": 90,
+            "active": null,
+            "soft": 0,
+            "columns": [
+                "id",
+                "role_id",
+                "module",
+                "can_view",
+                "can_create",
+                "can_update",
+                "can_delete",
+                "created_at",
+                "updated_at"
+            ]
+        }
+    },
+    "mediaSamples": {
+        "projects": [
+            {
+                "id": "0645bbb9-33f3-4442-b475-cf9c19849e97",
+                "slug": "jo-petrol",
+                "title": "Jo petrol",
+                "cover_image": "/assets/projects/jo-petrol/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/jo-petrol\\/gallery-01.webp\",\"alt\":\"Jo petrol \\u2014 image 1\"}]",
+                "status": "published",
+                "project_category_id": "784fc660-1bcd-4886-bd6f-4ec43765d491"
+            },
+            {
+                "id": "066fbc94-0c94-4b84-9b32-c44b80267728",
+                "slug": "wadi-al-mujib-adventures-visitor-center",
+                "title": "Wadi Al-Mujib Adventures Visitor Center",
+                "cover_image": "/assets/projects/wadi-al-mujib-adventures-visitor-center/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/wadi-al-mujib-adventures-visitor-center\\/gallery-01.webp\",\"alt\":\"Wadi Al-Mujib Adventures Visitor Center \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/wadi-al-mujib-adventures-visitor-center\\/gallery-02.webp\",\"alt\":\"Wadi Al-Mujib Adventures Visitor Center \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/wadi-al-mujib-adventures-visitor-center\\/gallery-03.webp\",\"alt\":\"Wadi Al-Mujib Adventures Visitor Center \\u2014 image 3\"}]",
+                "status": "published",
+                "project_category_id": "11990abe-2dd7-4096-891b-d251572e9388"
+            },
+            {
+                "id": "07e95536-aaf3-40fb-9170-c9c50ab4bdf0",
+                "slug": "private-villa-hm",
+                "title": "Private Villa-HM",
+                "cover_image": "/assets/projects/private-villa-hm/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-01.webp\",\"alt\":\"Private Villa-HM \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-02.webp\",\"alt\":\"Private Villa-HM \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-03.webp\",\"alt\":\"Private Villa-HM \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-04.webp\",\"alt\":\"Private Villa-HM \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-05.webp\",\"alt\":\"Private Villa-HM \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-06.webp\",\"alt\":\"Private Villa-HM \\u2014 image 6\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-07.webp\",\"alt\":\"Private Villa-HM \\u2014 image 7\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-08.webp\",\"alt\":\"Private Villa-HM \\u2014 image 8\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-09.webp\",\"alt\":\"Private Villa-HM \\u2014 image 9\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-10.webp\",\"alt\":\"Private Villa-HM \\u2014 image 10\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-11.webp\",\"alt\":\"Private Villa-HM \\u2014 image 11\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hm\\/gallery-12.webp\",\"alt\":\"Private Villa-HM \\u2014 image 12\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "0c41f7d9-0405-41ab-9a4c-ee13f30af767",
+                "slug": "yarmouk-visitor-center",
+                "title": "Yarmouk Visitor Center",
+                "cover_image": "/assets/projects/yarmouk-visitor-center/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/yarmouk-visitor-center\\/gallery-01.webp\",\"alt\":\"Yarmouk Visitor Center \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/yarmouk-visitor-center\\/gallery-02.webp\",\"alt\":\"Yarmouk Visitor Center \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/yarmouk-visitor-center\\/gallery-03.webp\",\"alt\":\"Yarmouk Visitor Center \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/yarmouk-visitor-center\\/gallery-04.webp\",\"alt\":\"Yarmouk Visitor Center \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/yarmouk-visitor-center\\/gallery-05.webp\",\"alt\":\"Yarmouk Visitor Center \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/yarmouk-visitor-center\\/gallery-06.webp\",\"alt\":\"Yarmouk Visitor Center \\u2014 image 6\"}]",
+                "status": "published",
+                "project_category_id": "11990abe-2dd7-4096-891b-d251572e9388"
+            },
+            {
+                "id": "0c7c4383-c54d-40e5-b1a8-b71f9bfd43d1",
+                "slug": "private-villa-z",
+                "title": "Private Villa-Z",
+                "cover_image": "/assets/projects/private-villa-z/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-z\\/gallery-01.webp\",\"alt\":\"Private Villa-Z \\u2014 image 1\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "0cc91219-74f1-48cf-93d1-423b41f90c53",
+                "slug": "al-bayed",
+                "title": "Al Bayed",
+                "cover_image": "/assets/projects/al-bayed/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/al-bayed\\/gallery-01.webp\",\"alt\":\"Al Bayed \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/al-bayed\\/gallery-02.webp\",\"alt\":\"Al Bayed \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/al-bayed\\/gallery-03.webp\",\"alt\":\"Al Bayed \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/al-bayed\\/gallery-04.webp\",\"alt\":\"Al Bayed \\u2014 image 4\"}]",
+                "status": "published",
+                "project_category_id": "17e5e22d-eb38-40c8-ae4e-fbdbc5eb9bfc"
+            },
+            {
+                "id": "12e57de8-b89c-4a3e-b861-a1a43b728117",
+                "slug": "centennial-park",
+                "title": "Centennial Park",
+                "cover_image": "/assets/projects/centennial-park/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/centennial-park\\/gallery-01.webp\",\"alt\":\"Centennial Park \\u2014 image 1\"}]",
+                "status": "published",
+                "project_category_id": "fdb8a332-b312-4c89-8af4-17b9571eec6e"
+            },
+            {
+                "id": "141f2e42-9075-4351-80ec-11e7cd218fd4",
+                "slug": "sherbiny",
+                "title": "Sherbiny",
+                "cover_image": "/assets/projects/sherbiny/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/sherbiny\\/gallery-01.webp\",\"alt\":\"Sherbiny \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/sherbiny\\/gallery-02.webp\",\"alt\":\"Sherbiny \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/sherbiny\\/gallery-03.webp\",\"alt\":\"Sherbiny \\u2014 image 3\"}]",
+                "status": "published",
+                "project_category_id": "17e5e22d-eb38-40c8-ae4e-fbdbc5eb9bfc"
+            },
+            {
+                "id": "16cb2435-53b5-42b1-9f77-9069c98e5592",
+                "slug": "",
+                "title": "885",
+                "cover_image": "/assets/projects//cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/\\/gallery-01.webp\",\"alt\":\"885 \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/\\/gallery-02.webp\",\"alt\":\"885 \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/\\/gallery-03.webp\",\"alt\":\"885 \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/\\/gallery-04.webp\",\"alt\":\"885 \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/\\/gallery-05.webp\",\"alt\":\"885 \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/\\/gallery-06.webp\",\"alt\":\"885 \\u2014 image 6\"}]",
+                "status": "published",
+                "project_category_id": "5445dbf8-e6e0-4866-87c6-0cea1504a131"
+            },
+            {
+                "id": "1c9904e9-1930-4370-bee8-2e13bafb14d7",
+                "slug": "crisis-management-center",
+                "title": "Crisis Management Center.",
+                "cover_image": "/assets/projects/crisis-management-center/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/crisis-management-center\\/gallery-01.webp\",\"alt\":\"Crisis Management Center. \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/crisis-management-center\\/gallery-02.webp\",\"alt\":\"Crisis Management Center. \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/crisis-management-center\\/gallery-03.webp\",\"alt\":\"Crisis Management Center. \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/crisis-management-center\\/gallery-04.webp\",\"alt\":\"Crisis Management Center. \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/crisis-management-center\\/gallery-05.webp\",\"alt\":\"Crisis Management Center. \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/crisis-management-center\\/gallery-06.webp\",\"alt\":\"Crisis Management Center. \\u2014 image 6\"},{\"src\":\"\\/assets\\/projects\\/crisis-management-center\\/gallery-07.webp\",\"alt\":\"Crisis Management Center. \\u2014 image 7\"},{\"src\":\"\\/assets\\/projects\\/crisis-management-center\\/gallery-08.webp\",\"alt\":\"Crisis Management Center. \\u2014 image 8\"}]",
+                "status": "published",
+                "project_category_id": "fdb8a332-b312-4c89-8af4-17b9571eec6e"
+            },
+            {
+                "id": "222049af-6369-49d1-9b86-ecc8dcc8eced",
+                "slug": "ev-charger",
+                "title": "EV-Charger",
+                "cover_image": "/assets/projects/ev-charger/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/ev-charger\\/gallery-01.webp\",\"alt\":\"EV-Charger \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/ev-charger\\/gallery-02.webp\",\"alt\":\"EV-Charger \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/ev-charger\\/gallery-03.webp\",\"alt\":\"EV-Charger \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/ev-charger\\/gallery-04.webp\",\"alt\":\"EV-Charger \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/ev-charger\\/gallery-05.webp\",\"alt\":\"EV-Charger \\u2014 image 5\"}]",
+                "status": "published",
+                "project_category_id": "784fc660-1bcd-4886-bd6f-4ec43765d491"
+            },
+            {
+                "id": "22a55780-5942-4197-a9bb-bf66c2e7e5c1",
+                "slug": "private-villa-ro",
+                "title": "Private Villa-RO",
+                "cover_image": "/assets/projects/private-villa-ro/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-ro\\/gallery-01.webp\",\"alt\":\"Private Villa-RO \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ro\\/gallery-02.webp\",\"alt\":\"Private Villa-RO \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ro\\/gallery-03.webp\",\"alt\":\"Private Villa-RO \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ro\\/gallery-04.webp\",\"alt\":\"Private Villa-RO \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ro\\/gallery-05.webp\",\"alt\":\"Private Villa-RO \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ro\\/gallery-06.webp\",\"alt\":\"Private Villa-RO \\u2014 image 6\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ro\\/gallery-07.webp\",\"alt\":\"Private Villa-RO \\u2014 image 7\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ro\\/gallery-08.webp\",\"alt\":\"Private Villa-RO \\u2014 image 8\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ro\\/gallery-09.webp\",\"alt\":\"Private Villa-RO \\u2014 image 9\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "251e7077-a59c-4ffd-96fa-746c598ba7e9",
+                "slug": "amayer-jeddah",
+                "title": "Amayer Jeddah",
+                "cover_image": "/assets/projects/amayer-jeddah/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/amayer-jeddah\\/gallery-01.webp\",\"alt\":\"Amayer Jeddah \\u2014 image 1\"}]",
+                "status": "published",
+                "project_category_id": "f5c0a1c9-c8d1-4152-9439-22d50edd6116"
+            },
+            {
+                "id": "25cb6b9c-5ed4-4c07-a6e9-77ec22f9589b",
+                "slug": "private-villa-j",
+                "title": "Private Villa-J",
+                "cover_image": "/assets/projects/private-villa-j/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-j\\/gallery-01.webp\",\"alt\":\"Private Villa-J \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-j\\/gallery-02.webp\",\"alt\":\"Private Villa-J \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-j\\/gallery-03.webp\",\"alt\":\"Private Villa-J \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-j\\/gallery-04.webp\",\"alt\":\"Private Villa-J \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-j\\/gallery-05.webp\",\"alt\":\"Private Villa-J \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/private-villa-j\\/gallery-06.webp\",\"alt\":\"Private Villa-J \\u2014 image 6\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "260c18ac-2fa7-4457-bf24-243ac187e0ae",
+                "slug": "abu-deyah",
+                "title": "Abu Deyah",
+                "cover_image": "/assets/projects/abu-deyah/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/abu-deyah\\/gallery-01.webp\",\"alt\":\"Abu Deyah \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/abu-deyah\\/gallery-02.webp\",\"alt\":\"Abu Deyah \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/abu-deyah\\/gallery-03.webp\",\"alt\":\"Abu Deyah \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/abu-deyah\\/gallery-04.webp\",\"alt\":\"Abu Deyah \\u2014 image 4\"}]",
+                "status": "published",
+                "project_category_id": "17e5e22d-eb38-40c8-ae4e-fbdbc5eb9bfc"
+            },
+            {
+                "id": "2f42f2dc-e0a2-4f95-a0db-c81cf001caf9",
+                "slug": "zahraan",
+                "title": "Zahraan",
+                "cover_image": "/assets/projects/zahraan/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/zahraan\\/gallery-01.webp\",\"alt\":\"Zahraan \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/zahraan\\/gallery-02.webp\",\"alt\":\"Zahraan \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/zahraan\\/gallery-03.webp\",\"alt\":\"Zahraan \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/zahraan\\/gallery-04.webp\",\"alt\":\"Zahraan \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/zahraan\\/gallery-05.webp\",\"alt\":\"Zahraan \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/zahraan\\/gallery-06.webp\",\"alt\":\"Zahraan \\u2014 image 6\"}]",
+                "status": "published",
+                "project_category_id": "17e5e22d-eb38-40c8-ae4e-fbdbc5eb9bfc"
+            },
+            {
+                "id": "39715148-9dd7-4b4d-b176-918a2a7c673e",
+                "slug": "private-villas-rk",
+                "title": "Private Villas-RK",
+                "cover_image": "/assets/projects/private-villas-rk/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villas-rk\\/gallery-01.webp\",\"alt\":\"Private Villas-RK \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villas-rk\\/gallery-02.webp\",\"alt\":\"Private Villas-RK \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villas-rk\\/gallery-03.webp\",\"alt\":\"Private Villas-RK \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villas-rk\\/gallery-04.webp\",\"alt\":\"Private Villas-RK \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villas-rk\\/gallery-05.webp\",\"alt\":\"Private Villas-RK \\u2014 image 5\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "39d9341a-2c51-4359-96cb-1bbbba122f96",
+                "slug": "private-villa-eb",
+                "title": "Private Villa-EB",
+                "cover_image": "/assets/projects/private-villa-eb/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-eb\\/gallery-01.webp\",\"alt\":\"Private Villa-EB \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-eb\\/gallery-02.webp\",\"alt\":\"Private Villa-EB \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-eb\\/gallery-03.webp\",\"alt\":\"Private Villa-EB \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-eb\\/gallery-04.webp\",\"alt\":\"Private Villa-EB \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-eb\\/gallery-05.webp\",\"alt\":\"Private Villa-EB \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/private-villa-eb\\/gallery-06.webp\",\"alt\":\"Private Villa-EB \\u2014 image 6\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "42ec2475-3bee-4d7f-a662-b2b5566b102e",
+                "slug": "private-villa-rs",
+                "title": "Private Villa-RS",
+                "cover_image": "/assets/projects/private-villa-rs/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-rs\\/gallery-01.webp\",\"alt\":\"Private Villa-RS \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-rs\\/gallery-02.webp\",\"alt\":\"Private Villa-RS \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-rs\\/gallery-03.webp\",\"alt\":\"Private Villa-RS \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-rs\\/gallery-04.webp\",\"alt\":\"Private Villa-RS \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-rs\\/gallery-05.webp\",\"alt\":\"Private Villa-RS \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/private-villa-rs\\/gallery-06.webp\",\"alt\":\"Private Villa-RS \\u2014 image 6\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "46ab520e-90c4-4c5d-97eb-bceec7944052",
+                "slug": "wadi-mousa-mosque",
+                "title": "Wadi Mousa Mosque",
+                "cover_image": "/assets/projects/wadi-mousa-mosque/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/wadi-mousa-mosque\\/gallery-01.webp\",\"alt\":\"Wadi Mousa Mosque \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/wadi-mousa-mosque\\/gallery-02.webp\",\"alt\":\"Wadi Mousa Mosque \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/wadi-mousa-mosque\\/gallery-03.webp\",\"alt\":\"Wadi Mousa Mosque \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/wadi-mousa-mosque\\/gallery-04.webp\",\"alt\":\"Wadi Mousa Mosque \\u2014 image 4\"}]",
+                "status": "published",
+                "project_category_id": "1cf3f47e-5f1d-4d89-a8a3-3c68fb989f1f"
+            },
+            {
+                "id": "48f96992-58bf-4c8c-91c6-70446df7a56d",
+                "slug": "private-villa-rh",
+                "title": "Private Villa-RH",
+                "cover_image": "/assets/projects/private-villa-rh/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-rh\\/gallery-01.webp\",\"alt\":\"Private Villa-RH \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-rh\\/gallery-02.webp\",\"alt\":\"Private Villa-RH \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-rh\\/gallery-03.webp\",\"alt\":\"Private Villa-RH \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-rh\\/gallery-04.webp\",\"alt\":\"Private Villa-RH \\u2014 image 4\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "49c2a4e9-dddc-487d-97e4-db37f0633aaf",
+                "slug": "private-villa-iy",
+                "title": "Private Villa-IY",
+                "cover_image": "/assets/projects/private-villa-iy/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-iy\\/gallery-01.webp\",\"alt\":\"Private Villa-IY \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-iy\\/gallery-02.webp\",\"alt\":\"Private Villa-IY \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-iy\\/gallery-03.webp\",\"alt\":\"Private Villa-IY \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-iy\\/gallery-04.webp\",\"alt\":\"Private Villa-IY \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-iy\\/gallery-05.webp\",\"alt\":\"Private Villa-IY \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/private-villa-iy\\/gallery-06.webp\",\"alt\":\"Private Villa-IY \\u2014 image 6\"},{\"src\":\"\\/assets\\/projects\\/private-villa-iy\\/gallery-07.webp\",\"alt\":\"Private Villa-IY \\u2014 image 7\"},{\"src\":\"\\/assets\\/projects\\/private-villa-iy\\/gallery-08.webp\",\"alt\":\"Private Villa-IY \\u2014 image 8\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "4feba919-7bd6-493f-a656-0da3802d1b1e",
+                "slug": "leen-park",
+                "title": "Leen Park",
+                "cover_image": "/assets/projects/leen-park/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/leen-park\\/gallery-01.webp\",\"alt\":\"Leen Park \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/leen-park\\/gallery-02.webp\",\"alt\":\"Leen Park \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/leen-park\\/gallery-03.webp\",\"alt\":\"Leen Park \\u2014 image 3\"}]",
+                "status": "published",
+                "project_category_id": "97c095f0-fc77-4ac6-a561-f7a72a41fb5e"
+            },
+            {
+                "id": "5509e68c-4086-4a60-b259-9e126c203099",
+                "slug": "private-villa-hh",
+                "title": "Private Villa-HH",
+                "cover_image": "/assets/projects/private-villa-hh/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-01.webp\",\"alt\":\"Private Villa-HH \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-02.webp\",\"alt\":\"Private Villa-HH \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-03.webp\",\"alt\":\"Private Villa-HH \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-04.webp\",\"alt\":\"Private Villa-HH \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-05.webp\",\"alt\":\"Private Villa-HH \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-06.webp\",\"alt\":\"Private Villa-HH \\u2014 image 6\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-07.webp\",\"alt\":\"Private Villa-HH \\u2014 image 7\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-08.webp\",\"alt\":\"Private Villa-HH \\u2014 image 8\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-09.webp\",\"alt\":\"Private Villa-HH \\u2014 image 9\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-10.webp\",\"alt\":\"Private Villa-HH \\u2014 image 10\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-11.webp\",\"alt\":\"Private Villa-HH \\u2014 image 11\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-12.webp\",\"alt\":\"Private Villa-HH \\u2014 image 12\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-13.webp\",\"alt\":\"Private Villa-HH \\u2014 image 13\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-14.webp\",\"alt\":\"Private Villa-HH \\u2014 image 14\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-15.webp\",\"alt\":\"Private Villa-HH \\u2014 image 15\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-16.webp\",\"alt\":\"Private Villa-HH \\u2014 image 16\"},{\"src\":\"\\/assets\\/projects\\/private-villa-hh\\/gallery-17.webp\",\"alt\":\"Private Villa-HH \\u2014 image 17\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "5683b236-9bf7-4adb-8a70-bccf058efe98",
+                "slug": "private-villa-dj",
+                "title": "Private Villa-DJ",
+                "cover_image": "/assets/projects/private-villa-dj/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-dj\\/gallery-01.webp\",\"alt\":\"Private Villa-DJ \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-dj\\/gallery-02.webp\",\"alt\":\"Private Villa-DJ \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-dj\\/gallery-03.webp\",\"alt\":\"Private Villa-DJ \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-dj\\/gallery-04.webp\",\"alt\":\"Private Villa-DJ \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-dj\\/gallery-05.webp\",\"alt\":\"Private Villa-DJ \\u2014 image 5\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "696dcf4a-123e-4b51-973a-7f406465d937",
+                "slug": "private-villa-dd",
+                "title": "Private Villa-DD",
+                "cover_image": "/assets/projects/private-villa-dd/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-dd\\/gallery-01.webp\",\"alt\":\"Private Villa-DD \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-dd\\/gallery-02.webp\",\"alt\":\"Private Villa-DD \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-dd\\/gallery-03.webp\",\"alt\":\"Private Villa-DD \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-dd\\/gallery-04.webp\",\"alt\":\"Private Villa-DD \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-dd\\/gallery-05.webp\",\"alt\":\"Private Villa-DD \\u2014 image 5\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "71bebd75-f49d-408d-bfec-7799dacde8a0",
+                "slug": "private-villa-ra",
+                "title": "Private Villa-RA",
+                "cover_image": "/assets/projects/private-villa-ra/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/private-villa-ra\\/gallery-01.webp\",\"alt\":\"Private Villa-RA \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ra\\/gallery-02.webp\",\"alt\":\"Private Villa-RA \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ra\\/gallery-03.webp\",\"alt\":\"Private Villa-RA \\u2014 image 3\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ra\\/gallery-04.webp\",\"alt\":\"Private Villa-RA \\u2014 image 4\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ra\\/gallery-05.webp\",\"alt\":\"Private Villa-RA \\u2014 image 5\"},{\"src\":\"\\/assets\\/projects\\/private-villa-ra\\/gallery-06.webp\",\"alt\":\"Private Villa-RA \\u2014 image 6\"}]",
+                "status": "published",
+                "project_category_id": "ec002200-15d4-4f92-befb-139d17336c49"
+            },
+            {
+                "id": "7d141286-f21c-406f-8dc3-833b29ddb315",
+                "slug": "al-quds-college",
+                "title": "Al-Quds College",
+                "cover_image": "/assets/projects/al-quds-college/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/al-quds-college\\/gallery-01.webp\",\"alt\":\"Al-Quds College \\u2014 image 1\"}]",
+                "status": "published",
+                "project_category_id": "0253a88c-5c73-475e-a2ae-4a35e3459be6"
+            },
+            {
+                "id": "8848eefb-132e-4cab-a8ee-c1c88118e3a5",
+                "slug": "wadi-al-heedan-visitor-center",
+                "title": "Wadi Al-Heedan Visitor Center",
+                "cover_image": "/assets/projects/wadi-al-heedan-visitor-center/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/wadi-al-heedan-visitor-center\\/gallery-01.webp\",\"alt\":\"Wadi Al-Heedan Visitor Center \\u2014 image 1\"},{\"src\":\"\\/assets\\/projects\\/wadi-al-heedan-visitor-center\\/gallery-02.webp\",\"alt\":\"Wadi Al-Heedan Visitor Center \\u2014 image 2\"},{\"src\":\"\\/assets\\/projects\\/wadi-al-heedan-visitor-center\\/gallery-03.webp\",\"alt\":\"Wadi Al-Heedan Visitor Center \\u2014 image 3\"}]",
+                "status": "published",
+                "project_category_id": "11990abe-2dd7-4096-891b-d251572e9388"
+            },
+            {
+                "id": "8e2fc99a-06f9-4a46-a9c2-7450badd3a55",
+                "slug": "al-barakeh-10",
+                "title": "Al-Barakeh 10",
+                "cover_image": "/assets/projects/al-barakeh-10/cover.webp",
+                "gallery": "[{\"src\":\"\\/assets\\/projects\\/al-barakeh-10\\/gallery-01.webp\",\"alt\":\"Al-Barakeh 10 \\u2014 image 1\"}]",
+                "status": "published",
+                "project_category_id": "17e5e22d-eb38-40c8-ae4e-fbdbc5eb9bfc"
+            }
+        ],
+        "services": [
+            {
+                "id": "33bd2ec0-2a19-4fb0-8408-e2b7de502279",
+                "slug": "retrofitting",
+                "title": "Retrofitting",
+                "image": "/assets/services/retrofitting.webp"
+            },
+            {
+                "id": "48144023-8c12-4b66-bc37-f5a6af2bea1a",
+                "slug": "design-review",
+                "title": "Design Review",
+                "image": "/assets/services/design-review.webp"
+            },
+            {
+                "id": "5e42be44-a787-4467-b87d-c55c9acd5eb2",
+                "slug": "quantity-estimation",
+                "title": "Quantity Estimation",
+                "image": "/assets/services/quantity-estimation.webp"
+            },
+            {
+                "id": "9476f141-2468-404a-bd2e-400e01b957b4",
+                "slug": "design-solutions",
+                "title": "Design Solutions",
+                "image": "/assets/services/design-solutions.webp"
+            },
+            {
+                "id": "a47cbd07-a81e-4187-9c08-7f9fcbb33edb",
+                "slug": "university-engagements",
+                "title": "University Engagements",
+                "image": "/assets/services/university-engagements.webp"
+            },
+            {
+                "id": "c9ecb435-e5ec-451f-a9f1-529f6444e327",
+                "slug": "bim-services",
+                "title": "BIM Services",
+                "image": "/assets/services/bim-services.webp"
+            },
+            {
+                "id": "d19ef516-94d1-4b51-8998-a81613332347",
+                "slug": "site-supervision",
+                "title": "Site Supervision",
+                "image": "/assets/services/site-supervision.webp"
+            }
+        ],
+        "activities": [
+            {
+                "id": "43a291a8-764c-4600-86f4-2a8d83ede9a8",
+                "slug": "site-visits",
+                "title": "Site Visits",
+                "cover_image": "/assets/about/activities/1694430952_7798.jpeg",
+                "gallery": "[{\"src\":\"\\/assets\\/about\\/activities\\/1694430952_7798.jpeg\",\"alt\":\"Engineers on a project site visit\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694503570575.jpg\",\"alt\":\"Structural inspection during a site visit\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694503570209.jpg\",\"alt\":\"Team reviewing construction on site\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_169450357087.jpg\",\"alt\":\"On-site engineering assessment\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694503570655.jpg\",\"alt\":\"Site visit documentation\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694503570574.jpg\",\"alt\":\"Engineers coordinating with site supervisors\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694503570118.jpg\",\"alt\":\"Field review of structural elements\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694503570991.jpg\",\"alt\":\"Construction progress observation\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694503570947.jpg\",\"alt\":\"Site team collaboration\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694503570609.jpg\",\"alt\":\"Structural details inspection on site\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694503570838.jpg\",\"alt\":\"Engineering team at project site\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694504843573.jpg\",\"alt\":\"Site visit with ODEH engineers\"}]"
+            },
+            {
+                "id": "86ff5f93-d6ad-47f4-9b38-fa52feeff1cd",
+                "slug": "weddings",
+                "title": "Weddings",
+                "cover_image": "/assets/about/activities/1694505128_4048.jpeg",
+                "gallery": "[{\"src\":\"\\/assets\\/about\\/activities\\/1694505128_4048.jpeg\",\"alt\":\"Team celebration at a colleague wedding\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_169450512837.jpg\",\"alt\":\"Wedding celebration with ODEH team members\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694505128269.jpg\",\"alt\":\"Colleagues at a team member wedding\"}]"
+            },
+            {
+                "id": "af950f47-a03b-4c02-99f6-6ae85094b64f",
+                "slug": "eftar-ramadan",
+                "title": "Eftar Ramadan",
+                "cover_image": "/assets/about/activities/1694428846_3967.jpg",
+                "gallery": "[{\"src\":\"\\/assets\\/about\\/activities\\/1694428846_3967.jpg\",\"alt\":\"Eftar Ramadan gathering at ODEH & PARTNERS DESIGN\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694428846299.jpg\",\"alt\":\"Team members during the Ramadan iftar event\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694428846502.jpg\",\"alt\":\"Colleagues sharing an iftar meal together\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694505373998.jpg\",\"alt\":\"Ramadan celebration with the ODEH team\"}]"
+            },
+            {
+                "id": "cbc39c1e-a767-4184-b2bc-cf69fd7751b4",
+                "slug": "trips",
+                "title": "Trips",
+                "cover_image": "/assets/about/activities/1694504294_6706.jpeg",
+                "gallery": "[{\"src\":\"\\/assets\\/about\\/activities\\/1694504294_6706.jpeg\",\"alt\":\"ODEH team on a group trip\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694505680583.jpg\",\"alt\":\"Team members during a company trip\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694505711440.jpg\",\"alt\":\"Colleagues enjoying a team outing\"},{\"src\":\"\\/assets\\/about\\/activities\\/activity_1694505902798.jpg\",\"alt\":\"Group photo from a team trip\"}]"
+            }
+        ],
+        "team_members": [
+            {
+                "id": "07a65ee7-f5f8-477a-96df-ced74f5fd32a",
+                "photo": "/assets/about/team/khalid-dawodi.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "08a362e6-a8f3-462b-aa51-5046e6239256",
+                "photo": "/assets/about/team/mahmoud-saleh.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "1f66f66f-f4b4-4085-9bcf-e99ab69af3a2",
+                "photo": "/assets/about/team/mohammad-kuzmar.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "2d7273ef-781f-40f8-8915-0763dc8844d6",
+                "photo": "/assets/about/team/abdulrahman-jadallah.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "3f564cef-6059-4467-a31b-742ac0016791",
+                "photo": null,
+                "team_category_id": "5b26b63a-d43a-4208-a8b4-8414b084e5a9",
+                "category": "Other Team Members"
+            },
+            {
+                "id": "5d7b9abf-59fa-42dd-a89b-0038d375d5ab",
+                "photo": null,
+                "team_category_id": "5b26b63a-d43a-4208-a8b4-8414b084e5a9",
+                "category": "Other Team Members"
+            },
+            {
+                "id": "7560897f-d04d-4675-87d0-88e63cbafe5e",
+                "photo": "/assets/about/team/basel-abu-asal.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "9354789d-531e-4a27-a9ee-0321ddc3960e",
+                "photo": "/assets/about/team/abdullah-odat.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "970ef5a8-c9b4-4ea0-9fc6-593cf800391c",
+                "photo": "/assets/about/team/mohammad-yaghi.webp",
+                "team_category_id": "a2e53866-3e85-4445-944b-12f6af2608a2",
+                "category": "Site Engineers"
+            },
+            {
+                "id": "99aa378b-f69f-4975-b29b-7da4e7ab2cda",
+                "photo": "/assets/about/team/malek-al-attar.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "a037bd95-f043-4b57-a49e-f27f64d7c775",
+                "photo": "/assets/about/team/tarek-ammouri.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "b26b1de5-29b8-40d5-b869-81eb9c496bc4",
+                "photo": "/assets/about/team/yazan-abu-alia.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "b455b61e-e2d5-4981-bee0-f1c270ce46da",
+                "photo": "/assets/about/team/ahmad-mustafa.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "b712132b-62fa-48c5-9e92-c6b7a9b6863a",
+                "photo": "/assets/about/team/mohammed-al-faqi.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "b768dfa7-9613-4118-aade-133aae004459",
+                "photo": "/assets/about/team/mohammad-odeh.webp",
+                "team_category_id": "ed66bd35-3b2f-4b94-b018-f381f299eee4",
+                "category": "Founders & Executive Leadership"
+            },
+            {
+                "id": "bef8137c-2422-42c7-bcf5-c062c074c047",
+                "photo": "/assets/about/team/mohammed-al-yousef.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "c320d9b4-7ac0-47aa-b363-e6d00ac9f070",
+                "photo": "/assets/about/team/mazin-hijazi.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "cb244e90-6ca3-4070-ab30-94c38bf13c72",
+                "photo": "/assets/about/team/ashraf.webp",
+                "team_category_id": "6c0a161b-2ec7-4caa-b3fd-3358ea15589f",
+                "category": "Administration & Support"
+            },
+            {
+                "id": "e376f866-daa3-479b-9fc0-76c476c3201b",
+                "photo": "/assets/about/team/mohammad-bani-ahmad.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "ea473edf-6fe7-4b87-b78f-d4741d9f74d9",
+                "photo": "/assets/about/team/zaid-al-nwerat.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            },
+            {
+                "id": "eada498b-0afd-45f7-b62d-235916927fbb",
+                "photo": "/assets/about/team/mohammad-al-najjar.webp",
+                "team_category_id": "384e6213-df36-45f8-a01f-2de060e8a8f7",
+                "category": "Partners & Directors"
+            },
+            {
+                "id": "f7603b2a-952a-4b6e-b4f1-ddcbc5f2936f",
+                "photo": "/assets/about/team/yazan-abu-al-hayja.webp",
+                "team_category_id": "384e6213-df36-45f8-a01f-2de060e8a8f7",
+                "category": "Partners & Directors"
+            },
+            {
+                "id": "fc259369-6f89-43ec-9c7a-5077bcdaa8ad",
+                "photo": "/assets/about/team/hamzeh-sawalmeh.webp",
+                "team_category_id": "b368363a-6fe8-4b46-82a2-157a98819107",
+                "category": "Structural Engineering"
+            }
+        ],
+        "project_categories": [
+            {
+                "id": "0253a88c-5c73-475e-a2ae-4a35e3459be6",
+                "slug": "steel-structures",
+                "title": "Steel Structures",
+                "cover_image": "/assets/projects/categories/steel-structures.webp"
+            },
+            {
+                "id": "11990abe-2dd7-4096-891b-d251572e9388",
+                "slug": "institutional-cultural",
+                "title": "Institutional - Cultural",
+                "cover_image": "/assets/projects/categories/institutional-cultural.webp"
+            },
+            {
+                "id": "17e5e22d-eb38-40c8-ae4e-fbdbc5eb9bfc",
+                "slug": "commercial-complexes",
+                "title": "Commercial Complexes",
+                "cover_image": "/assets/projects/categories/commercial-complexes.webp"
+            },
+            {
+                "id": "1cf3f47e-5f1d-4d89-a8a3-3c68fb989f1f",
+                "slug": "mosques",
+                "title": "Mosques",
+                "cover_image": "/assets/projects/categories/mosques.webp"
+            },
+            {
+                "id": "5445dbf8-e6e0-4866-87c6-0cea1504a131",
+                "slug": "hospitals-and-medical-clinics",
+                "title": "Hospitals and Medical Clinics",
+                "cover_image": "/assets/projects/categories/hospitals-and-medical-clinics.webp"
+            },
+            {
+                "id": "784fc660-1bcd-4886-bd6f-4ec43765d491",
+                "slug": "fueling-and-car-charging-stations",
+                "title": "Fueling and Car Charging Stations",
+                "cover_image": "/assets/projects/categories/fueling-and-car-charging-stations.webp"
+            },
+            {
+                "id": "8789ba70-f1cc-47e7-b205-6770b7f8a5fd",
+                "slug": "restoration-conservation",
+                "title": "Restoration-Conservation",
+                "cover_image": "/assets/projects/categories/restoration-conservation.webp"
+            },
+            {
+                "id": "97c095f0-fc77-4ac6-a561-f7a72a41fb5e",
+                "slug": "resorts-hotels",
+                "title": "Resorts & Hotels",
+                "cover_image": "/assets/projects/categories/resorts-and-hotels.webp"
+            },
+            {
+                "id": "ec002200-15d4-4f92-befb-139d17336c49",
+                "slug": "private-villas",
+                "title": "Private Villas",
+                "cover_image": "/assets/projects/categories/private-villas.webp"
+            },
+            {
+                "id": "f5c0a1c9-c8d1-4152-9439-22d50edd6116",
+                "slug": "residential-complexes",
+                "title": "Residential Complexes",
+                "cover_image": "/assets/projects/categories/residential-complexes.webp"
+            },
+            {
+                "id": "fdb8a332-b312-4c89-8af4-17b9571eec6e",
+                "slug": "govermental",
+                "title": "Govermental",
+                "cover_image": "/assets/projects/categories/govermental.webp"
+            }
+        ],
+        "jobs": []
+    },
+    "storageCheck": {
+        "checked": 81,
+        "missingFromStorage": 0,
+        "broken": [],
+        "samplePaths": [
+            {
+                "table": "projects",
+                "id": "0645bbb9-33f3-4442-b475-cf9c19849e97",
+                "db": "/assets/projects/jo-petrol/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/jo-petrol/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "066fbc94-0c94-4b84-9b32-c44b80267728",
+                "db": "/assets/projects/wadi-al-mujib-adventures-visitor-center/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/wadi-al-mujib-adventures-visitor-center/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "07e95536-aaf3-40fb-9170-c9c50ab4bdf0",
+                "db": "/assets/projects/private-villa-hm/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-hm/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "0c41f7d9-0405-41ab-9a4c-ee13f30af767",
+                "db": "/assets/projects/yarmouk-visitor-center/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/yarmouk-visitor-center/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "0c7c4383-c54d-40e5-b1a8-b71f9bfd43d1",
+                "db": "/assets/projects/private-villa-z/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-z/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "0cc91219-74f1-48cf-93d1-423b41f90c53",
+                "db": "/assets/projects/al-bayed/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/al-bayed/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "12e57de8-b89c-4a3e-b861-a1a43b728117",
+                "db": "/assets/projects/centennial-park/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/centennial-park/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "141f2e42-9075-4351-80ec-11e7cd218fd4",
+                "db": "/assets/projects/sherbiny/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/sherbiny/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "16cb2435-53b5-42b1-9f77-9069c98e5592",
+                "db": "/assets/projects//cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects//cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "1c9904e9-1930-4370-bee8-2e13bafb14d7",
+                "db": "/assets/projects/crisis-management-center/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/crisis-management-center/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "222049af-6369-49d1-9b86-ecc8dcc8eced",
+                "db": "/assets/projects/ev-charger/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/ev-charger/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "22a55780-5942-4197-a9bb-bf66c2e7e5c1",
+                "db": "/assets/projects/private-villa-ro/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-ro/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "251e7077-a59c-4ffd-96fa-746c598ba7e9",
+                "db": "/assets/projects/amayer-jeddah/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/amayer-jeddah/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "25cb6b9c-5ed4-4c07-a6e9-77ec22f9589b",
+                "db": "/assets/projects/private-villa-j/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-j/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "260c18ac-2fa7-4457-bf24-243ac187e0ae",
+                "db": "/assets/projects/abu-deyah/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/abu-deyah/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "2f42f2dc-e0a2-4f95-a0db-c81cf001caf9",
+                "db": "/assets/projects/zahraan/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/zahraan/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "39715148-9dd7-4b4d-b176-918a2a7c673e",
+                "db": "/assets/projects/private-villas-rk/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villas-rk/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "39d9341a-2c51-4359-96cb-1bbbba122f96",
+                "db": "/assets/projects/private-villa-eb/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-eb/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "42ec2475-3bee-4d7f-a662-b2b5566b102e",
+                "db": "/assets/projects/private-villa-rs/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-rs/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "46ab520e-90c4-4c5d-97eb-bceec7944052",
+                "db": "/assets/projects/wadi-mousa-mosque/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/wadi-mousa-mosque/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "48f96992-58bf-4c8c-91c6-70446df7a56d",
+                "db": "/assets/projects/private-villa-rh/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-rh/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "49c2a4e9-dddc-487d-97e4-db37f0633aaf",
+                "db": "/assets/projects/private-villa-iy/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-iy/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "4feba919-7bd6-493f-a656-0da3802d1b1e",
+                "db": "/assets/projects/leen-park/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/leen-park/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "5509e68c-4086-4a60-b259-9e126c203099",
+                "db": "/assets/projects/private-villa-hh/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-hh/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "5683b236-9bf7-4adb-8a70-bccf058efe98",
+                "db": "/assets/projects/private-villa-dj/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-dj/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "696dcf4a-123e-4b51-973a-7f406465d937",
+                "db": "/assets/projects/private-villa-dd/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-dd/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "71bebd75-f49d-408d-bfec-7799dacde8a0",
+                "db": "/assets/projects/private-villa-ra/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-ra/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "7d141286-f21c-406f-8dc3-833b29ddb315",
+                "db": "/assets/projects/al-quds-college/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/al-quds-college/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "8848eefb-132e-4cab-a8ee-c1c88118e3a5",
+                "db": "/assets/projects/wadi-al-heedan-visitor-center/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/wadi-al-heedan-visitor-center/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "8e2fc99a-06f9-4a46-a9c2-7450badd3a55",
+                "db": "/assets/projects/al-barakeh-10/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/al-barakeh-10/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "a176962e-486a-437f-87b3-fb07f6a03403",
+                "db": "/assets/projects/private-villa-mh/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-mh/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "a276b943-bfeb-4b53-8476-8770a3d0255e",
+                "db": "/assets/projects/army-steel-hanger/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/army-steel-hanger/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "a48415b7-7932-4f87-9518-9300cde879e1",
+                "db": "/assets/projects/private-villa-oh/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-oh/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "ad640d8a-cbae-4050-a833-9f2a519b84ca",
+                "db": "/assets/projects/private-villa-as/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-as/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "b30d58b3-5f2f-4e2a-a951-bb5a0299645a",
+                "db": "/assets/projects/sedret-al-ula/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/sedret-al-ula/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "b4d03808-67e1-4855-8a35-5520ffd40937",
+                "db": "/assets/projects/private-villa-tr/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-tr/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "b84ab0de-98e7-40fa-925c-f8c2aafff59c",
+                "db": "/assets/projects/private-villa-ym/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/private-villa-ym/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "d08f0982-01dc-48b6-8037-35d15a174929",
+                "db": "/assets/projects/sooq-yard/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/sooq-yard/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "d9bb16fc-7bc7-44b2-af33-44f787e4869f",
+                "db": "/assets/projects/maaroof-mosque/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/maaroof-mosque/cover.webp",
+                "exists": false,
+                "is_asset": true
+            },
+            {
+                "table": "projects",
+                "id": "dbf3bec3-d9aa-46ce-b63c-97116e2173ea",
+                "db": "/assets/projects/al-rayyan/cover.webp",
+                "resolved": "D:\\xampp\\htdocs\\Odeh-Website-Frontend\\backend\\storage\\app/public/assets/projects/al-rayyan/cover.webp",
+                "exists": false,
+                "is_asset": true
+            }
+        ]
+    },
+    "appUrl": "http://localhost",
+    "publicDiskUrl": "http://localhost/storage"
+}

@@ -1,5 +1,4 @@
 import { StatusBadge } from '../../cms/components';
-import AdminIcon from '../../components/AdminIcons';
 import ProjectQuickActions from './ProjectQuickActions';
 import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ProjectsTableView.module.css';
@@ -46,7 +45,6 @@ export default function ProjectsTableView({
             <th>Location</th>
             <th>Type</th>
             <th>Status</th>
-            <th>Featured</th>
             <th>Last Updated</th>
             <th className={styles.actionsCol} aria-label="Actions" />
           </tr>
@@ -94,16 +92,6 @@ export default function ProjectsTableView({
               <td className={styles.muted}>{project.location}</td>
               <td className={styles.muted}>{project.projectType}</td>
               <td><StatusBadge status={project.status} /></td>
-              <td>
-                {project.featured ? (
-                  <span className={styles.featuredBadge}>
-                    <AdminIcon name="star" size={12} />
-                    Featured
-                  </span>
-                ) : (
-                  <span className={styles.notFeatured}>—</span>
-                )}
-              </td>
               <td className={styles.muted}>{formatDate(project.lastUpdated)}</td>
               <td className={styles.actionsCol}>
                 <ProjectQuickActions project={project} onView={onViewProject} onAction={onAction} />

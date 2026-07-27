@@ -15,7 +15,6 @@ import { useProjectsListing } from '../hooks/useProjectsListing';
 import {
   projectsPageMeta,
   statusFilterOptions,
-  featuredFilterOptions,
   publishedFilterOptions,
   sortOptions,
   bulkActionOptions,
@@ -119,9 +118,6 @@ export default function ProjectsPage() {
             categoryFilter={listing.categoryFilter}
             onCategoryFilterChange={listing.setCategoryFilter}
             categoryOptions={categoryOptions}
-            featuredFilter={listing.featuredFilter}
-            onFeaturedFilterChange={listing.setFeaturedFilter}
-            featuredOptions={featuredFilterOptions}
             publishedFilter={listing.publishedFilter}
             onPublishedFilterChange={listing.setPublishedFilter}
             publishedOptions={publishedFilterOptions}

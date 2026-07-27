@@ -16,7 +16,6 @@ const SORT_MAP = {
 export function useProjectsListing({ initialPerPage = 10 } = {}) {
   const [statusFilter, setStatusFilter] = useState(ALL);
   const [categoryFilter, setCategoryFilter] = useState(ALL);
-  const [featuredFilter, setFeaturedFilter] = useState(ALL);
   const [publishedFilter, setPublishedFilter] = useState(ALL);
   const [yearFilter, setYearFilter] = useState(ALL);
   const [typeFilter, setTypeFilter] = useState(ALL);
@@ -74,7 +73,6 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
     () => ({
       statusFilter,
       categoryFilter,
-      featuredFilter,
       publishedFilter,
       yearFilter,
       typeFilter,
@@ -83,7 +81,6 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
     [
       statusFilter,
       categoryFilter,
-      featuredFilter,
       publishedFilter,
       yearFilter,
       typeFilter,
@@ -98,7 +95,6 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
       search,
       statusFilter: status,
       categoryFilter: category,
-      featuredFilter: featured,
       publishedFilter: published,
       yearFilter: year,
       typeFilter: projectType,
@@ -113,8 +109,6 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
       if (search) params.search = search;
       if (status !== ALL) params.status = status;
       if (category !== ALL) params.category = category;
-      if (featured === 'featured') params.featured = true;
-      if (featured === 'not-featured') params.featured = false;
       if (published === 'published' && status === ALL) params.status = 'published';
       if (year !== ALL) params.year = year;
       if (projectType !== ALL) params.project_type = projectType;
@@ -133,12 +127,6 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
           label: 'Published',
           helper: 'Live on website',
           params: { status: 'published' },
-        },
-        {
-          id: 'featured',
-          label: 'Featured',
-          helper: 'Highlighted projects',
-          params: { featured: true },
         },
         {
           id: 'draft',
@@ -171,8 +159,6 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
     setStatusFilter,
     categoryFilter,
     setCategoryFilter,
-    featuredFilter,
-    setFeaturedFilter,
     publishedFilter,
     setPublishedFilter,
     yearFilter,

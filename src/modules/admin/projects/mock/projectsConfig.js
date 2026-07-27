@@ -23,12 +23,6 @@ export const statusFilterOptions = [
   { value: 'archived', label: 'Archived' },
 ];
 
-export const featuredFilterOptions = [
-  { value: 'all', label: 'All Projects' },
-  { value: 'featured', label: 'Featured Only' },
-  { value: 'not-featured', label: 'Not Featured' },
-];
-
 export const publishedFilterOptions = [
   { value: 'all', label: 'All' },
   { value: 'published', label: 'Published' },

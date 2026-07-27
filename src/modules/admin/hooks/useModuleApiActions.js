@@ -26,10 +26,12 @@ function buildStatusPayload(moduleKey, item, action) {
     case 'hide':
       if (moduleKey === 'services') return { status: 'hidden' };
       if (moduleKey === 'team-members') return { status: 'hidden' };
+      if (moduleKey === 'team-categories') return { isActive: false };
       if (moduleKey === 'categories') return { status: 'draft' };
       return { status: 'draft' };
     case 'show':
       if (moduleKey === 'team-members') return { status: 'active' };
+      if (moduleKey === 'team-categories') return { isActive: true };
       if (moduleKey === 'services') return { status: 'published' };
       return { status: 'published' };
     case 'feature':
@@ -65,15 +67,12 @@ function buildDuplicatePayload(moduleKey, item) {
         area: item.area,
         year: item.year,
         status: 'draft',
-        featured: item.featured,
         displayOrder: item.displayOrder,
       };
     case 'categories':
       return {
         title: copyTitle,
         description: item.description,
-        coverImage: item.coverImage,
-        featuredImage: item.featuredImage,
         status: 'draft',
         displayOrder: item.displayOrder,
       };
@@ -104,11 +103,21 @@ function buildDuplicatePayload(moduleKey, item) {
         fullName: copyTitle,
         position: item.position,
         department: item.department,
-        category: item.category || item.categoryLabel,
+        teamCategoryId: item.teamCategoryId || item.category?.id,
         experience: item.experience,
         email: item.email,
         photo: item.photo,
         status: 'hidden',
+        displayOrder: item.displayOrder,
+      };
+    case 'team-categories':
+      return {
+        name: copyTitle,
+        description: item.description,
+        borderColor: item.borderColor,
+        icon: item.icon,
+        parentId: item.parentId,
+        isActive: false,
         displayOrder: item.displayOrder,
       };
     case 'careers':

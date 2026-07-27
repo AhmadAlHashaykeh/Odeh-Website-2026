@@ -38,9 +38,8 @@ function MetaRow({ label, value }) {
 function TimelineIcon({ type }) {
   const icons = {
     submitted: 'messages',
-    read: 'eye',
-    replied: 'check',
-    archived: 'export',
+    in_progress: 'eye',
+    resolved: 'check',
     assigned: 'team',
     note: 'edit',
     system: 'sort',
@@ -52,9 +51,8 @@ function TimelineIcon({ type }) {
 export default function MessageDetailsDrawer({
   message,
   onClose,
-  onMarkRead,
-  onMarkReplied,
-  onArchive,
+  onMarkInProgress,
+  onMarkResolved,
   onAssign,
   onAddNote,
   onCopyEmail,
@@ -214,21 +212,23 @@ export default function MessageDetailsDrawer({
 
           <div className={styles.drawerActions}>
             {message.status === 'new' && (
-              <button type="button" className={styles.drawerActionBtn} onClick={() => onMarkRead?.(message)}>
+              <button
+                type="button"
+                className={styles.drawerActionBtn}
+                onClick={() => onMarkInProgress?.(message)}
+              >
                 <AdminIcon name="eye" size={15} />
-                Mark as Read
+                Mark In Progress
               </button>
             )}
-            {message.status !== 'replied' && message.status !== 'archived' && (
-              <button type="button" className={styles.drawerActionBtn} onClick={() => onMarkReplied?.(message)}>
+            {message.status !== 'resolved' && (
+              <button
+                type="button"
+                className={styles.drawerActionBtn}
+                onClick={() => onMarkResolved?.(message)}
+              >
                 <AdminIcon name="check" size={15} />
-                Mark as Replied
-              </button>
-            )}
-            {message.status !== 'archived' && (
-              <button type="button" className={styles.drawerActionBtn} onClick={() => onArchive?.(message)}>
-                <AdminIcon name="export" size={15} />
-                Archive
+                Mark as Resolved
               </button>
             )}
             <button type="button" className={styles.drawerActionBtn} onClick={() => onAssign?.(message)}>

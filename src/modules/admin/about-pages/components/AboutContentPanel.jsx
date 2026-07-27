@@ -14,8 +14,19 @@ function AboutHeroPreview({ data }) {
       <div className={styles.heroContent}>
         <span className={styles.heroBadge}>{data.label}</span>
         <h3 className={styles.heroTitle}>{data.title}</h3>
+        {data.subtitle ? <p className={styles.heroDesc}>{data.subtitle}</p> : null}
         <p className={styles.heroDesc}>{data.description}</p>
       </div>
+    </div>
+  );
+}
+
+function AboutMetaPreview({ data }) {
+  return (
+    <div className={styles.storyPreview}>
+      <span className={styles.previewLabel}>Meta Title</span>
+      <h3 className={styles.storyTitle}>{data.title}</h3>
+      <p className={styles.storyBody}>{data.description}</p>
     </div>
   );
 }
@@ -139,9 +150,13 @@ function GrowthTablePreview({ data }) {
 }
 
 function PanelPreview({ type, data }) {
+  if (!data) return null;
+
   switch (type) {
     case 'about-hero':
       return <AboutHeroPreview data={data} />;
+    case 'about-meta':
+      return <AboutMetaPreview data={data} />;
     case 'company-intro':
       return <CompanyIntroPreview data={data} />;
     case 'office-gallery':

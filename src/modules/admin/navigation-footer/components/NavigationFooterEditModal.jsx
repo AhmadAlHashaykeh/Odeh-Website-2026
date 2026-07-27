@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input, Select } from '../../ui';
 import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
@@ -459,6 +460,8 @@ export default function NavigationFooterEditModal({
   onClose,
   onSave,
 }) {
+  const formRef = useRef(null);
+
   if (!panelId || !panelData) return null;
 
   const title =
@@ -468,7 +471,7 @@ export default function NavigationFooterEditModal({
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.(panelId, e.currentTarget);
+    onSave?.(panelId, formRef.current);
   };
 
   const modalHeader = (
@@ -521,6 +524,7 @@ export default function NavigationFooterEditModal({
     >
       <Form
         key={`${panelId}-${editingNavItemId ?? 'root'}`}
+        ref={formRef}
         onSubmit={handleSave}
         className={`${drawerStyles.form} ${styles.form}`}
       >

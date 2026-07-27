@@ -3,10 +3,26 @@ import { resolveMediaPath, resolveMediaUrl } from './mediaUrl';
 export { resolveMediaPath, resolveMediaUrl };
 
 export function mapTeamMember(member) {
+  const category =
+    member.category && typeof member.category === 'object'
+      ? {
+          id: member.category.id,
+          name: member.category.name,
+          slug: member.category.slug,
+          borderColor: member.category.borderColor,
+          displayOrder: member.category.displayOrder,
+          description: member.category.description ?? null,
+          isActive: member.category.isActive,
+        }
+      : null;
+
   return {
     slug: member.slug,
     name: member.fullName ?? member.name,
     title: member.position ?? member.title,
+    department: member.department ?? null,
+    category,
+    teamCategoryId: member.teamCategoryId ?? category?.id ?? null,
     experience: member.experience,
     photo: resolveMediaUrl(member.photo),
     email: member.email,

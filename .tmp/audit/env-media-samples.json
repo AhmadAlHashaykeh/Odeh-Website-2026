@@ -1,0 +1,187 @@
+{
+    "app_url": "http://localhost",
+    "public_disk_url": "http://localhost/storage",
+    "job_postings": {
+        "total": 6,
+        "by_status": {
+            "open": 5,
+            "closed": 1
+        },
+        "rows": [
+            {
+                "id": "24620792-6460-498f-b09e-c749a0480e47",
+                "slug": "senior-structural-engineer",
+                "title": "Senior Structural Engineer",
+                "status": "closed"
+            },
+            {
+                "id": "2e83d5ff-40ae-4153-b9f5-9f988129b37f",
+                "slug": "bim-modeler",
+                "title": "BIM Modeler",
+                "status": "open"
+            },
+            {
+                "id": "2f9de895-a3be-4c56-adb4-e28f50c81e34",
+                "slug": "site-supervision-engineer",
+                "title": "Site Supervision Engineer",
+                "status": "open"
+            },
+            {
+                "id": "75d8ef78-6c69-4f17-904e-f0fa96fd4c69",
+                "slug": "internship-structural-engineering",
+                "title": "Internship \u2014 Structural Engineering",
+                "status": "open"
+            },
+            {
+                "id": "c094fda4-35c6-4343-bf8b-4c28202f6603",
+                "slug": "quantity-estimation-engineer",
+                "title": "Quantity Estimation Engineer",
+                "status": "open"
+            },
+            {
+                "id": "f00dff20-8eba-4b78-a6e4-11b72d8dcbd5",
+                "slug": "structural-design-engineer",
+                "title": "Structural Design Engineer",
+                "status": "open"
+            }
+        ]
+    },
+    "sample_project_covers": [
+        {
+            "id": "0645bbb9-33f3-4442-b475-cf9c19849e97",
+            "slug": "jo-petrol",
+            "cover_image": "/assets/projects/jo-petrol/cover.webp",
+            "status": "published"
+        },
+        {
+            "id": "066fbc94-0c94-4b84-9b32-c44b80267728",
+            "slug": "wadi-al-mujib-adventures-visitor-center",
+            "cover_image": "/assets/projects/wadi-al-mujib-adventures-visitor-center/cover.webp",
+            "status": "published"
+        },
+        {
+            "id": "07e95536-aaf3-40fb-9170-c9c50ab4bdf0",
+            "slug": "private-villa-hm",
+            "cover_image": "/assets/projects/private-villa-hm/cover.webp",
+            "status": "published"
+        },
+        {
+            "id": "0c41f7d9-0405-41ab-9a4c-ee13f30af767",
+            "slug": "yarmouk-visitor-center",
+            "cover_image": "/assets/projects/yarmouk-visitor-center/cover.webp",
+            "status": "published"
+        },
+        {
+            "id": "0c7c4383-c54d-40e5-b1a8-b71f9bfd43d1",
+            "slug": "private-villa-z",
+            "cover_image": "/assets/projects/private-villa-z/cover.webp",
+            "status": "published"
+        },
+        {
+            "id": "0cc91219-74f1-48cf-93d1-423b41f90c53",
+            "slug": "al-bayed",
+            "cover_image": "/assets/projects/al-bayed/cover.webp",
+            "status": "published"
+        },
+        {
+            "id": "12e57de8-b89c-4a3e-b861-a1a43b728117",
+            "slug": "centennial-park",
+            "cover_image": "/assets/projects/centennial-park/cover.webp",
+            "status": "published"
+        },
+        {
+            "id": "141f2e42-9075-4351-80ec-11e7cd218fd4",
+            "slug": "sherbiny",
+            "cover_image": "/assets/projects/sherbiny/cover.webp",
+            "status": "published"
+        },
+        {
+            "id": "16cb2435-53b5-42b1-9f77-9069c98e5592",
+            "slug": "",
+            "cover_image": "/assets/projects//cover.webp",
+            "status": "published"
+        },
+        {
+            "id": "1c9904e9-1930-4370-bee8-2e13bafb14d7",
+            "slug": "crisis-management-center",
+            "cover_image": "/assets/projects/crisis-management-center/cover.webp",
+            "status": "published"
+        }
+    ],
+    "sample_team_photos": [
+        {
+            "id": "07a65ee7-f5f8-477a-96df-ced74f5fd32a",
+            "full_name": "Elena Vasquez",
+            "photo": "/assets/about/team/khalid-dawodi.webp",
+            "status": "active"
+        },
+        {
+            "id": "08a362e6-a8f3-462b-aa51-5046e6239256",
+            "full_name": "James Carter",
+            "photo": "/assets/about/team/mahmoud-saleh.webp",
+            "status": "active"
+        },
+        {
+            "id": "1f66f66f-f4b4-4085-9bcf-e99ab69af3a2",
+            "full_name": "Isabella Wright",
+            "photo": "/assets/about/team/mohammad-kuzmar.webp",
+            "status": "active"
+        },
+        {
+            "id": "2d7273ef-781f-40f8-8915-0763dc8844d6",
+            "full_name": "Lucas Bennett",
+            "photo": "/assets/about/team/abdulrahman-jadallah.webp",
+            "status": "active"
+        },
+        {
+            "id": "3f564cef-6059-4467-a31b-742ac0016791",
+            "full_name": "Phase7 Audit Member",
+            "photo": null,
+            "status": "active"
+        },
+        {
+            "id": "5d7b9abf-59fa-42dd-a89b-0038d375d5ab",
+            "full_name": "Phase7 Audit Member",
+            "photo": null,
+            "status": "active"
+        },
+        {
+            "id": "7560897f-d04d-4675-87d0-88e63cbafe5e",
+            "full_name": "Daniel Whitfield",
+            "photo": "/assets/about/team/basel-abu-asal.webp",
+            "status": "active"
+        },
+        {
+            "id": "9354789d-531e-4a27-a9ee-0321ddc3960e",
+            "full_name": "Hannah Sullivan",
+            "photo": "/assets/about/team/abdullah-odat.webp",
+            "status": "active"
+        },
+        {
+            "id": "970ef5a8-c9b4-4ea0-9fc6-593cf800391c",
+            "full_name": "Christopher Shaw",
+            "photo": "/assets/about/team/mohammad-yaghi.webp",
+            "status": "active"
+        },
+        {
+            "id": "99aa378b-f69f-4975-b29b-7da4e7ab2cda",
+            "full_name": "Emma Richardson",
+            "photo": "/assets/about/team/malek-al-attar.webp",
+            "status": "active"
+        }
+    ],
+    "PublicMediaUrl_samples": {
+        "sample": {
+            "path": "/assets/services/design-solutions.webp",
+            "url": "/assets/services/design-solutions.webp"
+        },
+        "sample2": {
+            "path": "/storage/uploads/demo.webp",
+            "url": "http://localhost/storage/uploads/demo.webp"
+        },
+        "sample3": {
+            "path": "/odeh-logo2.png",
+            "url": "/odeh-logo2.png"
+        }
+    }
+}

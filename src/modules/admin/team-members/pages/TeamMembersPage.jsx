@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { usePageMeta } from '../../../../hooks/usePageMeta';
 import { useAdminBreadcrumbs } from '../../cms/hooks/useAdminBreadcrumbs';
 import {
@@ -10,6 +10,7 @@ import {
   AdminActionFlowsHost,
 } from '../../cms/components';
 import * as teamApi from '../../../../api/team';
+import * as teamCategoriesApi from '../../../../api/teamCategories';
 import { useModuleApiActions, handleListingDelete } from '../../hooks/useModuleApiActions';
 import { useTeamMembersListing } from '../hooks/useTeamMembersListing';
 import {
@@ -31,6 +32,34 @@ import styles from './TeamMembersPage.module.css';
 export default function TeamMembersPage() {
   const listing = useTeamMembersListing({ initialPerPage: 12 });
   const [bulkAction, setBulkAction] = useState(bulkActionOptions[0]?.value || '');
+  const [categoryRecords, setCategoryRecords] = useState([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    teamCategoriesApi
+      .list({ per_page: 50, status: 'active', sort: 'display_order' })
+      .then((response) => {
+        if (!cancelled) setCategoryRecords(response.data ?? []);
+      })
+      .catch(() => {
+        if (!cancelled) setCategoryRecords([]);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const fieldOptions = useMemo(
+    () => ({
+      teamCategoryId: categoryRecords.map((category) => ({
+        value: category.id,
+        label: category.name,
+      })),
+    }),
+    [categoryRecords],
+  );
 
   const flows = useModuleApiActions({
     moduleKey: 'team-members',
@@ -176,7 +205,11 @@ export default function TeamMembersPage() {
         onClose={listing.closeMember}
       />
 
-      <AdminActionFlowsHost moduleKey="team-members" flows={flows} />
+      <AdminActionFlowsHost
+        moduleKey="team-members"
+        flows={flows}
+        fieldOptions={fieldOptions}
+      />
     </div>
   );
 }

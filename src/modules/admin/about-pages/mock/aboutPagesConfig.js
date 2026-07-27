@@ -123,6 +123,52 @@ export const historyPanels = [
   },
 ];
 
+export const teamPanels = [
+  {
+    id: 'team-hero',
+    name: 'Hero Content',
+    description: 'Page header with label, title, subtitle, description, and background image.',
+    previewType: 'about-hero',
+    anchor: '/about/team-members',
+    status: 'published',
+    dataKey: 'hero',
+    sectionKey: 'team',
+  },
+  {
+    id: 'team-meta',
+    name: 'SEO / Meta',
+    description: 'Page title and meta description for the Team Members page.',
+    previewType: 'about-meta',
+    anchor: '/about/team-members',
+    status: 'published',
+    dataKey: 'meta',
+    sectionKey: 'team',
+  },
+];
+
+export const activitiesPanels = [
+  {
+    id: 'activities-hero',
+    name: 'Hero Content',
+    description: 'Page header with label, title, description, and background image.',
+    previewType: 'about-hero',
+    anchor: '/about/activities',
+    status: 'published',
+    dataKey: 'hero',
+    sectionKey: 'activities',
+  },
+  {
+    id: 'activities-meta',
+    name: 'SEO / Meta',
+    description: 'Page title and meta description for the Activities page.',
+    previewType: 'about-meta',
+    anchor: '/about/activities',
+    status: 'published',
+    dataKey: 'meta',
+    sectionKey: 'activities',
+  },
+];
+
 export const panelEditTitles = {
   'overview-hero': 'Edit Overview Hero',
   'overview-intro': 'Edit Company Introduction',
@@ -133,6 +179,10 @@ export const panelEditTitles = {
   'history-story': 'Edit History Story',
   'history-counters': 'Edit Statistics Counters',
   'history-growth': 'Edit Growth Data',
+  'team-hero': 'Edit Team Hero',
+  'team-meta': 'Edit Team SEO / Meta',
+  'activities-hero': 'Edit Activities Hero',
+  'activities-meta': 'Edit Activities SEO / Meta',
 };
 
 export function getPanelsForSection(sectionId) {
@@ -143,31 +193,40 @@ export function getPanelsForSection(sectionId) {
       return approachPanels;
     case 'history':
       return historyPanels;
+    case 'team':
+      return teamPanels;
+    case 'activities':
+      return activitiesPanels;
     default:
       return [];
   }
 }
 
 export function getPanelSummary(panelId, data) {
+  if (!data) return '';
+
   switch (panelId) {
     case 'overview-hero':
+    case 'approach-hero':
+    case 'history-hero':
+    case 'team-hero':
+    case 'activities-hero':
       return `${data.label} — ${data.title}`;
     case 'overview-intro':
       return `${data.title} — ${data.description.slice(0, 80)}…`;
     case 'overview-gallery':
       return `${data.label} — ${data.images.length} office images`;
-    case 'approach-hero':
-      return `${data.label} — ${data.title}`;
     case 'approach-principles':
       return `${data.label} — ${data.items.length} principles`;
-    case 'history-hero':
-      return `${data.label} — ${data.title}`;
     case 'history-story':
       return `${data.label} — ${data.title}`;
     case 'history-counters':
       return data.items.map((item) => `${item.value} ${item.label}`).join(' · ');
     case 'history-growth':
       return `${data.title} — ${data.rows.length} years of data`;
+    case 'team-meta':
+    case 'activities-meta':
+      return data.title ?? '';
     default:
       return '';
   }

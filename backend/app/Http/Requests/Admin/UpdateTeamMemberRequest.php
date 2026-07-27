@@ -21,6 +21,7 @@ class UpdateTeamMemberRequest extends FormRequest
         $this->mapCamelCaseInput([
             'fullName' => 'full_name',
             'displayOrder' => 'display_order',
+            'teamCategoryId' => 'team_category_id',
         ]);
     }
 
@@ -34,6 +35,7 @@ class UpdateTeamMemberRequest extends FormRequest
             'position' => ['sometimes', 'nullable', 'string', 'max:255'],
             'department' => ['sometimes', 'nullable', 'string', 'max:255'],
             'category' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'team_category_id' => ['sometimes', 'required', 'uuid', 'exists:team_categories,id'],
             'experience' => ['sometimes', 'nullable', 'string', 'max:255'],
             'photo' => ['sometimes', 'nullable', 'string', 'max:2048'],
             'email' => ['sometimes', 'nullable', 'email', 'max:255'],

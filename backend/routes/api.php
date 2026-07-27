@@ -35,6 +35,7 @@ use App\Http\Controllers\Api\Admin\ProjectCategoryController;
 use App\Http\Controllers\Api\Admin\ProjectController;
 use App\Http\Controllers\Api\Admin\SeoPageController;
 use App\Http\Controllers\Api\Admin\ServiceController;
+use App\Http\Controllers\Api\Admin\TeamCategoryController;
 use App\Http\Controllers\Api\Admin\TeamMemberController;
 use App\Http\Controllers\Api\Admin\WebsiteSettingController;
 use App\Http\Controllers\Api\Auth\LoginController;
@@ -84,6 +85,8 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::apiResource('projects', ProjectController::class);
     Route::apiResource('services', ServiceController::class);
     Route::apiResource('activities', ActivityController::class);
+    Route::post('team-categories/reorder', [TeamCategoryController::class, 'reorder']);
+    Route::apiResource('team-categories', TeamCategoryController::class);
     Route::apiResource('team-members', TeamMemberController::class);
     Route::apiResource('jobs', JobController::class);
 

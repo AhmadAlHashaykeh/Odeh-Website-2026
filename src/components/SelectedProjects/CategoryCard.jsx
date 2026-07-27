@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { resolveMediaUrl } from '../../utils/mediaUrl';
+import RotatingCategoryImage from './RotatingCategoryImage';
 import styles from './CategoryCard.module.css';
 
 export default function CategoryCard({ category, priority = false }) {
@@ -11,11 +11,12 @@ export default function CategoryCard({ category, priority = false }) {
         aria-label={`View ${category.title} category`}
       >
         <div className={styles.imageWrap}>
-          <img src={resolveMediaUrl(category.coverImage)}
+          <RotatingCategoryImage
+            images={category.projectImages}
+            category={category}
             alt={category.title}
-            className={styles.image}
-            loading={priority ? 'eager' : 'lazy'}
-            decoding="async"
+            priority={priority}
+            imageClassName={styles.image}
           />
           <div className={styles.overlay} aria-hidden="true" />
         </div>

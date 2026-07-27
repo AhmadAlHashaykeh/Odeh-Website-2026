@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { StatusBadge, SeoDelegationNotice } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
+import { RotatingCategoryImage } from '../../../../components/SelectedProjects';
 import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './CategoryDetailsDrawer.module.css';
 
@@ -59,12 +60,20 @@ export default function CategoryDetailsDrawer({ category, onClose }) {
         </button>
 
         <div className={styles.coverWrap}>
-          <img src={resolveMediaUrl(category.coverImage)} alt={category.title} className={styles.cover} />
+          <RotatingCategoryImage
+            images={category.projectImages}
+            category={category}
+            alt={category.title}
+            className={styles.coverRotator}
+            imageClassName={styles.cover}
+            priority
+          />
           <div className={styles.coverOverlay} aria-hidden="true" />
           <div className={styles.coverInfo}>
             <span className={styles.orderLabel}>Display Order #{category.displayOrder}</span>
             <h2 id="category-drawer-title" className={styles.title}>{category.title}</h2>
             <p className={styles.slug}>/{category.slug}</p>
+            <p className={styles.autoImageNote}>{category.autoImageLabel}</p>
           </div>
         </div>
 
@@ -113,7 +122,8 @@ export default function CategoryDetailsDrawer({ category, onClose }) {
               <div className={styles.projectGrid}>
                 {category.projectPreviews.map((project) => (
                   <article key={project.id} className={styles.projectCard}>
-                    <img src={resolveMediaUrl(project.coverImage)}
+                    <img
+                      src={resolveMediaUrl(project.coverImage)}
                       alt={project.title}
                       className={styles.projectImage}
                       loading="lazy"
@@ -138,9 +148,9 @@ export default function CategoryDetailsDrawer({ category, onClose }) {
               <MetaRow label="Category ID" value={category.id} />
               <MetaRow label="Slug" value={`/${category.slug}`} />
               <MetaRow label="Publication" value={category.publicationStatus} />
+              <MetaRow label="Category Image" value={category.autoImageLabel} />
               <MetaRow label="Created" value={formatDate(category.createdAt)} />
               <MetaRow label="Last Updated" value={formatDate(category.lastUpdated)} />
-              <MetaRow label="Featured Image" value={category.featuredImage.split('/').pop()} />
             </div>
           </section>
         </div>

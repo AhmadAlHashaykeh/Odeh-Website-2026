@@ -58,4 +58,64 @@ class PublicMediaUrlTest extends TestCase
             $gallery[0]['url'],
         );
     }
+
+    public function test_social_icon_keys_are_not_converted_to_media_references(): void
+    {
+        $payload = PublicMediaUrl::transformPayload([
+            'socialLinks' => [
+                ['label' => 'Facebook', 'href' => 'https://facebook.com', 'icon' => 'facebook'],
+            ],
+            'navigationItems' => [
+                [
+                    'label' => 'About',
+                    'dropdown' => [
+                        ['label' => 'Overview', 'icon' => 'overview'],
+                    ],
+                ],
+            ],
+        ]);
+
+        $this->assertSame('facebook', $payload['socialLinks'][0]['icon']);
+        $this->assertSame('overview', $payload['navigationItems'][0]['dropdown'][0]['icon']);
+    }
+
+    public function test_corrupted_social_icon_objects_are_unwrapped_to_keys(): void
+    {
+        $payload = PublicMediaUrl::transformPayload([
+            'socialLinks' => [
+                [
+                    'label' => 'Facebook',
+                    'href' => 'https://facebook.com',
+                    'icon' => ['path' => 'facebook', 'url' => 'facebook'],
+                ],
+            ],
+        ]);
+
+        $this->assertSame('facebook', $payload['socialLinks'][0]['icon']);
+    }
+
+    public function test_service_icon_media_paths_are_still_transformed(): void
+    {
+        Storage::fake('public');
+        URL::forceRootUrl('http://127.0.0.1:8000');
+        config(['app.url' => 'http://127.0.0.1:8000']);
+
+        $payload = PublicMediaUrl::transformPayload([
+            'icon' => '/storage/uploads/services/icon.svg',
+        ]);
+
+        $this->assertSame('/storage/uploads/services/icon.svg', $payload['icon']['path']);
+        $this->assertSame(
+            'http://127.0.0.1:8000/storage/uploads/services/icon.svg',
+            $payload['icon']['url'],
+        );
+    }
+
+    public function test_absolute_urls_remain_unchanged(): void
+    {
+        $reference = PublicMediaUrl::reference('https://cdn.example.com/logo.webp');
+
+        $this->assertSame('https://cdn.example.com/logo.webp', $reference['path']);
+        $this->assertSame('https://cdn.example.com/logo.webp', $reference['url']);
+    }
 }

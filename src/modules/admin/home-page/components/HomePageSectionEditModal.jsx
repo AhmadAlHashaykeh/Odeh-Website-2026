@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input } from '../../ui';
 import { CmsModuleShortcut } from '../../cms/components';
@@ -396,11 +397,11 @@ function ProjectsForm({ data }) {
           </Form.Field>
         </Form.Row>
         <p className={styles.formNote}>
-          Project selection is derived from featuredProjects (first 3). Edit project details in the Projects module.
+          Homepage projects are chosen at random from published projects on each page load. Edit section copy here; manage project details in the Projects module.
         </p>
         <CmsModuleShortcut
           title="Manage Projects"
-          description="Edit project titles, galleries, categories, and featured status."
+          description="Edit project titles, galleries, categories, and publishing status."
           path="/admin/projects"
           icon="projects"
         />
@@ -431,13 +432,15 @@ export default function HomePageSectionEditModal({
   onClose,
   onSave,
 }) {
+  const formRef = useRef(null);
+
   if (!sectionId || !sectionData) return null;
 
   const title = sectionEditTitles[sectionId];
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.(sectionId, e.currentTarget);
+    onSave?.(sectionId, formRef.current);
   };
 
   const modalHeader = (
@@ -488,7 +491,12 @@ export default function HomePageSectionEditModal({
       footer={modalFooter}
       ariaLabelledBy="home-section-modal-title"
     >
-      <Form key={sectionId} onSubmit={handleSave} className={`${drawerStyles.form} ${styles.form}`}>
+      <Form
+        key={sectionId}
+        ref={formRef}
+        onSubmit={handleSave}
+        className={`${drawerStyles.form} ${styles.form}`}
+      >
         <SectionForm sectionId={sectionId} data={sectionData} />
       </Form>
     </Modal>

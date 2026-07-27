@@ -37,7 +37,7 @@ API runs at `http://127.0.0.1:8000/api`.
 
 | Variable | Description |
 |----------|-------------|
-| `APP_URL` | API base URL (e.g. `http://localhost:8000`) |
+| `APP_URL` | **Required.** Public origin of this API (scheme + host + port). Media `url` fields are built from this value. In production set the real API origin (e.g. `https://api.example.com`). A wrong value (e.g. bare `http://localhost`) breaks absolute media URLs; the frontend can fall back to relative `/storage/...` paths via `VITE_API_BASE_URL`, but `APP_URL` must still be correct. |
 | `APP_DEBUG` | Set `false` in production |
 | `DB_*` | MySQL connection settings |
 | `CORS_ALLOWED_ORIGINS` | Comma-separated frontend origins |

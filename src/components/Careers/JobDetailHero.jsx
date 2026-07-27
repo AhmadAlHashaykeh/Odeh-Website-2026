@@ -21,7 +21,7 @@ export default function JobDetailHero({
           alt=""
           aria-hidden="true"
           className={styles.bgImage}
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
         />
         <div className={styles.overlay} />

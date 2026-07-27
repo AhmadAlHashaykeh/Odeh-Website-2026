@@ -17,6 +17,8 @@ class UpdateAboutPageSettingRequest extends FormRequest
             'overview' => ['sometimes', 'nullable', 'array'],
             'approach' => ['sometimes', 'nullable', 'array'],
             'history' => ['sometimes', 'nullable', 'array'],
+            'team' => ['sometimes', 'nullable', 'array'],
+            'activities' => ['sometimes', 'nullable', 'array'],
         ];
     }
 }

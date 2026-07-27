@@ -20,6 +20,7 @@ class TeamMemberController extends Controller
     {
         $about = $this->resolveSingleton(AboutPageSetting::class);
         $members = TeamMember::query()
+            ->with('teamCategory')
             ->where('status', TeamMemberStatus::Active)
             ->orderBy('display_order')
             ->get();

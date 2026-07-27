@@ -1,6 +1,6 @@
 export const applicationStatusLabels = {
   new: 'New',
-  reviewed: 'Reviewed',
+  reviewing: 'In Review',
   shortlisted: 'Shortlisted',
   rejected: 'Rejected',
   hired: 'Hired',
@@ -23,7 +23,7 @@ export const applicationsPageMeta = {
 export const statusFilterOptions = [
   { value: 'all', label: 'All Statuses' },
   { value: 'new', label: 'New' },
-  { value: 'reviewed', label: 'Reviewed' },
+  { value: 'reviewing', label: 'In Review' },
   { value: 'shortlisted', label: 'Shortlisted' },
   { value: 'hired', label: 'Hired' },
   { value: 'rejected', label: 'Rejected' },
@@ -41,7 +41,7 @@ export const sortOptions = [
 ];
 
 export const statusActionLabels = {
-  reviewed: 'Mark as Reviewed',
+  reviewing: 'Mark as Reviewed',
   shortlisted: 'Shortlist',
   rejected: 'Reject',
   hired: 'Hire',

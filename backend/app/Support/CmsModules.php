@@ -16,6 +16,8 @@ class CmsModules
 
     public const TEAM_MEMBERS = 'team-members';
 
+    public const TEAM_CATEGORIES = 'team-categories';
+
     public const JOBS = 'jobs';
 
     public const APPLICATIONS = 'applications';
@@ -48,6 +50,7 @@ class CmsModules
             self::SERVICES,
             self::ACTIVITIES,
             self::TEAM_MEMBERS,
+            self::TEAM_CATEGORIES,
             self::JOBS,
             self::APPLICATIONS,
             self::CONTACT_MESSAGES,

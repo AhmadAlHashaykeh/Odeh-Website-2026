@@ -25,11 +25,15 @@ export const statusFilterOptions = [
 
 export const categoryFilterOptions = [
   { value: 'all', label: 'All Categories' },
-  { value: 'leadership', label: 'Leadership' },
-  { value: 'senior', label: 'Senior Specialist' },
-  { value: 'engineer', label: 'Engineer' },
-  { value: 'support', label: 'Technical Support' },
-  { value: 'site', label: 'Site Operations' },
+  { value: 'founders-executive-leadership', label: 'Founders & Executive Leadership' },
+  { value: 'partners-directors', label: 'Partners & Directors' },
+  { value: 'project-management', label: 'Project Management' },
+  { value: 'structural-engineering', label: 'Structural Engineering' },
+  { value: 'architecture-design', label: 'Architecture & Design' },
+  { value: 'mep-engineering', label: 'MEP Engineering' },
+  { value: 'site-engineers', label: 'Site Engineers' },
+  { value: 'administration-support', label: 'Administration & Support' },
+  { value: 'other-team-members', label: 'Other Team Members' },
 ];
 
 export const experienceFilterOptions = [

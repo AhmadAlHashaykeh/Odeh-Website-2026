@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreTeamMemberRequest;
 use App\Http\Requests\Admin\UpdateTeamMemberRequest;
 use App\Http\Resources\TeamMemberResource;
+use App\Models\TeamCategory;
 use App\Models\TeamMember;
 use App\Support\CmsModules;
 use App\Support\SlugGenerator;
@@ -22,7 +23,7 @@ class TeamMemberController extends Controller
     {
         $this->authorizeModuleView(CmsModules::TEAM_MEMBERS);
 
-        $query = TeamMember::query();
+        $query = TeamMember::query()->with('teamCategory');
 
         $this->applySearch($query, $request->query('search'), [
             'full_name', 'slug', 'position', 'department', 'category', 'email',
@@ -33,7 +34,17 @@ class TeamMemberController extends Controller
         }
 
         if ($category = $request->query('category')) {
-            $query->where('category', $category);
+            $query->where(function ($builder) use ($category): void {
+                $builder->where('team_category_id', $category)
+                    ->orWhereHas('teamCategory', function ($categoryQuery) use ($category): void {
+                        $categoryQuery->where('slug', $category)->orWhere('name', $category);
+                    })
+                    ->orWhere('category', $category);
+            });
+        }
+
+        if ($teamCategoryId = $request->query('team_category_id') ?? $request->query('teamCategoryId')) {
+            $query->where('team_category_id', $teamCategoryId);
         }
 
         $this->applySort($query, $request->query('sort'), [
@@ -57,8 +68,10 @@ class TeamMemberController extends Controller
 
         $data = $request->validated();
         $data['slug'] = $this->resolveSlug($data, new TeamMember);
+        $this->syncLegacyCategoryLabel($data);
 
         $teamMember = TeamMember::query()->create($data);
+        $teamMember->load('teamCategory');
 
         return $this->singleResponse(new TeamMemberResource($teamMember), 201);
     }
@@ -66,6 +79,7 @@ class TeamMemberController extends Controller
     public function show(TeamMember $teamMember): JsonResponse
     {
         $this->authorizeModuleView(CmsModules::TEAM_MEMBERS);
+        $teamMember->load('teamCategory');
 
         return $this->singleResponse(new TeamMemberResource($teamMember));
     }
@@ -85,7 +99,9 @@ class TeamMemberController extends Controller
             $data['slug'] = $this->resolveSlug($slugInput, $teamMember, $teamMember->id);
         }
 
+        $this->syncLegacyCategoryLabel($data);
         $teamMember->update($data);
+        $teamMember->load('teamCategory');
 
         return $this->singleResponse(new TeamMemberResource($teamMember));
     }
@@ -97,6 +113,27 @@ class TeamMemberController extends Controller
         $teamMember->delete();
 
         return response()->json(null, 204);
+    }
+
+    /**
+     * @param  array<string, mixed>  $data
+     */
+    private function syncLegacyCategoryLabel(array &$data): void
+    {
+        if (! array_key_exists('team_category_id', $data)) {
+            return;
+        }
+
+        if (! $data['team_category_id']) {
+            $data['category'] = null;
+
+            return;
+        }
+
+        $name = TeamCategory::query()->whereKey($data['team_category_id'])->value('name');
+        if ($name) {
+            $data['category'] = $name;
+        }
     }
 
     /**

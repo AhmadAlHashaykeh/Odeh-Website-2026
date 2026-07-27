@@ -2,6 +2,7 @@ export const PERMISSION_MODULES = [
   { id: 'dashboard', label: 'Dashboard' },
   { id: 'projects', label: 'Projects' },
   { id: 'project-categories', label: 'Project Categories' },
+  { id: 'team-categories', label: 'Team Categories' },
   { id: 'team-members', label: 'Team Members' },
   { id: 'activities', label: 'Activities' },
   { id: 'services', label: 'Services' },

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { getNavigationFooter, getWebsiteSettings } from '../api/public/content';
 import { normalizePublicMedia } from '../utils/mediaUrl';
 
@@ -9,38 +9,53 @@ export function PublicSiteProvider({ children }) {
   const [websiteSettings, setWebsiteSettings] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const requestIdRef = useRef(0);
+  const inFlightRef = useRef(null);
 
-  useEffect(() => {
-    let cancelled = false;
+  const refresh = useCallback(async () => {
+    if (inFlightRef.current) {
+      return inFlightRef.current;
+    }
 
-    async function load() {
+    const requestId = ++requestIdRef.current;
+
+    const promise = (async () => {
       try {
         const [navResponse, settingsResponse] = await Promise.all([
           getNavigationFooter(),
           getWebsiteSettings(),
         ]);
 
-        if (!cancelled) {
-          setNavigationFooter(normalizePublicMedia(navResponse.data));
-          setWebsiteSettings(normalizePublicMedia(settingsResponse.data));
-        }
+        if (requestId !== requestIdRef.current) return;
+
+        setNavigationFooter(normalizePublicMedia(navResponse.data));
+        setWebsiteSettings(normalizePublicMedia(settingsResponse.data));
+        setError(null);
       } catch (err) {
-        if (!cancelled) {
-          setError(err);
-        }
+        if (requestId !== requestIdRef.current) return;
+        setError(err);
       } finally {
-        if (!cancelled) {
+        if (requestId === requestIdRef.current) {
           setLoading(false);
         }
+        if (inFlightRef.current === promise) {
+          inFlightRef.current = null;
+        }
       }
-    }
+    })();
 
-    load();
+    inFlightRef.current = promise;
+    return promise;
+  }, []);
+
+  useEffect(() => {
+    refresh();
 
     return () => {
-      cancelled = true;
+      requestIdRef.current += 1;
+      inFlightRef.current = null;
     };
-  }, []);
+  }, [refresh]);
 
   const value = useMemo(
     () => ({
@@ -48,6 +63,7 @@ export function PublicSiteProvider({ children }) {
       websiteSettings,
       loading,
       error,
+      refresh,
       navLinks: navigationFooter?.navigationItems ?? [],
       footerQuickLinks: navigationFooter?.footerQuickLinks ?? [],
       socialLinks: navigationFooter?.socialLinks ?? [],
@@ -58,7 +74,7 @@ export function PublicSiteProvider({ children }) {
       branding: websiteSettings?.branding ?? {},
       general: websiteSettings?.general ?? {},
     }),
-    [navigationFooter, websiteSettings, loading, error],
+    [navigationFooter, websiteSettings, loading, error, refresh],
   );
 
   return <PublicSiteContext.Provider value={value}>{children}</PublicSiteContext.Provider>;

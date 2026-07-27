@@ -22,10 +22,19 @@ export default function TeamMemberCard({
   experience,
   email,
   photo,
+  roleStyle,
   priority = false,
 }) {
+  const roleVars = roleStyle
+    ? {
+        '--role-border': roleStyle.borderColor,
+        '--role-border-hover': roleStyle.borderColorHover,
+        '--role-shadow': roleStyle.shadowColor,
+      }
+    : undefined;
+
   return (
-    <article className={styles.card}>
+    <article className={styles.card} style={roleVars}>
       <div className={styles.photoFrame}>
         <img
           src={photo}

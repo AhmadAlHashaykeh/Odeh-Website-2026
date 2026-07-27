@@ -3,6 +3,7 @@ import { ProjectsHero, CategoryGrid } from '../components/SelectedProjects';
 import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getProjects } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { resolveCategoryDisplayImages } from '../utils/categoryProjectImages';
 import { normalizePublicMedia } from '../utils/mediaUrl';
 
 const FALLBACK_META = {
@@ -13,7 +14,14 @@ const FALLBACK_META = {
 export default function ProjectsPage() {
   const { data, loading, error } = usePublicQuery(() => getProjects(), []);
   const page = data?.data?.page ? normalizePublicMedia(data.data.page) : undefined;
-  const categories = (data?.data?.categories ?? []).map(normalizePublicMedia);
+  const projects = (data?.data?.projects ?? []).map(normalizePublicMedia);
+  const categories = (data?.data?.categories ?? []).map((category) => {
+    const normalized = normalizePublicMedia(category);
+    return {
+      ...normalized,
+      projectImages: resolveCategoryDisplayImages(normalized, projects, { publishedOnly: true }),
+    };
+  });
 
   if (loading) {
     return (

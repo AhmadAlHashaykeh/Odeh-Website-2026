@@ -11,9 +11,6 @@ export default function ProjectsToolbar({
   categoryFilter,
   onCategoryFilterChange,
   categoryOptions,
-  featuredFilter,
-  onFeaturedFilterChange,
-  featuredOptions,
   publishedFilter,
   onPublishedFilterChange,
   publishedOptions,
@@ -84,14 +81,6 @@ export default function ProjectsToolbar({
           options={statusOptions}
           icon="filter"
           ariaLabel="Filter by status"
-        />
-        <FilterDropdown
-          label="Featured"
-          value={featuredFilter}
-          onChange={onFeaturedFilterChange}
-          options={featuredOptions}
-          icon="star"
-          ariaLabel="Filter by featured"
         />
         <FilterDropdown
           label="Publication"

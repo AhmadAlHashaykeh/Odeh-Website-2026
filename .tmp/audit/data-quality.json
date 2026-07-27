@@ -1,0 +1,69 @@
+{
+    "storageCounts": {
+        "projects": {
+            "storage_like": 0,
+            "assets_like": 49,
+            "null_or_empty": 0,
+            "total": 49
+        },
+        "services": {
+            "storage_like": 0,
+            "assets_like": 7,
+            "null_or_empty": 0,
+            "total": 7
+        },
+        "activities": {
+            "storage_like": 0,
+            "assets_like": 4,
+            "null_or_empty": 0,
+            "total": 4
+        },
+        "team_members": {
+            "storage_like": 0,
+            "assets_like": 21,
+            "null_or_empty": 2,
+            "total": 23
+        },
+        "project_categories": {
+            "storage_like": 0,
+            "assets_like": 11,
+            "null_or_empty": 0,
+            "total": 11
+        }
+    },
+    "emptySlug": [
+        {
+            "id": "16cb2435-53b5-42b1-9f77-9069c98e5592",
+            "title": "885",
+            "slug": "",
+            "cover_image": "/assets/projects//cover.webp",
+            "status": "published"
+        }
+    ],
+    "auditMembers": [
+        {
+            "id": "3f564cef-6059-4467-a31b-742ac0016791",
+            "full_name": "Phase7 Audit Member",
+            "photo": null,
+            "status": "active",
+            "team_category_id": "5b26b63a-d43a-4208-a8b4-8414b084e5a9"
+        },
+        {
+            "id": "5d7b9abf-59fa-42dd-a89b-0038d375d5ab",
+            "full_name": "Phase7 Audit Member",
+            "photo": null,
+            "status": "active",
+            "team_category_id": "5b26b63a-d43a-4208-a8b4-8414b084e5a9"
+        }
+    ],
+    "badCovers": [
+        {
+            "id": "16cb2435-53b5-42b1-9f77-9069c98e5592",
+            "title": "885",
+            "slug": "",
+            "cover_image": "/assets/projects//cover.webp"
+        }
+    ],
+    "app_url": "http://localhost",
+    "public_disk_url": "http://localhost/storage"
+}

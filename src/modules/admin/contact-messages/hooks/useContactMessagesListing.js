@@ -114,13 +114,17 @@ export function useContactMessagesListing({ initialPerPage = 12 } = {}) {
       buildCountStatistics(contactMessagesApi.list, [
         { id: 'total', label: 'Total Messages', helper: 'All inquiries', params: {} },
         { id: 'new', label: 'New', helper: 'Awaiting review', params: { status: 'new' } },
-        { id: 'read', label: 'Read', helper: 'Opened by team', params: { status: 'read' } },
-        { id: 'replied', label: 'Replied', helper: 'Response sent', params: { status: 'replied' } },
         {
-          id: 'archived',
-          label: 'Archived',
+          id: 'in_progress',
+          label: 'In Progress',
+          helper: 'Being handled',
+          params: { status: 'in_progress' },
+        },
+        {
+          id: 'resolved',
+          label: 'Resolved',
           helper: 'Closed inquiries',
-          params: { status: 'archived' },
+          params: { status: 'resolved' },
         },
         {
           id: 'high-priority',
