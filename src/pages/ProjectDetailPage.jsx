@@ -44,7 +44,9 @@ export default function ProjectDetailPage() {
 
   const meta = {
     title: `${project.title} | ${categoryTitle} | ODEH & PARTNERS DESIGN`,
-    description: project.description,
+    description: [project.architect, project.location, project.area, project.category]
+      .filter(Boolean)
+      .join(' · '),
   };
 
   const breadcrumbs = [

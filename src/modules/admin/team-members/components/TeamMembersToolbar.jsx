@@ -5,18 +5,12 @@ import styles from './TeamMembersToolbar.module.css';
 export default function TeamMembersToolbar({
   searchValue,
   onSearchChange,
-  departmentFilter,
-  onDepartmentFilterChange,
-  departmentOptions,
-  categoryFilter,
-  onCategoryFilterChange,
-  categoryOptions,
+  sectionFilter,
+  onSectionFilterChange,
+  sectionOptions,
   statusFilter,
   onStatusFilterChange,
   statusOptions,
-  experienceFilter,
-  onExperienceFilterChange,
-  experienceOptions,
   sortBy,
   onSortChange,
   sortOptions,
@@ -24,8 +18,6 @@ export default function TeamMembersToolbar({
   onViewChange,
   onRefresh,
   isRefreshing,
-  onBulkActionsClick,
-  bulkActionsDisabled,
 }) {
   return (
     <div className={styles.toolbar}>
@@ -34,7 +26,7 @@ export default function TeamMembersToolbar({
           <SearchField
             value={searchValue}
             onChange={onSearchChange}
-            placeholder="Search members by name, position, department..."
+            placeholder="Search by name or job title…"
             ariaLabel="Search team members"
           />
         </div>
@@ -50,50 +42,25 @@ export default function TeamMembersToolbar({
           >
             <AdminIcon name="refresh" size={16} />
           </button>
-          <button
-            type="button"
-            className={styles.bulkBtn}
-            onClick={onBulkActionsClick}
-            disabled={bulkActionsDisabled}
-          >
-            Bulk Actions
-            <AdminIcon name="chevronDown" size={14} />
-          </button>
         </div>
       </div>
 
       <div className={styles.filters}>
         <FilterDropdown
-          label="Department"
-          value={departmentFilter}
-          onChange={onDepartmentFilterChange}
-          options={departmentOptions}
-          icon="team"
-          ariaLabel="Filter by department"
-        />
-        <FilterDropdown
-          label="Category"
-          value={categoryFilter}
-          onChange={onCategoryFilterChange}
-          options={categoryOptions}
+          label="Section"
+          value={sectionFilter}
+          onChange={onSectionFilterChange}
+          options={sectionOptions}
           icon="categories"
-          ariaLabel="Filter by category"
+          ariaLabel="Filter by website section"
         />
         <FilterDropdown
-          label="Status"
+          label="Visibility"
           value={statusFilter}
           onChange={onStatusFilterChange}
           options={statusOptions}
           icon="filter"
-          ariaLabel="Filter by status"
-        />
-        <FilterDropdown
-          label="Experience"
-          value={experienceFilter}
-          onChange={onExperienceFilterChange}
-          options={experienceOptions}
-          icon="filter"
-          ariaLabel="Filter by experience"
+          ariaLabel="Filter by visibility"
         />
         <FilterDropdown
           label="Sort"

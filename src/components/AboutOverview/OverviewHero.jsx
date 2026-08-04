@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './OverviewHero.module.css';
 
 export default function OverviewHero({
@@ -13,6 +14,7 @@ export default function OverviewHero({
   compact = false,
 }) {
   const contentRef = useScrollReveal(0.12);
+  const backgroundSrc = resolveMediaUrl(backgroundImage);
 
   return (
     <section
@@ -20,14 +22,16 @@ export default function OverviewHero({
       aria-label={ariaLabel ?? title}
     >
       <div className={styles.background}>
-        <img
-          src={backgroundImage}
-          alt=""
-          aria-hidden="true"
-          className={styles.bgImage}
-          fetchpriority="high"
-          decoding="async"
-        />
+        {backgroundSrc ? (
+          <img
+            src={backgroundSrc}
+            alt=""
+            aria-hidden="true"
+            className={styles.bgImage}
+            fetchpriority="high"
+            decoding="async"
+          />
+        ) : null}
         <div className={styles.overlay} />
       </div>
 

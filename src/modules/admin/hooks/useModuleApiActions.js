@@ -102,10 +102,11 @@ function buildDuplicatePayload(moduleKey, item) {
       return {
         fullName: copyTitle,
         position: item.position,
-        department: item.department,
         teamCategoryId: item.teamCategoryId || item.category?.id,
+        teamRankId: item.teamRankId || item.rank?.id,
         experience: item.experience,
         email: item.email,
+        linkedinUrl: item.linkedinUrl,
         photo: item.photo,
         status: 'hidden',
         displayOrder: item.displayOrder,
@@ -224,7 +225,9 @@ export async function applyBulkUpdates({
   const payload = payloadMap[bulkAction];
   if (!payload) return false;
 
-  const selectedItems = listing.items.filter((item) => listing.selectedIds.has(item.id));
+  const selectedItems = (listing.paginatedItems ?? listing.items ?? []).filter((item) =>
+    listing.selectedIds.has(item.id),
+  );
   if (selectedItems.length === 0) return false;
 
   try {

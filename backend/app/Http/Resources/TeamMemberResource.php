@@ -31,6 +31,19 @@ class TeamMemberResource extends JsonResource
             ];
         }
 
+        $rankPayload = null;
+
+        if ($this->relationLoaded('teamRank') && $this->teamRank) {
+            $rankPayload = [
+                'id' => $this->teamRank->id,
+                'name' => $this->teamRank->name,
+                'slug' => $this->teamRank->slug,
+                'color' => $this->teamRank->color,
+                'displayOrder' => $this->teamRank->display_order,
+                'isActive' => (bool) $this->teamRank->is_active,
+            ];
+        }
+
         return [
             'id' => $this->id,
             'slug' => $this->slug,
@@ -40,10 +53,13 @@ class TeamMemberResource extends JsonResource
             'category' => $categoryPayload,
             'categoryLabel' => $this->teamCategory?->name ?? $this->category,
             'teamCategoryId' => $this->team_category_id,
+            'rank' => $rankPayload,
+            'teamRankId' => $this->team_rank_id,
             'experience' => $this->experience,
             'experienceYears' => $experienceYears,
             'photo' => PublicMediaUrl::reference($this->photo),
             'email' => $this->email,
+            'linkedinUrl' => $this->linkedin_url,
             'status' => $this->status->value,
             'displayOrder' => $this->display_order,
             'lastUpdated' => $this->updated_at?->toIso8601String(),

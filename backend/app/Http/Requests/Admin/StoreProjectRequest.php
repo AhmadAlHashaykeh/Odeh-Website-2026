@@ -56,6 +56,7 @@ class StoreProjectRequest extends FormRequest
             'gallery.*.src' => ['required_with:gallery', 'string'],
             'gallery.*.alt' => ['nullable', 'string'],
             'location' => ['nullable', 'string', 'max:255'],
+            'architect' => ['nullable', 'string', 'max:255'],
             'project_type' => ['nullable', 'string', 'max:255'],
             'area' => ['nullable', 'string', 'max:255'],
             'services' => ['nullable', 'string', 'max:255'],

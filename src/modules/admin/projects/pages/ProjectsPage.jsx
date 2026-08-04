@@ -15,7 +15,6 @@ import { useProjectsListing } from '../hooks/useProjectsListing';
 import {
   projectsPageMeta,
   statusFilterOptions,
-  publishedFilterOptions,
   sortOptions,
   bulkActionOptions,
 } from '../mock/projectsConfig';
@@ -46,7 +45,7 @@ export default function ProjectsPage() {
     listing,
     api: projectsApi,
     apiContext: { categories: listing.categoryRecords },
-    enableGallery: true,
+    enableGallery: false,
   });
 
   useAdminBreadcrumbs(projectsPageMeta.topBarBreadcrumbs);
@@ -62,22 +61,6 @@ export default function ProjectsPage() {
       ...listing.categories.map((cat) => ({ value: cat, label: cat })),
     ],
     [listing.categories],
-  );
-
-  const yearOptions = useMemo(
-    () => [
-      { value: 'all', label: 'All Years' },
-      ...listing.years.map((year) => ({ value: year, label: year })),
-    ],
-    [listing.years],
-  );
-
-  const typeOptions = useMemo(
-    () => [
-      { value: 'all', label: 'All Types' },
-      ...listing.projectTypes.map((type) => ({ value: type, label: type })),
-    ],
-    [listing.projectTypes],
   );
 
   const handleBulkApply = () => {
@@ -118,15 +101,6 @@ export default function ProjectsPage() {
             categoryFilter={listing.categoryFilter}
             onCategoryFilterChange={listing.setCategoryFilter}
             categoryOptions={categoryOptions}
-            publishedFilter={listing.publishedFilter}
-            onPublishedFilterChange={listing.setPublishedFilter}
-            publishedOptions={publishedFilterOptions}
-            yearFilter={listing.yearFilter}
-            onYearFilterChange={listing.setYearFilter}
-            yearOptions={yearOptions}
-            typeFilter={listing.typeFilter}
-            onTypeFilterChange={listing.setTypeFilter}
-            typeOptions={typeOptions}
             sortBy={listing.sortBy}
             onSortChange={listing.setSortBy}
             sortOptions={sortOptions}
@@ -209,7 +183,7 @@ export default function ProjectsPage() {
       <AdminActionFlowsHost
         moduleKey="projects"
         flows={flows}
-        showGallery
+        showGallery={false}
         fieldOptions={fieldOptions}
       />
     </div>

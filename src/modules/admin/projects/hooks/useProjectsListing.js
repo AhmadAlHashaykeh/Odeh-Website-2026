@@ -9,56 +9,26 @@ const ALL = 'all';
 
 const SORT_MAP = {
   ...COMMON_SORT_MAP,
-  year_asc: 'year',
-  year_desc: '-year',
 };
 
 export function useProjectsListing({ initialPerPage = 10 } = {}) {
   const [statusFilter, setStatusFilter] = useState(ALL);
   const [categoryFilter, setCategoryFilter] = useState(ALL);
-  const [publishedFilter, setPublishedFilter] = useState(ALL);
-  const [yearFilter, setYearFilter] = useState(ALL);
-  const [typeFilter, setTypeFilter] = useState(ALL);
   const [sortBy, setSortBy] = useState('updated_desc');
   const [categoryOptions, setCategoryOptions] = useState([]);
-  const [facetOptions, setFacetOptions] = useState({ years: [], projectTypes: [] });
 
   useEffect(() => {
     let cancelled = false;
 
     async function loadOptions() {
       try {
-        const [categoriesResponse, facetsResponse] = await Promise.all([
-          projectCategoriesApi.list({ per_page: 50 }),
-          projectsApi.list({ per_page: 50 }),
-        ]);
-
-        if (cancelled) return;
-
-        setCategoryOptions(categoriesResponse.data);
-
-        const years = [
-          ...new Set(
-            facetsResponse.data
-              .map((item) => item.year)
-              .filter(Boolean)
-              .map(String),
-          ),
-        ].sort((a, b) => Number(b) - Number(a));
-
-        const projectTypes = [
-          ...new Set(
-            facetsResponse.data
-              .map((item) => item.projectType)
-              .filter((type) => type && type.length > 1 && type !== '-'),
-          ),
-        ].sort();
-
-        setFacetOptions({ years, projectTypes });
+        const categoriesResponse = await projectCategoriesApi.list({ per_page: 50 });
+        if (!cancelled) {
+          setCategoryOptions(categoriesResponse.data);
+        }
       } catch {
         if (!cancelled) {
           setCategoryOptions([]);
-          setFacetOptions({ years: [], projectTypes: [] });
         }
       }
     }
@@ -73,19 +43,9 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
     () => ({
       statusFilter,
       categoryFilter,
-      publishedFilter,
-      yearFilter,
-      typeFilter,
       sortBy,
     }),
-    [
-      statusFilter,
-      categoryFilter,
-      publishedFilter,
-      yearFilter,
-      typeFilter,
-      sortBy,
-    ],
+    [statusFilter, categoryFilter, sortBy],
   );
 
   const buildQueryParams = useCallback(
@@ -95,9 +55,6 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
       search,
       statusFilter: status,
       categoryFilter: category,
-      publishedFilter: published,
-      yearFilter: year,
-      typeFilter: projectType,
       sortBy: sort,
     }) => {
       const params = {
@@ -109,9 +66,6 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
       if (search) params.search = search;
       if (status !== ALL) params.status = status;
       if (category !== ALL) params.category = category;
-      if (published === 'published' && status === ALL) params.status = 'published';
-      if (year !== ALL) params.year = year;
-      if (projectType !== ALL) params.project_type = projectType;
 
       return params;
     },
@@ -159,17 +113,9 @@ export function useProjectsListing({ initialPerPage = 10 } = {}) {
     setStatusFilter,
     categoryFilter,
     setCategoryFilter,
-    publishedFilter,
-    setPublishedFilter,
-    yearFilter,
-    setYearFilter,
-    typeFilter,
-    setTypeFilter,
     sortBy,
     setSortBy,
     categories,
-    years: facetOptions.years,
-    projectTypes: facetOptions.projectTypes,
     categoryRecords: categoryOptions,
     simulateRefresh: listing.refresh,
     activeProject: listing.activeItem,

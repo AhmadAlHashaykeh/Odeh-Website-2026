@@ -173,9 +173,17 @@ function HeroForm({ data }) {
 }
 
 function AboutForm({ data }) {
+  const stats =
+    data.stats?.length > 0
+      ? data.stats
+      : [
+          { value: '', label: '' },
+          { value: '', label: '' },
+        ];
+
   return (
     <>
-      <Form.Section title="Homepage Section Framing">
+      <Form.Section title="Section Header">
         <Form.Field label="Section Label" htmlFor="about-label">
           <Input.Field>
             <input
@@ -187,6 +195,72 @@ function AboutForm({ data }) {
             />
           </Input.Field>
         </Form.Field>
+        <Form.Row>
+          <Form.Field label="Title Main" htmlFor="about-title-main">
+            <Input.Field>
+              <input
+                id="about-title-main"
+                name="about-title-main"
+                type="text"
+                className={inputStyles.input}
+                defaultValue={data.titleMain}
+              />
+            </Input.Field>
+          </Form.Field>
+          <Form.Field label="Title Accent" htmlFor="about-title-accent">
+            <Input.Field>
+              <input
+                id="about-title-accent"
+                name="about-title-accent"
+                type="text"
+                className={inputStyles.input}
+                defaultValue={data.titleAccent}
+              />
+            </Input.Field>
+          </Form.Field>
+        </Form.Row>
+        <Form.Field label="Body Copy" htmlFor="about-body">
+          <Input.Field>
+            <textarea
+              id="about-body"
+              name="about-body"
+              className={`${inputStyles.input} ${inputStyles.textarea}`}
+              defaultValue={data.body}
+              rows={5}
+            />
+          </Input.Field>
+        </Form.Field>
+      </Form.Section>
+
+      <Form.Section title="Statistics">
+        <StatFields stats={stats} prefix="about" />
+      </Form.Section>
+
+      <Form.Section title="Featured Image">
+        <div className={styles.mediaField}>
+          <CoverImageField
+            label="About Section Image"
+            name="about-image"
+            src={data.image}
+            alt={data.imageAlt || 'About section image'}
+            uploadModule="home-page"
+            uploadField="aboutImage"
+          />
+        </div>
+        <Form.Field label="Image Alt Text" htmlFor="about-image-alt">
+          <Input.Field>
+            <input
+              id="about-image-alt"
+              name="about-image-alt"
+              type="text"
+              className={inputStyles.input}
+              defaultValue={data.imageAlt}
+            />
+          </Input.Field>
+        </Form.Field>
+      </Form.Section>
+
+      <Form.Section title="Call to Action">
         <Form.Row>
           <Form.Field label="Read More Label" htmlFor="about-readmore-label">
             <Input.Field>
@@ -211,15 +285,12 @@ function AboutForm({ data }) {
             </Input.Field>
           </Form.Field>
         </Form.Row>
-        <p className={styles.formNote}>
-          Title, body copy, stats, and image are sourced from About Pages → Overview. Edit them there, not here.
-        </p>
       </Form.Section>
 
       <Form.Section title="Related Content">
         <CmsModuleShortcut
           title="Open About Pages"
-          description="Edit company introduction, overview hero, and office gallery."
+          description="Edit the full About Overview page, team, and activities content."
           path="/admin/about-pages"
           icon="about"
         />

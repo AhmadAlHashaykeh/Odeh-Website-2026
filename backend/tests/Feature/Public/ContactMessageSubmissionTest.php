@@ -3,7 +3,11 @@
 namespace Tests\Feature\Public;
 
 use App\Models\ContactMessage;
+use App\Models\Role;
+use App\Models\User;
+use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class ContactMessageSubmissionTest extends TestCase
@@ -58,10 +62,10 @@ class ContactMessageSubmissionTest extends TestCase
             'email' => 'nadia.rahhal@example.com',
         ]);
 
-        $role = \App\Models\Role::query()->where('slug', 'super-admin')->firstOrFail();
-        $user = \App\Models\User::factory()->create(['role_id' => $role->id]);
+        $role = Role::query()->where('slug', 'super-admin')->firstOrFail();
+        $user = User::factory()->create(['role_id' => $role->id]);
 
-        \Laravel\Sanctum\Sanctum::actingAs($user);
+        Sanctum::actingAs($user);
 
         $response = $this->getJson('/api/admin/contact-messages');
 
@@ -75,6 +79,6 @@ class ContactMessageSubmissionTest extends TestCase
     {
         parent::setUp();
 
-        $this->seed(\Database\Seeders\RoleSeeder::class);
+        $this->seed(RoleSeeder::class);
     }
 }

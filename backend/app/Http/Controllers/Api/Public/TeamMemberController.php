@@ -6,7 +6,6 @@ use App\Enums\TeamMemberStatus;
 use App\Http\Controllers\Api\Admin\Concerns\HandlesSingletonSetting;
 use App\Http\Controllers\Api\Public\Concerns\RespondsWithJson;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AboutPageSettingResource;
 use App\Http\Resources\TeamMemberResource;
 use App\Models\AboutPageSetting;
 use App\Models\TeamMember;
@@ -20,7 +19,7 @@ class TeamMemberController extends Controller
     {
         $about = $this->resolveSingleton(AboutPageSetting::class);
         $members = TeamMember::query()
-            ->with('teamCategory')
+            ->with(['teamCategory', 'teamRank'])
             ->where('status', TeamMemberStatus::Active)
             ->orderBy('display_order')
             ->get();

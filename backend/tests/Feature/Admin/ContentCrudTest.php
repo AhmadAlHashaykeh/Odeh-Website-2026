@@ -354,8 +354,16 @@ class ContentCrudTest extends TestCase
 
         $category = \App\Models\TeamCategory::query()->create([
             'name' => 'Structural Engineering',
-            'slug' => 'structural-engineering',
+            'slug' => 'structural-engineering-test',
             'border_color' => '#00a8c9',
+            'display_order' => 1,
+            'is_active' => true,
+        ]);
+
+        $rank = \App\Models\TeamRank::query()->create([
+            'name' => 'Senior Engineer',
+            'slug' => 'senior-engineer-test',
+            'color' => '#E85A78',
             'display_order' => 1,
             'is_active' => true,
         ]);
@@ -364,6 +372,7 @@ class ContentCrudTest extends TestCase
             'fullName' => 'Ahmad Odeh',
             'position' => 'Managing Director',
             'teamCategoryId' => $category->id,
+            'teamRankId' => $rank->id,
             'status' => 'active',
         ]);
 
@@ -371,7 +380,9 @@ class ContentCrudTest extends TestCase
             ->assertJsonPath('data.fullName', 'Ahmad Odeh')
             ->assertJsonPath('data.slug', 'ahmad-odeh')
             ->assertJsonPath('data.teamCategoryId', $category->id)
-            ->assertJsonPath('data.category.name', 'Structural Engineering');
+            ->assertJsonPath('data.teamRankId', $rank->id)
+            ->assertJsonPath('data.category.name', 'Structural Engineering')
+            ->assertJsonPath('data.rank.name', 'Senior Engineer');
 
         $id = $create->json('data.id');
 

@@ -1,7 +1,7 @@
 import { resolveMediaUrl } from './mediaUrl';
 
 /** Public/admin category cards rotate through project images on this interval. */
-export const CATEGORY_IMAGE_ROTATION_MS = 4500;
+export const CATEGORY_IMAGE_ROTATION_MS = 3500;
 
 function isPublishedProject(project) {
   if (project?.published === true) return true;

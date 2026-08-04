@@ -70,4 +70,39 @@ describe('mediaUrl', () => {
       ),
     ).toBe(false);
   });
+
+  it('preserves image objects with alt while resolving src', async () => {
+    const { normalizePublicMedia } = await import('./mediaUrl');
+
+    const normalized = normalizePublicMedia({
+      content: {
+        title: 'About',
+        image: {
+          src: '/assets/about/office/img-05.webp',
+          alt: 'Office workspace',
+          path: '/assets/about/office/img-05.webp',
+          url: '/assets/about/office/img-05.webp',
+        },
+      },
+    });
+
+    expect(normalized.content.image).toEqual({
+      src: '/assets/about/office/img-05.webp',
+      alt: 'Office workspace',
+      path: '/assets/about/office/img-05.webp',
+      url: '/assets/about/office/img-05.webp',
+    });
+  });
+
+  it('still resolves string image fields to media URLs', async () => {
+    const { normalizePublicMedia } = await import('./mediaUrl');
+
+    const normalized = normalizePublicMedia({
+      about: {
+        image: '/assets/about/odeh-about-office.webp',
+      },
+    });
+
+    expect(normalized.about.image).toBe('/assets/about/odeh-about-office.webp');
+  });
 });

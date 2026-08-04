@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input } from '../../ui';
 import { CoverImageField, GalleryPlaceholder } from '../../cms/action-flows/PlaceholderFieldGroup';
@@ -193,6 +193,17 @@ function CompanyIntroForm({ data }) {
 }
 
 function OfficeGalleryForm({ data }) {
+  const [images, setImages] = useState(() =>
+    (data.images ?? []).map((image) => ({
+      ...image,
+      src: resolveMediaPath(image),
+    })),
+  );
+
+  const handleRemove = (index) => {
+    setImages((prev) => prev.filter((_, itemIndex) => itemIndex !== index));
+  };
+
   return (
     <>
       <Form.Section title="Gallery Header">
@@ -219,25 +230,34 @@ function OfficeGalleryForm({ data }) {
           </Input.Field>
         </Form.Field>
       </Form.Section>
-      <Form.Section title={`Office Images (${data.images.length})`}>
+      <Form.Section title={`Office Images (${images.length})`}>
         <div className={styles.mediaField}>
           <GalleryPlaceholder
             label="Office Gallery"
             name="gallery-images"
-            images={data.images}
+            images={images}
+            onChange={setImages}
             uploadModule="about-pages"
             uploadField="gallery"
           />
         </div>
         <div className={styles.imageList}>
-          {data.images.map((image, index) => (
-            <div key={image.src} className={styles.imageListItem}>
+          {images.map((image, index) => (
+            <div key={`${image.src}-${index}`} className={styles.imageListItem}>
               <img src={resolveMediaUrl(image.src)} alt={image.alt} className={styles.imageThumb} />
               <div className={styles.imageInfo}>
                 <span className={styles.imageOrder}>#{index + 1}</span>
                 <span className={styles.imagePath}>{image.src}</span>
                 <span className={styles.imageAlt}>{image.alt}</span>
               </div>
+              <button
+                type="button"
+                className={styles.imageRemoveBtn}
+                onClick={() => handleRemove(index)}
+                aria-label={`Remove image ${index + 1}`}
+              >
+                <AdminIcon name="trash" size={14} />
+              </button>
             </div>
           ))}
         </div>

@@ -19,9 +19,11 @@ class TeamMember extends Model
         'department',
         'category',
         'team_category_id',
+        'team_rank_id',
         'experience',
         'photo',
         'email',
+        'linkedin_url',
         'status',
         'display_order',
     ];
@@ -37,5 +39,10 @@ class TeamMember extends Model
     public function teamCategory(): BelongsTo
     {
         return $this->belongsTo(TeamCategory::class);
+    }
+
+    public function teamRank(): BelongsTo
+    {
+        return $this->belongsTo(TeamRank::class);
     }
 }

@@ -5,6 +5,7 @@ namespace Tests\Feature\Admin;
 use App\Models\ContactMessage;
 use App\Models\Role;
 use App\Models\User;
+use Database\Seeders\RoleSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
@@ -19,7 +20,7 @@ class ContactMessageStatusTest extends TestCase
     {
         parent::setUp();
 
-        $this->seed(\Database\Seeders\RoleSeeder::class);
+        $this->seed(RoleSeeder::class);
 
         $role = Role::query()->where('slug', 'super-admin')->firstOrFail();
         $this->admin = User::factory()->create(['role_id' => $role->id]);

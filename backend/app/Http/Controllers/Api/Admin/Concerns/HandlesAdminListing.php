@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Admin\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -15,7 +16,7 @@ trait HandlesAdminListing
         return min(max($perPage, 1), 50);
     }
 
-    protected function paginatedResponse(mixed $paginator, string $resourceClass): \Illuminate\Http\JsonResponse
+    protected function paginatedResponse(mixed $paginator, string $resourceClass): JsonResponse
     {
         return response()->json([
             'data' => $resourceClass::collection($paginator->items()),
@@ -28,7 +29,7 @@ trait HandlesAdminListing
         ]);
     }
 
-    protected function singleResponse(JsonResource $resource, int $status = 200): \Illuminate\Http\JsonResponse
+    protected function singleResponse(JsonResource $resource, int $status = 200): JsonResponse
     {
         return response()->json(['data' => $resource], $status);
     }

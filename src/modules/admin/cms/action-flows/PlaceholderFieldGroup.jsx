@@ -172,7 +172,7 @@ export function CoverImageField({
 export function GalleryPlaceholder({
   label = 'Gallery',
   name,
-  images: initialImages = [],
+  images: imagesProp = [],
   maxPreview = 4,
   uploadModule,
   uploadField = 'gallery',
@@ -181,24 +181,28 @@ export function GalleryPlaceholder({
   onChange,
 }) {
   const fileInputRef = useRef(null);
-  const [images, setImages] = useState(() =>
-    (Array.isArray(initialImages) ? initialImages : []).map((image) => ({
+  const isControlled = typeof onChange === 'function';
+  const normalizeImages = (list) =>
+    (Array.isArray(list) ? list : []).map((image) => ({
       ...image,
       src: resolveMediaPath(image),
-    })),
-  );
+    }));
+  const [internalImages, setInternalImages] = useState(() => normalizeImages(imagesProp));
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
 
+  const images = isControlled ? normalizeImages(imagesProp) : internalImages;
   const canUpload = Boolean(uploadModule && uploadField) && !disabled;
   const preview = images.slice(0, maxPreview);
 
   const updateImages = useCallback(
     (nextImages) => {
-      setImages(nextImages);
+      if (!isControlled) {
+        setInternalImages(nextImages);
+      }
       onChange?.(nextImages);
     },
-    [onChange],
+    [isControlled, onChange],
   );
 
   const setUploadState = useCallback(

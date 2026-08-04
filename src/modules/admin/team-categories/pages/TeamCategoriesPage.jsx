@@ -44,7 +44,7 @@ export default function TeamCategoriesPage() {
     return {
       parentId: [
         { value: '', label: 'None' },
-        ...listing.items
+        ...(listing.paginatedItems ?? [])
           .filter((category) => category.id !== editingId)
           .map((category) => ({
             value: category.id,
@@ -52,7 +52,7 @@ export default function TeamCategoriesPage() {
           })),
       ],
     };
-  }, [listing.items, flows.formDrawer?.item?.id]);
+  }, [listing.paginatedItems, flows.formDrawer?.item?.id]);
 
   useAdminBreadcrumbs(teamCategoriesPageMeta.topBarBreadcrumbs);
 

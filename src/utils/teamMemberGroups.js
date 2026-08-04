@@ -1,5 +1,6 @@
 /**
- * Group public team members by CMS team categories.
+ * Group public team members by CMS team categories (departments/sections).
+ * Card border colours come from team ranks.
  * Falls back to "Other Team Members" when category is missing.
  */
 
@@ -11,6 +12,8 @@ const FALLBACK_CATEGORY = {
   displayOrder: Number.MAX_SAFE_INTEGER,
   description: null,
 };
+
+const FALLBACK_RANK_COLOR = '#7a7f85';
 
 function hexToRgba(hex, alpha) {
   const normalized = String(hex || '').replace('#', '').trim();
@@ -34,7 +37,7 @@ function hexToRgba(hex, alpha) {
 }
 
 export function buildRoleStyleFromBorderColor(borderColor) {
-  const accent = borderColor || FALLBACK_CATEGORY.borderColor;
+  const accent = borderColor || FALLBACK_RANK_COLOR;
   return {
     borderColor: hexToRgba(accent, 0.55),
     borderColorHover: hexToRgba(accent, 0.92),
@@ -61,16 +64,26 @@ function resolveMemberCategory(member) {
   return { ...FALLBACK_CATEGORY };
 }
 
+function resolveMemberRankColor(member) {
+  if (member?.rank && typeof member.rank === 'object' && member.rank.color) {
+    return member.rank.color;
+  }
+
+  return FALLBACK_RANK_COLOR;
+}
+
 /**
  * Partition members into ordered category sections.
  * Empty categories are omitted. Uncategorized members go to Other Team Members.
+ * Card colours are derived from each member's rank.
  */
 export function groupTeamMembers(members = []) {
   const buckets = new Map();
 
   members.forEach((member) => {
     const category = resolveMemberCategory(member);
-    const roleStyle = buildRoleStyleFromBorderColor(category.borderColor);
+    const rankColor = resolveMemberRankColor(member);
+    const roleStyle = buildRoleStyleFromBorderColor(rankColor);
     const key = category.id;
 
     if (!buckets.has(key)) {
@@ -87,6 +100,7 @@ export function groupTeamMembers(members = []) {
     buckets.get(key).members.push({
       ...member,
       groupKey: key,
+      rankColor,
       roleStyle,
     });
   });

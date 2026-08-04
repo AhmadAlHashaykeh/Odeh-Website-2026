@@ -2,11 +2,12 @@
 
 namespace App\Http\Resources;
 
+use App\Models\WebsiteSetting;
 use App\Support\PublicMediaUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\WebsiteSetting */
+/** @mixin WebsiteSetting */
 class WebsiteSettingResource extends JsonResource
 {
     public function toArray(Request $request): array

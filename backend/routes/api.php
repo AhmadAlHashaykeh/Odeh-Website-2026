@@ -37,6 +37,7 @@ use App\Http\Controllers\Api\Admin\SeoPageController;
 use App\Http\Controllers\Api\Admin\ServiceController;
 use App\Http\Controllers\Api\Admin\TeamCategoryController;
 use App\Http\Controllers\Api\Admin\TeamMemberController;
+use App\Http\Controllers\Api\Admin\TeamRankController;
 use App\Http\Controllers\Api\Admin\WebsiteSettingController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
@@ -87,6 +88,7 @@ Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::apiResource('activities', ActivityController::class);
     Route::post('team-categories/reorder', [TeamCategoryController::class, 'reorder']);
     Route::apiResource('team-categories', TeamCategoryController::class);
+    Route::apiResource('team-ranks', TeamRankController::class);
     Route::apiResource('team-members', TeamMemberController::class);
     Route::apiResource('jobs', JobController::class);
 

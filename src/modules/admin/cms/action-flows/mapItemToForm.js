@@ -26,19 +26,11 @@ export function mapItemToFormValues(moduleKey, item) {
     case 'projects':
       return {
         title: item.title || '',
-        slug: item.slug || '',
         category: item.category || '',
         location: item.location || '',
-        projectType: item.projectType || '',
+        architect: item.architect || '',
         area: item.area || '',
-        completionStatus: item.completionStatus || '',
-        year: item.year || '',
-        description: item.description || '',
-        coverImage: resolveMediaPath(item.coverImage),
-        gallery: mapGalleryForForm(item.gallery),
         status: item.status || 'draft',
-        published: boolLabel(item.published),
-        displayOrder: item.displayOrder || '',
       };
 
     case 'categories':
@@ -55,10 +47,11 @@ export function mapItemToFormValues(moduleKey, item) {
       return {
         fullName: item.fullName || '',
         position: item.position || '',
-        department: item.department || '',
         teamCategoryId: item.teamCategoryId || item.category?.id || '',
+        teamRankId: item.teamRankId || item.rank?.id || '',
         experience: item.experience || '',
         email: item.email || '',
+        linkedinUrl: item.linkedinUrl || '',
         photo: resolveMediaPath(item.photo),
         status: item.status || 'active',
         displayOrder: item.displayOrder || '',

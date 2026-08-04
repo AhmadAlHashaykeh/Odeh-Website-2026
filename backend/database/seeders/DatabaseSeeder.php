@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ProjectContentSeeder::class,
             ActivitySeeder::class,
             TeamCategorySeeder::class,
+            TeamRankSeeder::class,
             TeamMemberSeeder::class,
             JobPostingSeeder::class,
         ]);

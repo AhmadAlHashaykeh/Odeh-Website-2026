@@ -2,11 +2,12 @@
 
 namespace App\Http\Resources;
 
+use App\Models\TeamCategory;
 use App\Support\PublicMediaUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\TeamCategory */
+/** @mixin TeamCategory */
 class TeamCategoryResource extends JsonResource
 {
     public function toArray(Request $request): array

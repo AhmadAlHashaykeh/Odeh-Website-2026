@@ -2,11 +2,12 @@
 
 namespace App\Http\Resources;
 
+use App\Models\AboutPageSetting;
 use App\Support\PublicMediaUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\AboutPageSetting */
+/** @mixin AboutPageSetting */
 class AboutPageSettingResource extends JsonResource
 {
     public function toArray(Request $request): array

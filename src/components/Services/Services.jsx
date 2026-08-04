@@ -1,13 +1,23 @@
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { resolveMediaUrl } from '../../utils/mediaUrl';
+import { getServicePath } from '../../utils/contentPaths';
+import SafeImage from '../SafeImage/SafeImage';
 import Carousel from '../Carousel/Carousel';
 import styles from './Services.module.css';
 
 function ServiceCard({ service }) {
-  return (
-    <article className={styles.card}>
+  const path = getServicePath(service) || (service.slug ? `/services/${service.slug}` : null);
+
+  const inner = (
+    <>
       <div className={styles.imageWrap}>
-        <img src={resolveMediaUrl(service.image)} alt={service.title} loading="lazy" draggable={false} />
+        <SafeImage
+          src={resolveMediaUrl(service.image)}
+          alt={service.title}
+          className={styles.cardImage}
+          loading="lazy"
+        />
         <div className={styles.imageOverlay} aria-hidden="true" />
         <div className={styles.content}>
           <span className={styles.accentLine} aria-hidden="true" />
@@ -15,7 +25,17 @@ function ServiceCard({ service }) {
           <p className={styles.cardDesc}>{service.description}</p>
         </div>
       </div>
-    </article>
+    </>
+  );
+
+  if (!path) {
+    return <article className={styles.card}>{inner}</article>;
+  }
+
+  return (
+    <Link to={path} className={`${styles.card} ${styles.cardLink}`} aria-label={service.title}>
+      {inner}
+    </Link>
   );
 }
 

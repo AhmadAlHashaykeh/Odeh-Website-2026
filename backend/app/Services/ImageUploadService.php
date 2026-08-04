@@ -139,9 +139,6 @@ class ImageUploadService
         return in_array($extension, ['jpg', 'jpeg', 'png', 'webp'], true);
     }
 
-    /**
-     * @return \GdImage|false
-     */
     private function loadImage(UploadedFile $file): \GdImage|false
     {
         $path = $file->getPathname();

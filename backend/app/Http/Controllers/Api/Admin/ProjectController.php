@@ -24,7 +24,7 @@ class ProjectController extends Controller
         $query = Project::query()->with('category');
 
         $this->applySearch($query, $request->query('search'), [
-            'title', 'slug', 'location', 'project_type', 'description',
+            'title', 'location', 'architect', 'area',
         ]);
 
         if ($status = $request->query('status')) {

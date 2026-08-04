@@ -23,7 +23,7 @@ class TeamMemberController extends Controller
     {
         $this->authorizeModuleView(CmsModules::TEAM_MEMBERS);
 
-        $query = TeamMember::query()->with('teamCategory');
+        $query = TeamMember::query()->with(['teamCategory', 'teamRank']);
 
         $this->applySearch($query, $request->query('search'), [
             'full_name', 'slug', 'position', 'department', 'category', 'email',
@@ -71,7 +71,7 @@ class TeamMemberController extends Controller
         $this->syncLegacyCategoryLabel($data);
 
         $teamMember = TeamMember::query()->create($data);
-        $teamMember->load('teamCategory');
+        $teamMember->load(['teamCategory', 'teamRank']);
 
         return $this->singleResponse(new TeamMemberResource($teamMember), 201);
     }
@@ -79,7 +79,7 @@ class TeamMemberController extends Controller
     public function show(TeamMember $teamMember): JsonResponse
     {
         $this->authorizeModuleView(CmsModules::TEAM_MEMBERS);
-        $teamMember->load('teamCategory');
+        $teamMember->load(['teamCategory', 'teamRank']);
 
         return $this->singleResponse(new TeamMemberResource($teamMember));
     }
@@ -101,7 +101,7 @@ class TeamMemberController extends Controller
 
         $this->syncLegacyCategoryLabel($data);
         $teamMember->update($data);
-        $teamMember->load('teamCategory');
+        $teamMember->load(['teamCategory', 'teamRank']);
 
         return $this->singleResponse(new TeamMemberResource($teamMember));
     }

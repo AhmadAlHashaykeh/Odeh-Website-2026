@@ -14,7 +14,7 @@ class UploadModuleFields
             'activities' => ['coverImage', 'gallery'],
             'team-members' => ['photo'],
             'team-categories' => ['icon'],
-            'home-page' => ['posterImage'],
+            'home-page' => ['posterImage', 'aboutImage'],
             'about-pages' => ['backgroundImage', 'image', 'gallery'],
             'navigation-footer' => ['logo', 'footerLogo'],
             'connect-page' => ['logo'],

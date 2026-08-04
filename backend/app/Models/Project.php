@@ -21,6 +21,7 @@ class Project extends Model
         'cover_image',
         'gallery',
         'location',
+        'architect',
         'project_type',
         'area',
         'services',

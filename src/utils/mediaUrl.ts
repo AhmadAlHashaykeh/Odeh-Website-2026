@@ -250,6 +250,16 @@ export function normalizePublicMedia<T>(data: T): T {
   for (const [key, value] of Object.entries(result)) {
     if (key === 'icon' && !isMediaIconValue(value)) {
       result[key] = normalizeIconKey(value);
+    } else if (
+      (key === 'logo' || key === 'image' || key === 'favicon') &&
+      typeof value === 'object' &&
+      value !== null
+    ) {
+      // Keep { src, alt, ... } objects intact — stringifying breaks consumers that read image.src.
+      result[key] = {
+        ...(value as Record<string, unknown>),
+        src: resolveMediaUrl(value as MediaReference),
+      };
     } else if (MEDIA_FIELD_KEYS.has(key)) {
       result[key] = resolveMediaUrl(value as MediaReference);
     } else if ((key === 'gallery' || key === 'images') && Array.isArray(value)) {
@@ -261,16 +271,6 @@ export function normalizePublicMedia<T>(data: T): T {
             }
           : item,
       );
-    } else if (key === 'logo' || (key === 'image' && typeof value === 'object' && value !== null)) {
-      result[key] = {
-        ...(value as Record<string, unknown>),
-        src: resolveMediaUrl(value as MediaReference),
-      };
-    } else if (key === 'favicon' && typeof value === 'object' && value !== null) {
-      result[key] = {
-        ...(value as Record<string, unknown>),
-        src: resolveMediaUrl(value as MediaReference),
-      };
     } else if (typeof value === 'object') {
       result[key] = normalizePublicMedia(value);
     }

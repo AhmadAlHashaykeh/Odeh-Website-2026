@@ -1,11 +1,14 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export function useScrollReveal(threshold = 0.15) {
-  const ref = useRef(null);
+  const [element, setElement] = useState(null);
+
+  const ref = useCallback((node) => {
+    setElement(node);
+  }, []);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
+    if (!element) return undefined;
 
     const reveal = () => {
       element.classList.add('visible');
@@ -18,7 +21,7 @@ export function useScrollReveal(threshold = 0.15) {
           observer.unobserve(element);
         }
       },
-      { threshold: Math.min(threshold, 0.05), rootMargin: '0px 0px -20px 0px' }
+      { threshold: Math.min(threshold, 0.05), rootMargin: '0px 0px -20px 0px' },
     );
 
     observer.observe(element);
@@ -34,7 +37,7 @@ export function useScrollReveal(threshold = 0.15) {
     requestAnimationFrame(checkInitialVisibility);
 
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [element, threshold]);
 
   return ref;
 }

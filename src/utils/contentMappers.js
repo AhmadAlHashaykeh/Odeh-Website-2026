@@ -23,9 +23,22 @@ export function mapTeamMember(member) {
     department: member.department ?? null,
     category,
     teamCategoryId: member.teamCategoryId ?? category?.id ?? null,
+    rank:
+      member.rank && typeof member.rank === 'object'
+        ? {
+            id: member.rank.id,
+            name: member.rank.name,
+            slug: member.rank.slug,
+            color: member.rank.color,
+            displayOrder: member.rank.displayOrder,
+            isActive: member.rank.isActive,
+          }
+        : null,
+    teamRankId: member.teamRankId ?? member.rank?.id ?? null,
     experience: member.experience,
     photo: resolveMediaUrl(member.photo),
     email: member.email,
+    linkedinUrl: member.linkedinUrl || member.linkedin_url || null,
   };
 }
 

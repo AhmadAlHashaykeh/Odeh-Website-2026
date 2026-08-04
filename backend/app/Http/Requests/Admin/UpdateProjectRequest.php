@@ -62,6 +62,7 @@ class UpdateProjectRequest extends FormRequest
             'gallery.*.src' => ['required_with:gallery', 'string'],
             'gallery.*.alt' => ['nullable', 'string'],
             'location' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'architect' => ['sometimes', 'nullable', 'string', 'max:255'],
             'project_type' => ['sometimes', 'nullable', 'string', 'max:255'],
             'area' => ['sometimes', 'nullable', 'string', 'max:255'],
             'services' => ['sometimes', 'nullable', 'string', 'max:255'],

@@ -62,18 +62,11 @@ export function mapFormValuesToApi(moduleKey, values, context = {}) {
 
       return omitEmpty({
         title: values.title,
-        slug: values.slug,
         projectCategoryId: categoryRecord?.id,
-        description: values.description,
-        coverImage: values.coverImage,
-        gallery: parseGallery(values.gallery),
         location: values.location,
-        projectType: values.projectType,
+        architect: values.architect,
         area: values.area,
-        completionStatus: values.completionStatus,
-        year: parseNumber(values.year),
         status: values.status,
-        displayOrder: parseNumber(values.displayOrder),
       });
     }
 
@@ -105,10 +98,11 @@ export function mapFormValuesToApi(moduleKey, values, context = {}) {
       return omitEmpty({
         fullName: values.fullName,
         position: values.position,
-        department: values.department,
         teamCategoryId: values.teamCategoryId,
+        teamRankId: values.teamRankId,
         experience: values.experience,
         email: values.email,
+        linkedinUrl: values.linkedinUrl,
         photo: values.photo,
         status: values.status,
         displayOrder: parseNumber(values.displayOrder),
@@ -186,6 +180,19 @@ export function mapHomeSectionFromForm(sectionId, currentSection, values) {
       return {
         ...currentSection,
         sectionLabel: values['about-label'] ?? currentSection.sectionLabel,
+        titleMain: values['about-title-main'] ?? currentSection.titleMain,
+        titleAccent: values['about-title-accent'] ?? currentSection.titleAccent,
+        body: values['about-body'] ?? currentSection.body,
+        stats: (() => {
+          const existing = currentSection.stats ?? [];
+          const count = Math.max(existing.length, 2);
+          return Array.from({ length: count }, (_, index) => ({
+            value: values[`about-stat-value-${index}`] ?? existing[index]?.value ?? '',
+            label: values[`about-stat-label-${index}`] ?? existing[index]?.label ?? '',
+          }));
+        })(),
+        image: values['about-image'] ?? currentSection.image,
+        imageAlt: values['about-image-alt'] ?? currentSection.imageAlt,
         readMoreLabel: values['about-readmore-label'] ?? currentSection.readMoreLabel,
         readMorePath: values['about-readmore-path'] ?? currentSection.readMorePath,
       };

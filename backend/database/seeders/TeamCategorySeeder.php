@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\TeamCategory;
 use App\Models\TeamMember;
-use App\Support\TeamMemberCategoryMapper;
 use Illuminate\Database\Seeder;
 
 class TeamCategorySeeder extends Seeder
@@ -12,8 +11,11 @@ class TeamCategorySeeder extends Seeder
     public function run(): void
     {
         $items = require __DIR__.'/data/team_categories.php';
+        $keepSlugs = [];
 
         foreach ($items as $item) {
+            $keepSlugs[] = $item['slug'];
+
             TeamCategory::query()->updateOrCreate(
                 ['slug' => $item['slug']],
                 [
@@ -28,29 +30,41 @@ class TeamCategorySeeder extends Seeder
             );
         }
 
-        $categoriesBySlug = TeamCategory::query()->get()->keyBy('slug');
+        // Remove legacy categories that are no longer on the org chart.
+        TeamCategory::query()
+            ->whereNotIn('slug', $keepSlugs)
+            ->each(function (TeamCategory $category): void {
+                if ($category->members()->exists()) {
+                    $category->forceFill(['is_active' => false])->saveQuietly();
+
+                    return;
+                }
+
+                $category->delete();
+            });
+
+        // Clean empty inactive leftovers from earlier seed runs.
+        TeamCategory::query()
+            ->where('is_active', false)
+            ->whereNotIn('slug', $keepSlugs)
+            ->whereDoesntHave('members')
+            ->delete();
+
+        $fallback = TeamCategory::query()->where('slug', 'other-team-members')->first();
+
+        if (! $fallback) {
+            return;
+        }
 
         TeamMember::query()
             ->where(function ($query): void {
                 $query->whereNull('team_category_id')
                     ->orWhereDoesntHave('teamCategory');
             })
-            ->each(function (TeamMember $member) use ($categoriesBySlug): void {
-                $slug = TeamMemberCategoryMapper::resolveSlug(
-                    $member->position,
-                    $member->department,
-                    $member->category,
-                );
-
-                $category = $categoriesBySlug->get($slug) ?? $categoriesBySlug->get('other-team-members');
-
-                if (! $category) {
-                    return;
-                }
-
+            ->each(function (TeamMember $member) use ($fallback): void {
                 $member->forceFill([
-                    'team_category_id' => $category->id,
-                    'category' => $category->name,
+                    'team_category_id' => $fallback->id,
+                    'category' => $fallback->name,
                 ])->saveQuietly();
             });
     }

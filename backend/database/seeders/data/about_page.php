@@ -31,7 +31,7 @@ return [
             ],
         ],
         'slider' => [
-            'label' => 'Our Office',
+            'label' => 'Our Office — Jordan Branch',
             'description' => 'A glimpse into our workspace — where engineering excellence meets collaborative design.',
             'images' => [
                 ['src' => $office.'/img-01.webp', 'alt' => 'Glass-partitioned workspace at ODEH & PARTNERS DESIGN'],

@@ -1,15 +1,16 @@
 export const teamCategoriesPageMeta = {
-  title: 'Team Categories',
-  description: 'Manage team directory groups, border colours, and public display order.',
+  title: 'Team Sections',
+  description:
+    'These sections group people on the public Team Members page (Board of Directors / Team Members).',
   breadcrumbs: [
     { label: 'Admin', path: '/admin/dashboard' },
-    { label: 'Team Categories' },
+    { label: 'Team Sections' },
   ],
   topBarBreadcrumbs: [
     { label: 'Admin', path: '/admin/dashboard' },
-    { label: 'Team Categories' },
+    { label: 'Team Sections' },
   ],
-  primaryAction: { label: 'Add Category', icon: 'add' },
+  primaryAction: { label: 'Add Section', icon: 'add' },
   secondaryActions: [],
 };
 

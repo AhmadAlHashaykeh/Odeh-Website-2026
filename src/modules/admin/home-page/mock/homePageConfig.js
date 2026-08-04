@@ -28,7 +28,7 @@ export const sectionDefinitions = [
   {
     id: 'about',
     name: 'About Preview',
-    description: 'Homepage teaser block — firm content comes from About Pages. Edit section framing and link here.',
+    description: 'Homepage about teaser — title, body, stats, image, and Read More link.',
     status: 'published',
     anchor: '/#about',
     previewType: 'about',

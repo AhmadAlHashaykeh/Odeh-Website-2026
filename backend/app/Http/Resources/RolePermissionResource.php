@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources;
 
+use App\Models\RolePermission;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\RolePermission */
+/** @mixin RolePermission */
 class RolePermissionResource extends JsonResource
 {
     public static $wrap = null;

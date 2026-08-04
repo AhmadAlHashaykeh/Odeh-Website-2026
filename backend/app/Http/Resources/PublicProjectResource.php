@@ -13,9 +13,10 @@ class PublicProjectResource extends ProjectResource
         $gallery = $this->gallery ?? [];
 
         return array_merge($data, [
-            'type' => $this->project_type,
-            'services' => $this->services,
-            'status' => $this->completion_status ?? $this->status->value,
+            'architect' => $this->architect,
+            'location' => $this->location,
+            'area' => $this->area,
+            'category' => $this->category?->title,
             'gallery' => $gallery,
         ]);
     }

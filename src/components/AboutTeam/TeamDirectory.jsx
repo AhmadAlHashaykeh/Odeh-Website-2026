@@ -3,8 +3,15 @@ import { groupTeamMembers } from '../../utils/teamMemberGroups';
 import TeamMemberCard from './TeamMemberCard';
 import styles from './TeamDirectory.module.css';
 
+function resolveGroupLayout(memberCount) {
+  if (memberCount === 1) return 'featured';
+  if (memberCount === 2) return 'pair';
+  return 'grid';
+}
+
 function TeamGroupSection({ group, startIndex }) {
   const gridRef = useScrollReveal(0.06);
+  const layout = resolveGroupLayout(group.members.length);
   const countLabel = group.members.length === 1 ? '1 member' : `${group.members.length} members`;
 
   return (
@@ -21,12 +28,12 @@ function TeamGroupSection({ group, startIndex }) {
           </h2>
           <span className={styles.groupCount}>{countLabel}</span>
         </div>
-        {group.description ? (
-          <p className={styles.groupDescription}>{group.description}</p>
-        ) : null}
       </header>
 
-      <div ref={gridRef} className={`${styles.grid} reveal`}>
+      <div
+        ref={gridRef}
+        className={`${styles.grid} ${styles[`grid_${layout}`]} reveal`}
+      >
         {group.members.map((member, index) => (
           <TeamMemberCard
             key={member.slug}
@@ -34,8 +41,10 @@ function TeamGroupSection({ group, startIndex }) {
             title={member.title}
             experience={member.experience}
             email={member.email}
+            linkedinUrl={member.linkedinUrl}
             photo={member.photo}
             roleStyle={member.roleStyle}
+            layout={layout === 'featured' ? 'featured' : 'portrait'}
             priority={startIndex + index === 0}
           />
         ))}

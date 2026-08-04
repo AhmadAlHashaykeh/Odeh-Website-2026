@@ -4,7 +4,6 @@ namespace App\Http\Requests\Admin;
 
 use App\Http\Requests\Concerns\MapsCamelCaseInput;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class StoreTeamCategoryRequest extends FormRequest
 {

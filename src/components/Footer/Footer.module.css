@@ -79,7 +79,7 @@
 
 .mainGrid {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1.35fr);
   gap: clamp(1.5rem, 2.5vw, 2.25rem);
   align-items: start;
   padding: clamp(1.25rem, 2.5vw, 1.75rem) 0 clamp(1.75rem, 2.75vw, 2.25rem);
@@ -92,11 +92,11 @@
 }
 
 .columnTitle {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-white);
+  color: rgba(0, 138, 166, 0.9);
   margin: 0 0 1rem;
   padding-bottom: 0.55rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);

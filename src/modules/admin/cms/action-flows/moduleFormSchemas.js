@@ -7,45 +7,27 @@ export const MODULE_FORM_SCHEMAS = {
   projects: {
     addTitle: 'Add Project',
     editTitle: 'Edit Project',
-    subtitle: 'Configure project details, media, and publishing settings.',
+    subtitle: 'Project Name, Area, Location, Architect, and Category.',
     badge: 'Projects',
     sections: [
       {
         title: 'Project Details',
         fields: [
-          { name: 'title', label: 'Project Title', type: 'text', required: true },
-          { name: 'slug', label: 'Slug', type: 'text', helper: 'Leave blank to auto-generate on create. Changing this updates the public URL.' },
-          { name: 'category', label: 'Category', type: 'select', options: ['Commercial', 'Residential', 'Hospitality', 'Infrastructure'] },
-          { name: 'description', label: 'Description', type: 'textarea', rows: 4, fullWidth: true },
-        ],
-      },
-      {
-        title: 'Media',
-        fields: [
-          { name: 'coverImage', label: 'Cover Image', type: 'cover', fullWidth: true },
-          { name: 'gallery', label: 'Gallery', type: 'gallery', fullWidth: true },
-        ],
-      },
-      {
-        title: 'Technical Information',
-        fields: [
+          { name: 'title', label: 'Project Name', type: 'text', required: true },
+          { name: 'area', label: 'Area (m²)', type: 'text' },
           { name: 'location', label: 'Location', type: 'text' },
-          { name: 'projectType', label: 'Project Type', type: 'text' },
-          { name: 'area', label: 'Area', type: 'text' },
-          { name: 'completionStatus', label: 'Completion Status', type: 'text', helper: 'e.g. Completed, 2023' },
-          { name: 'year', label: 'Year', type: 'number' },
+          { name: 'architect', label: 'Architect', type: 'text' },
+          { name: 'category', label: 'Category', type: 'select', options: ['Commercial', 'Residential', 'Hospitality', 'Infrastructure'] },
         ],
       },
       {
         title: 'Publishing',
         fields: [
           { name: 'status', label: 'Status', type: 'select', options: ['published', 'draft', 'archived'] },
-          { name: 'published', label: 'Published on Website', type: 'select', options: ['Yes', 'No'] },
-          { name: 'displayOrder', label: 'Display Order', type: 'number' },
         ],
       },
     ],
-    seoDelegation: true,
+    seoDelegation: false,
   },
 
   categories: {
@@ -89,43 +71,85 @@ export const MODULE_FORM_SCHEMAS = {
   'team-members': {
     addTitle: 'Add Member',
     editTitle: 'Edit Member',
-    subtitle: 'Manage team member profile, contact details, and visibility.',
+    subtitle: 'Section = where they appear. Rank = card colour on the website.',
     badge: 'Team',
     sections: [
       {
-        title: 'Profile',
+        title: 'Basic info',
         fields: [
-          { name: 'fullName', label: 'Full Name', type: 'text', required: true },
-          { name: 'position', label: 'Position', type: 'text' },
-          { name: 'department', label: 'Department', type: 'text' },
+          { name: 'fullName', label: 'Full name', type: 'text', required: true },
           {
-            name: 'teamCategoryId',
-            label: 'Category',
-            type: 'select',
-            required: true,
-            options: [],
-            helper: 'Controls the public Team Members grouping and card border colour.',
+            name: 'position',
+            label: 'Job title',
+            type: 'text',
+            helper: 'Shown under the name, e.g. Senior Structural Engineer',
           },
-          { name: 'experience', label: 'Experience', type: 'text' },
+          {
+            name: 'experience',
+            label: 'Experience (optional)',
+            type: 'text',
+            helper: 'e.g. 7+ Years',
+          },
         ],
       },
       {
-        title: 'Media',
+        title: 'Website grouping & colour',
         fields: [
-          { name: 'photo', label: 'Profile Photo', type: 'cover', fullWidth: true },
+          {
+            name: 'teamCategoryId',
+            label: 'Section',
+            type: 'select',
+            required: true,
+            options: [],
+            helper: 'Board of Directors or Team Members — the group on the public page.',
+          },
+          {
+            name: 'teamRankId',
+            label: 'Rank (card colour)',
+            type: 'select',
+            required: true,
+            options: [],
+            helper: 'Matches the org chart colours: Founder, Partner, Senior, Engineer, Academic, Support.',
+          },
+        ],
+      },
+      {
+        title: 'Photo',
+        fields: [
+          { name: 'photo', label: 'Profile photo', type: 'cover', fullWidth: true },
         ],
       },
       {
         title: 'Contact',
         fields: [
-          { name: 'email', label: 'Email', type: 'text' },
+          { name: 'email', label: 'Email (optional)', type: 'text' },
+          {
+            name: 'linkedinUrl',
+            label: 'LinkedIn URL (optional)',
+            type: 'text',
+            helper: 'Full profile link, e.g. https://www.linkedin.com/in/...',
+            fullWidth: true,
+          },
         ],
       },
       {
-        title: 'Publishing',
+        title: 'Visibility',
         fields: [
-          { name: 'status', label: 'Status', type: 'select', options: ['active', 'hidden'] },
-          { name: 'displayOrder', label: 'Display Order', type: 'number' },
+          {
+            name: 'status',
+            label: 'Show on website?',
+            type: 'select',
+            options: [
+              { value: 'active', label: 'Yes — visible' },
+              { value: 'hidden', label: 'No — hidden' },
+            ],
+          },
+          {
+            name: 'displayOrder',
+            label: 'Order in list',
+            type: 'number',
+            helper: 'Smaller number appears first (1, 2, 3…).',
+          },
         ],
       },
     ],
@@ -133,24 +157,17 @@ export const MODULE_FORM_SCHEMAS = {
   },
 
   'team-categories': {
-    addTitle: 'Add Team Category',
-    editTitle: 'Edit Team Category',
-    subtitle: 'Define directory groups and card border colours for the public team page.',
-    badge: 'Team Categories',
+    addTitle: 'Add Team Section',
+    editTitle: 'Edit Team Section',
+    subtitle: 'A section is a group on the public Team Members page (e.g. Board of Directors).',
+    badge: 'Team Sections',
     sections: [
       {
-        title: 'Category Details',
+        title: 'Section details',
         fields: [
-          { name: 'name', label: 'Category Name', type: 'text', required: true },
+          { name: 'name', label: 'Section name', type: 'text', required: true },
           { name: 'slug', label: 'Slug', type: 'text', helper: 'Auto-generated from the name when left blank.' },
-          { name: 'description', label: 'Description', type: 'textarea', rows: 3, fullWidth: true },
-          {
-            name: 'parentId',
-            label: 'Parent Category',
-            type: 'select',
-            options: [{ value: '', label: 'None' }],
-            helper: 'Optional. Reserved for future nested groupings.',
-          },
+          { name: 'description', label: 'Description (optional)', type: 'textarea', rows: 3, fullWidth: true },
         ],
       },
       {
@@ -158,28 +175,33 @@ export const MODULE_FORM_SCHEMAS = {
         fields: [
           {
             name: 'borderColor',
-            label: 'Border Color',
+            label: 'Section accent colour',
             type: 'color',
             required: true,
             previewTitleField: 'name',
             fullWidth: true,
+            helper: 'Only colours the section header line. Each person\'s card colour comes from Rank.',
           },
-          { name: 'icon', label: 'Icon', type: 'cover', fullWidth: true },
         ],
       },
       {
-        title: 'Publishing',
+        title: 'Visibility',
         fields: [
           {
             name: 'status',
-            label: 'Status',
+            label: 'Active?',
             type: 'select',
             options: [
-              { value: 'active', label: 'Active' },
-              { value: 'inactive', label: 'Inactive' },
+              { value: 'active', label: 'Yes — usable in forms' },
+              { value: 'inactive', label: 'No — archived' },
             ],
           },
-          { name: 'displayOrder', label: 'Display Order', type: 'number' },
+          {
+            name: 'displayOrder',
+            label: 'Order on website',
+            type: 'number',
+            helper: 'Smaller number appears first.',
+          },
         ],
       },
     ],

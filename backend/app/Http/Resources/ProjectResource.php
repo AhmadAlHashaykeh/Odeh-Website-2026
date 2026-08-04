@@ -22,6 +22,7 @@ class ProjectResource extends JsonResource
             'gallery' => $gallery,
             'galleryCount' => count($gallery),
             'location' => $this->location,
+            'architect' => $this->architect,
             'projectType' => $this->project_type,
             'area' => $this->area,
             'services' => $this->services,
