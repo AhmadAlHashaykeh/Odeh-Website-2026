@@ -39,7 +39,7 @@ class PublicContentApiTest extends TestCase
 
     public function test_public_project_and_job_detail_urls_resolve(): void
     {
-        $this->getJson('/api/public/projects/resorts-and-hotels/fairmont-hotel')
+        $this->getJson('/api/public/projects/resort-hotel/fairmont-hotel')
             ->assertOk()
             ->assertJsonPath('data.slug', 'fairmont-hotel');
 

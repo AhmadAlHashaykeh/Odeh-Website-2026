@@ -51,9 +51,9 @@ describe('groupTeamMembers', () => {
       'Structural Engineering',
       'Other Team Members',
     ]);
-    expect(groups[0].members.map((m) => m.slug)).toEqual(['b']);
-    expect(groups[1].members.map((m) => m.slug)).toEqual(['a']);
-    expect(groups[2].members.map((m) => m.slug)).toEqual(['c']);
+    expect(groups[0].members.map((m: { slug: string }) => m.slug)).toEqual(['b']);
+    expect(groups[1].members.map((m: { slug: string }) => m.slug)).toEqual(['a']);
+    expect(groups[2].members.map((m: { slug: string }) => m.slug)).toEqual(['c']);
     expect(groups[0].accentColor).toBe('#1B4F9C');
     expect(groups[0].members[0].roleStyle.accentColor).toBe('#1B4F9C');
     expect(groups[1].members[0].roleStyle.accentColor).toBe('#3DCF6A');

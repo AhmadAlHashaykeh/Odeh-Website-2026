@@ -26,6 +26,10 @@ function pushUniqueUrl(urls, seen, mediaRef) {
  * Collect display images for a category card from its projects.
  * Prefer each project's cover image; fall back to its first gallery image.
  * Only published projects are included by default (public site requirement).
+ *
+ * @param {Array<object>} projects
+ * @param {{ categorySlug?: string, categoryId?: string, publishedOnly?: boolean }} [options]
+ * @returns {string[]}
  */
 export function collectCategoryProjectImages(
   projects,
