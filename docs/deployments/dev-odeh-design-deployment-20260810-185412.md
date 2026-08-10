@@ -189,7 +189,12 @@ Public APIs HTTP 200: `/up`, home, projects, project-categories, team-members, s
 
 ## 14. Git
 
-See post-deploy checkpoint section in final status after commit step.
+| Item | Value |
+|------|-------|
+| Branch | `backend-api-foundation` |
+| Checkpoint commit | `b85d640` — `release: sync approved local website content` |
+| Push result | Not pushed (no explicit push required by deployment workflow; branch is ahead of origin by 4) |
+| Final git status | Clean for deployed sources; untracked leftovers: `backups/`, temporary Steel/REV.03 import scripts under `scripts/` and `backend/scripts/` (intentionally excluded) |
 
 ## 15. Deployment Safety
 
