@@ -66,6 +66,8 @@ export function mapFormValuesToApi(moduleKey, values, context = {}) {
         location: values.location,
         architect: values.architect,
         area: values.area,
+        coverImage: values.coverImage,
+        gallery: parseGallery(values.gallery),
         status: values.status,
       });
     }
@@ -205,7 +207,26 @@ export function mapHomeSectionFromForm(sectionId, currentSection, values) {
         description: values['services-description'] ?? currentSection.description,
       };
 
-    case 'projects':
+    case 'projects': {
+      let poolProjectIds = Array.isArray(currentSection.poolProjectIds)
+        ? currentSection.poolProjectIds
+        : [];
+      let projects = Array.isArray(currentSection.projects) ? currentSection.projects : [];
+
+      if (typeof values['projects-pool'] === 'string' && values['projects-pool'].trim()) {
+        try {
+          const parsed = JSON.parse(values['projects-pool']);
+          if (Array.isArray(parsed?.ids)) {
+            poolProjectIds = parsed.ids.filter((id) => typeof id === 'string' && id);
+          }
+          if (Array.isArray(parsed?.previews)) {
+            projects = parsed.previews;
+          }
+        } catch {
+          // Keep existing pool when JSON is invalid.
+        }
+      }
+
       return {
         ...currentSection,
         sectionLabel: values['projects-label'] ?? currentSection.sectionLabel,
@@ -213,7 +234,10 @@ export function mapHomeSectionFromForm(sectionId, currentSection, values) {
         description: values['projects-description'] ?? currentSection.description,
         viewAllLabel: values['projects-viewall-label'] ?? currentSection.viewAllLabel,
         viewAllPath: values['projects-viewall-path'] ?? currentSection.viewAllPath,
+        poolProjectIds,
+        projects,
       };
+    }
 
     default:
       return currentSection;

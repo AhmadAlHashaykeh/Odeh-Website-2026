@@ -33,7 +33,7 @@ export const usersRolesMeta = {
     { label: 'Admin', path: '/admin/dashboard' },
     { label: 'Users & Roles' },
   ],
-  primaryAction: { label: 'Invite User', icon: 'add' },
+  primaryAction: { label: 'Add Admin', icon: 'add' },
   secondaryActions: [{ label: 'Save Draft', icon: 'check' }],
 };
 
@@ -107,7 +107,7 @@ export const NEW_ROLE_TEMPLATE = {
 
 export function computeUsersRolesStatistics(users = [], roles = []) {
   const activeUsers = users.filter((u) => u.status === 'active').length;
-  const invitedUsers = users.filter((u) => u.status === 'invited').length;
+  const twoFaEnabled = users.filter((u) => u.twoFactorEnabled).length;
 
   return [
     {
@@ -123,10 +123,10 @@ export function computeUsersRolesStatistics(users = [], roles = []) {
       helper: `${roles.filter((r) => r.status === 'active').length} active`,
     },
     {
-      id: 'invited',
-      value: String(invitedUsers),
-      label: 'Pending Invites',
-      helper: invitedUsers > 0 ? 'Awaiting acceptance' : 'None pending',
+      id: 'two-fa',
+      value: String(twoFaEnabled),
+      label: '2FA Enabled',
+      helper: users.length > 0 ? `${twoFaEnabled} of ${users.length} accounts` : 'No accounts yet',
     },
     {
       id: 'suspended',

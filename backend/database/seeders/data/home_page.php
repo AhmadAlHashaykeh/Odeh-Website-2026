@@ -52,6 +52,7 @@ return [
         'sectionLabel' => 'Selected Projects',
         'heading' => 'Engineering Excellence Across the Middle East',
         'description' => 'Landmark structures and infrastructure delivered with precision — a curated selection from our portfolio across the region.',
+        'poolProjectIds' => [],
         'projects' => [
             ['id' => 'himmeh-resort', 'title' => 'Himmeh Resort', 'category' => 'Resorts & Hotels', 'location' => 'Jordan', 'description' => 'The main challenges in the design were the arch vaults (the larger of which is over 7m high), multiple cross vaults, tapered cantilevers, and variable thickness slabs.', 'image' => '/assets/projects/himmeh-resort/cover.webp', 'slug' => 'himmeh-resort', 'categorySlug' => 'resorts-and-hotels', 'order' => 1],
             ['id' => 'leen-park', 'title' => 'Leen Park', 'category' => 'Resorts & Hotels', 'location' => 'Jordan, Dead Sea', 'description' => 'A collection of chalets designed with a luxurious touch, offering premium services in the Dead Sea area.', 'image' => '/assets/projects/leen-park/cover.webp', 'slug' => 'leen-park', 'categorySlug' => 'resorts-and-hotels', 'order' => 2],

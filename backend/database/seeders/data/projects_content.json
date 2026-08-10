@@ -1,2065 +1,2833 @@
 {
-  "categories": [
-    {
-      "id": "commercial-complex",
-      "slug": "commercial-complex",
-      "title": "Commercial Complex",
-      "description": "Commercial Complex projects by ODEH & PARTNERS DESIGN.",
-      "coverImage": "/assets/projects/abu-deyeh-commercial-building/01.webp",
-      "projectCount": 9
-    },
-    {
-      "id": "fueling-and-car-charging-stations",
-      "slug": "fueling-and-car-charging-stations",
-      "title": "Fueling and Car Charging Stations",
-      "description": "Fueling and Car Charging Stations projects by ODEH & PARTNERS DESIGN.",
-      "coverImage": "/assets/projects/ev-charger/01.webp",
-      "projectCount": 2
-    },
-    {
-      "id": "governmental",
-      "slug": "governmental",
-      "title": "Governmental",
-      "description": "Governmental projects by ODEH & PARTNERS DESIGN.",
-      "coverImage": "/assets/projects/c-m-c/01.webp",
-      "projectCount": 2
-    },
-    {
-      "id": "hospitals-and-medical-clinics",
-      "slug": "hospitals-and-medical-clinics",
-      "title": "Hospitals and Medical Clinics",
-      "description": "Hospitals and Medical Clinics projects by ODEH & PARTNERS DESIGN.",
-      "coverImage": "/assets/projects/al-rasheed-hospital/01.webp",
-      "projectCount": 2
-    },
-    {
-      "id": "institutional-cultural",
-      "slug": "institutional-cultural",
-      "title": "Institutional - Cultural",
-      "description": "Institutional - Cultural projects by ODEH & PARTNERS DESIGN.",
-      "coverImage": "/assets/projects/royal-academy-for-nature-conservation/01.webp",
-      "projectCount": 4
-    },
-    {
-      "id": "mosques",
-      "slug": "mosques",
-      "title": "Mosques",
-      "description": "Mosques projects by ODEH & PARTNERS DESIGN.",
-      "coverImage": "/assets/projects/k-mosque/01.webp",
-      "projectCount": 3
-    },
-    {
-      "id": "private-villas",
-      "slug": "private-villas",
-      "title": "Private Villas",
-      "description": "Private Villas projects by ODEH & PARTNERS DESIGN.",
-      "coverImage": "/assets/projects/a-residence/01.webp",
-      "projectCount": 31
-    },
-    {
-      "id": "residential-complex",
-      "slug": "residential-complex",
-      "title": "Residential Complex",
-      "description": "Residential Complex projects by ODEH & PARTNERS DESIGN.",
-      "coverImage": "/assets/projects/a-j-residential/01.webp",
-      "projectCount": 10
-    },
-    {
-      "id": "resort-hotel",
-      "slug": "resort-hotel",
-      "title": "Resort & Hotel",
-      "description": "Resort & Hotel projects by ODEH & PARTNERS DESIGN.",
-      "coverImage": "/assets/projects/dana-village/01.webp",
-      "projectCount": 4
-    }
-  ],
-  "projects": [
-    {
-      "id": "a-residence",
-      "slug": "a-residence",
-      "categorySlug": "private-villas",
-      "title": "A. Residence",
-      "coverImage": "/assets/projects/a-residence/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/a-residence/01.webp",
-          "alt": "A. Residence - image 1"
-        },
-        {
-          "src": "/assets/projects/a-residence/02.webp",
-          "alt": "A. Residence - image 2"
-        },
-        {
-          "src": "/assets/projects/a-residence/03.webp",
-          "alt": "A. Residence - image 3"
-        },
-        {
-          "src": "/assets/projects/a-residence/04.webp",
-          "alt": "A. Residence - image 4"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "AYOUB ARCHITECTS",
-      "area": "2,500 m²"
-    },
-    {
-      "id": "a-h-farmhouse",
-      "slug": "a-h-farmhouse",
-      "categorySlug": "private-villas",
-      "title": "A.H. Farmhouse",
-      "coverImage": "/assets/projects/a-h-farmhouse/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/a-h-farmhouse/01.webp",
-          "alt": "A.H. Farmhouse - image 1"
-        },
-        {
-          "src": "/assets/projects/a-h-farmhouse/02.webp",
-          "alt": "A.H. Farmhouse - image 2"
-        },
-        {
-          "src": "/assets/projects/a-h-farmhouse/03.webp",
-          "alt": "A.H. Farmhouse - image 3"
-        },
-        {
-          "src": "/assets/projects/a-h-farmhouse/04.webp",
-          "alt": "A.H. Farmhouse - image 4"
-        },
-        {
-          "src": "/assets/projects/a-h-farmhouse/05.webp",
-          "alt": "A.H. Farmhouse - image 5"
-        },
-        {
-          "src": "/assets/projects/a-h-farmhouse/06.webp",
-          "alt": "A.H. Farmhouse - image 6"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "ARD DESIGNS",
-      "area": "1,000 m²"
-    },
-    {
-      "id": "a-j-residential",
-      "slug": "a-j-residential",
-      "categorySlug": "residential-complex",
-      "title": "A.J Residential",
-      "coverImage": "/assets/projects/a-j-residential/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/a-j-residential/01.webp",
-          "alt": "A.J Residential - image 1"
-        },
-        {
-          "src": "/assets/projects/a-j-residential/02.webp",
-          "alt": "A.J Residential - image 2"
-        },
-        {
-          "src": "/assets/projects/a-j-residential/03.webp",
-          "alt": "A.J Residential - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "4,100 m²"
-    },
-    {
-      "id": "a-k-residence",
-      "slug": "a-k-residence",
-      "categorySlug": "private-villas",
-      "title": "A.K. Residence",
-      "coverImage": "/assets/projects/a-k-residence/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/a-k-residence/01.webp",
-          "alt": "A.K. Residence - image 1"
-        },
-        {
-          "src": "/assets/projects/a-k-residence/02.webp",
-          "alt": "A.K. Residence - image 2"
-        },
-        {
-          "src": "/assets/projects/a-k-residence/03.webp",
-          "alt": "A.K. Residence - image 3"
-        },
-        {
-          "src": "/assets/projects/a-k-residence/04.webp",
-          "alt": "A.K. Residence - image 4"
-        },
-        {
-          "src": "/assets/projects/a-k-residence/05.webp",
-          "alt": "A.K. Residence - image 5"
-        },
-        {
-          "src": "/assets/projects/a-k-residence/06.webp",
-          "alt": "A.K. Residence - image 6"
-        },
-        {
-          "src": "/assets/projects/a-k-residence/07.webp",
-          "alt": "A.K. Residence - image 7"
-        },
-        {
-          "src": "/assets/projects/a-k-residence/08.webp",
-          "alt": "A.K. Residence - image 8"
-        },
-        {
-          "src": "/assets/projects/a-k-residence/09.webp",
-          "alt": "A.K. Residence - image 9"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "MINIMALIST ARCHITECTS",
-      "area": "1,700 m²"
-    },
-    {
-      "id": "a-o-residence",
-      "slug": "a-o-residence",
-      "categorySlug": "private-villas",
-      "title": "A.O. Residence",
-      "coverImage": "/assets/projects/a-o-residence/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/a-o-residence/01.webp",
-          "alt": "A.O. Residence - image 1"
-        },
-        {
-          "src": "/assets/projects/a-o-residence/02.webp",
-          "alt": "A.O. Residence - image 2"
-        },
-        {
-          "src": "/assets/projects/a-o-residence/03.webp",
-          "alt": "A.O. Residence - image 3"
-        },
-        {
-          "src": "/assets/projects/a-o-residence/04.webp",
-          "alt": "A.O. Residence - image 4"
-        },
-        {
-          "src": "/assets/projects/a-o-residence/05.webp",
-          "alt": "A.O. Residence - image 5"
-        },
-        {
-          "src": "/assets/projects/a-o-residence/06.webp",
-          "alt": "A.O. Residence - image 6"
-        },
-        {
-          "src": "/assets/projects/a-o-residence/07.webp",
-          "alt": "A.O. Residence - image 7"
-        },
-        {
-          "src": "/assets/projects/a-o-residence/08.webp",
-          "alt": "A.O. Residence - image 8"
-        },
-        {
-          "src": "/assets/projects/a-o-residence/09.webp",
-          "alt": "A.O. Residence - image 9"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "SAHER IHBAISHA & ASSOCIATES",
-      "area": "1,000 m²"
-    },
-    {
-      "id": "a-s-villa",
-      "slug": "a-s-villa",
-      "categorySlug": "private-villas",
-      "title": "A.S VILLA",
-      "coverImage": "/assets/projects/a-s-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/a-s-villa/01.webp",
-          "alt": "A.S VILLA - image 1"
-        },
-        {
-          "src": "/assets/projects/a-s-villa/02.webp",
-          "alt": "A.S VILLA - image 2"
-        },
-        {
-          "src": "/assets/projects/a-s-villa/03.webp",
-          "alt": "A.S VILLA - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "600 m²"
-    },
-    {
-      "id": "a-t-villa",
-      "slug": "a-t-villa",
-      "categorySlug": "private-villas",
-      "title": "A.T VILLA",
-      "coverImage": "/assets/projects/a-t-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/a-t-villa/01.webp",
-          "alt": "A.T VILLA - image 1"
-        },
-        {
-          "src": "/assets/projects/a-t-villa/02.webp",
-          "alt": "A.T VILLA - image 2"
-        },
-        {
-          "src": "/assets/projects/a-t-villa/03.webp",
-          "alt": "A.T VILLA - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,800 m²"
-    },
-    {
-      "id": "amayer-jeddah",
-      "slug": "amayer-jeddah",
-      "categorySlug": "residential-complex",
-      "title": "AMAYER JEDDAH",
-      "coverImage": "/assets/projects/amayer-jeddah/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/amayer-jeddah/01.webp",
-          "alt": "AMAYER JEDDAH - image 1"
-        }
-      ],
-      "location": "KSA",
-      "architect": null,
-      "area": "60,000 m²"
-    },
-    {
-      "id": "abu-deyeh-commercial-building",
-      "slug": "abu-deyeh-commercial-building",
-      "categorySlug": "commercial-complex",
-      "title": "Abu Deyeh Commercial Building",
-      "coverImage": "/assets/projects/abu-deyeh-commercial-building/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/abu-deyeh-commercial-building/01.webp",
-          "alt": "Abu Deyeh Commercial Building - image 1"
-        },
-        {
-          "src": "/assets/projects/abu-deyeh-commercial-building/02.webp",
-          "alt": "Abu Deyeh Commercial Building - image 2"
-        },
-        {
-          "src": "/assets/projects/abu-deyeh-commercial-building/03.webp",
-          "alt": "Abu Deyeh Commercial Building - image 3"
-        },
-        {
-          "src": "/assets/projects/abu-deyeh-commercial-building/04.webp",
-          "alt": "Abu Deyeh Commercial Building - image 4"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "BALAD ARCHITECTS",
-      "area": "9,000 m²"
-    },
-    {
-      "id": "al-bayed-complex",
-      "slug": "al-bayed-complex",
-      "categorySlug": "commercial-complex",
-      "title": "Al Bayed Complex",
-      "coverImage": "/assets/projects/al-bayed-complex/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/al-bayed-complex/01.webp",
-          "alt": "Al Bayed Complex - image 1"
-        },
-        {
-          "src": "/assets/projects/al-bayed-complex/02.webp",
-          "alt": "Al Bayed Complex - image 2"
-        },
-        {
-          "src": "/assets/projects/al-bayed-complex/03.webp",
-          "alt": "Al Bayed Complex - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "ICON CONSULTANTS ENGINEERS",
-      "area": "4,000 m²"
-    },
-    {
-      "id": "al-rasheed-hospital",
-      "slug": "al-rasheed-hospital",
-      "categorySlug": "hospitals-and-medical-clinics",
-      "title": "Al Rasheed Hospital",
-      "coverImage": "/assets/projects/al-rasheed-hospital/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/al-rasheed-hospital/01.webp",
-          "alt": "Al Rasheed Hospital - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "4,000 m²"
-    },
-    {
-      "id": "al-rayyan-complex",
-      "slug": "al-rayyan-complex",
-      "categorySlug": "commercial-complex",
-      "title": "Al Rayyan Complex",
-      "coverImage": "/assets/projects/al-rayyan-complex/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/al-rayyan-complex/01.webp",
-          "alt": "Al Rayyan Complex - image 1"
-        },
-        {
-          "src": "/assets/projects/al-rayyan-complex/02.webp",
-          "alt": "Al Rayyan Complex - image 2"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": null,
-      "area": "16,000 m²"
-    },
-    {
-      "id": "al-wasel-villas",
-      "slug": "al-wasel-villas",
-      "categorySlug": "private-villas",
-      "title": "Al- Wasel Villas",
-      "coverImage": "/assets/projects/al-wasel-villas/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/al-wasel-villas/01.webp",
-          "alt": "Al- Wasel Villas - image 1"
-        },
-        {
-          "src": "/assets/projects/al-wasel-villas/02.webp",
-          "alt": "Al- Wasel Villas - image 2"
-        },
-        {
-          "src": "/assets/projects/al-wasel-villas/03.webp",
-          "alt": "Al- Wasel Villas - image 3"
-        }
-      ],
-      "location": "KSA",
-      "architect": "SAOTA",
-      "area": "2,000 m²"
-    },
-    {
-      "id": "aljundi-residential-building",
-      "slug": "aljundi-residential-building",
-      "categorySlug": "residential-complex",
-      "title": "AlJundi Residential Building",
-      "coverImage": "/assets/projects/aljundi-residential-building/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/aljundi-residential-building/01.webp",
-          "alt": "AlJundi Residential Building - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "2,000 m²"
-    },
-    {
-      "id": "b-s-villa",
-      "slug": "b-s-villa",
-      "categorySlug": "private-villas",
-      "title": "B.S VILLA",
-      "coverImage": "/assets/projects/b-s-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/b-s-villa/01.webp",
-          "alt": "B.S VILLA - image 1"
-        },
-        {
-          "src": "/assets/projects/b-s-villa/02.webp",
-          "alt": "B.S VILLA - image 2"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "700 m²"
-    },
-    {
-      "id": "baraka-10",
-      "slug": "baraka-10",
-      "categorySlug": "commercial-complex",
-      "title": "BARAKA 10",
-      "coverImage": null,
-      "gallery": [],
-      "location": "JORDAN",
-      "architect": "CUBE ARCHITECTS",
-      "area": "10,000 m²"
-    },
-    {
-      "id": "c-m-c",
-      "slug": "c-m-c",
-      "categorySlug": "governmental",
-      "title": "C.M.C",
-      "coverImage": "/assets/projects/c-m-c/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/c-m-c/01.webp",
-          "alt": "C.M.C - image 1"
-        },
-        {
-          "src": "/assets/projects/c-m-c/02.webp",
-          "alt": "C.M.C - image 2"
-        },
-        {
-          "src": "/assets/projects/c-m-c/03.webp",
-          "alt": "C.M.C - image 3"
-        },
-        {
-          "src": "/assets/projects/c-m-c/04.webp",
-          "alt": "C.M.C - image 4"
-        },
-        {
-          "src": "/assets/projects/c-m-c/05.webp",
-          "alt": "C.M.C - image 5"
-        },
-        {
-          "src": "/assets/projects/c-m-c/06.webp",
-          "alt": "C.M.C - image 6"
-        },
-        {
-          "src": "/assets/projects/c-m-c/07.webp",
-          "alt": "C.M.C - image 7"
-        },
-        {
-          "src": "/assets/projects/c-m-c/08.webp",
-          "alt": "C.M.C - image 8"
-        },
-        {
-          "src": "/assets/projects/c-m-c/09.webp",
-          "alt": "C.M.C - image 9"
-        },
-        {
-          "src": "/assets/projects/c-m-c/10.webp",
-          "alt": "C.M.C - image 10"
-        }
-      ],
-      "location": "KSA",
-      "architect": null,
-      "area": "6,000 m²"
-    },
-    {
-      "id": "centennial-park",
-      "slug": "centennial-park",
-      "categorySlug": "governmental",
-      "title": "Centennial Park",
-      "coverImage": "/assets/projects/centennial-park/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/centennial-park/01.webp",
-          "alt": "Centennial Park - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": null,
-      "area": "2,250 m²"
-    },
-    {
-      "id": "d-j-residence",
-      "slug": "d-j-residence",
-      "categorySlug": "private-villas",
-      "title": "D.J. Residence",
-      "coverImage": "/assets/projects/d-j-residence/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/d-j-residence/01.webp",
-          "alt": "D.J. Residence - image 1"
-        },
-        {
-          "src": "/assets/projects/d-j-residence/02.webp",
-          "alt": "D.J. Residence - image 2"
-        },
-        {
-          "src": "/assets/projects/d-j-residence/03.webp",
-          "alt": "D.J. Residence - image 3"
-        },
-        {
-          "src": "/assets/projects/d-j-residence/04.webp",
-          "alt": "D.J. Residence - image 4"
-        },
-        {
-          "src": "/assets/projects/d-j-residence/05.webp",
-          "alt": "D.J. Residence - image 5"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "AYOUB ARCHITECTS",
-      "area": "2,500 m²"
-    },
-    {
-      "id": "dana-village",
-      "slug": "dana-village",
-      "categorySlug": "resort-hotel",
-      "title": "Dana Village",
-      "coverImage": "/assets/projects/dana-village/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/dana-village/01.webp",
-          "alt": "Dana Village - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Khammash Architects",
-      "area": null
-    },
-    {
-      "id": "e-residence",
-      "slug": "e-residence",
-      "categorySlug": "private-villas",
-      "title": "E. Residence",
-      "coverImage": "/assets/projects/e-residence/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/e-residence/01.webp",
-          "alt": "E. Residence - image 1"
-        },
-        {
-          "src": "/assets/projects/e-residence/02.webp",
-          "alt": "E. Residence - image 2"
-        },
-        {
-          "src": "/assets/projects/e-residence/03.webp",
-          "alt": "E. Residence - image 3"
-        },
-        {
-          "src": "/assets/projects/e-residence/04.webp",
-          "alt": "E. Residence - image 4"
-        },
-        {
-          "src": "/assets/projects/e-residence/05.webp",
-          "alt": "E. Residence - image 5"
-        },
-        {
-          "src": "/assets/projects/e-residence/06.webp",
-          "alt": "E. Residence - image 6"
-        },
-        {
-          "src": "/assets/projects/e-residence/07.webp",
-          "alt": "E. Residence - image 7"
-        },
-        {
-          "src": "/assets/projects/e-residence/08.webp",
-          "alt": "E. Residence - image 8"
-        },
-        {
-          "src": "/assets/projects/e-residence/09.webp",
-          "alt": "E. Residence - image 9"
-        },
-        {
-          "src": "/assets/projects/e-residence/10.webp",
-          "alt": "E. Residence - image 10"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "ICONIC DESIGN CONSULTANTS",
-      "area": "1,200 m²"
-    },
-    {
-      "id": "e-b-villa",
-      "slug": "e-b-villa",
-      "categorySlug": "private-villas",
-      "title": "E.B VILLA",
-      "coverImage": "/assets/projects/e-b-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/e-b-villa/01.webp",
-          "alt": "E.B VILLA - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,000 m²"
-    },
-    {
-      "id": "ev-charger",
-      "slug": "ev-charger",
-      "categorySlug": "fueling-and-car-charging-stations",
-      "title": "EV-Charger",
-      "coverImage": "/assets/projects/ev-charger/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/ev-charger/01.webp",
-          "alt": "EV-Charger - image 1"
-        },
-        {
-          "src": "/assets/projects/ev-charger/02.webp",
-          "alt": "EV-Charger - image 2"
-        },
-        {
-          "src": "/assets/projects/ev-charger/03.webp",
-          "alt": "EV-Charger - image 3"
-        },
-        {
-          "src": "/assets/projects/ev-charger/04.webp",
-          "alt": "EV-Charger - image 4"
-        },
-        {
-          "src": "/assets/projects/ev-charger/05.webp",
-          "alt": "EV-Charger - image 5"
-        },
-        {
-          "src": "/assets/projects/ev-charger/06.webp",
-          "alt": "EV-Charger - image 6"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "BALAD ARCHITECTS",
-      "area": "3,000 m²"
-    },
-    {
-      "id": "f-t-chalet",
-      "slug": "f-t-chalet",
-      "categorySlug": "private-villas",
-      "title": "F.T Chalet",
-      "coverImage": "/assets/projects/f-t-chalet/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/f-t-chalet/01.webp",
-          "alt": "F.T Chalet - image 1"
-        },
-        {
-          "src": "/assets/projects/f-t-chalet/02.webp",
-          "alt": "F.T Chalet - image 2"
-        },
-        {
-          "src": "/assets/projects/f-t-chalet/03.webp",
-          "alt": "F.T Chalet - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "450 m²"
-    },
-    {
-      "id": "fairmont-hotel",
-      "slug": "fairmont-hotel",
-      "categorySlug": "resort-hotel",
-      "title": "Fairmont Hotel",
-      "coverImage": "/assets/projects/fairmont-hotel/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/fairmont-hotel/01.webp",
-          "alt": "Fairmont Hotel - image 1"
-        },
-        {
-          "src": "/assets/projects/fairmont-hotel/02.webp",
-          "alt": "Fairmont Hotel - image 2"
-        },
-        {
-          "src": "/assets/projects/fairmont-hotel/03.webp",
-          "alt": "Fairmont Hotel - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": null,
-      "area": "55,000 m²"
-    },
-    {
-      "id": "gh-residence",
-      "slug": "gh-residence",
-      "categorySlug": "private-villas",
-      "title": "GH Residence",
-      "coverImage": "/assets/projects/gh-residence/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/gh-residence/01.webp",
-          "alt": "GH Residence - image 1"
-        },
-        {
-          "src": "/assets/projects/gh-residence/02.webp",
-          "alt": "GH Residence - image 2"
-        },
-        {
-          "src": "/assets/projects/gh-residence/03.webp",
-          "alt": "GH Residence - image 3"
-        },
-        {
-          "src": "/assets/projects/gh-residence/04.webp",
-          "alt": "GH Residence - image 4"
-        },
-        {
-          "src": "/assets/projects/gh-residence/05.webp",
-          "alt": "GH Residence - image 5"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "MINIMALIST ARCHITECTS",
-      "area": "1,500 m²"
-    },
-    {
-      "id": "h-ranch",
-      "slug": "h-ranch",
-      "categorySlug": "private-villas",
-      "title": "H Ranch",
-      "coverImage": "/assets/projects/h-ranch/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/h-ranch/01.webp",
-          "alt": "H Ranch - image 1"
-        },
-        {
-          "src": "/assets/projects/h-ranch/02.webp",
-          "alt": "H Ranch - image 2"
-        },
-        {
-          "src": "/assets/projects/h-ranch/03.webp",
-          "alt": "H Ranch - image 3"
-        },
-        {
-          "src": "/assets/projects/h-ranch/04.webp",
-          "alt": "H Ranch - image 4"
-        },
-        {
-          "src": "/assets/projects/h-ranch/05.webp",
-          "alt": "H Ranch - image 5"
-        },
-        {
-          "src": "/assets/projects/h-ranch/06.webp",
-          "alt": "H Ranch - image 6"
-        },
-        {
-          "src": "/assets/projects/h-ranch/07.webp",
-          "alt": "H Ranch - image 7"
-        },
-        {
-          "src": "/assets/projects/h-ranch/08.webp",
-          "alt": "H Ranch - image 8"
-        },
-        {
-          "src": "/assets/projects/h-ranch/09.webp",
-          "alt": "H Ranch - image 9"
-        },
-        {
-          "src": "/assets/projects/h-ranch/10.webp",
-          "alt": "H Ranch - image 10"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "GREEN ARCHITECTS",
-      "area": "700 m²"
-    },
-    {
-      "id": "h-villa",
-      "slug": "h-villa",
-      "categorySlug": "private-villas",
-      "title": "H Villa",
-      "coverImage": "/assets/projects/h-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/h-villa/01.webp",
-          "alt": "H Villa - image 1"
-        },
-        {
-          "src": "/assets/projects/h-villa/02.webp",
-          "alt": "H Villa - image 2"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Khammash Architects",
-      "area": null
-    },
-    {
-      "id": "h-villa-2",
-      "slug": "h-villa-2",
-      "categorySlug": "private-villas",
-      "title": "H. Villa",
-      "coverImage": "/assets/projects/h-villa-2/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/h-villa-2/01.webp",
-          "alt": "H. Villa - image 1"
-        },
-        {
-          "src": "/assets/projects/h-villa-2/02.webp",
-          "alt": "H. Villa - image 2"
-        },
-        {
-          "src": "/assets/projects/h-villa-2/03.webp",
-          "alt": "H. Villa - image 3"
-        },
-        {
-          "src": "/assets/projects/h-villa-2/04.webp",
-          "alt": "H. Villa - image 4"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,000 m²"
-    },
-    {
-      "id": "h-m-residence",
-      "slug": "h-m-residence",
-      "categorySlug": "private-villas",
-      "title": "H.M. Residence",
-      "coverImage": "/assets/projects/h-m-residence/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/h-m-residence/01.webp",
-          "alt": "H.M. Residence - image 1"
-        },
-        {
-          "src": "/assets/projects/h-m-residence/02.webp",
-          "alt": "H.M. Residence - image 2"
-        },
-        {
-          "src": "/assets/projects/h-m-residence/03.webp",
-          "alt": "H.M. Residence - image 3"
-        },
-        {
-          "src": "/assets/projects/h-m-residence/04.webp",
-          "alt": "H.M. Residence - image 4"
-        },
-        {
-          "src": "/assets/projects/h-m-residence/05.webp",
-          "alt": "H.M. Residence - image 5"
-        },
-        {
-          "src": "/assets/projects/h-m-residence/06.webp",
-          "alt": "H.M. Residence - image 6"
-        },
-        {
-          "src": "/assets/projects/h-m-residence/07.webp",
-          "alt": "H.M. Residence - image 7"
-        },
-        {
-          "src": "/assets/projects/h-m-residence/08.webp",
-          "alt": "H.M. Residence - image 8"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "FARAH ARCHITECTS",
-      "area": "900 m²"
-    },
-    {
-      "id": "hi-villa",
-      "slug": "hi-villa",
-      "categorySlug": "private-villas",
-      "title": "HI VILLA",
-      "coverImage": "/assets/projects/hi-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/hi-villa/01.webp",
-          "alt": "HI VILLA - image 1"
-        },
-        {
-          "src": "/assets/projects/hi-villa/02.webp",
-          "alt": "HI VILLA - image 2"
-        },
-        {
-          "src": "/assets/projects/hi-villa/03.webp",
-          "alt": "HI VILLA - image 3"
-        },
-        {
-          "src": "/assets/projects/hi-villa/04.webp",
-          "alt": "HI VILLA - image 4"
-        },
-        {
-          "src": "/assets/projects/hi-villa/05.webp",
-          "alt": "HI VILLA - image 5"
-        },
-        {
-          "src": "/assets/projects/hi-villa/06.webp",
-          "alt": "HI VILLA - image 6"
-        },
-        {
-          "src": "/assets/projects/hi-villa/07.webp",
-          "alt": "HI VILLA - image 7"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,000 m²"
-    },
-    {
-      "id": "himmeh-resort",
-      "slug": "himmeh-resort",
-      "categorySlug": "resort-hotel",
-      "title": "Himmeh Resort",
-      "coverImage": "/assets/projects/himmeh-resort/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/himmeh-resort/01.webp",
-          "alt": "Himmeh Resort - image 1"
-        },
-        {
-          "src": "/assets/projects/himmeh-resort/02.webp",
-          "alt": "Himmeh Resort - image 2"
-        },
-        {
-          "src": "/assets/projects/himmeh-resort/03.webp",
-          "alt": "Himmeh Resort - image 3"
-        },
-        {
-          "src": "/assets/projects/himmeh-resort/04.webp",
-          "alt": "Himmeh Resort - image 4"
-        },
-        {
-          "src": "/assets/projects/himmeh-resort/05.webp",
-          "alt": "Himmeh Resort - image 5"
-        },
-        {
-          "src": "/assets/projects/himmeh-resort/06.webp",
-          "alt": "Himmeh Resort - image 6"
-        },
-        {
-          "src": "/assets/projects/himmeh-resort/07.webp",
-          "alt": "Himmeh Resort - image 7"
-        },
-        {
-          "src": "/assets/projects/himmeh-resort/08.webp",
-          "alt": "Himmeh Resort - image 8"
-        },
-        {
-          "src": "/assets/projects/himmeh-resort/09.webp",
-          "alt": "Himmeh Resort - image 9"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Khammash Architects",
-      "area": "7,000 m²"
-    },
-    {
-      "id": "i-h-housing",
-      "slug": "i-h-housing",
-      "categorySlug": "residential-complex",
-      "title": "I.H Housing",
-      "coverImage": "/assets/projects/i-h-housing/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/i-h-housing/01.webp",
-          "alt": "I.H Housing - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "2,600 m²"
-    },
-    {
-      "id": "i-s-vilaa",
-      "slug": "i-s-vilaa",
-      "categorySlug": "private-villas",
-      "title": "I.S VILAA",
-      "coverImage": "/assets/projects/i-s-vilaa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/i-s-vilaa/01.webp",
-          "alt": "I.S VILAA - image 1"
-        },
-        {
-          "src": "/assets/projects/i-s-vilaa/02.webp",
-          "alt": "I.S VILAA - image 2"
-        },
-        {
-          "src": "/assets/projects/i-s-vilaa/03.webp",
-          "alt": "I.S VILAA - image 3"
-        },
-        {
-          "src": "/assets/projects/i-s-vilaa/04.webp",
-          "alt": "I.S VILAA - image 4"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,000 m²"
-    },
-    {
-      "id": "i-y-villa",
-      "slug": "i-y-villa",
-      "categorySlug": "private-villas",
-      "title": "I.Y. Villa",
-      "coverImage": "/assets/projects/i-y-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/i-y-villa/01.webp",
-          "alt": "I.Y. Villa - image 1"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/02.webp",
-          "alt": "I.Y. Villa - image 2"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/03.webp",
-          "alt": "I.Y. Villa - image 3"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/04.webp",
-          "alt": "I.Y. Villa - image 4"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/05.webp",
-          "alt": "I.Y. Villa - image 5"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/06.webp",
-          "alt": "I.Y. Villa - image 6"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/07.webp",
-          "alt": "I.Y. Villa - image 7"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/08.webp",
-          "alt": "I.Y. Villa - image 8"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/09.webp",
-          "alt": "I.Y. Villa - image 9"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/10.webp",
-          "alt": "I.Y. Villa - image 10"
-        },
-        {
-          "src": "/assets/projects/i-y-villa/11.webp",
-          "alt": "I.Y. Villa - image 11"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,200 m²"
-    },
-    {
-      "id": "jannat-baghdad",
-      "slug": "jannat-baghdad",
-      "categorySlug": "residential-complex",
-      "title": "JANNAT BAGHDAD",
-      "coverImage": "/assets/projects/jannat-baghdad/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/jannat-baghdad/01.webp",
-          "alt": "JANNAT BAGHDAD - image 1"
-        },
-        {
-          "src": "/assets/projects/jannat-baghdad/02.webp",
-          "alt": "JANNAT BAGHDAD - image 2"
-        }
-      ],
-      "location": "IRAQ",
-      "architect": "Abstract Design consultants",
-      "area": "60,000 m²"
-    },
-    {
-      "id": "jo-petrol-station",
-      "slug": "jo-petrol-station",
-      "categorySlug": "fueling-and-car-charging-stations",
-      "title": "JO PETROL STATION",
-      "coverImage": "/assets/projects/jo-petrol-station/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/jo-petrol-station/01.webp",
-          "alt": "JO PETROL STATION - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": null,
-      "area": null
-    },
-    {
-      "id": "jarash-farm",
-      "slug": "jarash-farm",
-      "categorySlug": "residential-complex",
-      "title": "Jarash Farm",
-      "coverImage": "/assets/projects/jarash-farm/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/jarash-farm/01.webp",
-          "alt": "Jarash Farm - image 1"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/02.webp",
-          "alt": "Jarash Farm - image 2"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/03.webp",
-          "alt": "Jarash Farm - image 3"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/04.webp",
-          "alt": "Jarash Farm - image 4"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/05.webp",
-          "alt": "Jarash Farm - image 5"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/06.webp",
-          "alt": "Jarash Farm - image 6"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/07.webp",
-          "alt": "Jarash Farm - image 7"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/08.webp",
-          "alt": "Jarash Farm - image 8"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/09.webp",
-          "alt": "Jarash Farm - image 9"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/10.webp",
-          "alt": "Jarash Farm - image 10"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/11.webp",
-          "alt": "Jarash Farm - image 11"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/12.webp",
-          "alt": "Jarash Farm - image 12"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/13.webp",
-          "alt": "Jarash Farm - image 13"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/14.webp",
-          "alt": "Jarash Farm - image 14"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/15.webp",
-          "alt": "Jarash Farm - image 15"
-        },
-        {
-          "src": "/assets/projects/jarash-farm/16.webp",
-          "alt": "Jarash Farm - image 16"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Ahmad Rassas",
-      "area": "2,000 m²"
-    },
-    {
-      "id": "k-villa",
-      "slug": "k-villa",
-      "categorySlug": "private-villas",
-      "title": "K Villa",
-      "coverImage": "/assets/projects/k-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/k-villa/01.webp",
-          "alt": "K Villa - image 1"
-        },
-        {
-          "src": "/assets/projects/k-villa/02.webp",
-          "alt": "K Villa - image 2"
-        },
-        {
-          "src": "/assets/projects/k-villa/03.webp",
-          "alt": "K Villa - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "700 m²"
-    },
-    {
-      "id": "k-mosque",
-      "slug": "k-mosque",
-      "categorySlug": "mosques",
-      "title": "K.MOSQUE",
-      "coverImage": "/assets/projects/k-mosque/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/k-mosque/01.webp",
-          "alt": "K.MOSQUE - image 1"
-        },
-        {
-          "src": "/assets/projects/k-mosque/02.webp",
-          "alt": "K.MOSQUE - image 2"
-        },
-        {
-          "src": "/assets/projects/k-mosque/03.webp",
-          "alt": "K.MOSQUE - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,300 m²"
-    },
-    {
-      "id": "khandakji-villa",
-      "slug": "khandakji-villa",
-      "categorySlug": "private-villas",
-      "title": "Khandakji Villa",
-      "coverImage": "/assets/projects/khandakji-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/khandakji-villa/01.webp",
-          "alt": "Khandakji Villa - image 1"
-        },
-        {
-          "src": "/assets/projects/khandakji-villa/02.webp",
-          "alt": "Khandakji Villa - image 2"
-        },
-        {
-          "src": "/assets/projects/khandakji-villa/03.webp",
-          "alt": "Khandakji Villa - image 3"
-        },
-        {
-          "src": "/assets/projects/khandakji-villa/04.webp",
-          "alt": "Khandakji Villa - image 4"
-        },
-        {
-          "src": "/assets/projects/khandakji-villa/05.webp",
-          "alt": "Khandakji Villa - image 5"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "600 m²"
-    },
-    {
-      "id": "m-chalets",
-      "slug": "m-chalets",
-      "categorySlug": "private-villas",
-      "title": "M Chalets",
-      "coverImage": "/assets/projects/m-chalets/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/m-chalets/01.webp",
-          "alt": "M Chalets - image 1"
-        },
-        {
-          "src": "/assets/projects/m-chalets/02.webp",
-          "alt": "M Chalets - image 2"
-        },
-        {
-          "src": "/assets/projects/m-chalets/03.webp",
-          "alt": "M Chalets - image 3"
-        },
-        {
-          "src": "/assets/projects/m-chalets/04.webp",
-          "alt": "M Chalets - image 4"
-        },
-        {
-          "src": "/assets/projects/m-chalets/05.webp",
-          "alt": "M Chalets - image 5"
-        },
-        {
-          "src": "/assets/projects/m-chalets/06.webp",
-          "alt": "M Chalets - image 6"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "700 m²"
-    },
-    {
-      "id": "m-e-chalets",
-      "slug": "m-e-chalets",
-      "categorySlug": "private-villas",
-      "title": "M.E CHALETS",
-      "coverImage": "/assets/projects/m-e-chalets/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/m-e-chalets/01.webp",
-          "alt": "M.E CHALETS - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "400 m²"
-    },
-    {
-      "id": "m-y-villa",
-      "slug": "m-y-villa",
-      "categorySlug": "private-villas",
-      "title": "M.Y VILLA",
-      "coverImage": "/assets/projects/m-y-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/m-y-villa/01.webp",
-          "alt": "M.Y VILLA - image 1"
-        },
-        {
-          "src": "/assets/projects/m-y-villa/02.webp",
-          "alt": "M.Y VILLA - image 2"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "750 m²"
-    },
-    {
-      "id": "maaroof-mosque",
-      "slug": "maaroof-mosque",
-      "categorySlug": "mosques",
-      "title": "MAAROOF MOSQUE",
-      "coverImage": "/assets/projects/maaroof-mosque/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/maaroof-mosque/01.webp",
-          "alt": "MAAROOF MOSQUE - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,200 m²"
-    },
-    {
-      "id": "o-h-villa",
-      "slug": "o-h-villa",
-      "categorySlug": "private-villas",
-      "title": "O.H. Villa",
-      "coverImage": "/assets/projects/o-h-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/o-h-villa/01.webp",
-          "alt": "O.H. Villa - image 1"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/02.webp",
-          "alt": "O.H. Villa - image 2"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/03.webp",
-          "alt": "O.H. Villa - image 3"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/04.webp",
-          "alt": "O.H. Villa - image 4"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/05.webp",
-          "alt": "O.H. Villa - image 5"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/06.webp",
-          "alt": "O.H. Villa - image 6"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/07.webp",
-          "alt": "O.H. Villa - image 7"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/08.webp",
-          "alt": "O.H. Villa - image 8"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/09.webp",
-          "alt": "O.H. Villa - image 9"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/10.webp",
-          "alt": "O.H. Villa - image 10"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/11.webp",
-          "alt": "O.H. Villa - image 11"
-        },
-        {
-          "src": "/assets/projects/o-h-villa/12.webp",
-          "alt": "O.H. Villa - image 12"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "MINIMALIST ARCHITECTS",
-      "area": "1,000 m²"
-    },
-    {
-      "id": "obaidi-complex",
-      "slug": "obaidi-complex",
-      "categorySlug": "commercial-complex",
-      "title": "Obaidi Complex",
-      "coverImage": "/assets/projects/obaidi-complex/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/obaidi-complex/01.webp",
-          "alt": "Obaidi Complex - image 1"
-        },
-        {
-          "src": "/assets/projects/obaidi-complex/02.webp",
-          "alt": "Obaidi Complex - image 2"
-        },
-        {
-          "src": "/assets/projects/obaidi-complex/03.webp",
-          "alt": "Obaidi Complex - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "SEYAM ARCHITECTS",
-      "area": "8,700 m²"
-    },
-    {
-      "id": "petra-mosque",
-      "slug": "petra-mosque",
-      "categorySlug": "mosques",
-      "title": "Petra Mosque",
-      "coverImage": "/assets/projects/petra-mosque/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/petra-mosque/01.webp",
-          "alt": "Petra Mosque - image 1"
-        },
-        {
-          "src": "/assets/projects/petra-mosque/02.webp",
-          "alt": "Petra Mosque - image 2"
-        },
-        {
-          "src": "/assets/projects/petra-mosque/03.webp",
-          "alt": "Petra Mosque - image 3"
-        },
-        {
-          "src": "/assets/projects/petra-mosque/04.webp",
-          "alt": "Petra Mosque - image 4"
-        },
-        {
-          "src": "/assets/projects/petra-mosque/05.webp",
-          "alt": "Petra Mosque - image 5"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "SAHER IHBAISHA & ASSOCIATES",
-      "area": "1,100 m²"
-    },
-    {
-      "id": "r-residence",
-      "slug": "r-residence",
-      "categorySlug": "private-villas",
-      "title": "R Residence",
-      "coverImage": "/assets/projects/r-residence/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/r-residence/01.webp",
-          "alt": "R Residence - image 1"
-        },
-        {
-          "src": "/assets/projects/r-residence/02.webp",
-          "alt": "R Residence - image 2"
-        },
-        {
-          "src": "/assets/projects/r-residence/03.webp",
-          "alt": "R Residence - image 3"
-        },
-        {
-          "src": "/assets/projects/r-residence/04.webp",
-          "alt": "R Residence - image 4"
-        },
-        {
-          "src": "/assets/projects/r-residence/05.webp",
-          "alt": "R Residence - image 5"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Khammash Architects",
-      "area": "1,500 m²"
-    },
-    {
-      "id": "r-k-02",
-      "slug": "r-k-02",
-      "categorySlug": "private-villas",
-      "title": "R.K 02",
-      "coverImage": "/assets/projects/r-k-02/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/r-k-02/01.webp",
-          "alt": "R.K 02 - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "2,800 m²"
-    },
-    {
-      "id": "r-s-villa",
-      "slug": "r-s-villa",
-      "categorySlug": "private-villas",
-      "title": "R.S. Villa",
-      "coverImage": "/assets/projects/r-s-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/r-s-villa/01.webp",
-          "alt": "R.S. Villa - image 1"
-        },
-        {
-          "src": "/assets/projects/r-s-villa/02.webp",
-          "alt": "R.S. Villa - image 2"
-        },
-        {
-          "src": "/assets/projects/r-s-villa/03.webp",
-          "alt": "R.S. Villa - image 3"
-        },
-        {
-          "src": "/assets/projects/r-s-villa/04.webp",
-          "alt": "R.S. Villa - image 4"
-        },
-        {
-          "src": "/assets/projects/r-s-villa/05.webp",
-          "alt": "R.S. Villa - image 5"
-        },
-        {
-          "src": "/assets/projects/r-s-villa/06.webp",
-          "alt": "R.S. Villa - image 6"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "800 m²"
-    },
-    {
-      "id": "rasheen-1155",
-      "slug": "rasheen-1155",
-      "categorySlug": "residential-complex",
-      "title": "RASHEEN 1155",
-      "coverImage": "/assets/projects/rasheen-1155/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/rasheen-1155/01.webp",
-          "alt": "RASHEEN 1155 - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,800 m²"
-    },
-    {
-      "id": "royal-academy-for-nature-conservation",
-      "slug": "royal-academy-for-nature-conservation",
-      "categorySlug": "institutional-cultural",
-      "title": "Royal Academy For Nature Conservation",
-      "coverImage": "/assets/projects/royal-academy-for-nature-conservation/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/royal-academy-for-nature-conservation/01.webp",
-          "alt": "Royal Academy For Nature Conservation - image 1"
-        },
-        {
-          "src": "/assets/projects/royal-academy-for-nature-conservation/02.webp",
-          "alt": "Royal Academy For Nature Conservation - image 2"
-        },
-        {
-          "src": "/assets/projects/royal-academy-for-nature-conservation/03.webp",
-          "alt": "Royal Academy For Nature Conservation - image 3"
-        },
-        {
-          "src": "/assets/projects/royal-academy-for-nature-conservation/04.webp",
-          "alt": "Royal Academy For Nature Conservation - image 4"
-        },
-        {
-          "src": "/assets/projects/royal-academy-for-nature-conservation/05.webp",
-          "alt": "Royal Academy For Nature Conservation - image 5"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": null,
-      "area": null
-    },
-    {
-      "id": "speciality-medical-complex",
-      "slug": "speciality-medical-complex",
-      "categorySlug": "hospitals-and-medical-clinics",
-      "title": "SPECIALITY MEDICAL COMPLEX",
-      "coverImage": "/assets/projects/speciality-medical-complex/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/speciality-medical-complex/01.webp",
-          "alt": "SPECIALITY MEDICAL COMPLEX - image 1"
-        },
-        {
-          "src": "/assets/projects/speciality-medical-complex/02.webp",
-          "alt": "SPECIALITY MEDICAL COMPLEX - image 2"
-        },
-        {
-          "src": "/assets/projects/speciality-medical-complex/03.webp",
-          "alt": "SPECIALITY MEDICAL COMPLEX - image 3"
-        },
-        {
-          "src": "/assets/projects/speciality-medical-complex/04.webp",
-          "alt": "SPECIALITY MEDICAL COMPLEX - image 4"
-        },
-        {
-          "src": "/assets/projects/speciality-medical-complex/05.webp",
-          "alt": "SPECIALITY MEDICAL COMPLEX - image 5"
-        },
-        {
-          "src": "/assets/projects/speciality-medical-complex/06.webp",
-          "alt": "SPECIALITY MEDICAL COMPLEX - image 6"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": null,
-      "area": "32,000 m²"
-    },
-    {
-      "id": "sharaan-resort",
-      "slug": "sharaan-resort",
-      "categorySlug": "resort-hotel",
-      "title": "Sharaan Resort",
-      "coverImage": "/assets/projects/sharaan-resort/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/sharaan-resort/01.webp",
-          "alt": "Sharaan Resort - image 1"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/02.webp",
-          "alt": "Sharaan Resort - image 2"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/03.webp",
-          "alt": "Sharaan Resort - image 3"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/04.webp",
-          "alt": "Sharaan Resort - image 4"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/05.webp",
-          "alt": "Sharaan Resort - image 5"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/06.webp",
-          "alt": "Sharaan Resort - image 6"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/07.webp",
-          "alt": "Sharaan Resort - image 7"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/08.webp",
-          "alt": "Sharaan Resort - image 8"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/09.webp",
-          "alt": "Sharaan Resort - image 9"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/10.webp",
-          "alt": "Sharaan Resort - image 10"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/11.webp",
-          "alt": "Sharaan Resort - image 11"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/12.webp",
-          "alt": "Sharaan Resort - image 12"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/13.webp",
-          "alt": "Sharaan Resort - image 13"
-        },
-        {
-          "src": "/assets/projects/sharaan-resort/14.webp",
-          "alt": "Sharaan Resort - image 14"
-        }
-      ],
-      "location": "KSA",
-      "architect": "Khammash Architects",
-      "area": "135,000 m²"
-    },
-    {
-      "id": "sherbeni-complex",
-      "slug": "sherbeni-complex",
-      "categorySlug": "commercial-complex",
-      "title": "Sherbeni Complex",
-      "coverImage": "/assets/projects/sherbeni-complex/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/sherbeni-complex/01.webp",
-          "alt": "Sherbeni Complex - image 1"
-        },
-        {
-          "src": "/assets/projects/sherbeni-complex/02.webp",
-          "alt": "Sherbeni Complex - image 2"
-        },
-        {
-          "src": "/assets/projects/sherbeni-complex/03.webp",
-          "alt": "Sherbeni Complex - image 3"
-        }
-      ],
-      "location": "KSA",
-      "architect": "Suhaimi Design",
-      "area": "13,000 m²"
-    },
-    {
-      "id": "sidrat-alula",
-      "slug": "sidrat-alula",
-      "categorySlug": "residential-complex",
-      "title": "Sidrat AlUla",
-      "coverImage": "/assets/projects/sidrat-alula/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/sidrat-alula/01.webp",
-          "alt": "Sidrat AlUla - image 1"
-        },
-        {
-          "src": "/assets/projects/sidrat-alula/02.webp",
-          "alt": "Sidrat AlUla - image 2"
-        },
-        {
-          "src": "/assets/projects/sidrat-alula/03.webp",
-          "alt": "Sidrat AlUla - image 3"
-        },
-        {
-          "src": "/assets/projects/sidrat-alula/04.webp",
-          "alt": "Sidrat AlUla - image 4"
-        },
-        {
-          "src": "/assets/projects/sidrat-alula/05.webp",
-          "alt": "Sidrat AlUla - image 5"
-        },
-        {
-          "src": "/assets/projects/sidrat-alula/06.webp",
-          "alt": "Sidrat AlUla - image 6"
-        },
-        {
-          "src": "/assets/projects/sidrat-alula/07.webp",
-          "alt": "Sidrat AlUla - image 7"
-        }
-      ],
-      "location": "KSA",
-      "architect": "Khammash Architects",
-      "area": "40,000 m²"
-    },
-    {
-      "id": "souq-yard-porject",
-      "slug": "souq-yard-porject",
-      "categorySlug": "commercial-complex",
-      "title": "Souq Yard Porject",
-      "coverImage": "/assets/projects/souq-yard-porject/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/souq-yard-porject/01.webp",
-          "alt": "Souq Yard Porject - image 1"
-        },
-        {
-          "src": "/assets/projects/souq-yard-porject/02.webp",
-          "alt": "Souq Yard Porject - image 2"
-        },
-        {
-          "src": "/assets/projects/souq-yard-porject/03.webp",
-          "alt": "Souq Yard Porject - image 3"
-        },
-        {
-          "src": "/assets/projects/souq-yard-porject/04.webp",
-          "alt": "Souq Yard Porject - image 4"
-        },
-        {
-          "src": "/assets/projects/souq-yard-porject/05.webp",
-          "alt": "Souq Yard Porject - image 5"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "MOHAMMD EL FAR ARCHITECTS",
-      "area": "14,000 m²"
-    },
-    {
-      "id": "u-residentia",
-      "slug": "u-residentia",
-      "categorySlug": "residential-complex",
-      "title": "U.Residentia",
-      "coverImage": "/assets/projects/u-residentia/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/u-residentia/01.webp",
-          "alt": "U.Residentia - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "2,300 m²"
-    },
-    {
-      "id": "vitas-jordan-company",
-      "slug": "vitas-jordan-company",
-      "categorySlug": "commercial-complex",
-      "title": "Vitas Jordan Company",
-      "coverImage": "/assets/projects/vitas-jordan-company/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/vitas-jordan-company/01.webp",
-          "alt": "Vitas Jordan Company - image 1"
-        },
-        {
-          "src": "/assets/projects/vitas-jordan-company/02.webp",
-          "alt": "Vitas Jordan Company - image 2"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "7,000 m²"
-    },
-    {
-      "id": "wadi-al-heedan-visitor",
-      "slug": "wadi-al-heedan-visitor",
-      "categorySlug": "institutional-cultural",
-      "title": "Wadi Al-Heedan Visitor",
-      "coverImage": "/assets/projects/wadi-al-heedan-visitor/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/wadi-al-heedan-visitor/01.webp",
-          "alt": "Wadi Al-Heedan Visitor - image 1"
-        },
-        {
-          "src": "/assets/projects/wadi-al-heedan-visitor/02.webp",
-          "alt": "Wadi Al-Heedan Visitor - image 2"
-        },
-        {
-          "src": "/assets/projects/wadi-al-heedan-visitor/03.webp",
-          "alt": "Wadi Al-Heedan Visitor - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": null,
-      "area": null
-    },
-    {
-      "id": "wadi-al-mujib-adventures-visitor-center",
-      "slug": "wadi-al-mujib-adventures-visitor-center",
-      "categorySlug": "institutional-cultural",
-      "title": "Wadi Al-Mujib Adventures Visitor Center",
-      "coverImage": "/assets/projects/wadi-al-mujib-adventures-visitor-center/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/wadi-al-mujib-adventures-visitor-center/01.webp",
-          "alt": "Wadi Al-Mujib Adventures Visitor Center - image 1"
-        },
-        {
-          "src": "/assets/projects/wadi-al-mujib-adventures-visitor-center/02.webp",
-          "alt": "Wadi Al-Mujib Adventures Visitor Center - image 2"
-        },
-        {
-          "src": "/assets/projects/wadi-al-mujib-adventures-visitor-center/03.webp",
-          "alt": "Wadi Al-Mujib Adventures Visitor Center - image 3"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": null,
-      "area": null
-    },
-    {
-      "id": "y-m-villa",
-      "slug": "y-m-villa",
-      "categorySlug": "private-villas",
-      "title": "Y.M. Villa",
-      "coverImage": "/assets/projects/y-m-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/y-m-villa/01.webp",
-          "alt": "Y.M. Villa - image 1"
-        },
-        {
-          "src": "/assets/projects/y-m-villa/02.webp",
-          "alt": "Y.M. Villa - image 2"
-        },
-        {
-          "src": "/assets/projects/y-m-villa/03.webp",
-          "alt": "Y.M. Villa - image 3"
-        },
-        {
-          "src": "/assets/projects/y-m-villa/04.webp",
-          "alt": "Y.M. Villa - image 4"
-        },
-        {
-          "src": "/assets/projects/y-m-villa/05.webp",
-          "alt": "Y.M. Villa - image 5"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "SAHER IHBAISHA & ASSOCIATES",
-      "area": "1,200 m²"
-    },
-    {
-      "id": "yarmouk-visitor-center",
-      "slug": "yarmouk-visitor-center",
-      "categorySlug": "institutional-cultural",
-      "title": "Yarmouk Visitor Center",
-      "coverImage": "/assets/projects/yarmouk-visitor-center/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/yarmouk-visitor-center/01.webp",
-          "alt": "Yarmouk Visitor Center - image 1"
-        },
-        {
-          "src": "/assets/projects/yarmouk-visitor-center/02.webp",
-          "alt": "Yarmouk Visitor Center - image 2"
-        },
-        {
-          "src": "/assets/projects/yarmouk-visitor-center/03.webp",
-          "alt": "Yarmouk Visitor Center - image 3"
-        },
-        {
-          "src": "/assets/projects/yarmouk-visitor-center/04.webp",
-          "alt": "Yarmouk Visitor Center - image 4"
-        },
-        {
-          "src": "/assets/projects/yarmouk-visitor-center/05.webp",
-          "alt": "Yarmouk Visitor Center - image 5"
-        },
-        {
-          "src": "/assets/projects/yarmouk-visitor-center/06.webp",
-          "alt": "Yarmouk Visitor Center - image 6"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Khammash Architects",
-      "area": "1,300 m²"
-    },
-    {
-      "id": "z-villa",
-      "slug": "z-villa",
-      "categorySlug": "private-villas",
-      "title": "Z Villa",
-      "coverImage": "/assets/projects/z-villa/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/z-villa/01.webp",
-          "alt": "Z Villa - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Khammash Architects",
-      "area": "3,800 m²"
-    },
-    {
-      "id": "z-k-housing",
-      "slug": "z-k-housing",
-      "categorySlug": "residential-complex",
-      "title": "Z.K Housing",
-      "coverImage": "/assets/projects/z-k-housing/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/z-k-housing/01.webp",
-          "alt": "Z.K Housing - image 1"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "Abstract Design consultants",
-      "area": "1,500 m²"
-    },
-    {
-      "id": "zahran-complex",
-      "slug": "zahran-complex",
-      "categorySlug": "commercial-complex",
-      "title": "ZAHRAN COMPLEX",
-      "coverImage": "/assets/projects/zahran-complex/01.webp",
-      "gallery": [
-        {
-          "src": "/assets/projects/zahran-complex/01.webp",
-          "alt": "ZAHRAN COMPLEX - image 1"
-        },
-        {
-          "src": "/assets/projects/zahran-complex/02.webp",
-          "alt": "ZAHRAN COMPLEX - image 2"
-        },
-        {
-          "src": "/assets/projects/zahran-complex/03.webp",
-          "alt": "ZAHRAN COMPLEX - image 3"
-        },
-        {
-          "src": "/assets/projects/zahran-complex/04.webp",
-          "alt": "ZAHRAN COMPLEX - image 4"
-        },
-        {
-          "src": "/assets/projects/zahran-complex/05.webp",
-          "alt": "ZAHRAN COMPLEX - image 5"
-        },
-        {
-          "src": "/assets/projects/zahran-complex/06.webp",
-          "alt": "ZAHRAN COMPLEX - image 6"
-        }
-      ],
-      "location": "JORDAN",
-      "architect": "CUBE ARCHITECTS",
-      "area": "4,500 m²"
-    }
-  ]
+    "categories": [
+        {
+            "id": "commercial-complex",
+            "slug": "commercial-complex",
+            "title": "Commercial Complex",
+            "description": "Commercial Complex projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/abu-deyeh-commercial-building/01.webp",
+            "projectCount": 14
+        },
+        {
+            "id": "fueling-and-car-charging-stations",
+            "slug": "fueling-and-car-charging-stations",
+            "title": "Fueling and Car Charging Stations",
+            "description": "Fueling and Car Charging Stations projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/ev-charger/01.webp",
+            "projectCount": 2
+        },
+        {
+            "id": "governmental",
+            "slug": "governmental",
+            "title": "Governmental",
+            "description": "Governmental projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/c-m-c/01.webp",
+            "projectCount": 3
+        },
+        {
+            "id": "hospitals-and-medical-clinics",
+            "slug": "hospitals-and-medical-clinics",
+            "title": "Hospitals and Medical Clinics",
+            "description": "Hospitals and Medical Clinics projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/al-rasheed-hospital/01.webp",
+            "projectCount": 4
+        },
+        {
+            "id": "institutional-cultural",
+            "slug": "institutional-cultural",
+            "title": "Institutional - Cultural",
+            "description": "Institutional - Cultural projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/royal-academy-for-nature-conservation/01.webp",
+            "projectCount": 5
+        },
+        {
+            "id": "mosques",
+            "slug": "mosques",
+            "title": "Mosques",
+            "description": "Mosques projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/k-mosque/01.webp",
+            "projectCount": 3
+        },
+        {
+            "id": "private-villas",
+            "slug": "private-villas",
+            "title": "Private Villas",
+            "description": "Private Villas projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/a-residence/01.webp",
+            "projectCount": 34
+        },
+        {
+            "id": "residential-complex",
+            "slug": "residential-complex",
+            "title": "Residential Complex",
+            "description": "Residential Complex projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/a-j-residential/01.webp",
+            "projectCount": 13
+        },
+        {
+            "id": "resort-hotel",
+            "slug": "resort-hotel",
+            "title": "Resort & Hotel",
+            "description": "Resort & Hotel projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/dana-village/01.webp",
+            "projectCount": 5
+        },
+        {
+            "id": "steel",
+            "slug": "steel",
+            "title": "Steel",
+            "description": "Steel projects by ODEH & PARTNERS DESIGN.",
+            "coverImage": "/assets/projects/boj-mecca-street-roof-canopies/01.webp",
+            "projectCount": 14
+        }
+    ],
+    "projects": [
+        {
+            "id": "a-residence",
+            "slug": "a-residence",
+            "categorySlug": "private-villas",
+            "title": "A. Residence",
+            "coverImage": "/assets/projects/a-residence/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/a-residence/01.webp",
+                    "alt": "A. Residence - image 1"
+                },
+                {
+                    "src": "/assets/projects/a-residence/02.webp",
+                    "alt": "A. Residence - image 2"
+                },
+                {
+                    "src": "/assets/projects/a-residence/03.webp",
+                    "alt": "A. Residence - image 3"
+                },
+                {
+                    "src": "/assets/projects/a-residence/04.webp",
+                    "alt": "A. Residence - image 4"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "AYOUB ARCHITECTS",
+            "area": "2,500 m²"
+        },
+        {
+            "id": "a-h-farmhouse",
+            "slug": "a-h-farmhouse",
+            "categorySlug": "private-villas",
+            "title": "A.H. Farmhouse",
+            "coverImage": "/assets/projects/a-h-farmhouse/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/a-h-farmhouse/01.webp",
+                    "alt": "A.H. Farmhouse - image 1"
+                },
+                {
+                    "src": "/assets/projects/a-h-farmhouse/02.webp",
+                    "alt": "A.H. Farmhouse - image 2"
+                },
+                {
+                    "src": "/assets/projects/a-h-farmhouse/03.webp",
+                    "alt": "A.H. Farmhouse - image 3"
+                },
+                {
+                    "src": "/assets/projects/a-h-farmhouse/04.webp",
+                    "alt": "A.H. Farmhouse - image 4"
+                },
+                {
+                    "src": "/assets/projects/a-h-farmhouse/05.webp",
+                    "alt": "A.H. Farmhouse - image 5"
+                },
+                {
+                    "src": "/assets/projects/a-h-farmhouse/06.webp",
+                    "alt": "A.H. Farmhouse - image 6"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "ARD DESIGNS",
+            "area": "1,000 m²"
+        },
+        {
+            "id": "a-j-residential",
+            "slug": "a-j-residential",
+            "categorySlug": "residential-complex",
+            "title": "A.J Residential",
+            "coverImage": "/assets/projects/a-j-residential/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/a-j-residential/01.webp",
+                    "alt": "A.J Residential - image 1"
+                },
+                {
+                    "src": "/assets/projects/a-j-residential/02.webp",
+                    "alt": "A.J Residential - image 2"
+                },
+                {
+                    "src": "/assets/projects/a-j-residential/03.webp",
+                    "alt": "A.J Residential - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "4,100 m²"
+        },
+        {
+            "id": "a-k-residence",
+            "slug": "a-k-residence",
+            "categorySlug": "private-villas",
+            "title": "A.K. Residence",
+            "coverImage": "/assets/projects/a-k-residence/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/a-k-residence/01.webp",
+                    "alt": "A.K. Residence - image 1"
+                },
+                {
+                    "src": "/assets/projects/a-k-residence/02.webp",
+                    "alt": "A.K. Residence - image 2"
+                },
+                {
+                    "src": "/assets/projects/a-k-residence/03.webp",
+                    "alt": "A.K. Residence - image 3"
+                },
+                {
+                    "src": "/assets/projects/a-k-residence/04.webp",
+                    "alt": "A.K. Residence - image 4"
+                },
+                {
+                    "src": "/assets/projects/a-k-residence/05.webp",
+                    "alt": "A.K. Residence - image 5"
+                },
+                {
+                    "src": "/assets/projects/a-k-residence/06.webp",
+                    "alt": "A.K. Residence - image 6"
+                },
+                {
+                    "src": "/assets/projects/a-k-residence/07.webp",
+                    "alt": "A.K. Residence - image 7"
+                },
+                {
+                    "src": "/assets/projects/a-k-residence/08.webp",
+                    "alt": "A.K. Residence - image 8"
+                },
+                {
+                    "src": "/assets/projects/a-k-residence/09.webp",
+                    "alt": "A.K. Residence - image 9"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "MINIMALIST ARCHITECTS",
+            "area": "1,700 m²"
+        },
+        {
+            "id": "a-o-residence",
+            "slug": "a-o-residence",
+            "categorySlug": "private-villas",
+            "title": "A.O. Residence",
+            "coverImage": "/assets/projects/a-o-residence/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/a-o-residence/01.webp",
+                    "alt": "A.O. Residence - image 1"
+                },
+                {
+                    "src": "/assets/projects/a-o-residence/02.webp",
+                    "alt": "A.O. Residence - image 2"
+                },
+                {
+                    "src": "/assets/projects/a-o-residence/03.webp",
+                    "alt": "A.O. Residence - image 3"
+                },
+                {
+                    "src": "/assets/projects/a-o-residence/04.webp",
+                    "alt": "A.O. Residence - image 4"
+                },
+                {
+                    "src": "/assets/projects/a-o-residence/05.webp",
+                    "alt": "A.O. Residence - image 5"
+                },
+                {
+                    "src": "/assets/projects/a-o-residence/06.webp",
+                    "alt": "A.O. Residence - image 6"
+                },
+                {
+                    "src": "/assets/projects/a-o-residence/07.webp",
+                    "alt": "A.O. Residence - image 7"
+                },
+                {
+                    "src": "/assets/projects/a-o-residence/08.webp",
+                    "alt": "A.O. Residence - image 8"
+                },
+                {
+                    "src": "/assets/projects/a-o-residence/09.webp",
+                    "alt": "A.O. Residence - image 9"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "SAHER IHBAISHA & ASSOCIATES",
+            "area": "1,000 m²"
+        },
+        {
+            "id": "a-s-villa",
+            "slug": "a-s-villa",
+            "categorySlug": "private-villas",
+            "title": "A.S VILLA",
+            "coverImage": "/assets/projects/a-s-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/a-s-villa/01.webp",
+                    "alt": "A.S VILLA - image 1"
+                },
+                {
+                    "src": "/assets/projects/a-s-villa/02.webp",
+                    "alt": "A.S VILLA - image 2"
+                },
+                {
+                    "src": "/assets/projects/a-s-villa/03.webp",
+                    "alt": "A.S VILLA - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "600 m²"
+        },
+        {
+            "id": "a-t-villa",
+            "slug": "a-t-villa",
+            "categorySlug": "private-villas",
+            "title": "A.T VILLA",
+            "coverImage": "/assets/projects/a-t-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/a-t-villa/01.webp",
+                    "alt": "A.T VILLA - image 1"
+                },
+                {
+                    "src": "/assets/projects/a-t-villa/02.webp",
+                    "alt": "A.T VILLA - image 2"
+                },
+                {
+                    "src": "/assets/projects/a-t-villa/03.webp",
+                    "alt": "A.T VILLA - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,800 m²"
+        },
+        {
+            "id": "amayer-jeddah",
+            "slug": "amayer-jeddah",
+            "categorySlug": "residential-complex",
+            "title": "AMAYER JEDDAH",
+            "coverImage": "/assets/projects/amayer-jeddah/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/amayer-jeddah/01.webp",
+                    "alt": "AMAYER JEDDAH - image 1"
+                }
+            ],
+            "location": "KSA",
+            "architect": null,
+            "area": "60,000 m²"
+        },
+        {
+            "id": "abu-deyeh-commercial-building",
+            "slug": "abu-deyeh-commercial-building",
+            "categorySlug": "commercial-complex",
+            "title": "Abu Deyeh Commercial Building",
+            "coverImage": "/assets/projects/abu-deyeh-commercial-building/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/abu-deyeh-commercial-building/01.webp",
+                    "alt": "Abu Deyeh Commercial Building - image 1"
+                },
+                {
+                    "src": "/assets/projects/abu-deyeh-commercial-building/02.webp",
+                    "alt": "Abu Deyeh Commercial Building - image 2"
+                },
+                {
+                    "src": "/assets/projects/abu-deyeh-commercial-building/03.webp",
+                    "alt": "Abu Deyeh Commercial Building - image 3"
+                },
+                {
+                    "src": "/assets/projects/abu-deyeh-commercial-building/04.webp",
+                    "alt": "Abu Deyeh Commercial Building - image 4"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "BALAD ARCHITECTS",
+            "area": "9,000 m²"
+        },
+        {
+            "id": "al-bayed-complex",
+            "slug": "al-bayed-complex",
+            "categorySlug": "commercial-complex",
+            "title": "Al Bayed Complex",
+            "coverImage": "/assets/projects/al-bayed-complex/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/al-bayed-complex/01.webp",
+                    "alt": "Al Bayed Complex - image 1"
+                },
+                {
+                    "src": "/assets/projects/al-bayed-complex/02.webp",
+                    "alt": "Al Bayed Complex - image 2"
+                },
+                {
+                    "src": "/assets/projects/al-bayed-complex/03.webp",
+                    "alt": "Al Bayed Complex - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "ICON CONSULTANTS ENGINEERS",
+            "area": "4,000 m²"
+        },
+        {
+            "id": "al-rasheed-hospital",
+            "slug": "al-rasheed-hospital",
+            "categorySlug": "hospitals-and-medical-clinics",
+            "title": "Al Rasheed Hospital",
+            "coverImage": "/assets/projects/al-rasheed-hospital/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/al-rasheed-hospital/01.webp",
+                    "alt": "Al Rasheed Hospital - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "4,000 m²"
+        },
+        {
+            "id": "al-rayyan-complex",
+            "slug": "al-rayyan-complex",
+            "categorySlug": "commercial-complex",
+            "title": "Al Rayyan Complex",
+            "coverImage": "/assets/projects/al-rayyan-complex/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/al-rayyan-complex/01.webp",
+                    "alt": "Al Rayyan Complex - image 1"
+                },
+                {
+                    "src": "/assets/projects/al-rayyan-complex/02.webp",
+                    "alt": "Al Rayyan Complex - image 2"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": null,
+            "area": "16,000 m²"
+        },
+        {
+            "id": "al-wasel-villas",
+            "slug": "al-wasel-villas",
+            "categorySlug": "private-villas",
+            "title": "Al- Wasel Villas",
+            "coverImage": "/assets/projects/al-wasel-villas/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/al-wasel-villas/01.webp",
+                    "alt": "Al- Wasel Villas - image 1"
+                },
+                {
+                    "src": "/assets/projects/al-wasel-villas/02.webp",
+                    "alt": "Al- Wasel Villas - image 2"
+                },
+                {
+                    "src": "/assets/projects/al-wasel-villas/03.webp",
+                    "alt": "Al- Wasel Villas - image 3"
+                }
+            ],
+            "location": "KSA",
+            "architect": "SAOTA",
+            "area": "2,000 m²"
+        },
+        {
+            "id": "aljundi-residential-building",
+            "slug": "aljundi-residential-building",
+            "categorySlug": "residential-complex",
+            "title": "AlJundi Residential Building",
+            "coverImage": "/assets/projects/aljundi-residential-building/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/aljundi-residential-building/01.webp",
+                    "alt": "AlJundi Residential Building - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "2,000 m²"
+        },
+        {
+            "id": "b-s-villa",
+            "slug": "b-s-villa",
+            "categorySlug": "private-villas",
+            "title": "B.S VILLA",
+            "coverImage": "/assets/projects/b-s-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/b-s-villa/01.webp",
+                    "alt": "B.S VILLA - image 1"
+                },
+                {
+                    "src": "/assets/projects/b-s-villa/02.webp",
+                    "alt": "B.S VILLA - image 2"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "700 m²"
+        },
+        {
+            "id": "baraka-10",
+            "slug": "baraka-10",
+            "categorySlug": "commercial-complex",
+            "title": "BARAKA 10",
+            "coverImage": null,
+            "gallery": [],
+            "location": "JORDAN",
+            "architect": "CUBE ARCHITECTS",
+            "area": "10,000 m²"
+        },
+        {
+            "id": "c-m-c",
+            "slug": "c-m-c",
+            "categorySlug": "governmental",
+            "title": "C.M.C",
+            "coverImage": "/assets/projects/c-m-c/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/c-m-c/01.webp",
+                    "alt": "C.M.C - image 1"
+                },
+                {
+                    "src": "/assets/projects/c-m-c/02.webp",
+                    "alt": "C.M.C - image 2"
+                },
+                {
+                    "src": "/assets/projects/c-m-c/03.webp",
+                    "alt": "C.M.C - image 3"
+                },
+                {
+                    "src": "/assets/projects/c-m-c/04.webp",
+                    "alt": "C.M.C - image 4"
+                },
+                {
+                    "src": "/assets/projects/c-m-c/05.webp",
+                    "alt": "C.M.C - image 5"
+                },
+                {
+                    "src": "/assets/projects/c-m-c/06.webp",
+                    "alt": "C.M.C - image 6"
+                },
+                {
+                    "src": "/assets/projects/c-m-c/07.webp",
+                    "alt": "C.M.C - image 7"
+                },
+                {
+                    "src": "/assets/projects/c-m-c/08.webp",
+                    "alt": "C.M.C - image 8"
+                },
+                {
+                    "src": "/assets/projects/c-m-c/09.webp",
+                    "alt": "C.M.C - image 9"
+                },
+                {
+                    "src": "/assets/projects/c-m-c/10.webp",
+                    "alt": "C.M.C - image 10"
+                }
+            ],
+            "location": "KSA",
+            "architect": null,
+            "area": "6,000 m²"
+        },
+        {
+            "id": "centennial-park",
+            "slug": "centennial-park",
+            "categorySlug": "governmental",
+            "title": "Centennial Park",
+            "coverImage": "/assets/projects/centennial-park/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/centennial-park/01.webp",
+                    "alt": "Centennial Park - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": null,
+            "area": "2,250 m²"
+        },
+        {
+            "id": "d-j-residence",
+            "slug": "d-j-residence",
+            "categorySlug": "private-villas",
+            "title": "D.J. Residence",
+            "coverImage": "/assets/projects/d-j-residence/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/d-j-residence/01.webp",
+                    "alt": "D.J. Residence - image 1"
+                },
+                {
+                    "src": "/assets/projects/d-j-residence/02.webp",
+                    "alt": "D.J. Residence - image 2"
+                },
+                {
+                    "src": "/assets/projects/d-j-residence/03.webp",
+                    "alt": "D.J. Residence - image 3"
+                },
+                {
+                    "src": "/assets/projects/d-j-residence/04.webp",
+                    "alt": "D.J. Residence - image 4"
+                },
+                {
+                    "src": "/assets/projects/d-j-residence/05.webp",
+                    "alt": "D.J. Residence - image 5"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "AYOUB ARCHITECTS",
+            "area": "2,500 m²"
+        },
+        {
+            "id": "dana-village",
+            "slug": "dana-village",
+            "categorySlug": "resort-hotel",
+            "title": "Dana Village",
+            "coverImage": "/assets/projects/dana-village/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/dana-village/01.webp",
+                    "alt": "Dana Village - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Khammash Architects",
+            "area": null
+        },
+        {
+            "id": "e-residence",
+            "slug": "e-residence",
+            "categorySlug": "private-villas",
+            "title": "E. Residence",
+            "coverImage": "/assets/projects/e-residence/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/e-residence/01.webp",
+                    "alt": "E. Residence - image 1"
+                },
+                {
+                    "src": "/assets/projects/e-residence/02.webp",
+                    "alt": "E. Residence - image 2"
+                },
+                {
+                    "src": "/assets/projects/e-residence/03.webp",
+                    "alt": "E. Residence - image 3"
+                },
+                {
+                    "src": "/assets/projects/e-residence/04.webp",
+                    "alt": "E. Residence - image 4"
+                },
+                {
+                    "src": "/assets/projects/e-residence/05.webp",
+                    "alt": "E. Residence - image 5"
+                },
+                {
+                    "src": "/assets/projects/e-residence/06.webp",
+                    "alt": "E. Residence - image 6"
+                },
+                {
+                    "src": "/assets/projects/e-residence/07.webp",
+                    "alt": "E. Residence - image 7"
+                },
+                {
+                    "src": "/assets/projects/e-residence/08.webp",
+                    "alt": "E. Residence - image 8"
+                },
+                {
+                    "src": "/assets/projects/e-residence/09.webp",
+                    "alt": "E. Residence - image 9"
+                },
+                {
+                    "src": "/assets/projects/e-residence/10.webp",
+                    "alt": "E. Residence - image 10"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "ICONIC DESIGN CONSULTANTS",
+            "area": "1,200 m²"
+        },
+        {
+            "id": "e-b-villa",
+            "slug": "e-b-villa",
+            "categorySlug": "private-villas",
+            "title": "E.B VILLA",
+            "coverImage": "/assets/projects/e-b-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/e-b-villa/01.webp",
+                    "alt": "E.B VILLA - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,000 m²"
+        },
+        {
+            "id": "ev-charger",
+            "slug": "ev-charger",
+            "categorySlug": "fueling-and-car-charging-stations",
+            "title": "EV-Charger",
+            "coverImage": "/assets/projects/ev-charger/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/ev-charger/01.webp",
+                    "alt": "EV-Charger - image 1"
+                },
+                {
+                    "src": "/assets/projects/ev-charger/02.webp",
+                    "alt": "EV-Charger - image 2"
+                },
+                {
+                    "src": "/assets/projects/ev-charger/03.webp",
+                    "alt": "EV-Charger - image 3"
+                },
+                {
+                    "src": "/assets/projects/ev-charger/04.webp",
+                    "alt": "EV-Charger - image 4"
+                },
+                {
+                    "src": "/assets/projects/ev-charger/05.webp",
+                    "alt": "EV-Charger - image 5"
+                },
+                {
+                    "src": "/assets/projects/ev-charger/06.webp",
+                    "alt": "EV-Charger - image 6"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "BALAD ARCHITECTS",
+            "area": "3,000 m²"
+        },
+        {
+            "id": "f-t-chalet",
+            "slug": "f-t-chalet",
+            "categorySlug": "private-villas",
+            "title": "F.T Chalet",
+            "coverImage": "/assets/projects/f-t-chalet/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/f-t-chalet/01.webp",
+                    "alt": "F.T Chalet - image 1"
+                },
+                {
+                    "src": "/assets/projects/f-t-chalet/02.webp",
+                    "alt": "F.T Chalet - image 2"
+                },
+                {
+                    "src": "/assets/projects/f-t-chalet/03.webp",
+                    "alt": "F.T Chalet - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "450 m²"
+        },
+        {
+            "id": "fairmont-hotel",
+            "slug": "fairmont-hotel",
+            "categorySlug": "resort-hotel",
+            "title": "Fairmont Hotel",
+            "coverImage": "/assets/projects/fairmont-hotel/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/fairmont-hotel/01.webp",
+                    "alt": "Fairmont Hotel - image 1"
+                },
+                {
+                    "src": "/assets/projects/fairmont-hotel/02.webp",
+                    "alt": "Fairmont Hotel - image 2"
+                },
+                {
+                    "src": "/assets/projects/fairmont-hotel/03.webp",
+                    "alt": "Fairmont Hotel - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": null,
+            "area": "55,000 m²"
+        },
+        {
+            "id": "gh-residence",
+            "slug": "gh-residence",
+            "categorySlug": "private-villas",
+            "title": "GH Residence",
+            "coverImage": "/assets/projects/gh-residence/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/gh-residence/01.webp",
+                    "alt": "GH Residence - image 1"
+                },
+                {
+                    "src": "/assets/projects/gh-residence/02.webp",
+                    "alt": "GH Residence - image 2"
+                },
+                {
+                    "src": "/assets/projects/gh-residence/03.webp",
+                    "alt": "GH Residence - image 3"
+                },
+                {
+                    "src": "/assets/projects/gh-residence/04.webp",
+                    "alt": "GH Residence - image 4"
+                },
+                {
+                    "src": "/assets/projects/gh-residence/05.webp",
+                    "alt": "GH Residence - image 5"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "MINIMALIST ARCHITECTS",
+            "area": "1,500 m²"
+        },
+        {
+            "id": "h-ranch",
+            "slug": "h-ranch",
+            "categorySlug": "private-villas",
+            "title": "H Ranch",
+            "coverImage": "/assets/projects/h-ranch/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/h-ranch/01.webp",
+                    "alt": "H Ranch - image 1"
+                },
+                {
+                    "src": "/assets/projects/h-ranch/02.webp",
+                    "alt": "H Ranch - image 2"
+                },
+                {
+                    "src": "/assets/projects/h-ranch/03.webp",
+                    "alt": "H Ranch - image 3"
+                },
+                {
+                    "src": "/assets/projects/h-ranch/04.webp",
+                    "alt": "H Ranch - image 4"
+                },
+                {
+                    "src": "/assets/projects/h-ranch/05.webp",
+                    "alt": "H Ranch - image 5"
+                },
+                {
+                    "src": "/assets/projects/h-ranch/06.webp",
+                    "alt": "H Ranch - image 6"
+                },
+                {
+                    "src": "/assets/projects/h-ranch/07.webp",
+                    "alt": "H Ranch - image 7"
+                },
+                {
+                    "src": "/assets/projects/h-ranch/08.webp",
+                    "alt": "H Ranch - image 8"
+                },
+                {
+                    "src": "/assets/projects/h-ranch/09.webp",
+                    "alt": "H Ranch - image 9"
+                },
+                {
+                    "src": "/assets/projects/h-ranch/10.webp",
+                    "alt": "H Ranch - image 10"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "GREEN ARCHITECTS",
+            "area": "700 m²"
+        },
+        {
+            "id": "h-villa",
+            "slug": "h-villa",
+            "categorySlug": "private-villas",
+            "title": "H Villa",
+            "coverImage": "/assets/projects/h-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/h-villa/01.webp",
+                    "alt": "H Villa - image 1"
+                },
+                {
+                    "src": "/assets/projects/h-villa/02.webp",
+                    "alt": "H Villa - image 2"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Khammash Architects",
+            "area": null
+        },
+        {
+            "id": "h-villa-2",
+            "slug": "h-villa-2",
+            "categorySlug": "private-villas",
+            "title": "H. Villa",
+            "coverImage": "/assets/projects/h-villa-2/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/h-villa-2/01.webp",
+                    "alt": "H. Villa - image 1"
+                },
+                {
+                    "src": "/assets/projects/h-villa-2/02.webp",
+                    "alt": "H. Villa - image 2"
+                },
+                {
+                    "src": "/assets/projects/h-villa-2/03.webp",
+                    "alt": "H. Villa - image 3"
+                },
+                {
+                    "src": "/assets/projects/h-villa-2/04.webp",
+                    "alt": "H. Villa - image 4"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,000 m²"
+        },
+        {
+            "id": "h-m-residence",
+            "slug": "h-m-residence",
+            "categorySlug": "private-villas",
+            "title": "H.M. Residence",
+            "coverImage": "/assets/projects/h-m-residence/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/h-m-residence/01.webp",
+                    "alt": "H.M. Residence - image 1"
+                },
+                {
+                    "src": "/assets/projects/h-m-residence/02.webp",
+                    "alt": "H.M. Residence - image 2"
+                },
+                {
+                    "src": "/assets/projects/h-m-residence/03.webp",
+                    "alt": "H.M. Residence - image 3"
+                },
+                {
+                    "src": "/assets/projects/h-m-residence/04.webp",
+                    "alt": "H.M. Residence - image 4"
+                },
+                {
+                    "src": "/assets/projects/h-m-residence/05.webp",
+                    "alt": "H.M. Residence - image 5"
+                },
+                {
+                    "src": "/assets/projects/h-m-residence/06.webp",
+                    "alt": "H.M. Residence - image 6"
+                },
+                {
+                    "src": "/assets/projects/h-m-residence/07.webp",
+                    "alt": "H.M. Residence - image 7"
+                },
+                {
+                    "src": "/assets/projects/h-m-residence/08.webp",
+                    "alt": "H.M. Residence - image 8"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "FARAH ARCHITECTS",
+            "area": "900 m²"
+        },
+        {
+            "id": "hi-villa",
+            "slug": "hi-villa",
+            "categorySlug": "private-villas",
+            "title": "HI VILLA",
+            "coverImage": "/assets/projects/hi-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/hi-villa/01.webp",
+                    "alt": "HI VILLA - image 1"
+                },
+                {
+                    "src": "/assets/projects/hi-villa/02.webp",
+                    "alt": "HI VILLA - image 2"
+                },
+                {
+                    "src": "/assets/projects/hi-villa/03.webp",
+                    "alt": "HI VILLA - image 3"
+                },
+                {
+                    "src": "/assets/projects/hi-villa/04.webp",
+                    "alt": "HI VILLA - image 4"
+                },
+                {
+                    "src": "/assets/projects/hi-villa/05.webp",
+                    "alt": "HI VILLA - image 5"
+                },
+                {
+                    "src": "/assets/projects/hi-villa/06.webp",
+                    "alt": "HI VILLA - image 6"
+                },
+                {
+                    "src": "/assets/projects/hi-villa/07.webp",
+                    "alt": "HI VILLA - image 7"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,000 m²"
+        },
+        {
+            "id": "himmeh-resort",
+            "slug": "himmeh-resort",
+            "categorySlug": "resort-hotel",
+            "title": "Himmeh Resort",
+            "coverImage": "/assets/projects/himmeh-resort/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/himmeh-resort/01.webp",
+                    "alt": "Himmeh Resort - image 1"
+                },
+                {
+                    "src": "/assets/projects/himmeh-resort/02.webp",
+                    "alt": "Himmeh Resort - image 2"
+                },
+                {
+                    "src": "/assets/projects/himmeh-resort/03.webp",
+                    "alt": "Himmeh Resort - image 3"
+                },
+                {
+                    "src": "/assets/projects/himmeh-resort/04.webp",
+                    "alt": "Himmeh Resort - image 4"
+                },
+                {
+                    "src": "/assets/projects/himmeh-resort/05.webp",
+                    "alt": "Himmeh Resort - image 5"
+                },
+                {
+                    "src": "/assets/projects/himmeh-resort/06.webp",
+                    "alt": "Himmeh Resort - image 6"
+                },
+                {
+                    "src": "/assets/projects/himmeh-resort/07.webp",
+                    "alt": "Himmeh Resort - image 7"
+                },
+                {
+                    "src": "/assets/projects/himmeh-resort/08.webp",
+                    "alt": "Himmeh Resort - image 8"
+                },
+                {
+                    "src": "/assets/projects/himmeh-resort/09.webp",
+                    "alt": "Himmeh Resort - image 9"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Khammash Architects",
+            "area": "7,000 m²"
+        },
+        {
+            "id": "i-h-housing",
+            "slug": "i-h-housing",
+            "categorySlug": "residential-complex",
+            "title": "I.H Housing",
+            "coverImage": "/assets/projects/i-h-housing/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/i-h-housing/01.webp",
+                    "alt": "I.H Housing - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "2,600 m²"
+        },
+        {
+            "id": "i-s-vilaa",
+            "slug": "i-s-vilaa",
+            "categorySlug": "private-villas",
+            "title": "I.S VILAA",
+            "coverImage": "/assets/projects/i-s-vilaa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/i-s-vilaa/01.webp",
+                    "alt": "I.S VILAA - image 1"
+                },
+                {
+                    "src": "/assets/projects/i-s-vilaa/02.webp",
+                    "alt": "I.S VILAA - image 2"
+                },
+                {
+                    "src": "/assets/projects/i-s-vilaa/03.webp",
+                    "alt": "I.S VILAA - image 3"
+                },
+                {
+                    "src": "/assets/projects/i-s-vilaa/04.webp",
+                    "alt": "I.S VILAA - image 4"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,000 m²"
+        },
+        {
+            "id": "i-y-villa",
+            "slug": "i-y-villa",
+            "categorySlug": "private-villas",
+            "title": "I.Y. Villa",
+            "coverImage": "/assets/projects/i-y-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/i-y-villa/01.webp",
+                    "alt": "I.Y. Villa - image 1"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/02.webp",
+                    "alt": "I.Y. Villa - image 2"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/03.webp",
+                    "alt": "I.Y. Villa - image 3"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/04.webp",
+                    "alt": "I.Y. Villa - image 4"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/05.webp",
+                    "alt": "I.Y. Villa - image 5"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/06.webp",
+                    "alt": "I.Y. Villa - image 6"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/07.webp",
+                    "alt": "I.Y. Villa - image 7"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/08.webp",
+                    "alt": "I.Y. Villa - image 8"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/09.webp",
+                    "alt": "I.Y. Villa - image 9"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/10.webp",
+                    "alt": "I.Y. Villa - image 10"
+                },
+                {
+                    "src": "/assets/projects/i-y-villa/11.webp",
+                    "alt": "I.Y. Villa - image 11"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,200 m²"
+        },
+        {
+            "id": "jannat-baghdad",
+            "slug": "jannat-baghdad",
+            "categorySlug": "residential-complex",
+            "title": "JANNAT BAGHDAD",
+            "coverImage": "/assets/projects/jannat-baghdad/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/jannat-baghdad/01.webp",
+                    "alt": "JANNAT BAGHDAD - image 1"
+                },
+                {
+                    "src": "/assets/projects/jannat-baghdad/02.webp",
+                    "alt": "JANNAT BAGHDAD - image 2"
+                }
+            ],
+            "location": "IRAQ",
+            "architect": "Abstract Design consultants",
+            "area": "60,000 m²"
+        },
+        {
+            "id": "jo-petrol-station",
+            "slug": "jo-petrol-station",
+            "categorySlug": "fueling-and-car-charging-stations",
+            "title": "JO PETROL STATION",
+            "coverImage": "/assets/projects/jo-petrol-station/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/jo-petrol-station/01.webp",
+                    "alt": "JO PETROL STATION - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": null,
+            "area": null
+        },
+        {
+            "id": "jarash-farm",
+            "slug": "jarash-farm",
+            "categorySlug": "residential-complex",
+            "title": "Jarash Farm",
+            "coverImage": "/assets/projects/jarash-farm/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/jarash-farm/01.webp",
+                    "alt": "Jarash Farm - image 1"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/02.webp",
+                    "alt": "Jarash Farm - image 2"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/03.webp",
+                    "alt": "Jarash Farm - image 3"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/04.webp",
+                    "alt": "Jarash Farm - image 4"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/05.webp",
+                    "alt": "Jarash Farm - image 5"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/06.webp",
+                    "alt": "Jarash Farm - image 6"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/07.webp",
+                    "alt": "Jarash Farm - image 7"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/08.webp",
+                    "alt": "Jarash Farm - image 8"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/09.webp",
+                    "alt": "Jarash Farm - image 9"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/10.webp",
+                    "alt": "Jarash Farm - image 10"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/11.webp",
+                    "alt": "Jarash Farm - image 11"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/12.webp",
+                    "alt": "Jarash Farm - image 12"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/13.webp",
+                    "alt": "Jarash Farm - image 13"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/14.webp",
+                    "alt": "Jarash Farm - image 14"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/15.webp",
+                    "alt": "Jarash Farm - image 15"
+                },
+                {
+                    "src": "/assets/projects/jarash-farm/16.webp",
+                    "alt": "Jarash Farm - image 16"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Ahmad Rassas",
+            "area": "2,000 m²"
+        },
+        {
+            "id": "k-villa",
+            "slug": "k-villa",
+            "categorySlug": "private-villas",
+            "title": "K Villa",
+            "coverImage": "/assets/projects/k-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/k-villa/01.webp",
+                    "alt": "K Villa - image 1"
+                },
+                {
+                    "src": "/assets/projects/k-villa/02.webp",
+                    "alt": "K Villa - image 2"
+                },
+                {
+                    "src": "/assets/projects/k-villa/03.webp",
+                    "alt": "K Villa - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "700 m²"
+        },
+        {
+            "id": "k-mosque",
+            "slug": "k-mosque",
+            "categorySlug": "mosques",
+            "title": "K.MOSQUE",
+            "coverImage": "/assets/projects/k-mosque/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/k-mosque/01.webp",
+                    "alt": "K.MOSQUE - image 1"
+                },
+                {
+                    "src": "/assets/projects/k-mosque/02.webp",
+                    "alt": "K.MOSQUE - image 2"
+                },
+                {
+                    "src": "/assets/projects/k-mosque/03.webp",
+                    "alt": "K.MOSQUE - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,300 m²"
+        },
+        {
+            "id": "khandakji-villa",
+            "slug": "khandakji-villa",
+            "categorySlug": "private-villas",
+            "title": "Khandakji Villa",
+            "coverImage": "/assets/projects/khandakji-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/khandakji-villa/01.webp",
+                    "alt": "Khandakji Villa - image 1"
+                },
+                {
+                    "src": "/assets/projects/khandakji-villa/02.webp",
+                    "alt": "Khandakji Villa - image 2"
+                },
+                {
+                    "src": "/assets/projects/khandakji-villa/03.webp",
+                    "alt": "Khandakji Villa - image 3"
+                },
+                {
+                    "src": "/assets/projects/khandakji-villa/04.webp",
+                    "alt": "Khandakji Villa - image 4"
+                },
+                {
+                    "src": "/assets/projects/khandakji-villa/05.webp",
+                    "alt": "Khandakji Villa - image 5"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "600 m²"
+        },
+        {
+            "id": "m-chalets",
+            "slug": "m-chalets",
+            "categorySlug": "private-villas",
+            "title": "M Chalets",
+            "coverImage": "/assets/projects/m-chalets/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/m-chalets/01.webp",
+                    "alt": "M Chalets - image 1"
+                },
+                {
+                    "src": "/assets/projects/m-chalets/02.webp",
+                    "alt": "M Chalets - image 2"
+                },
+                {
+                    "src": "/assets/projects/m-chalets/03.webp",
+                    "alt": "M Chalets - image 3"
+                },
+                {
+                    "src": "/assets/projects/m-chalets/04.webp",
+                    "alt": "M Chalets - image 4"
+                },
+                {
+                    "src": "/assets/projects/m-chalets/05.webp",
+                    "alt": "M Chalets - image 5"
+                },
+                {
+                    "src": "/assets/projects/m-chalets/06.webp",
+                    "alt": "M Chalets - image 6"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "700 m²"
+        },
+        {
+            "id": "m-e-chalets",
+            "slug": "m-e-chalets",
+            "categorySlug": "private-villas",
+            "title": "M.E CHALETS",
+            "coverImage": "/assets/projects/m-e-chalets/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/m-e-chalets/01.webp",
+                    "alt": "M.E CHALETS - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "400 m²"
+        },
+        {
+            "id": "m-y-villa",
+            "slug": "m-y-villa",
+            "categorySlug": "private-villas",
+            "title": "M.Y VILLA",
+            "coverImage": "/assets/projects/m-y-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/m-y-villa/01.webp",
+                    "alt": "M.Y VILLA - image 1"
+                },
+                {
+                    "src": "/assets/projects/m-y-villa/02.webp",
+                    "alt": "M.Y VILLA - image 2"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "750 m²"
+        },
+        {
+            "id": "maaroof-mosque",
+            "slug": "maaroof-mosque",
+            "categorySlug": "mosques",
+            "title": "MAAROOF MOSQUE",
+            "coverImage": "/assets/projects/maaroof-mosque/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/maaroof-mosque/01.webp",
+                    "alt": "MAAROOF MOSQUE - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,200 m²"
+        },
+        {
+            "id": "o-h-villa",
+            "slug": "o-h-villa",
+            "categorySlug": "private-villas",
+            "title": "O.H. Villa",
+            "coverImage": "/assets/projects/o-h-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/o-h-villa/01.webp",
+                    "alt": "O.H. Villa - image 1"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/02.webp",
+                    "alt": "O.H. Villa - image 2"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/03.webp",
+                    "alt": "O.H. Villa - image 3"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/04.webp",
+                    "alt": "O.H. Villa - image 4"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/05.webp",
+                    "alt": "O.H. Villa - image 5"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/06.webp",
+                    "alt": "O.H. Villa - image 6"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/07.webp",
+                    "alt": "O.H. Villa - image 7"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/08.webp",
+                    "alt": "O.H. Villa - image 8"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/09.webp",
+                    "alt": "O.H. Villa - image 9"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/10.webp",
+                    "alt": "O.H. Villa - image 10"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/11.webp",
+                    "alt": "O.H. Villa - image 11"
+                },
+                {
+                    "src": "/assets/projects/o-h-villa/12.webp",
+                    "alt": "O.H. Villa - image 12"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "MINIMALIST ARCHITECTS",
+            "area": "1,000 m²"
+        },
+        {
+            "id": "obaidi-complex",
+            "slug": "obaidi-complex",
+            "categorySlug": "commercial-complex",
+            "title": "Obaidi Complex",
+            "coverImage": "/assets/projects/obaidi-complex/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/obaidi-complex/01.webp",
+                    "alt": "Obaidi Complex - image 1"
+                },
+                {
+                    "src": "/assets/projects/obaidi-complex/02.webp",
+                    "alt": "Obaidi Complex - image 2"
+                },
+                {
+                    "src": "/assets/projects/obaidi-complex/03.webp",
+                    "alt": "Obaidi Complex - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "SEYAM ARCHITECTS",
+            "area": "8,700 m²"
+        },
+        {
+            "id": "petra-mosque",
+            "slug": "petra-mosque",
+            "categorySlug": "mosques",
+            "title": "Petra Mosque",
+            "coverImage": "/assets/projects/petra-mosque/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/petra-mosque/01.webp",
+                    "alt": "Petra Mosque - image 1"
+                },
+                {
+                    "src": "/assets/projects/petra-mosque/02.webp",
+                    "alt": "Petra Mosque - image 2"
+                },
+                {
+                    "src": "/assets/projects/petra-mosque/03.webp",
+                    "alt": "Petra Mosque - image 3"
+                },
+                {
+                    "src": "/assets/projects/petra-mosque/04.webp",
+                    "alt": "Petra Mosque - image 4"
+                },
+                {
+                    "src": "/assets/projects/petra-mosque/05.webp",
+                    "alt": "Petra Mosque - image 5"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "SAHER IHBAISHA & ASSOCIATES",
+            "area": "1,100 m²"
+        },
+        {
+            "id": "r-residence",
+            "slug": "r-residence",
+            "categorySlug": "private-villas",
+            "title": "R Residence",
+            "coverImage": "/assets/projects/r-residence/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/r-residence/01.webp",
+                    "alt": "R Residence - image 1"
+                },
+                {
+                    "src": "/assets/projects/r-residence/02.webp",
+                    "alt": "R Residence - image 2"
+                },
+                {
+                    "src": "/assets/projects/r-residence/03.webp",
+                    "alt": "R Residence - image 3"
+                },
+                {
+                    "src": "/assets/projects/r-residence/04.webp",
+                    "alt": "R Residence - image 4"
+                },
+                {
+                    "src": "/assets/projects/r-residence/05.webp",
+                    "alt": "R Residence - image 5"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Khammash Architects",
+            "area": "1,500 m²"
+        },
+        {
+            "id": "r-k-02",
+            "slug": "r-k-02",
+            "categorySlug": "private-villas",
+            "title": "R.K 02",
+            "coverImage": "/assets/projects/r-k-02/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/r-k-02/01.webp",
+                    "alt": "R.K 02 - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "2,800 m²"
+        },
+        {
+            "id": "r-s-villa",
+            "slug": "r-s-villa",
+            "categorySlug": "private-villas",
+            "title": "R.S. Villa",
+            "coverImage": "/assets/projects/r-s-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/r-s-villa/01.webp",
+                    "alt": "R.S. Villa - image 1"
+                },
+                {
+                    "src": "/assets/projects/r-s-villa/02.webp",
+                    "alt": "R.S. Villa - image 2"
+                },
+                {
+                    "src": "/assets/projects/r-s-villa/03.webp",
+                    "alt": "R.S. Villa - image 3"
+                },
+                {
+                    "src": "/assets/projects/r-s-villa/04.webp",
+                    "alt": "R.S. Villa - image 4"
+                },
+                {
+                    "src": "/assets/projects/r-s-villa/05.webp",
+                    "alt": "R.S. Villa - image 5"
+                },
+                {
+                    "src": "/assets/projects/r-s-villa/06.webp",
+                    "alt": "R.S. Villa - image 6"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "800 m²"
+        },
+        {
+            "id": "rasheen-1155",
+            "slug": "rasheen-1155",
+            "categorySlug": "residential-complex",
+            "title": "RASHEEN 1155",
+            "coverImage": "/assets/projects/rasheen-1155/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/rasheen-1155/01.webp",
+                    "alt": "RASHEEN 1155 - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,800 m²"
+        },
+        {
+            "id": "royal-academy-for-nature-conservation",
+            "slug": "royal-academy-for-nature-conservation",
+            "categorySlug": "institutional-cultural",
+            "title": "Royal Academy For Nature Conservation",
+            "coverImage": "/assets/projects/royal-academy-for-nature-conservation/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/royal-academy-for-nature-conservation/01.webp",
+                    "alt": "Royal Academy For Nature Conservation - image 1"
+                },
+                {
+                    "src": "/assets/projects/royal-academy-for-nature-conservation/02.webp",
+                    "alt": "Royal Academy For Nature Conservation - image 2"
+                },
+                {
+                    "src": "/assets/projects/royal-academy-for-nature-conservation/03.webp",
+                    "alt": "Royal Academy For Nature Conservation - image 3"
+                },
+                {
+                    "src": "/assets/projects/royal-academy-for-nature-conservation/04.webp",
+                    "alt": "Royal Academy For Nature Conservation - image 4"
+                },
+                {
+                    "src": "/assets/projects/royal-academy-for-nature-conservation/05.webp",
+                    "alt": "Royal Academy For Nature Conservation - image 5"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": null,
+            "area": null
+        },
+        {
+            "id": "speciality-medical-complex",
+            "slug": "speciality-medical-complex",
+            "categorySlug": "hospitals-and-medical-clinics",
+            "title": "SPECIALITY MEDICAL COMPLEX",
+            "coverImage": "/assets/projects/speciality-medical-complex/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/speciality-medical-complex/01.webp",
+                    "alt": "SPECIALITY MEDICAL COMPLEX - image 1"
+                },
+                {
+                    "src": "/assets/projects/speciality-medical-complex/02.webp",
+                    "alt": "SPECIALITY MEDICAL COMPLEX - image 2"
+                },
+                {
+                    "src": "/assets/projects/speciality-medical-complex/03.webp",
+                    "alt": "SPECIALITY MEDICAL COMPLEX - image 3"
+                },
+                {
+                    "src": "/assets/projects/speciality-medical-complex/04.webp",
+                    "alt": "SPECIALITY MEDICAL COMPLEX - image 4"
+                },
+                {
+                    "src": "/assets/projects/speciality-medical-complex/05.webp",
+                    "alt": "SPECIALITY MEDICAL COMPLEX - image 5"
+                },
+                {
+                    "src": "/assets/projects/speciality-medical-complex/06.webp",
+                    "alt": "SPECIALITY MEDICAL COMPLEX - image 6"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": null,
+            "area": "32,000 m²"
+        },
+        {
+            "id": "sharaan-resort",
+            "slug": "sharaan-resort",
+            "categorySlug": "resort-hotel",
+            "title": "Sharaan Resort",
+            "coverImage": "/assets/projects/sharaan-resort/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/sharaan-resort/01.webp",
+                    "alt": "Sharaan Resort - image 1"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/02.webp",
+                    "alt": "Sharaan Resort - image 2"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/03.webp",
+                    "alt": "Sharaan Resort - image 3"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/04.webp",
+                    "alt": "Sharaan Resort - image 4"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/05.webp",
+                    "alt": "Sharaan Resort - image 5"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/06.webp",
+                    "alt": "Sharaan Resort - image 6"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/07.webp",
+                    "alt": "Sharaan Resort - image 7"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/08.webp",
+                    "alt": "Sharaan Resort - image 8"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/09.webp",
+                    "alt": "Sharaan Resort - image 9"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/10.webp",
+                    "alt": "Sharaan Resort - image 10"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/11.webp",
+                    "alt": "Sharaan Resort - image 11"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/12.webp",
+                    "alt": "Sharaan Resort - image 12"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/13.webp",
+                    "alt": "Sharaan Resort - image 13"
+                },
+                {
+                    "src": "/assets/projects/sharaan-resort/14.webp",
+                    "alt": "Sharaan Resort - image 14"
+                }
+            ],
+            "location": "KSA",
+            "architect": "Khammash Architects",
+            "area": "135,000 m²"
+        },
+        {
+            "id": "sherbeni-complex",
+            "slug": "sherbeni-complex",
+            "categorySlug": "commercial-complex",
+            "title": "Sherbeni Complex",
+            "coverImage": "/assets/projects/sherbeni-complex/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/sherbeni-complex/01.webp",
+                    "alt": "Sherbeni Complex - image 1"
+                },
+                {
+                    "src": "/assets/projects/sherbeni-complex/02.webp",
+                    "alt": "Sherbeni Complex - image 2"
+                },
+                {
+                    "src": "/assets/projects/sherbeni-complex/03.webp",
+                    "alt": "Sherbeni Complex - image 3"
+                }
+            ],
+            "location": "KSA",
+            "architect": "Suhaimi Design",
+            "area": "13,000 m²"
+        },
+        {
+            "id": "sidrat-alula",
+            "slug": "sidrat-alula",
+            "categorySlug": "residential-complex",
+            "title": "Sidrat AlUla",
+            "coverImage": "/assets/projects/sidrat-alula/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/sidrat-alula/01.webp",
+                    "alt": "Sidrat AlUla - image 1"
+                },
+                {
+                    "src": "/assets/projects/sidrat-alula/02.webp",
+                    "alt": "Sidrat AlUla - image 2"
+                },
+                {
+                    "src": "/assets/projects/sidrat-alula/03.webp",
+                    "alt": "Sidrat AlUla - image 3"
+                },
+                {
+                    "src": "/assets/projects/sidrat-alula/04.webp",
+                    "alt": "Sidrat AlUla - image 4"
+                },
+                {
+                    "src": "/assets/projects/sidrat-alula/05.webp",
+                    "alt": "Sidrat AlUla - image 5"
+                },
+                {
+                    "src": "/assets/projects/sidrat-alula/06.webp",
+                    "alt": "Sidrat AlUla - image 6"
+                },
+                {
+                    "src": "/assets/projects/sidrat-alula/07.webp",
+                    "alt": "Sidrat AlUla - image 7"
+                }
+            ],
+            "location": "KSA",
+            "architect": "Khammash Architects",
+            "area": "40,000 m²"
+        },
+        {
+            "id": "souq-yard-porject",
+            "slug": "souq-yard-porject",
+            "categorySlug": "commercial-complex",
+            "title": "Souq Yard Porject",
+            "coverImage": "/assets/projects/souq-yard-porject/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/souq-yard-porject/01.webp",
+                    "alt": "Souq Yard Porject - image 1"
+                },
+                {
+                    "src": "/assets/projects/souq-yard-porject/02.webp",
+                    "alt": "Souq Yard Porject - image 2"
+                },
+                {
+                    "src": "/assets/projects/souq-yard-porject/03.webp",
+                    "alt": "Souq Yard Porject - image 3"
+                },
+                {
+                    "src": "/assets/projects/souq-yard-porject/04.webp",
+                    "alt": "Souq Yard Porject - image 4"
+                },
+                {
+                    "src": "/assets/projects/souq-yard-porject/05.webp",
+                    "alt": "Souq Yard Porject - image 5"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "MOHAMMD EL FAR ARCHITECTS",
+            "area": "14,000 m²"
+        },
+        {
+            "id": "u-residentia",
+            "slug": "u-residentia",
+            "categorySlug": "residential-complex",
+            "title": "U.Residentia",
+            "coverImage": "/assets/projects/u-residentia/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/u-residentia/01.webp",
+                    "alt": "U.Residentia - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "2,300 m²"
+        },
+        {
+            "id": "vitas-jordan-company",
+            "slug": "vitas-jordan-company",
+            "categorySlug": "commercial-complex",
+            "title": "Vitas Jordan Company",
+            "coverImage": "/assets/projects/vitas-jordan-company/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/vitas-jordan-company/01.webp",
+                    "alt": "Vitas Jordan Company - image 1"
+                },
+                {
+                    "src": "/assets/projects/vitas-jordan-company/02.webp",
+                    "alt": "Vitas Jordan Company - image 2"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "7,000 m²"
+        },
+        {
+            "id": "wadi-al-heedan-visitor",
+            "slug": "wadi-al-heedan-visitor",
+            "categorySlug": "institutional-cultural",
+            "title": "Wadi Al-Heedan Visitor",
+            "coverImage": "/assets/projects/wadi-al-heedan-visitor/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/wadi-al-heedan-visitor/01.webp",
+                    "alt": "Wadi Al-Heedan Visitor - image 1"
+                },
+                {
+                    "src": "/assets/projects/wadi-al-heedan-visitor/02.webp",
+                    "alt": "Wadi Al-Heedan Visitor - image 2"
+                },
+                {
+                    "src": "/assets/projects/wadi-al-heedan-visitor/03.webp",
+                    "alt": "Wadi Al-Heedan Visitor - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": null,
+            "area": null
+        },
+        {
+            "id": "wadi-al-mujib-adventures-visitor-center",
+            "slug": "wadi-al-mujib-adventures-visitor-center",
+            "categorySlug": "institutional-cultural",
+            "title": "Wadi Al-Mujib Adventures Visitor Center",
+            "coverImage": "/assets/projects/wadi-al-mujib-adventures-visitor-center/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/wadi-al-mujib-adventures-visitor-center/01.webp",
+                    "alt": "Wadi Al-Mujib Adventures Visitor Center - image 1"
+                },
+                {
+                    "src": "/assets/projects/wadi-al-mujib-adventures-visitor-center/02.webp",
+                    "alt": "Wadi Al-Mujib Adventures Visitor Center - image 2"
+                },
+                {
+                    "src": "/assets/projects/wadi-al-mujib-adventures-visitor-center/03.webp",
+                    "alt": "Wadi Al-Mujib Adventures Visitor Center - image 3"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": null,
+            "area": null
+        },
+        {
+            "id": "y-m-villa",
+            "slug": "y-m-villa",
+            "categorySlug": "private-villas",
+            "title": "Y.M. Villa",
+            "coverImage": "/assets/projects/y-m-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/y-m-villa/01.webp",
+                    "alt": "Y.M. Villa - image 1"
+                },
+                {
+                    "src": "/assets/projects/y-m-villa/02.webp",
+                    "alt": "Y.M. Villa - image 2"
+                },
+                {
+                    "src": "/assets/projects/y-m-villa/03.webp",
+                    "alt": "Y.M. Villa - image 3"
+                },
+                {
+                    "src": "/assets/projects/y-m-villa/04.webp",
+                    "alt": "Y.M. Villa - image 4"
+                },
+                {
+                    "src": "/assets/projects/y-m-villa/05.webp",
+                    "alt": "Y.M. Villa - image 5"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "SAHER IHBAISHA & ASSOCIATES",
+            "area": "1,200 m²"
+        },
+        {
+            "id": "yarmouk-visitor-center",
+            "slug": "yarmouk-visitor-center",
+            "categorySlug": "institutional-cultural",
+            "title": "Yarmouk Visitor Center",
+            "coverImage": "/assets/projects/yarmouk-visitor-center/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/yarmouk-visitor-center/01.webp",
+                    "alt": "Yarmouk Visitor Center - image 1"
+                },
+                {
+                    "src": "/assets/projects/yarmouk-visitor-center/02.webp",
+                    "alt": "Yarmouk Visitor Center - image 2"
+                },
+                {
+                    "src": "/assets/projects/yarmouk-visitor-center/03.webp",
+                    "alt": "Yarmouk Visitor Center - image 3"
+                },
+                {
+                    "src": "/assets/projects/yarmouk-visitor-center/04.webp",
+                    "alt": "Yarmouk Visitor Center - image 4"
+                },
+                {
+                    "src": "/assets/projects/yarmouk-visitor-center/05.webp",
+                    "alt": "Yarmouk Visitor Center - image 5"
+                },
+                {
+                    "src": "/assets/projects/yarmouk-visitor-center/06.webp",
+                    "alt": "Yarmouk Visitor Center - image 6"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Khammash Architects",
+            "area": "1,300 m²"
+        },
+        {
+            "id": "z-villa",
+            "slug": "z-villa",
+            "categorySlug": "private-villas",
+            "title": "Z Villa",
+            "coverImage": "/assets/projects/z-villa/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/z-villa/01.webp",
+                    "alt": "Z Villa - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Khammash Architects",
+            "area": "3,800 m²"
+        },
+        {
+            "id": "z-k-housing",
+            "slug": "z-k-housing",
+            "categorySlug": "residential-complex",
+            "title": "Z.K Housing",
+            "coverImage": "/assets/projects/z-k-housing/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/z-k-housing/01.webp",
+                    "alt": "Z.K Housing - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Abstract Design consultants",
+            "area": "1,500 m²"
+        },
+        {
+            "id": "zahran-complex",
+            "slug": "zahran-complex",
+            "categorySlug": "commercial-complex",
+            "title": "ZAHRAN COMPLEX",
+            "coverImage": "/assets/projects/zahran-complex/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/zahran-complex/01.webp",
+                    "alt": "ZAHRAN COMPLEX - image 1"
+                },
+                {
+                    "src": "/assets/projects/zahran-complex/02.webp",
+                    "alt": "ZAHRAN COMPLEX - image 2"
+                },
+                {
+                    "src": "/assets/projects/zahran-complex/03.webp",
+                    "alt": "ZAHRAN COMPLEX - image 3"
+                },
+                {
+                    "src": "/assets/projects/zahran-complex/04.webp",
+                    "alt": "ZAHRAN COMPLEX - image 4"
+                },
+                {
+                    "src": "/assets/projects/zahran-complex/05.webp",
+                    "alt": "ZAHRAN COMPLEX - image 5"
+                },
+                {
+                    "src": "/assets/projects/zahran-complex/06.webp",
+                    "alt": "ZAHRAN COMPLEX - image 6"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "CUBE ARCHITECTS",
+            "area": "4,500 m²"
+        },
+        {
+            "id": "boj-mecca-street-roof-canopies",
+            "slug": "boj-mecca-street-roof-canopies",
+            "categorySlug": "steel",
+            "title": "BOJ MECCA STREET ROOF CANOPIES",
+            "coverImage": "/assets/projects/boj-mecca-street-roof-canopies/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/boj-mecca-street-roof-canopies/01.webp",
+                    "alt": "BOJ MECCA STREET ROOF CANOPIES - image 1"
+                },
+                {
+                    "src": "/assets/projects/boj-mecca-street-roof-canopies/02.webp",
+                    "alt": "BOJ MECCA STREET ROOF CANOPIES - image 2"
+                },
+                {
+                    "src": "/assets/projects/boj-mecca-street-roof-canopies/03.webp",
+                    "alt": "BOJ MECCA STREET ROOF CANOPIES - image 3"
+                },
+                {
+                    "src": "/assets/projects/boj-mecca-street-roof-canopies/04.webp",
+                    "alt": "BOJ MECCA STREET ROOF CANOPIES - image 4"
+                },
+                {
+                    "src": "/assets/projects/boj-mecca-street-roof-canopies/05.webp",
+                    "alt": "BOJ MECCA STREET ROOF CANOPIES - image 5"
+                }
+            ],
+            "location": "Amman",
+            "architect": "FARAH ARCHITECTS",
+            "area": null
+        },
+        {
+            "id": "byzantine-church-aqaba",
+            "slug": "byzantine-church-aqaba",
+            "categorySlug": "steel",
+            "title": "Byzantine Church - Aqaba",
+            "coverImage": "/assets/projects/byzantine-church-aqaba/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/byzantine-church-aqaba/01.webp",
+                    "alt": "Byzantine Church - Aqaba - image 1"
+                },
+                {
+                    "src": "/assets/projects/byzantine-church-aqaba/02.webp",
+                    "alt": "Byzantine Church - Aqaba - image 2"
+                },
+                {
+                    "src": "/assets/projects/byzantine-church-aqaba/03.webp",
+                    "alt": "Byzantine Church - Aqaba - image 3"
+                },
+                {
+                    "src": "/assets/projects/byzantine-church-aqaba/04.webp",
+                    "alt": "Byzantine Church - Aqaba - image 4"
+                },
+                {
+                    "src": "/assets/projects/byzantine-church-aqaba/05.webp",
+                    "alt": "Byzantine Church - Aqaba - image 5"
+                }
+            ],
+            "location": "AQABA",
+            "architect": "SADAA Architect",
+            "area": "1,200 m²"
+        },
+        {
+            "id": "hbtf-marka",
+            "slug": "hbtf-marka",
+            "categorySlug": "steel",
+            "title": "HBTF MARKA",
+            "coverImage": "/assets/projects/hbtf-marka/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/hbtf-marka/01.webp",
+                    "alt": "HBTF MARKA - image 1"
+                },
+                {
+                    "src": "/assets/projects/hbtf-marka/02.webp",
+                    "alt": "HBTF MARKA - image 2"
+                }
+            ],
+            "location": "AMMAN",
+            "architect": "FARAH ARCHITECTS",
+            "area": null
+        },
+        {
+            "id": "jepco-command-center",
+            "slug": "jepco-command-center",
+            "categorySlug": "steel",
+            "title": "JEPCO COMMAND CENTER",
+            "coverImage": "/assets/projects/jepco-command-center/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/jepco-command-center/01.webp",
+                    "alt": "JEPCO COMMAND CENTER - image 1"
+                },
+                {
+                    "src": "/assets/projects/jepco-command-center/02.webp",
+                    "alt": "JEPCO COMMAND CENTER - image 2"
+                },
+                {
+                    "src": "/assets/projects/jepco-command-center/03.webp",
+                    "alt": "JEPCO COMMAND CENTER - image 3"
+                },
+                {
+                    "src": "/assets/projects/jepco-command-center/04.webp",
+                    "alt": "JEPCO COMMAND CENTER - image 4"
+                }
+            ],
+            "location": "AMMAN",
+            "architect": "PANORAMA CONSULTING ENGINEERS",
+            "area": "20,000 m²"
+        },
+        {
+            "id": "jkb-abdali-main-branch",
+            "slug": "jkb-abdali-main-branch",
+            "categorySlug": "steel",
+            "title": "JKB (ABDALI-MAIN BRANCH )",
+            "coverImage": "/assets/projects/jkb-abdali-main-branch/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/01.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 1"
+                },
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/02.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 2"
+                },
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/03.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 3"
+                },
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/04.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 4"
+                },
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/05.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 5"
+                },
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/06.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 6"
+                },
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/07.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 7"
+                },
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/08.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 8"
+                },
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/09.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 9"
+                },
+                {
+                    "src": "/assets/projects/jkb-abdali-main-branch/10.webp",
+                    "alt": "JKB (ABDALI-MAIN BRANCH ) - image 10"
+                }
+            ],
+            "location": "AMMAN",
+            "architect": null,
+            "area": "1,300 m²"
+        },
+        {
+            "id": "khbp-food-market",
+            "slug": "khbp-food-market",
+            "categorySlug": "steel",
+            "title": "KHBP Food Market",
+            "coverImage": "/assets/projects/khbp-food-market/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/khbp-food-market/01.webp",
+                    "alt": "KHBP Food Market - image 1"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/02.webp",
+                    "alt": "KHBP Food Market - image 2"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/03.webp",
+                    "alt": "KHBP Food Market - image 3"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/04.webp",
+                    "alt": "KHBP Food Market - image 4"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/05.webp",
+                    "alt": "KHBP Food Market - image 5"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/06.webp",
+                    "alt": "KHBP Food Market - image 6"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/07.webp",
+                    "alt": "KHBP Food Market - image 7"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/08.webp",
+                    "alt": "KHBP Food Market - image 8"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/09.webp",
+                    "alt": "KHBP Food Market - image 9"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/10.webp",
+                    "alt": "KHBP Food Market - image 10"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/11.webp",
+                    "alt": "KHBP Food Market - image 11"
+                },
+                {
+                    "src": "/assets/projects/khbp-food-market/12.webp",
+                    "alt": "KHBP Food Market - image 12"
+                }
+            ],
+            "location": "AMMAN",
+            "architect": "TURATH",
+            "area": "2,000 m²"
+        },
+        {
+            "id": "khbp-spine",
+            "slug": "khbp-spine",
+            "categorySlug": "steel",
+            "title": "KHBP-Spine",
+            "coverImage": "/assets/projects/khbp-spine/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/khbp-spine/01.webp",
+                    "alt": "KHBP-Spine - image 1"
+                },
+                {
+                    "src": "/assets/projects/khbp-spine/02.webp",
+                    "alt": "KHBP-Spine - image 2"
+                },
+                {
+                    "src": "/assets/projects/khbp-spine/03.webp",
+                    "alt": "KHBP-Spine - image 3"
+                },
+                {
+                    "src": "/assets/projects/khbp-spine/04.webp",
+                    "alt": "KHBP-Spine - image 4"
+                }
+            ],
+            "location": "AMMAN",
+            "architect": "PARADIGM",
+            "area": "12,000 m²"
+        },
+        {
+            "id": "port-de-amman",
+            "slug": "port-de-amman",
+            "categorySlug": "steel",
+            "title": "PORT DE AMMAN",
+            "coverImage": "/assets/projects/port-de-amman/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/port-de-amman/01.webp",
+                    "alt": "PORT DE AMMAN - image 1"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/02.webp",
+                    "alt": "PORT DE AMMAN - image 2"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/03.webp",
+                    "alt": "PORT DE AMMAN - image 3"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/04.webp",
+                    "alt": "PORT DE AMMAN - image 4"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/05.webp",
+                    "alt": "PORT DE AMMAN - image 5"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/06.webp",
+                    "alt": "PORT DE AMMAN - image 6"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/07.webp",
+                    "alt": "PORT DE AMMAN - image 7"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/08.webp",
+                    "alt": "PORT DE AMMAN - image 8"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/09.webp",
+                    "alt": "PORT DE AMMAN - image 9"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/10.webp",
+                    "alt": "PORT DE AMMAN - image 10"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/11.webp",
+                    "alt": "PORT DE AMMAN - image 11"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/12.webp",
+                    "alt": "PORT DE AMMAN - image 12"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/13.webp",
+                    "alt": "PORT DE AMMAN - image 13"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/14.webp",
+                    "alt": "PORT DE AMMAN - image 14"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/15.webp",
+                    "alt": "PORT DE AMMAN - image 15"
+                },
+                {
+                    "src": "/assets/projects/port-de-amman/16.webp",
+                    "alt": "PORT DE AMMAN - image 16"
+                }
+            ],
+            "location": "AMMAN",
+            "architect": "Balad",
+            "area": "1,200 m²"
+        },
+        {
+            "id": "wise-university-escalators",
+            "slug": "wise-university-escalators",
+            "categorySlug": "steel",
+            "title": "WISE University ESCALATORS",
+            "coverImage": "/assets/projects/wise-university-escalators/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/wise-university-escalators/01.webp",
+                    "alt": "WISE University ESCALATORS - image 1"
+                }
+            ],
+            "location": "Amman",
+            "architect": null,
+            "area": null
+        },
+        {
+            "id": "wise-university-gate",
+            "slug": "wise-university-gate",
+            "categorySlug": "steel",
+            "title": "WISE University Gate",
+            "coverImage": "/assets/projects/wise-university-gate/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/wise-university-gate/01.webp",
+                    "alt": "WISE University Gate - image 1"
+                },
+                {
+                    "src": "/assets/projects/wise-university-gate/02.webp",
+                    "alt": "WISE University Gate - image 2"
+                }
+            ],
+            "location": "Amman",
+            "architect": "MINIMALIST ARCHITECTS",
+            "area": null
+        },
+        {
+            "id": "yamaha",
+            "slug": "yamaha",
+            "categorySlug": "steel",
+            "title": "YAMAHA",
+            "coverImage": "/assets/projects/yamaha/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/yamaha/01.webp",
+                    "alt": "YAMAHA - image 1"
+                },
+                {
+                    "src": "/assets/projects/yamaha/02.webp",
+                    "alt": "YAMAHA - image 2"
+                },
+                {
+                    "src": "/assets/projects/yamaha/03.webp",
+                    "alt": "YAMAHA - image 3"
+                },
+                {
+                    "src": "/assets/projects/yamaha/04.webp",
+                    "alt": "YAMAHA - image 4"
+                },
+                {
+                    "src": "/assets/projects/yamaha/05.webp",
+                    "alt": "YAMAHA - image 5"
+                }
+            ],
+            "location": "Amman",
+            "architect": "Suliman Enab",
+            "area": "3,500 m²"
+        },
+        {
+            "id": "abdali-boulivard",
+            "slug": "abdali-boulivard",
+            "categorySlug": "steel",
+            "title": "Abdali Boulivard",
+            "coverImage": "/assets/projects/abdali-boulivard/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/abdali-boulivard/01.webp",
+                    "alt": "Abdali Boulivard - image 1"
+                },
+                {
+                    "src": "/assets/projects/abdali-boulivard/02.webp",
+                    "alt": "Abdali Boulivard - image 2"
+                },
+                {
+                    "src": "/assets/projects/abdali-boulivard/03.webp",
+                    "alt": "Abdali Boulivard - image 3"
+                },
+                {
+                    "src": "/assets/projects/abdali-boulivard/04.webp",
+                    "alt": "Abdali Boulivard - image 4"
+                },
+                {
+                    "src": "/assets/projects/abdali-boulivard/05.webp",
+                    "alt": "Abdali Boulivard - image 5"
+                },
+                {
+                    "src": "/assets/projects/abdali-boulivard/06.webp",
+                    "alt": "Abdali Boulivard - image 6"
+                },
+                {
+                    "src": "/assets/projects/abdali-boulivard/07.webp",
+                    "alt": "Abdali Boulivard - image 7"
+                },
+                {
+                    "src": "/assets/projects/abdali-boulivard/08.webp",
+                    "alt": "Abdali Boulivard - image 8"
+                },
+                {
+                    "src": "/assets/projects/abdali-boulivard/09.webp",
+                    "alt": "Abdali Boulivard - image 9"
+                },
+                {
+                    "src": "/assets/projects/abdali-boulivard/10.webp",
+                    "alt": "Abdali Boulivard - image 10"
+                }
+            ],
+            "location": "Jordan",
+            "architect": "Balad",
+            "area": null
+        },
+        {
+            "id": "lss-headquarter-expansion",
+            "slug": "lss-headquarter-expansion",
+            "categorySlug": "steel",
+            "title": "LSS HEADQUARTER EXPANSION",
+            "coverImage": "/assets/projects/lss-headquarter-expansion/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/lss-headquarter-expansion/01.webp",
+                    "alt": "LSS HEADQUARTER EXPANSION - image 1"
+                }
+            ],
+            "location": "Jordan",
+            "architect": null,
+            "area": "12,000 m²"
+        },
+        {
+            "id": "swimming-pool-area",
+            "slug": "swimming-pool-area",
+            "categorySlug": "steel",
+            "title": "Swimming Pool Area",
+            "coverImage": "/assets/projects/swimming-pool-area/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/swimming-pool-area/01.webp",
+                    "alt": "Swimming Pool Area - image 1"
+                }
+            ],
+            "location": "IRAQ",
+            "architect": null,
+            "area": "1,200 m²"
+        },
+        {
+            "id": "abraj-khalda",
+            "slug": "abraj-khalda",
+            "categorySlug": "commercial-complex",
+            "title": "ABRAJ KHALDA",
+            "coverImage": "/assets/projects/abraj-khalda/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/abraj-khalda/01.webp",
+                    "alt": "ABRAJ KHALDA - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "CUBE ARCHITECTS",
+            "area": "50,000 m²"
+        },
+        {
+            "id": "private-villa-ramiz-ayoub-02",
+            "slug": "private-villa-ramiz-ayoub-02",
+            "categorySlug": "private-villas",
+            "title": "Private Villa (Ramiz Ayoub) -02",
+            "coverImage": "/assets/projects/private-villa-ramiz-ayoub-02/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/private-villa-ramiz-ayoub-02/01.webp",
+                    "alt": "Private Villa (Ramiz Ayoub) -02 - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "AYOUB ARCHITECTS",
+            "area": "2,000 m²"
+        },
+        {
+            "id": "astra-school",
+            "slug": "astra-school",
+            "categorySlug": "institutional-cultural",
+            "title": "ASTRA SCHOOL",
+            "coverImage": "/assets/projects/astra-school/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/astra-school/01.webp",
+                    "alt": "ASTRA SCHOOL - image 1"
+                }
+            ],
+            "location": "KSA",
+            "architect": "PANORAMA CONSULTING ENGINEERS",
+            "area": "25,000 m²"
+        },
+        {
+            "id": "rawnaq-complex",
+            "slug": "rawnaq-complex",
+            "categorySlug": "commercial-complex",
+            "title": "Rawnaq Complex",
+            "coverImage": "/assets/projects/rawnaq-complex/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/rawnaq-complex/01.webp",
+                    "alt": "Rawnaq Complex - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "CUBE ARCHITECTS",
+            "area": "27,000 m²"
+        },
+        {
+            "id": "saudi-hopsital",
+            "slug": "saudi-hopsital",
+            "categorySlug": "hospitals-and-medical-clinics",
+            "title": "Saudi Hopsital",
+            "coverImage": "/assets/projects/saudi-hopsital/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/saudi-hopsital/01.webp",
+                    "alt": "Saudi Hopsital - image 1"
+                },
+                {
+                    "src": "/assets/projects/saudi-hopsital/02.webp",
+                    "alt": "Saudi Hopsital - image 2"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": null,
+            "area": "15,000 m²"
+        },
+        {
+            "id": "private-villa-ramiz-ayoub-03",
+            "slug": "private-villa-ramiz-ayoub-03",
+            "categorySlug": "private-villas",
+            "title": "Private Villa (Ramiz Ayoub) -03",
+            "coverImage": "/assets/projects/private-villa-ramiz-ayoub-03/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/private-villa-ramiz-ayoub-03/01.webp",
+                    "alt": "Private Villa (Ramiz Ayoub) -03 - image 1"
+                },
+                {
+                    "src": "/assets/projects/private-villa-ramiz-ayoub-03/02.webp",
+                    "alt": "Private Villa (Ramiz Ayoub) -03 - image 2"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "AYOUB ARCHITECTS",
+            "area": "4,000 m²"
+        },
+        {
+            "id": "residence-inn-by-mariott",
+            "slug": "residence-inn-by-mariott",
+            "categorySlug": "resort-hotel",
+            "title": "Residence Inn by Mariott",
+            "coverImage": "/assets/projects/residence-inn-by-mariott/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/residence-inn-by-mariott/01.webp",
+                    "alt": "Residence Inn by Mariott - image 1"
+                }
+            ],
+            "location": "KSA",
+            "architect": null,
+            "area": "53,000 m²"
+        },
+        {
+            "id": "icon-mall",
+            "slug": "icon-mall",
+            "categorySlug": "commercial-complex",
+            "title": "Icon Mall",
+            "coverImage": "/assets/projects/icon-mall/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/icon-mall/01.webp",
+                    "alt": "Icon Mall - image 1"
+                },
+                {
+                    "src": "/assets/projects/icon-mall/02.webp",
+                    "alt": "Icon Mall - image 2"
+                },
+                {
+                    "src": "/assets/projects/icon-mall/03.webp",
+                    "alt": "Icon Mall - image 3"
+                }
+            ],
+            "location": "Palestine",
+            "architect": "Matrix Design Architects",
+            "area": "150,000 m²"
+        },
+        {
+            "id": "rak-mall",
+            "slug": "rak-mall",
+            "categorySlug": "commercial-complex",
+            "title": "RAK Mall",
+            "coverImage": "/assets/projects/rak-mall/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/rak-mall/01.webp",
+                    "alt": "RAK Mall - image 1"
+                }
+            ],
+            "location": "UAE",
+            "architect": null,
+            "area": "15,000 m²"
+        },
+        {
+            "id": "al-olaya-residential-buildings",
+            "slug": "al-olaya-residential-buildings",
+            "categorySlug": "residential-complex",
+            "title": "Al Olaya Residential Buildings",
+            "coverImage": "/assets/projects/al-olaya-residential-buildings/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/al-olaya-residential-buildings/01.webp",
+                    "alt": "Al Olaya Residential Buildings - image 1"
+                },
+                {
+                    "src": "/assets/projects/al-olaya-residential-buildings/02.webp",
+                    "alt": "Al Olaya Residential Buildings - image 2"
+                }
+            ],
+            "location": "KSA",
+            "architect": null,
+            "area": "22,000 m²"
+        },
+        {
+            "id": "rafs-project",
+            "slug": "rafs-project",
+            "categorySlug": "governmental",
+            "title": "RAFS Project",
+            "coverImage": "/assets/projects/rafs-project/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/rafs-project/01.webp",
+                    "alt": "RAFS Project - image 1"
+                },
+                {
+                    "src": "/assets/projects/rafs-project/02.webp",
+                    "alt": "RAFS Project - image 2"
+                }
+            ],
+            "location": "KSA",
+            "architect": "MODULE",
+            "area": "18,000 m²"
+        },
+        {
+            "id": "ts-complex",
+            "slug": "ts-complex",
+            "categorySlug": "commercial-complex",
+            "title": "T.S. Complex",
+            "coverImage": "/assets/projects/ts-complex/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/ts-complex/01.webp",
+                    "alt": "T.S. Complex - image 1"
+                }
+            ],
+            "location": "JORDAN",
+            "architect": "Yousef Madanat Architecture Studio",
+            "area": "5,000 m²"
+        },
+        {
+            "id": "private-villa-prisma",
+            "slug": "private-villa-prisma",
+            "categorySlug": "private-villas",
+            "title": "Private Villa (Prisma)",
+            "coverImage": "/assets/projects/private-villa-prisma/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/private-villa-prisma/01.webp",
+                    "alt": "Private Villa (Prisma) - image 1"
+                }
+            ],
+            "location": "KSA",
+            "architect": "prisma circle architects",
+            "area": "3,200 m²"
+        },
+        {
+            "id": "10k-residence-village",
+            "slug": "10k-residence-village",
+            "categorySlug": "residential-complex",
+            "title": "10K Residence Village",
+            "coverImage": "/assets/projects/10k-residence-village/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/10k-residence-village/01.webp",
+                    "alt": "10K Residence Village - image 1"
+                }
+            ],
+            "location": "KSA",
+            "architect": null,
+            "area": "320,000 m²"
+        },
+        {
+            "id": "5k-workers-mini-village",
+            "slug": "5k-workers-mini-village",
+            "categorySlug": "residential-complex",
+            "title": "5K Workers Mini Village",
+            "coverImage": "/assets/projects/5k-workers-mini-village/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/5k-workers-mini-village/01.webp",
+                    "alt": "5K Workers Mini Village - image 1"
+                }
+            ],
+            "location": "KSA",
+            "architect": null,
+            "area": "52,000 m²"
+        },
+        {
+            "id": "sheikh-mohammed-bin-zayed-hospital",
+            "slug": "sheikh-mohammed-bin-zayed-hospital",
+            "categorySlug": "hospitals-and-medical-clinics",
+            "title": "Sheikh Mohammed Bin Zayed Hospital",
+            "coverImage": "/assets/projects/sheikh-mohammed-bin-zayed-hospital/01.webp",
+            "gallery": [
+                {
+                    "src": "/assets/projects/sheikh-mohammed-bin-zayed-hospital/01.webp",
+                    "alt": "Sheikh Mohammed Bin Zayed Hospital - image 1"
+                }
+            ],
+            "location": null,
+            "architect": null,
+            "area": "30,000 m²"
+        }
+    ]
 }

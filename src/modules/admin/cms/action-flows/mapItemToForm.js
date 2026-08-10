@@ -30,6 +30,8 @@ export function mapItemToFormValues(moduleKey, item) {
         location: item.location || '',
         architect: item.architect || '',
         area: item.area || '',
+        coverImage: resolveMediaPath(item.coverImage),
+        gallery: mapGalleryForForm(item.gallery),
         status: item.status || 'draft',
       };
 

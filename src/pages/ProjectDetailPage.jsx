@@ -65,12 +65,12 @@ export default function ProjectDetailPage() {
         breadcrumbs={breadcrumbs}
         ariaLabel={project.title}
       />
+      <ProjectInfo project={project} />
       <GallerySlider
         gallery={project.gallery}
         title={project.title}
         ariaLabel={`${project.title} project gallery`}
       />
-      <ProjectInfo project={project} />
       <RelatedProjects projects={related} categoryTitle={categoryTitle} />
     </AboutPageShell>
   );

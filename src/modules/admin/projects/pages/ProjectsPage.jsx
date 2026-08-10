@@ -45,7 +45,7 @@ export default function ProjectsPage() {
     listing,
     api: projectsApi,
     apiContext: { categories: listing.categoryRecords },
-    enableGallery: false,
+    enableGallery: true,
   });
 
   useAdminBreadcrumbs(projectsPageMeta.topBarBreadcrumbs);
@@ -183,7 +183,7 @@ export default function ProjectsPage() {
       <AdminActionFlowsHost
         moduleKey="projects"
         flows={flows}
-        showGallery={false}
+        showGallery
         fieldOptions={fieldOptions}
       />
     </div>

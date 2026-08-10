@@ -1,116 +1,147 @@
 .directory {
-  padding: clamp(1.5rem, 3vw, 2.25rem) 0 clamp(2.25rem, 4.5vw, 3.5rem);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem) 0 clamp(3rem, 6vw, 4.5rem);
+  position: relative;
+}
+
+.directory::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 28% at 8% 12%, rgba(0, 138, 166, 0.07), transparent 70%),
+    radial-gradient(ellipse 45% 24% at 92% 68%, rgba(0, 138, 166, 0.045), transparent 72%);
 }
 
 .groups {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: clamp(2.25rem, 4.5vw, 3.75rem);
+  gap: clamp(3rem, 6vw, 4.75rem);
 }
 
 .group {
   min-width: 0;
 }
 
+.groupLeadership {
+  padding: clamp(1.35rem, 2.8vw, 1.85rem);
+  border-radius: calc(var(--radius-md) + 4px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
 .groupHeader {
-  margin-bottom: clamp(1rem, 2vw, 1.4rem);
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: clamp(1.25rem, 2.4vw, 1.75rem);
 }
 
 .groupTitleRow {
   display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.85rem;
+  align-items: flex-start;
+  gap: 0.85rem;
   min-width: 0;
 }
 
 .groupAccent {
   flex-shrink: 0;
-  width: 1.75rem;
-  height: 2px;
-  margin-top: 0.55em;
-  align-self: flex-start;
+  width: 2px;
+  height: 1.55rem;
+  margin-top: 0.2rem;
   border-radius: 999px;
-  background: var(--group-accent, var(--color-accent));
-  box-shadow: 0 0 10px color-mix(in srgb, var(--group-accent, var(--color-accent)) 35%, transparent);
+  background: linear-gradient(
+    180deg,
+    var(--color-accent-light),
+    rgba(0, 138, 166, 0.15)
+  );
+}
+
+.groupCopy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
 .groupTitle {
   margin: 0;
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
   font-weight: 650;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--color-white);
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
-.groupCount {
-  margin-left: auto;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(168, 168, 168, 0.62);
-  white-space: nowrap;
+.groupDescription {
+  margin: 0;
+  max-width: 40rem;
+  font-size: clamp(0.82rem, 1.05vw, 0.9rem);
+  line-height: 1.65;
+  color: var(--color-text-muted);
 }
 
 .grid {
   display: grid;
-  gap: clamp(1rem, 2vw, 1.5rem);
+  gap: clamp(1.35rem, 2.4vw, 1.85rem);
   width: 100%;
   align-items: stretch;
 }
 
-.grid_featured {
-  grid-template-columns: minmax(0, 1fr);
-  max-width: min(100%, 640px);
+.grid_leadership {
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2vw, 1.35rem);
+  max-width: 360px;
+}
+
+.grid_solo {
+  grid-template-columns: minmax(0, 280px);
 }
 
 .grid_pair {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  max-width: min(100%, 720px);
+  grid-template-columns: repeat(2, minmax(0, 280px));
 }
 
 .grid_grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.empty {
+  margin: 0;
+  padding: 2rem 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
 @media (min-width: 768px) {
   .grid_grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1.1rem, 2.2vw, 1.65rem);
+    gap: clamp(1.5rem, 2.5vw, 2rem) clamp(1.25rem, 2vw, 1.75rem);
   }
 
-  .groups {
-    gap: clamp(2.5rem, 4.5vw, 4rem);
+  .grid_leadership {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1100px) {
   .grid_grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .grid_featured {
-    max-width: min(100%, 680px);
   }
 }
 
 @media (max-width: 559px) {
   .grid_pair,
-  .grid_grid {
+  .grid_grid,
+  .grid_solo {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .groups {
-    gap: clamp(1.75rem, 5vw, 2.25rem);
+    gap: clamp(2.25rem, 7vw, 3rem);
   }
 
-  .groupCount {
-    margin-left: 0;
-    width: 100%;
-    padding-left: calc(1.75rem + 0.85rem);
+  .groupLeadership {
+    padding: 1rem;
   }
 }

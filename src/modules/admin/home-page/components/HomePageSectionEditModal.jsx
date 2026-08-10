@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input } from '../../ui';
 import { CmsModuleShortcut } from '../../cms/components';
@@ -6,7 +6,8 @@ import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
 import { sectionEditTitles } from '../mock/homePageConfig';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
-import { resolveMediaUrl } from '../../../../utils/mediaUrl';
+import { getProjects } from '../../../../api/public/content';
+import { resolveMediaPath, resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './HomePageSectionEditModal.module.css';
 
 function StatFields({ stats, prefix }) {
@@ -378,6 +379,91 @@ function ServicesForm({ data }) {
 }
 
 function ProjectsForm({ data }) {
+  const initialPoolIds = Array.isArray(data.poolProjectIds) ? data.poolProjectIds : [];
+  const [options, setOptions] = useState([]);
+  const [selectedIds, setSelectedIds] = useState(initialPoolIds);
+  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getProjects()
+      .then((response) => {
+        if (cancelled) return;
+        const projects = response?.data?.projects ?? [];
+        setOptions(Array.isArray(projects) ? projects : []);
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError('Unable to load published projects.');
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const selectedSet = useMemo(() => new Set(selectedIds), [selectedIds]);
+
+  const filteredOptions = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    if (!query) return options;
+
+    return options.filter((project) => {
+      const haystack = [project.title, project.category, project.location, project.slug]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
+      return haystack.includes(query);
+    });
+  }, [options, search]);
+
+  const poolPayload = useMemo(() => {
+    const byId = new Map(options.map((project) => [project.id, project]));
+    const orderedSelected = selectedIds
+      .map((id) => byId.get(id))
+      .filter(Boolean);
+
+    const previews = orderedSelected.map((project, index) => ({
+      id: project.id,
+      title: project.title,
+      category: project.category ?? '',
+      location: project.location ?? '',
+      description: project.description ?? '',
+      image: resolveMediaPath(project.coverImage ?? project.image),
+      slug: project.slug,
+      categorySlug: project.categorySlug ?? '',
+      order: index + 1,
+    }));
+
+    return JSON.stringify({
+      ids: selectedIds,
+      previews,
+    });
+  }, [options, selectedIds]);
+
+  const toggleProject = (projectId) => {
+    setSelectedIds((current) =>
+      current.includes(projectId)
+        ? current.filter((id) => id !== projectId)
+        : [...current, projectId],
+    );
+  };
+
+  const selectAllFiltered = () => {
+    setSelectedIds((current) => {
+      const next = new Set(current);
+      filteredOptions.forEach((project) => next.add(project.id));
+      return Array.from(next);
+    });
+  };
+
+  const clearSelection = () => setSelectedIds([]);
+
   return (
     <>
       <Form.Section title="Section Header">
@@ -414,35 +500,84 @@ function ProjectsForm({ data }) {
             />
           </Input.Field>
         </Form.Field>
-        <Form.Field label="Displayed Project Count" htmlFor="projects-count">
-          <Input.Field>
-            <input
-              id="projects-count"
-              name="projects-count"
-              type="number"
-              className={inputStyles.input}
-              defaultValue={data.projects.length}
-              readOnly
-            />
-          </Input.Field>
-        </Form.Field>
       </Form.Section>
 
-      <Form.Section title="Selected Project Cards">
-        <div className={styles.cardList}>
-          {data.projects.map((project) => (
-            <div key={project.id} className={styles.cardListItem}>
-              <img src={resolveMediaUrl(project.image)} alt={project.title} className={styles.cardThumb} />
-              <div className={styles.cardInfo}>
-                <span className={styles.cardOrder}>#{project.order}</span>
-                <strong>{project.title}</strong>
-                <span className={styles.cardPath}>
-                  /projects/{project.categorySlug}/{project.slug}
-                </span>
-              </div>
-            </div>
-          ))}
+      <Form.Section title="Homepage Project Pool">
+        <p className={styles.formNote}>
+          Choose the projects that can appear in this section. The homepage picks 3 at random from
+          this pool on each page load — not from the full portfolio.
+        </p>
+
+        <input type="hidden" name="projects-pool" value={poolPayload} />
+
+        <div className={styles.poolToolbar}>
+          <Input.Field>
+            <input
+              type="search"
+              className={inputStyles.input}
+              placeholder="Search projects…"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              aria-label="Search projects"
+            />
+          </Input.Field>
+          <div className={styles.poolActions}>
+            <button type="button" className={styles.poolActionBtn} onClick={selectAllFiltered}>
+              Select visible
+            </button>
+            <button type="button" className={styles.poolActionBtn} onClick={clearSelection}>
+              Clear
+            </button>
+          </div>
         </div>
+
+        <div className={styles.poolMeta}>
+          <strong>{selectedIds.length}</strong> selected
+          {!loading && <span>· {options.length} published</span>}
+        </div>
+
+        {loading && <p className={styles.formNote}>Loading projects…</p>}
+        {loadError && <p className={styles.formNote}>{loadError}</p>}
+
+        {!loading && !loadError && (
+          <div className={styles.poolList}>
+            {filteredOptions.length === 0 ? (
+              <p className={styles.formNote}>No projects match this search.</p>
+            ) : (
+              filteredOptions.map((project) => {
+                const checked = selectedSet.has(project.id);
+                const image = resolveMediaUrl(project.coverImage ?? project.image);
+
+                return (
+                  <label
+                    key={project.id}
+                    className={`${styles.poolItem} ${checked ? styles.poolItemSelected : ''}`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => toggleProject(project.id)}
+                      className={styles.poolCheckbox}
+                    />
+                    {image ? (
+                      <img src={image} alt="" className={styles.cardThumb} loading="lazy" />
+                    ) : (
+                      <span className={styles.poolThumbFallback} aria-hidden="true" />
+                    )}
+                    <span className={styles.cardInfo}>
+                      <strong>{project.title}</strong>
+                      <span className={styles.cardPath}>
+                        {[project.category, project.location].filter(Boolean).join(' · ') ||
+                          project.slug}
+                      </span>
+                    </span>
+                  </label>
+                );
+              })
+            )}
+          </div>
+        )}
+
         <Form.Row>
           <Form.Field label="View All Label" htmlFor="projects-viewall-label">
             <Input.Field>
@@ -467,9 +602,7 @@ function ProjectsForm({ data }) {
             </Input.Field>
           </Form.Field>
         </Form.Row>
-        <p className={styles.formNote}>
-          Homepage projects are chosen at random from published projects on each page load. Edit section copy here; manage project details in the Projects module.
-        </p>
+
         <CmsModuleShortcut
           title="Manage Projects"
           description="Edit project titles, galleries, categories, and publishing status."

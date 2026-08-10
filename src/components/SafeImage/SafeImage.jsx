@@ -34,6 +34,7 @@ export default function SafeImage({
           className={styles.image}
           loading={loading}
           decoding="async"
+          draggable={false}
           onError={handleError}
         />
       )}

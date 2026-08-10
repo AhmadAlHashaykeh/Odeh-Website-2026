@@ -73,13 +73,22 @@ function ServicesPreview({ data }) {
 }
 
 function ProjectsPreview({ data }) {
-  const [featured, ...secondary] = data.projects;
+  const projects = Array.isArray(data.projects) ? data.projects : [];
+  const [featured, ...secondary] = projects;
+  const poolCount = Array.isArray(data.poolProjectIds)
+    ? data.poolProjectIds.length
+    : projects.length;
 
   return (
     <div className={styles.projectsPreview}>
       <div className={styles.projectsHeader}>
         <span className={styles.previewLabel}>{data.sectionLabel}</span>
         <h3 className={styles.projectsHeading}>{data.heading}</h3>
+        <p className={styles.previewHint}>
+          {poolCount > 0
+            ? `${poolCount} in pool · homepage shows 3 at random`
+            : 'No pool selected yet · homepage uses all published projects'}
+        </p>
       </div>
       <div className={styles.projectsGrid}>
         {featured && (
@@ -93,7 +102,7 @@ function ProjectsPreview({ data }) {
         )}
         {secondary.length > 0 && (
           <div className={styles.projectStack}>
-            {secondary.map((project) => (
+            {secondary.slice(0, 2).map((project) => (
               <div key={project.id} className={styles.projectCard}>
                 <img src={resolveMediaUrl(project.image)} alt={project.title} loading="lazy" />
                 <div className={styles.projectMeta}>

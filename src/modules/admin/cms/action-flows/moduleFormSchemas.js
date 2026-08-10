@@ -7,7 +7,7 @@ export const MODULE_FORM_SCHEMAS = {
   projects: {
     addTitle: 'Add Project',
     editTitle: 'Edit Project',
-    subtitle: 'Project Name, Area, Location, Architect, and Category.',
+    subtitle: 'Project details, cover image, and gallery.',
     badge: 'Projects',
     sections: [
       {
@@ -18,6 +18,13 @@ export const MODULE_FORM_SCHEMAS = {
           { name: 'location', label: 'Location', type: 'text' },
           { name: 'architect', label: 'Architect', type: 'text' },
           { name: 'category', label: 'Category', type: 'select', options: ['Commercial', 'Residential', 'Hospitality', 'Infrastructure'] },
+        ],
+      },
+      {
+        title: 'Media',
+        fields: [
+          { name: 'coverImage', label: 'Cover Image', type: 'cover', fullWidth: true },
+          { name: 'gallery', label: 'Gallery', type: 'gallery', fullWidth: true },
         ],
       },
       {

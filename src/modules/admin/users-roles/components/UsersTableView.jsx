@@ -28,7 +28,8 @@ function UserStatusBadge({ status }) {
 }
 
 function RoleBadge({ role }) {
-  return <span className={styles.roleBadge}>{role}</span>;
+  const label = typeof role === 'object' && role ? role.name : role;
+  return <span className={styles.roleBadge}>{label || '—'}</span>;
 }
 
 function TwoFaBadge({ enabled }) {
@@ -120,7 +121,7 @@ export default function UsersTableView({
               <td>
                 <TwoFaBadge enabled={user.twoFactorEnabled} />
               </td>
-              <td className={styles.muted}>{formatDate(user.lastLogin)}</td>
+              <td className={styles.muted}>{formatDate(user.lastLogin ?? user.lastLoginAt)}</td>
               <td>
                 <span className={styles.scopeChip}>{user.accessScope}</span>
               </td>

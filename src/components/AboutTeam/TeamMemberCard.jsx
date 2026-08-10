@@ -42,27 +42,23 @@ export default function TeamMemberCard({
 }) {
   const roleVars = roleStyle
     ? {
-        '--role-border': roleStyle.borderColor,
-        '--role-border-hover': roleStyle.borderColorHover,
-        '--role-shadow': roleStyle.shadowColor,
         '--role-accent': roleStyle.accentColor,
       }
     : undefined;
 
-  const isFeatured = layout === 'featured';
+  const isLeadership = layout === 'leadership';
   const hasContacts = Boolean(email || linkedinUrl);
 
   return (
     <article
-      className={`${styles.card} ${isFeatured ? styles.cardFeatured : ''}`}
+      className={`${styles.card} ${isLeadership ? styles.cardLeadership : ''}`}
       style={roleVars}
     >
       <div className={styles.photoFrame}>
         {photo ? (
           <img
             src={photo}
-            alt=""
-            aria-hidden="true"
+            alt={name ? `Portrait of ${name}` : ''}
             className={styles.photo}
             loading={priority ? 'eager' : 'lazy'}
             decoding="async"
@@ -75,41 +71,37 @@ export default function TeamMemberCard({
           </div>
         )}
         <div className={styles.photoFade} aria-hidden="true" />
+        <span className={styles.rankMark} aria-hidden="true" />
       </div>
 
       <div className={styles.info}>
         <div className={styles.copy}>
           <h3 className={styles.name}>{name}</h3>
-          <p className={styles.position}>{title}</p>
+          {title ? <p className={styles.position}>{title}</p> : null}
+          {experience ? <p className={styles.experience}>{experience}</p> : null}
         </div>
 
-        <div className={styles.metaRow}>
-          {experience ? <span className={styles.experience}>{experience}</span> : null}
-          {hasContacts ? (
-            <div className={styles.contactActions}>
-              {linkedinUrl ? (
-                <a
-                  href={linkedinUrl}
-                  className={styles.contactBtn}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${name} on LinkedIn`}
-                >
-                  <LinkedInIcon />
-                </a>
-              ) : null}
-              {email ? (
-                <a
-                  href={`mailto:${email}`}
-                  className={styles.contactBtn}
-                  aria-label={`Email ${name}`}
-                >
-                  <EmailIcon />
-                </a>
-              ) : null}
-            </div>
-          ) : null}
-        </div>
+        {hasContacts ? (
+          <div className={styles.contactActions}>
+            {linkedinUrl ? (
+              <a
+                href={linkedinUrl}
+                className={styles.contactLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkedInIcon />
+                <span>LinkedIn</span>
+              </a>
+            ) : null}
+            {email ? (
+              <a href={`mailto:${email}`} className={styles.contactLink}>
+                <EmailIcon />
+                <span>Email</span>
+              </a>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </article>
   );

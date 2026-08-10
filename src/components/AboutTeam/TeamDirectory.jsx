@@ -3,30 +3,40 @@ import { groupTeamMembers } from '../../utils/teamMemberGroups';
 import TeamMemberCard from './TeamMemberCard';
 import styles from './TeamDirectory.module.css';
 
-function resolveGroupLayout(memberCount) {
-  if (memberCount === 1) return 'featured';
-  if (memberCount === 2) return 'pair';
+function isLeadershipGroup(group) {
+  const key = String(group.key || '').toLowerCase();
+  const title = String(group.title || '').toLowerCase();
+  return key.includes('board') || title.includes('board of directors');
+}
+
+function resolveGroupLayout(group) {
+  if (isLeadershipGroup(group)) return 'leadership';
+  if (group.members.length === 1) return 'solo';
+  if (group.members.length === 2) return 'pair';
   return 'grid';
 }
 
 function TeamGroupSection({ group, startIndex }) {
-  const gridRef = useScrollReveal(0.06);
-  const layout = resolveGroupLayout(group.members.length);
-  const countLabel = group.members.length === 1 ? '1 member' : `${group.members.length} members`;
+  const gridRef = useScrollReveal(0);
+  const layout = resolveGroupLayout(group);
+  const cardLayout = layout === 'leadership' ? 'leadership' : 'portrait';
 
   return (
     <section
-      className={styles.group}
+      className={`${styles.group} ${layout === 'leadership' ? styles.groupLeadership : ''}`}
       aria-labelledby={`team-group-${group.key}`}
-      style={{ '--group-accent': group.accentColor }}
     >
       <header className={styles.groupHeader}>
         <div className={styles.groupTitleRow}>
           <span className={styles.groupAccent} aria-hidden="true" />
-          <h2 id={`team-group-${group.key}`} className={styles.groupTitle}>
-            {group.title}
-          </h2>
-          <span className={styles.groupCount}>{countLabel}</span>
+          <div className={styles.groupCopy}>
+            <h2 id={`team-group-${group.key}`} className={styles.groupTitle}>
+              {group.title}
+            </h2>
+            {group.description ? (
+              <p className={styles.groupDescription}>{group.description}</p>
+            ) : null}
+          </div>
         </div>
       </header>
 
@@ -44,8 +54,8 @@ function TeamGroupSection({ group, startIndex }) {
             linkedinUrl={member.linkedinUrl}
             photo={member.photo}
             roleStyle={member.roleStyle}
-            layout={layout === 'featured' ? 'featured' : 'portrait'}
-            priority={startIndex + index === 0}
+            layout={cardLayout}
+            priority={startIndex + index < 3}
           />
         ))}
       </div>
@@ -56,6 +66,16 @@ function TeamGroupSection({ group, startIndex }) {
 export default function TeamDirectory({ members }) {
   const groups = groupTeamMembers(members ?? []);
   let runningIndex = 0;
+
+  if (groups.length === 0) {
+    return (
+      <div className={styles.directory} aria-label="Team members">
+        <div className="container">
+          <p className={styles.empty}>Team profiles will appear here soon.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.directory} aria-label="Team members">

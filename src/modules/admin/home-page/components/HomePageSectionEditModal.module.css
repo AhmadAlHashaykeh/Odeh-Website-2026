@@ -60,6 +60,87 @@
   color: var(--color-text-muted);
 }
 
+.poolToolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.poolActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.poolActionBtn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.poolActionBtn:hover {
+  color: var(--color-white);
+  border-color: rgba(0, 138, 166, 0.45);
+}
+
+.poolMeta {
+  margin: 0.75rem 0 0.55rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.poolMeta strong {
+  color: var(--color-accent-light);
+}
+
+.poolList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  max-height: min(42vh, 420px);
+  overflow: auto;
+  padding-right: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.poolItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.poolItemSelected {
+  border-color: rgba(0, 138, 166, 0.45);
+  background: rgba(0, 138, 166, 0.1);
+}
+
+.poolCheckbox {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--color-accent, #008aa6);
+}
+
+.poolThumbFallback {
+  width: 56px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.06);
+}
+
 .sourcePreview {
   display: flex;
   flex-direction: column;

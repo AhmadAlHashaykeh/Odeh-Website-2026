@@ -53,7 +53,9 @@ export default function UsersCardView({
           </button>
 
           <div className={styles.meta}>
-            <span className={styles.roleBadge}>{user.role}</span>
+            <span className={styles.roleBadge}>
+              {typeof user.role === 'object' && user.role ? user.role.name : user.role || '—'}
+            </span>
             <UserStatusBadge status={user.status} />
           </div>
 
@@ -70,7 +72,7 @@ export default function UsersCardView({
             </div>
             <div className={styles.detailRow}>
               <dt>Last Login</dt>
-              <dd>{formatDate(user.lastLogin)}</dd>
+              <dd>{formatDate(user.lastLogin ?? user.lastLoginAt)}</dd>
             </div>
             <div className={styles.detailRow}>
               <dt>Access</dt>

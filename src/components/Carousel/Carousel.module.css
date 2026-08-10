@@ -38,6 +38,11 @@
   pointer-events: none;
 }
 
+.track img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 .track::-webkit-scrollbar {
   display: none;
 }

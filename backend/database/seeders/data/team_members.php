@@ -104,8 +104,22 @@ return [
         'category_slug' => 'team-members',
         'rank_slug' => 'engineer',
     ],
+    [
+        'slug' => 'rahmeh-haneyah',
+        'name' => 'Rahmeh Haneyah',
+        'title' => 'Structural Engineer',
+        'category_slug' => 'team-members',
+        'rank_slug' => 'engineer',
+    ],
+    [
+        'slug' => 'mohammad-yaghi',
+        'name' => 'Mohammad Yaghi',
+        'title' => 'Senior Site Engineer',
+        'category_slug' => 'team-members',
+        'rank_slug' => 'senior-engineer',
+    ],
 
-    // Steel Design Section
+    // Structural Engineering Group A
     [
         'slug' => 'abd-jadallah',
         'name' => 'Abd Jadallah',
@@ -127,6 +141,15 @@ return [
         'category_slug' => 'team-members',
         'rank_slug' => 'engineer',
     ],
+    [
+        'slug' => 'rania-nazzal',
+        'name' => 'Rania Nazzal',
+        'title' => 'University Intern',
+        'category_slug' => 'team-members',
+        'rank_slug' => 'engineer',
+    ],
+
+    // Structural Engineering Group B
     [
         'slug' => 'basel-abu-asal',
         'name' => 'Basel Abu Asal',
@@ -162,6 +185,8 @@ return [
         'category_slug' => 'team-members',
         'rank_slug' => 'engineer',
     ],
+
+    // Steel Design Section
     [
         'slug' => 'mazin-hijazi',
         'name' => 'Mazin Hijazi, MSc',
@@ -170,12 +195,28 @@ return [
         'rank_slug' => 'senior-engineer',
     ],
     [
+        'slug' => 'arwa-ghanem',
+        'name' => 'Arwa Ghanem, MSc',
+        'title' => 'Structural Engineer',
+        'category_slug' => 'team-members',
+        'rank_slug' => 'engineer',
+    ],
+    [
         'slug' => 'bahaa-mousa',
         'name' => 'Bahaa Mousa',
         'title' => 'Structural Engineer',
         'category_slug' => 'team-members',
         'rank_slug' => 'engineer',
     ],
+    [
+        'slug' => 'natalia-habaybeh',
+        'name' => 'Natalia Habaybeh',
+        'title' => 'University Intern',
+        'category_slug' => 'team-members',
+        'rank_slug' => 'engineer',
+    ],
+
+    // Specialized Engineering Group
     [
         'slug' => 'khalid-al-dawodi',
         'name' => 'Khalid Al Dawodi',
@@ -193,7 +234,21 @@ return [
     [
         'slug' => 'ahmad-al-zruiqi',
         'name' => 'Ahmad Al-Zruiqi',
-        'title' => 'Structural Engineer',
+        'title' => 'Post-Tensioned Specialist',
+        'category_slug' => 'team-members',
+        'rank_slug' => 'engineer',
+    ],
+    [
+        'slug' => 'hala-al-falouji',
+        'name' => 'Hala Al-Falouji',
+        'title' => 'University Intern',
+        'category_slug' => 'team-members',
+        'rank_slug' => 'engineer',
+    ],
+    [
+        'slug' => 'noor-al-eiadat',
+        'name' => 'Noor Al-Eiadat',
+        'title' => 'University Intern',
         'category_slug' => 'team-members',
         'rank_slug' => 'engineer',
     ],
@@ -217,6 +272,13 @@ return [
         'slug' => 'rabab-al-louzi',
         'name' => 'Prof. Rabab Al Louzi',
         'title' => 'Structural Dynamics & Blast Engineering Expert',
+        'category_slug' => 'team-members',
+        'rank_slug' => 'academic-expert',
+    ],
+    [
+        'slug' => 'modar-alhaj-younes',
+        'name' => 'Modar Alhaj Younes',
+        'title' => 'Expert Structural Engineer - Super High-Rise & Strengthening',
         'category_slug' => 'team-members',
         'rank_slug' => 'academic-expert',
     ],

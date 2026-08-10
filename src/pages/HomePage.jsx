@@ -35,11 +35,20 @@ async function loadHomepage() {
     throw homeResult.reason;
   }
 
+  const homeData = homeResult.value?.data ?? {};
+  const poolProjectIds = Array.isArray(homeData?.projects?.poolProjectIds)
+    ? homeData.projects.poolProjectIds.filter((id) => typeof id === 'string' && id)
+    : [];
+
   const projectsResponse =
     projectsResult.status === 'fulfilled' ? projectsResult.value : null;
   const allPublished = projectsResponse?.data?.projects ?? [];
+  const pool =
+    poolProjectIds.length > 0
+      ? allPublished.filter((project) => poolProjectIds.includes(project.id))
+      : allPublished;
   // Randomize once per page load (inside the loader), not on React re-renders.
-  const selectedProjects = pickRandomItems(allPublished, HOMEPAGE_PROJECT_COUNT);
+  const selectedProjects = pickRandomItems(pool, HOMEPAGE_PROJECT_COUNT);
 
   return {
     home: homeResult.value,

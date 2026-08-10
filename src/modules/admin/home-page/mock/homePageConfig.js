@@ -48,7 +48,7 @@ export const sectionDefinitions = [
   {
     id: 'projects',
     name: 'Selected Projects Preview',
-    description: 'Editorial grid featuring three randomly selected published portfolio projects with a view-all link.',
+    description: 'Editorial grid of 3 projects chosen at random from a curated homepage pool.',
     status: 'published',
     anchor: '/#projects',
     previewType: 'projects',
@@ -65,11 +65,14 @@ export const sectionEditTitles = {
 };
 
 export function computeHomePageStatistics(sections, lastUpdated = '—') {
+  const poolCount = Array.isArray(sections.projects?.poolProjectIds)
+    ? sections.projects.poolProjectIds.length
+    : (sections.projects?.projects?.length ?? 0);
   const visualAssets =
     2 +
     1 +
     (sections.services?.services?.length ?? 0) +
-    (sections.projects?.projects?.length ?? 0);
+    poolCount;
 
   return [
     { id: 'sections', value: '4', label: 'Homepage Sections' },
@@ -80,8 +83,8 @@ export function computeHomePageStatistics(sections, lastUpdated = '—') {
     },
     {
       id: 'projects',
-      value: String(sections.projects?.projects?.length ?? 0),
-      label: 'Selected Projects',
+      value: String(poolCount),
+      label: 'Homepage Project Pool',
     },
     { id: 'visual', value: String(visualAssets), label: 'Visual Assets' },
     { id: 'updated', value: lastUpdated ? String(lastUpdated).split('T')[0] : '—', label: 'Last Updated' },
@@ -97,8 +100,12 @@ export function getSectionSummary(sectionId, sectionData) {
       return `${sectionData.sectionLabel} — ${sectionData.stats.length} stats, Read More → ${sectionData.readMorePath}`;
     case 'services':
       return `${sectionData.heading} — ${sectionData.services.length} service cards in carousel`;
-    case 'projects':
-      return `${sectionData.heading} — ${sectionData.projects.length} selected projects`;
+    case 'projects': {
+      const poolCount = Array.isArray(sectionData.poolProjectIds)
+        ? sectionData.poolProjectIds.length
+        : (sectionData.projects?.length ?? 0);
+      return `${sectionData.heading} — ${poolCount} in homepage pool (shows 3 at random)`;
+    }
     default:
       return '';
   }

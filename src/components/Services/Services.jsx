@@ -1,16 +1,12 @@
-import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 import { resolveMediaUrl } from '../../utils/mediaUrl';
-import { getServicePath } from '../../utils/contentPaths';
 import SafeImage from '../SafeImage/SafeImage';
 import Carousel from '../Carousel/Carousel';
 import styles from './Services.module.css';
 
 function ServiceCard({ service }) {
-  const path = getServicePath(service) || (service.slug ? `/services/${service.slug}` : null);
-
-  const inner = (
-    <>
+  return (
+    <article className={styles.card}>
       <div className={styles.imageWrap}>
         <SafeImage
           src={resolveMediaUrl(service.image)}
@@ -25,17 +21,7 @@ function ServiceCard({ service }) {
           <p className={styles.cardDesc}>{service.description}</p>
         </div>
       </div>
-    </>
-  );
-
-  if (!path) {
-    return <article className={styles.card}>{inner}</article>;
-  }
-
-  return (
-    <Link to={path} className={`${styles.card} ${styles.cardLink}`} aria-label={service.title}>
-      {inner}
-    </Link>
+    </article>
   );
 }
 

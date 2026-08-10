@@ -139,6 +139,18 @@ return [
                 ['label' => 'Team Members'],
             ],
         ],
+        'intro' => [
+            'label' => 'Our People',
+            'title' => 'Engineering minds. Shared craft.',
+            'lead' => 'The experts behind every structure',
+            'body' => 'From board leadership to site engineers, our team brings structural precision, collaborative design, and regional experience to every project we deliver across the Middle East.',
+        ],
+        'cta' => [
+            'heading' => 'Build with us',
+            'description' => 'Explore open roles or reach out to start a conversation about your next project.',
+            'buttonLabel' => 'View Careers',
+            'buttonTo' => '/careers',
+        ],
     ],
     'activities' => [
         'meta' => [
