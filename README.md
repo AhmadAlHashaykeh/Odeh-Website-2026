@@ -1,58 +1,132 @@
-# ODEH & PARTNERS Website & CMS
+# ODEH & PARTNERS — Website & CMS
 
-Full-stack website and admin CMS for ODEH & PARTNERS — engineering and consulting.
+Full-stack public website and admin CMS for **ODEH & PARTNERS** (engineering and consulting). This repository is the authoritative source for the public site, Laravel API, content seed data, and project media used by the 2026 website.
 
-![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite&logoColor=white)
-![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)
-![Status](https://img.shields.io/badge/Release_Candidate-success)
+## Overview
 
-## Project Structure
+The repository contains:
 
+- Public ODEH marketing website (React SPA)
+- Admin CMS / dashboard (`/admin/*`)
+- Laravel 12 backend REST API
+- MySQL-backed content architecture (migrations + seeders)
+- Project and website media under `public/assets/`
+- Deployment documentation under `docs/deployments/`
+
+`master` is the authoritative branch for this project.
+
+## Tech Stack
+
+| Layer | Technology | Version (from lock/manifests) |
+|-------|------------|-------------------------------|
+| Frontend | React | `^18.3.1` |
+| Frontend | React Router | `^6.28.0` |
+| Frontend | Vite | `^5.4.11` |
+| Frontend | TypeScript | `^5.7.3` |
+| Frontend | Vitest | `^3.2.4` |
+| Frontend | Lenis | `^1.3.25` |
+| Backend | PHP | `^8.2` |
+| Backend | Laravel | `^12.0` |
+| Backend | Laravel Sanctum | `^4.3` |
+| Database | MySQL / MariaDB | local/server configured via `.env` |
+
+## Repository Structure
+
+```text
+/
+├── src/                         # React SPA (public site + admin CMS)
+│   ├── api/                     # API client / typed fetch layer
+│   ├── components/              # Public UI components
+│   ├── pages/                   # Public route pages
+│   ├── data/                    # Static fallbacks where used
+│   ├── modules/admin/           # Admin CMS modules & routes
+│   └── utils/                   # Shared frontend utilities
+├── public/                      # Static website assets (served by Vite)
+│   └── assets/                  # About, careers, projects, services media
+├── backend/                     # Laravel 12 API application
+│   ├── app/                     # Controllers, models, enums, concerns
+│   ├── database/migrations/     # Schema
+│   ├── database/seeders/        # Seeders + content data
+│   ├── routes/api.php           # Public + admin API routes
+│   ├── storage/                 # Local runtime storage (not committed)
+│   └── tests/                   # PHPUnit / Artisan tests
+├── scripts/                     # Asset pipeline & maintenance utilities
+├── docs/                        # Audits and deployment reports
+│   └── deployments/             # Environment deployment notes
+├── package.json                 # Frontend tooling
+└── vite.config.js               # Vite configuration
 ```
-Odeh-Website-Frontend/
-├── src/                  # React SPA (public website + admin CMS)
-│   ├── api/              # TypeScript API client layer
-│   ├── components/       # Public UI components
-│   ├── pages/            # Public route pages
-│   ├── data/             # Static public content fallbacks
-│   └── modules/admin/    # Admin CMS modules
-├── backend/              # Laravel 12 REST API
-├── public/               # Static assets
-├── scripts/              # Asset pipeline utilities
-└── dist/                 # Production build output
+
+`dist/` is production frontend build output (generated, not source of truth).
+
+## Main Features
+
+Verified modules present in the current codebase:
+
+**Public website**
+
+- Home, About (overview / approach / history / team / activities)
+- Projects (listing, category, detail)
+- Services (routed; content via API)
+- Careers / job detail / applications
+- Connect, Reach Out, Search
+- Legal pages (privacy, terms)
+- SEO metadata consumption
+
+**Admin CMS**
+
+- Dashboard
+- Projects & Project Categories
+- Services, Activities
+- Team categories, ranks, members
+- Careers (jobs) & Applications
+- Contact Messages
+- Home Page, About Pages, Connect Page
+- Navigation & Footer
+- Legal Pages, SEO
+- Website Settings
+- Users, Roles & Permissions
+
+## Public Website Routes
+
+Representative React Router paths from `src/App.jsx`:
+
+| Path | Purpose |
+|------|---------|
+| `/` | Home |
+| `/about/overview`, `/about/approach`, `/about/history` | About sections |
+| `/about/team-members` | Team |
+| `/about/activities`, `/about/activities/:slug` | Activities |
+| `/projects`, `/projects/:category`, `/projects/:category/:project` | Projects |
+| `/careers`, `/careers/:slug`, `/careers/:slug/apply` | Careers |
+| `/connect`, `/reach-out`, `/search` | Connect / forms / search |
+| `/privacy-policy`, `/terms-and-conditions` | Legal |
+| `/admin/*` | Admin CMS |
+
+## API Architecture
+
+Laravel routes are defined in `backend/routes/api.php` and served under `/api`.
+
+```text
+/api/public/...     # Public content + form submissions (no admin auth)
+/api/auth/...       # Login / logout / current user (Sanctum)
+/api/admin/...      # CMS CRUD & settings (auth:sanctum + permissions)
 ```
 
-## Frontend
+**Auth model:** Laravel Sanctum bearer tokens for admin sessions. Public endpoints are open for published content and selected POST forms (contact, job applications). Admin routes require authentication and module permissions enforced by the backend.
 
-React 18 SPA built with Vite. Serves both the public website and the admin CMS (`/admin/*`).
-
-| Area | Path | Description |
-|------|------|-------------|
-| Public site | `/`, `/projects`, `/about/*`, `/careers`, `/connect` | Marketing website |
-| Admin CMS | `/admin/dashboard`, `/admin/projects`, … | Content management |
-| API client | `src/api/` | Typed fetch wrapper with Sanctum auth |
-
-### Admin Modules
-
-Dashboard, Projects, Project Categories, Services, Activities, Team Members, Careers, Applications, Contact Messages, Home Page, About Pages, Navigation & Footer, Connect Page, Legal Pages, SEO, Website Settings, Users & Roles.
-
-## Backend
-
-Laravel 12 API with Sanctum authentication, role-based permissions, and CRUD endpoints for all CMS modules. See [backend/README.md](backend/README.md) for full API documentation.
-
-## Local Setup
+## Local Development Setup
 
 ### Prerequisites
 
 - Node.js 18+
 - PHP 8.2+
 - Composer 2.x
-- MySQL 8+ (XAMPP, WAMP, or standalone)
+- MySQL 8+ (or compatible MariaDB), e.g. via XAMPP
 
-### 1. MySQL Database
+### 1. Database
 
-Create the database before starting the backend:
+Create a local database (name is configurable in `backend/.env`):
 
 ```sql
 CREATE DATABASE odeh_cms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -65,103 +139,115 @@ cd backend
 composer install
 cp .env.example .env
 php artisan key:generate
+# Configure DB_* (and related) values in backend/.env — do not commit this file
 php artisan storage:link
 php artisan migrate:fresh --seed
 php artisan serve
 ```
 
-Default `.env` database settings:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=odeh_cms
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-API runs at `http://127.0.0.1:8000/api`.
+API default local URL: `http://127.0.0.1:8000/api`
 
 ### 3. Frontend
 
+From the repository root:
+
 ```bash
-# From repository root
 cp .env.example .env
+# Set VITE_API_BASE_URL to your local API, e.g. http://127.0.0.1:8000/api
 npm install
 npm run dev
-```
-
-Required frontend `.env`:
-
-```env
-VITE_API_BASE_URL=http://127.0.0.1:8000/api
 ```
 
 | URL | Description |
 |-----|-------------|
 | `http://localhost:5173/` | Public website |
 | `http://localhost:5173/admin/login` | Admin login |
-| `http://localhost:5173/admin/dashboard` | Admin dashboard |
 
-### Development Admin (local only)
+Default local admin credentials are created by the backend database seeders. Check `backend/database/seeders/` for the seeded account used in local development. Change or remove seed credentials before production use.
 
-| Field | Value |
-|-------|-------|
-| Email | `admin@odeh.local` |
-| Password | `OdehLocalDev2026!` |
+## Database
 
-**Development only — change or remove this account before production.**
+- Schema lives in `backend/database/migrations/`
+- Seeders and structured content live in `backend/database/seeders/` (including `data/` PHP content files)
+- Local DB host, database name, username, and password are configured only in `backend/.env` (never committed)
+
+Typical reset for local rebuild:
+
+```bash
+cd backend
+php artisan migrate:fresh --seed
+```
+
+## Media / Assets
+
+- Website and project imagery: `public/assets/` (including `public/assets/projects/`)
+- Uploaded CMS media and CVs use Laravel storage under `backend/storage/` (local runtime; not committed)
+- Public upload access expects the storage symlink:
+
+```bash
+cd backend
+php artisan storage:link
+```
+
+This links `backend/public/storage` → `backend/storage/app/public`.
 
 ## Build
 
 ```bash
-npm run lint      # TypeScript check
-npm run build     # Production build → dist/
+npm run lint      # TypeScript check (tsc --noEmit)
+npm run build     # Production frontend build → dist/
 npm run preview   # Preview production build
+npm run test      # Vitest unit tests
 ```
-
-## Production Deployment
-
-### Frontend
-
-1. Set `VITE_API_BASE_URL` to the production API URL
-2. Run `npm run build`
-3. Serve `dist/` via CDN or static web server (Nginx, Apache, S3+CloudFront)
-4. Configure SPA fallback to `index.html` for client-side routing
-
-### Backend
-
-1. Deploy `backend/` to a PHP host
-2. Set `APP_ENV=production`, `APP_DEBUG=false`
-3. Run migrations: `php artisan migrate --force`
-4. Cache config/routes: `php artisan config:cache && php artisan route:cache`
-5. Configure CORS for the frontend domain
-6. Use private storage for uploaded CVs
-
-## Branch Strategy
-
-| Branch | Purpose |
-|--------|---------|
-| `main` | Production releases |
-| `backend-api-foundation` | Full-stack CMS with API integration (release candidate) |
-| `frontend-admin-complete` | Frontend-only snapshot (pre-backend) |
-
-Feature work branches from `main` or the active development branch. Merge via pull request with passing tests.
-
-## Architecture Notes
-
-- **Single Source of Truth** — each content type has one owner CMS module
-- **API-first** — admin modules call Laravel REST endpoints; no mock CRUD
-- **Permissions** — 18-module permission matrix enforced on backend gates and frontend route guards
-- **Sanctum** — bearer token auth stored in `localStorage`
 
 ## Testing
 
 ```bash
 # Frontend
+npm run test
 npm run lint
 
 # Backend
-cd backend && php artisan test
+cd backend
+php artisan test
 ```
+
+## Deployment
+
+Deployment procedures and environment-specific notes are documented under:
+
+[`docs/deployments/`](docs/deployments/)
+
+Do not put SSH credentials, passwords, API tokens, or private keys into documentation or Git.
+
+High-level production expectations:
+
+1. Build the frontend with the correct `VITE_API_BASE_URL`
+2. Serve `dist/` as an SPA (fallback to `index.html`)
+3. Deploy `backend/` with `APP_ENV=production`, `APP_DEBUG=false`
+4. Run migrations, cache config/routes as appropriate, configure CORS, and keep uploads/CVs private
+
+## Git Workflow
+
+- **`master` is the authoritative branch.**
+- Create feature branches from `master`.
+- Merge back to `master` after validation (tests/build/review).
+- Do not commit `.env`, backups, SQL dumps, private keys, or local import artifacts.
+
+Historical development branches (`backend-api-foundation`, `frontend-admin-complete`) remain for reference until confirmed fully superseded by `master`.
+
+## Security
+
+- `.env` / `backend/.env` are not committed
+- Credentials, tokens, private keys, and auth files must never be committed
+- `backups/`, SQL dumps, and temporary import reports stay local or server-side only
+- `backend/vendor/` and `node_modules/` are excluded from Git
+
+## Project Status
+
+As of the repository consolidation onto `master`:
+
+- Full-stack public website + admin CMS is present and integrated with the Laravel API
+- Content seeders, migrations, and project assets are part of the tracked application
+- DEV deployment documentation exists under `docs/deployments/`
+- Treat production readiness as environment-specific: configure secrets, CORS, storage, and hosting per deployment docs — do not assume a given host is live from this README alone
