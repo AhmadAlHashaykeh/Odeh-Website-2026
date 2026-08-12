@@ -1,27 +1,99 @@
-# Logs
-logs
+# Dependencies
+node_modules/
+backend/vendor/
+
+# Build / compile output
+dist/
+dist-ssr/
+backend/public/build/
+backend/public/hot/
+
+# Environment & secrets (never commit)
+.env
+.env.*
+!.env.example
+!backend/.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+auth.json
+backend/auth.json
+*.p12
+*.pfx
+
+# Logs & caches
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+backend/storage/logs/
+backend/storage/framework/cache/
+backend/storage/framework/sessions/
+backend/storage/framework/views/
+backend/bootstrap/cache/*.php
+!.gitkeep
+backend/.phpunit.result.cache
+.phpunit.cache/
 
-node_modules
-dist
-dist-ssr
+# Laravel runtime / uploads (local only)
+backend/public/storage
+backend/storage/app/private/
+backend/storage/app/public/
+backend/storage/*.key
+
+# Local / temporary workspaces
+.tmp/
+.local/
 *.local
-.env
 
-# Editor directories and files
+# Backups, dumps, archives (keep off GitHub)
+backups/
+*.sql
+*.sqlite
+*.sqlite3
+*.dump
+*.bak
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+
+# One-off import discovery / reports (local operational artifacts)
+scripts/_rev03_*
+scripts/_steel_*
+scripts/import_rev03_*
+scripts/import_steel_*
+backend/scripts/
+
+# Editor / IDE / OS
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
+.fleet/
+.nova/
+.zed/
 .DS_Store
+Thumbs.db
+Desktop.ini
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-.tmp/
+# Cursor / agent temporary
+.cursor/
+agent-transcripts/
+
+# Coverage / tooling
+coverage/
+.nyc_output/
