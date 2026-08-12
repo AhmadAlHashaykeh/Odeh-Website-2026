@@ -195,8 +195,8 @@ Public APIs HTTP 200: `/up`, home, projects, project-categories, team-members, s
 | Item | Value |
 |------|-------|
 | Branch | `backend-api-foundation` |
-| Checkpoint commit | see git section after commit |
-| Push result | see git section after push |
+| Checkpoint commit | `92c5585` — `release: deploy latest approved local website to dev` |
+| Push result | Pushed to `origin/backend-api-foundation` |
 | Intentionally untracked | `backups/`, `.tmp/`, temporary Steel/REV.03 import scripts under `scripts/` and `backend/scripts/` |
 
 ## 15. Remaining Issues
