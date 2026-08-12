@@ -1,9 +1,10 @@
 import { AboutPageShell } from '../components/AboutSection';
 import { OverviewHero } from '../components/AboutOverview';
 import { HistoryStory, HistoryCounters, HistoryDataTable } from '../components/AboutHistory';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getAbout } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 
 const FALLBACK_META = {
   title: 'History | About | ODEH & PARTNERS DESIGN',
@@ -12,12 +13,12 @@ const FALLBACK_META = {
 
 export default function AboutHistoryPage() {
   const { data, loading, error } = usePublicQuery(() => getAbout(), []);
-  const history = data?.data?.history;
+  const history = data?.data?.history ? normalizePublicMedia(data.data.history) : undefined;
 
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="hero-content" />
       </AboutPageShell>
     );
   }

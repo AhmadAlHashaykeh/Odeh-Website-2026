@@ -1,11 +1,44 @@
+import { resolveMediaPath, resolveMediaUrl } from './mediaUrl';
+
+export { resolveMediaPath, resolveMediaUrl };
+
 export function mapTeamMember(member) {
+  const category =
+    member.category && typeof member.category === 'object'
+      ? {
+          id: member.category.id,
+          name: member.category.name,
+          slug: member.category.slug,
+          borderColor: member.category.borderColor,
+          displayOrder: member.category.displayOrder,
+          description: member.category.description ?? null,
+          isActive: member.category.isActive,
+        }
+      : null;
+
   return {
     slug: member.slug,
     name: member.fullName ?? member.name,
     title: member.position ?? member.title,
+    department: member.department ?? null,
+    category,
+    teamCategoryId: member.teamCategoryId ?? category?.id ?? null,
+    rank:
+      member.rank && typeof member.rank === 'object'
+        ? {
+            id: member.rank.id,
+            name: member.rank.name,
+            slug: member.rank.slug,
+            color: member.rank.color,
+            displayOrder: member.rank.displayOrder,
+            isActive: member.rank.isActive,
+          }
+        : null,
+    teamRankId: member.teamRankId ?? member.rank?.id ?? null,
     experience: member.experience,
-    photo: member.photo,
+    photo: resolveMediaUrl(member.photo),
     email: member.email,
+    linkedinUrl: member.linkedinUrl || member.linkedin_url || null,
   };
 }
 
@@ -23,16 +56,43 @@ export function mapService(service) {
     ...service,
     id: service.slug ?? service.id,
     path: `/services/${service.slug ?? service.id}`,
+    image: resolveMediaUrl(service.image),
+    icon: resolveMediaUrl(service.icon),
   };
 }
 
 export function mapActivity(activity) {
   const description = activity.description ?? activity.fullDescription ?? '';
+
   return {
     ...activity,
     date: activity.activityDate ?? activity.date,
-    coverImage: activity.coverImage ?? activity.cover_image,
+    coverImage: resolveMediaUrl(activity.coverImage ?? activity.cover_image),
+    gallery: (activity.gallery ?? []).map((item) => ({
+      ...item,
+      src: resolveMediaUrl(item),
+    })),
     description: Array.isArray(description) ? description : description,
+  };
+}
+
+export function mapProject(project) {
+  return {
+    ...project,
+    coverImage: resolveMediaUrl(project.coverImage ?? project.cover_image),
+    image: resolveMediaUrl(project.image ?? project.coverImage ?? project.cover_image),
+    gallery: (project.gallery ?? []).map((item) => ({
+      ...item,
+      src: resolveMediaUrl(item),
+    })),
+  };
+}
+
+export function mapProjectCategory(category) {
+  return {
+    ...category,
+    coverImage: resolveMediaUrl(category.coverImage ?? category.cover_image),
+    featuredImage: resolveMediaUrl(category.featuredImage ?? category.featured_image),
   };
 }
 

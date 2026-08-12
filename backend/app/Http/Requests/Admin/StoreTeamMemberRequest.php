@@ -21,6 +21,9 @@ class StoreTeamMemberRequest extends FormRequest
         $this->mapCamelCaseInput([
             'fullName' => 'full_name',
             'displayOrder' => 'display_order',
+            'teamCategoryId' => 'team_category_id',
+            'teamRankId' => 'team_rank_id',
+            'linkedinUrl' => 'linkedin_url',
         ]);
     }
 
@@ -32,9 +35,12 @@ class StoreTeamMemberRequest extends FormRequest
             'position' => ['nullable', 'string', 'max:255'],
             'department' => ['nullable', 'string', 'max:255'],
             'category' => ['nullable', 'string', 'max:255'],
+            'team_category_id' => ['required', 'uuid', 'exists:team_categories,id'],
+            'team_rank_id' => ['required', 'uuid', 'exists:team_ranks,id'],
             'experience' => ['nullable', 'string', 'max:255'],
             'photo' => ['nullable', 'string', 'max:2048'],
             'email' => ['nullable', 'email', 'max:255'],
+            'linkedin_url' => ['nullable', 'url', 'max:2048'],
             'status' => ['nullable', Rule::enum(TeamMemberStatus::class)],
             'display_order' => ['nullable', 'integer', 'min:0'],
         ];

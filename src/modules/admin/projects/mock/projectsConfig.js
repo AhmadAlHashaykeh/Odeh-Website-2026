@@ -1,6 +1,6 @@
 export const projectsPageMeta = {
   title: 'Projects',
-  description: "Manage the company's architectural portfolio — categories, galleries, and publishing.",
+  description: 'Manage projects — name, area, location, architect, and category.',
   breadcrumbs: [
     { label: 'Admin', path: '/admin/dashboard' },
     { label: 'Projects' },
@@ -23,12 +23,6 @@ export const statusFilterOptions = [
   { value: 'archived', label: 'Archived' },
 ];
 
-export const featuredFilterOptions = [
-  { value: 'all', label: 'All Projects' },
-  { value: 'featured', label: 'Featured Only' },
-  { value: 'not-featured', label: 'Not Featured' },
-];
-
 export const publishedFilterOptions = [
   { value: 'all', label: 'All' },
   { value: 'published', label: 'Published' },
@@ -41,8 +35,6 @@ export const sortOptions = [
   { value: 'updated_asc', label: 'Oldest Updated' },
   { value: 'title_asc', label: 'Title A–Z' },
   { value: 'title_desc', label: 'Title Z–A' },
-  { value: 'year_desc', label: 'Newest Year' },
-  { value: 'year_asc', label: 'Oldest Year' },
 ];
 
 export const bulkActionOptions = [

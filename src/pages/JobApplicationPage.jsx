@@ -1,7 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { AboutPageShell } from '../components/AboutSection';
 import { JobApplicationHero, JobApplicationForm } from '../components/Careers';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getCareers, getJob } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import { mapJob } from '../utils/contentMappers';
@@ -18,7 +18,7 @@ export default function JobApplicationPage() {
   if (jobLoading || careersLoading) {
     return (
       <AboutPageShell meta={{ title: 'Apply | ODEH & PARTNERS DESIGN' }}>
-        <PageLoader />
+        <PublicPageSkeleton variant="form" />
       </AboutPageShell>
     );
   }

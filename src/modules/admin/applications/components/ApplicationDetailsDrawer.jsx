@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import AdminIcon from '../../components/AdminIcons';
-import { applicationStatusLabels } from '../mock/applicationsConfig';
+import { applicationStatusLabels, statusActionLabels } from '../mock/applicationsConfig';
 import { ApplicationStatusBadge } from './ApplicationQuickActions';
 import styles from './ApplicationDetailsDrawer.module.css';
 
@@ -35,7 +35,7 @@ function MetaRow({ label, value }) {
 function TimelineIcon({ type }) {
   const icons = {
     submitted: 'applications',
-    reviewed: 'eye',
+    reviewing: 'eye',
     shortlisted: 'star',
     rejected: 'close',
     hired: 'check',
@@ -46,7 +46,7 @@ function TimelineIcon({ type }) {
   return <AdminIcon name={icons[type] || 'sort'} size={14} />;
 }
 
-export default function ApplicationDetailsDrawer({ application, onClose, onStatusAction, onDownloadCv, onOpenLinkedIn, onAddNote }) {
+export default function ApplicationDetailsDrawer({ application, onClose, onAction }) {
   useEffect(() => {
     if (!application) return undefined;
 
@@ -69,6 +69,14 @@ export default function ApplicationDetailsDrawer({ application, onClose, onStatu
   if (!application) return null;
 
   const linkedInValid = application.linkedInUrl?.startsWith('http');
+  const timeline = Array.isArray(application.timeline) ? application.timeline : [];
+  const notes = Array.isArray(application.notes) ? application.notes : [];
+  const initials = (application.applicantName || '')
+    .split(' ')
+    .filter(Boolean)
+    .map((n) => n[0])
+    .slice(0, 2)
+    .join('');
 
   return (
     <div className={styles.overlay} role="presentation" onClick={onClose}>
@@ -86,9 +94,7 @@ export default function ApplicationDetailsDrawer({ application, onClose, onStatu
         <div className={styles.hero}>
           <div className={styles.heroPattern} aria-hidden="true" />
           <div className={styles.heroInfo}>
-            <span className={styles.initials}>
-              {application.applicantName.split(' ').map((n) => n[0]).slice(0, 2).join('')}
-            </span>
+            <span className={styles.initials}>{initials || '?'}</span>
             <h2 id="application-drawer-title" className={styles.title}>{application.applicantName}</h2>
             <span className={styles.jobRef}>{application.jobTitle}</span>
           </div>
@@ -171,7 +177,11 @@ export default function ApplicationDetailsDrawer({ application, onClose, onStatu
                 <span className={styles.cvName}>{application.cvFileName}</span>
                 <span className={styles.cvSize}>{application.cvFileSize}</span>
               </div>
-              <button type="button" className={styles.cvBtn} onClick={() => onDownloadCv?.(application)}>
+              <button
+                type="button"
+                className={styles.cvBtn}
+                onClick={() => onAction?.('download-cv', application)}
+              >
                 Download
               </button>
             </div>
@@ -180,10 +190,10 @@ export default function ApplicationDetailsDrawer({ application, onClose, onStatu
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>
               Application Timeline
-              <span className={styles.count}>{application.timeline.length}</span>
+              <span className={styles.count}>{timeline.length}</span>
             </h3>
             <ol className={styles.timeline}>
-              {application.timeline.map((event, index) => (
+              {timeline.map((event, index) => (
                 <li key={event.id} className={styles.timelineItem}>
                   <div className={`${styles.timelineDot} ${index === 0 ? styles.active : ''}`}>
                     <TimelineIcon type={event.type} />
@@ -198,14 +208,14 @@ export default function ApplicationDetailsDrawer({ application, onClose, onStatu
             </ol>
           </section>
 
-          {application.notes.length > 0 && (
+          {notes.length > 0 && (
             <section className={styles.section}>
               <h3 className={styles.sectionTitle}>
                 Internal Notes
-                <span className={styles.count}>{application.notesCount}</span>
+                <span className={styles.count}>{application.notesCount ?? notes.length}</span>
               </h3>
               <ul className={styles.notesList}>
-                {application.notes.map((note) => (
+                {notes.map((note) => (
                   <li key={note.id} className={styles.noteItem}>
                     <div className={styles.noteHeader}>
                       <span className={styles.noteAuthor}>{note.author}</span>
@@ -221,16 +231,16 @@ export default function ApplicationDetailsDrawer({ application, onClose, onStatu
           <section className={styles.section}>
             <h3 className={styles.sectionTitle}>Status Actions</h3>
             <div className={styles.statusActions}>
-              {['reviewed', 'shortlisted', 'hired', 'rejected', 'new']
+              {['reviewing', 'shortlisted', 'hired', 'rejected', 'new']
                 .filter((s) => s !== application.status)
                 .map((status) => (
                   <button
                     key={status}
                     type="button"
                     className={styles.statusActionBtn}
-                    onClick={() => onStatusAction?.(`status-${status}`, application)}
+                    onClick={() => onAction?.(`status-${status}`, application)}
                   >
-                    {status === 'new' ? 'Reset to New' : applicationStatusLabels[status]}
+                    {statusActionLabels[status] || applicationStatusLabels[status] || status}
                   </button>
                 ))}
             </div>
@@ -245,21 +255,36 @@ export default function ApplicationDetailsDrawer({ application, onClose, onStatu
               <MetaRow label="Source" value={application.source} />
               <MetaRow label="Submitted" value={formatDate(application.submittedDate)} />
               <MetaRow label="Last Updated" value={formatTimestamp(application.lastUpdated)} />
-              <MetaRow label="Notes" value={application.notesCount} />
-              <MetaRow label="Current Status" value={applicationStatusLabels[application.status]} />
+              <MetaRow label="Notes" value={application.notesCount ?? notes.length} />
+              <MetaRow
+                label="Current Status"
+                value={applicationStatusLabels[application.status] || application.status}
+              />
             </div>
           </section>
 
           <div className={styles.drawerActions}>
-            <button type="button" className={styles.drawerActionBtn} onClick={() => onAddNote?.(application)}>
+            <button
+              type="button"
+              className={styles.drawerActionBtn}
+              onClick={() => onAction?.('add-note', application)}
+            >
               <AdminIcon name="edit" size={15} />
               Add Note
             </button>
-            <button type="button" className={styles.drawerActionBtn} onClick={() => onOpenLinkedIn?.(application)}>
+            <button
+              type="button"
+              className={styles.drawerActionBtn}
+              onClick={() => onAction?.('open-linkedin', application)}
+            >
               <AdminIcon name="external" size={15} />
               Open LinkedIn
             </button>
-            <button type="button" className={styles.drawerActionBtn} onClick={() => onDownloadCv?.(application)}>
+            <button
+              type="button"
+              className={styles.drawerActionBtn}
+              onClick={() => onAction?.('download-cv', application)}
+            >
               <AdminIcon name="export" size={15} />
               Download CV
             </button>

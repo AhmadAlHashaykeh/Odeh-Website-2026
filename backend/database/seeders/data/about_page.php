@@ -31,7 +31,7 @@ return [
             ],
         ],
         'slider' => [
-            'label' => 'Our Office',
+            'label' => 'Our Office — Jordan Branch',
             'description' => 'A glimpse into our workspace — where engineering excellence meets collaborative design.',
             'images' => [
                 ['src' => $office.'/img-01.webp', 'alt' => 'Glass-partitioned workspace at ODEH & PARTNERS DESIGN'],
@@ -97,8 +97,8 @@ return [
         ],
         'counters' => [
             'items' => [
-                ['label' => 'Years of Experience', 'value' => '8+'],
-                ['label' => 'Qualified Employees', 'value' => '30+'],
+                ['label' => 'Years of Experience', 'value' => '+8'],
+                ['label' => 'Qualified Employees', 'value' => '+30'],
             ],
         ],
         'growthTable' => [
@@ -107,7 +107,7 @@ return [
             'columns' => [
                 ['key' => 'year', 'label' => 'Year'],
                 ['key' => 'projects', 'label' => 'Completed Projects', 'align' => 'right'],
-                ['key' => 'area', 'label' => 'Area of Completed Projects (m²)', 'align' => 'right'],
+                ['key' => 'area', 'label' => 'Area', 'align' => 'right'],
             ],
             'rows' => [
                 ['year' => 2018, 'projects' => 85, 'area' => 160210],
@@ -138,6 +138,18 @@ return [
                 ['label' => 'About Us', 'path' => '/about/overview'],
                 ['label' => 'Team Members'],
             ],
+        ],
+        'intro' => [
+            'label' => 'Our People',
+            'title' => 'Engineering minds. Shared craft.',
+            'lead' => 'The experts behind every structure',
+            'body' => 'From board leadership to site engineers, our team brings structural precision, collaborative design, and regional experience to every project we deliver across the Middle East.',
+        ],
+        'cta' => [
+            'heading' => 'Build with us',
+            'description' => 'Explore open roles or reach out to start a conversation about your next project.',
+            'buttonLabel' => 'View Careers',
+            'buttonTo' => '/careers',
         ],
     ],
     'activities' => [

@@ -37,6 +37,24 @@ class PublicContentApiTest extends TestCase
             ]);
     }
 
+    public function test_public_project_and_job_detail_urls_resolve(): void
+    {
+        $this->getJson('/api/public/projects/resort-hotel/fairmont-hotel')
+            ->assertOk()
+            ->assertJsonPath('data.slug', 'fairmont-hotel');
+
+        $this->getJson('/api/public/jobs')
+            ->assertOk();
+
+        $jobs = $this->getJson('/api/public/careers')->json('data.jobs');
+        $this->assertNotEmpty($jobs);
+
+        $jobSlug = $jobs[0]['slug'];
+        $this->getJson("/api/public/jobs/{$jobSlug}")
+            ->assertOk()
+            ->assertJsonPath('data.slug', $jobSlug);
+    }
+
     public function test_public_careers_endpoint_returns_page_and_jobs(): void
     {
         $this->getJson('/api/public/careers')

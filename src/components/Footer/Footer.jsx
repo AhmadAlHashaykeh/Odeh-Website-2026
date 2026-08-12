@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { usePublicSite } from '../../context/PublicSiteContext';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './Footer.module.css';
 
 function FacebookIcon() {
@@ -22,7 +23,7 @@ function InstagramIcon() {
 function LinkedInIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.062 2.062 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.062 2.062 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C0 .774 23.2 0 22.222 0h.003z" />
     </svg>
   );
 }
@@ -70,6 +71,24 @@ const NAV_GROUP_DEFS = [
   },
 ];
 
+const FALLBACK_LOGO_SRC = '/odeh-logo2.png';
+const FALLBACK_LOGO_ALT = 'ODEH & PARTNERS DESIGN';
+
+function resolveSocialIconKey(icon) {
+  if (typeof icon === 'string' && icon.trim() !== '') {
+    return icon.trim();
+  }
+
+  if (icon && typeof icon === 'object') {
+    const key = icon.path ?? icon.src ?? icon.url;
+    if (typeof key === 'string' && key.trim() !== '' && !key.includes('/')) {
+      return key.trim();
+    }
+  }
+
+  return '';
+}
+
 function buildNavGroups(links) {
   const linkMap = new Map(
     links.filter((link) => !EXCLUDED_PATHS.has(link.path)).map((link) => [link.path, link])
@@ -79,6 +98,19 @@ function buildNavGroups(links) {
     title: group.title,
     links: group.paths.map((path) => linkMap.get(path)).filter(Boolean),
   }));
+}
+
+function resolveNavGroups(footerNavGroups, footerQuickLinks) {
+  if (Array.isArray(footerNavGroups) && footerNavGroups.length > 0) {
+    return footerNavGroups.map((group) => ({
+      title: group?.title ?? '',
+      links: Array.isArray(group?.links)
+        ? group.links.filter((link) => link?.path && !EXCLUDED_PATHS.has(link.path))
+        : [],
+    }));
+  }
+
+  return buildNavGroups(footerQuickLinks ?? []);
 }
 
 function NavGroup({ title, links }) {
@@ -106,10 +138,25 @@ function NavGroup({ title, links }) {
 export default function Footer() {
   const mainRef = useScrollReveal(0.08);
   const bottomRef = useScrollReveal(0.05);
-  const { footerQuickLinks, socialLinks, contactInfo } = usePublicSite();
+  const { navigationFooter, footerQuickLinks, socialLinks, contactInfo } = usePublicSite();
 
-  const navGroups = buildNavGroups(footerQuickLinks);
-  const contacts = contactInfo?.contacts ?? [];
+  const footerBrand = navigationFooter?.footerBrand ?? {};
+  const brandLogo = footerBrand.logo ?? navigationFooter?.logo ?? {};
+  const logoSrc = resolveMediaUrl(brandLogo) || FALLBACK_LOGO_SRC;
+  const logoAlt =
+    (typeof brandLogo.alt === 'string' && brandLogo.alt.trim() !== ''
+      ? brandLogo.alt
+      : null) || FALLBACK_LOGO_ALT;
+  const brandText = typeof footerBrand.text === 'string' ? footerBrand.text : '';
+  const copyrightName =
+    (typeof navigationFooter?.copyright?.companyName === 'string' &&
+    navigationFooter.copyright.companyName.trim() !== ''
+      ? navigationFooter.copyright.companyName
+      : null) || FALLBACK_LOGO_ALT;
+
+  const navGroups = resolveNavGroups(navigationFooter?.footerNavGroups, footerQuickLinks);
+  const contacts = Array.isArray(contactInfo?.contacts) ? contactInfo.contacts : [];
+  const location = typeof contactInfo?.location === 'string' ? contactInfo.location : '';
 
   return (
     <footer className={styles.footer}>
@@ -125,23 +172,23 @@ export default function Footer() {
           <div ref={mainRef} className={`reveal ${styles.mainGrid}`}>
             <div className={styles.brand}>
               <Link to="/" className={styles.logoLink}>
-                <img src="/odeh-logo2.png" alt="ODEH & PARTNERS DESIGN" className={styles.logo} />
+                <img src={logoSrc} alt={logoAlt} className={styles.logo} />
               </Link>
-              <p className={styles.brandText}>
-                ODEH & PARTNERS DESIGN is a leading Design firm that combines creativity and
-                expertise to deliver innovative solutions that transcend traditional boundaries.
-              </p>
+              {brandText ? <p className={styles.brandText}>{brandText}</p> : null}
               <div className={styles.social}>
-                {socialLinks.map((social) => {
-                  const Icon = iconMap[social.icon];
+                {(socialLinks ?? []).map((social) => {
+                  const iconKey = resolveSocialIconKey(social?.icon);
+                  const Icon = iconMap[iconKey];
+                  if (!Icon || !social?.href) return null;
+
                   return (
                     <a
-                      key={social.label}
+                      key={social.label || iconKey}
                       href={social.href}
                       className={styles.socialLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      aria-label={social.label}
+                      aria-label={social.label || iconKey}
                     >
                       <span className={styles.socialIconWrap}>
                         <Icon />
@@ -161,34 +208,43 @@ export default function Footer() {
             <div className={styles.contact}>
               <h3 className={styles.columnTitle}>Reach Us</h3>
               <div className={styles.contactList}>
-                {contacts.map((contact) => (
-                  <div key={contact.email} className={styles.contactItem}>
+                {contacts.map((contact, index) => {
+                  const email = typeof contact?.email === 'string' ? contact.email : '';
+                  const phone = typeof contact?.phone === 'string' ? contact.phone : '';
+                  if (!email && !phone) return null;
+
+                  return (
+                    <div key={email || `contact-${index}`} className={styles.contactItem}>
+                      <div className={styles.contactIcon}>
+                        <EmailIcon />
+                      </div>
+                      <div className={styles.contactBody}>
+                        {email ? (
+                          <a href={`mailto:${email.toLowerCase()}`} className={styles.contactValue}>
+                            {email}
+                          </a>
+                        ) : null}
+                        {phone ? (
+                          <a href={`tel:${phone}`} className={styles.contactValue}>
+                            {phone}
+                          </a>
+                        ) : null}
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {location ? (
+                  <div className={styles.contactItem}>
                     <div className={styles.contactIcon}>
-                      <EmailIcon />
+                      <LocationIcon />
                     </div>
                     <div className={styles.contactBody}>
-                      <a
-                        href={`mailto:${contact.email.toLowerCase()}`}
-                        className={styles.contactValue}
-                      >
-                        {contact.email}
-                      </a>
-                      <a href={`tel:${contact.phone}`} className={styles.contactValue}>
-                        {contact.phone}
-                      </a>
+                      <span className={styles.contactLabel}>Location</span>
+                      <span className={styles.contactValue}>{location}</span>
                     </div>
                   </div>
-                ))}
-
-                <div className={styles.contactItem}>
-                  <div className={styles.contactIcon}>
-                    <LocationIcon />
-                  </div>
-                  <div className={styles.contactBody}>
-                    <span className={styles.contactLabel}>Location</span>
-                    <span className={styles.contactValue}>{contactInfo?.location ?? ''}</span>
-                  </div>
-                </div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -197,7 +253,7 @@ export default function Footer() {
 
           <div ref={bottomRef} className={`reveal reveal-delay-1 ${styles.bottom}`}>
             <p className={styles.copyright}>
-              &copy; {new Date().getFullYear()} ODEH & PARTNERS DESIGN
+              &copy; {new Date().getFullYear()} {copyrightName}
             </p>
           </div>
         </div>

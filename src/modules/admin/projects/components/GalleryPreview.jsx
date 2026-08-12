@@ -1,4 +1,5 @@
 import AdminIcon from '../../components/AdminIcons';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './GalleryPreview.module.css';
 
 export default function GalleryPreview({ gallery = [], coverImage }) {
@@ -26,7 +27,7 @@ export default function GalleryPreview({ gallery = [], coverImage }) {
       <div className={styles.grid}>
         {images.slice(0, 8).map((image, index) => (
           <div key={`${image.src}-${index}`} className={styles.thumb}>
-            <img src={image.src} alt={image.alt || `Gallery image ${index + 1}`} loading="lazy" />
+            <img src={resolveMediaUrl(image.src)} alt={image.alt || `Gallery image ${index + 1}`} loading="lazy" />
           </div>
         ))}
         {images.length > 8 && (

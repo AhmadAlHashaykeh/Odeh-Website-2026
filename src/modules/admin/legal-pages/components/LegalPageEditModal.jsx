@@ -1,5 +1,6 @@
+import { useRef } from 'react';
 import AdminIcon from '../../components/AdminIcons';
-import { Modal, Button, Form, Input, Select } from '../../ui';
+import { Modal, Button, Form, Input, Select, Badge } from '../../ui';
 import { SeoDelegationNotice } from '../../cms/components';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
@@ -54,11 +55,13 @@ function SectionFields({ page, section, index }) {
 }
 
 export default function LegalPageEditModal({ open, page, onClose, onSave }) {
+  const formRef = useRef(null);
+
   if (!open || !page) return null;
 
   const handleSave = (event) => {
     event?.preventDefault?.();
-    onSave(event.currentTarget);
+    onSave(formRef.current);
   };
 
   const modalHeader = (
@@ -112,7 +115,12 @@ export default function LegalPageEditModal({ open, page, onClose, onSave }) {
       footer={modalFooter}
       ariaLabelledBy="legal-page-modal-title"
     >
-      <Form key={page.id} onSubmit={handleSave} className={`${drawerStyles.form} ${styles.form}`}>
+      <Form
+        key={page.id}
+        ref={formRef}
+        onSubmit={handleSave}
+        className={`${drawerStyles.form} ${styles.form}`}
+      >
         <div className={styles.pageContext}>
           <div className={styles.pageContextMain}>
             <span className={styles.pageContextLabel}>Document</span>

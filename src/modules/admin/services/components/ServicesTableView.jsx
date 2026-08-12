@@ -1,6 +1,7 @@
 import { StatusBadge } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import ServiceQuickActions from './ServiceQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ServicesTableView.module.css';
 
 function formatDate(value) {
@@ -82,8 +83,7 @@ export default function ServicesTableView({
                   onClick={() => onServiceClick(service.id)}
                   aria-label={`View ${service.title}`}
                 >
-                  <img
-                    src={service.image}
+                  <img src={resolveMediaUrl(service.image)}
                     alt=""
                     className={styles.thumb}
                     loading="lazy"

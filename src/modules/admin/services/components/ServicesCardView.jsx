@@ -1,6 +1,7 @@
 import { StatusBadge } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import ServiceQuickActions from './ServiceQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ServicesCardView.module.css';
 
 function PublicationBadge({ status }) {
@@ -55,8 +56,7 @@ export default function ServicesCardView({
               onClick={() => onServiceClick(service.id)}
               aria-label={`View ${service.title}`}
             >
-              <img
-                src={service.image}
+              <img src={resolveMediaUrl(service.image)}
                 alt={service.title}
                 className={styles.image}
                 loading="lazy"

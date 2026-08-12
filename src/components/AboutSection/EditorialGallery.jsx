@@ -6,6 +6,7 @@
  * @param {Array<{ src: string, alt: string, variant: 'primary' | 'secondaryTop' | 'secondaryBottom' }>} props.images
  */
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './EditorialGallery.module.css';
 
 const variantClass = {
@@ -27,8 +28,7 @@ export default function EditorialGallery({ ariaLabel = 'Image gallery', images }
               className={`${styles.item} ${variantClass[image.variant]} ${styles.revealItem} reveal-delay-${index + 1}`}
             >
               <div className={styles.imageFrame}>
-                <img
-                  src={image.src}
+                <img src={resolveMediaUrl(image.src)}
                   alt={image.alt}
                   loading="lazy"
                   width={1400}

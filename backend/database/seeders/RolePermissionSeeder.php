@@ -24,6 +24,7 @@ class RolePermissionSeeder extends Seeder
             $this->moduleSet(CmsModules::SERVICES, true, true, true, false),
             $this->moduleSet(CmsModules::ACTIVITIES, true, true, true, false),
             $this->moduleSet(CmsModules::TEAM_MEMBERS, true, true, true, false),
+            $this->moduleSet(CmsModules::TEAM_CATEGORIES, true, true, true, false),
             $this->moduleSet(CmsModules::HOME_PAGE, true, false, true, false),
             $this->moduleSet(CmsModules::ABOUT_PAGES, true, false, true, false),
             $this->moduleSet(CmsModules::NAVIGATION_FOOTER, true, false, true, false),
@@ -34,6 +35,7 @@ class RolePermissionSeeder extends Seeder
         $this->seedRole($roles['hr-manager'], array_merge(
             $this->moduleSet(CmsModules::DASHBOARD, true, false, false, false),
             $this->moduleSet(CmsModules::TEAM_MEMBERS, true, true, true, false),
+            $this->moduleSet(CmsModules::TEAM_CATEGORIES, true, true, true, false),
             $this->moduleSet(CmsModules::JOBS, true, true, true, false),
             $this->moduleSet(CmsModules::APPLICATIONS, true, true, true, false),
             $this->moduleSet(CmsModules::CONTACT_MESSAGES, true, false, true, false),

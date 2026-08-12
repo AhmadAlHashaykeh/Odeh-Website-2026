@@ -13,7 +13,7 @@ export default function ActivityDetailHero({ title, date, heroImage, breadcrumbs
           alt=""
           aria-hidden="true"
           className={styles.bgImage}
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
         />
         <div className={styles.overlay} />

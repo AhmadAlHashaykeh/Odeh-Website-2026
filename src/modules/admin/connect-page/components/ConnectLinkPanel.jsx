@@ -2,13 +2,14 @@ import AdminIcon from '../../components/AdminIcons';
 import { Badge, Button } from '../../ui';
 import { CmsModuleShortcut } from '../../cms/components';
 import ConnectLinkCard from './ConnectLinkCard';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ConnectLinkPanel.module.css';
 
 function HeaderBrandCard({ hero, onEdit, onReset }) {
   return (
     <article className={styles.headerCard}>
       <div className={styles.headerMain}>
-        <img src={hero.logoSrc} alt={hero.logoAlt} className={styles.logo} loading="lazy" />
+        <img src={resolveMediaUrl(hero.logoSrc)} alt={hero.logoAlt} className={styles.logo} loading="lazy" />
         <div className={styles.headerInfo}>
           <h3 className={styles.headerTitle}>{hero.companyName}</h3>
           <p className={styles.headerDesc}>{hero.description}</p>

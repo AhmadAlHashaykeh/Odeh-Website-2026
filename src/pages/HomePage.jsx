@@ -4,15 +4,72 @@ import About from '../components/About/About';
 import Services from '../components/Services/Services';
 import Projects from '../components/Projects/Projects';
 import Footer from '../components/Footer/Footer';
-import PageLoader from '../components/Utility/PageLoader';
-import { getHome } from '../api/public/content';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
+import { getHome, getProjects, getServices } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import { useSeoMeta } from '../hooks/useSeoMeta';
+import { mapProject, mapService } from '../utils/contentMappers';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 import styles from './HomePage.module.css';
 
+const HOMEPAGE_PROJECT_COUNT = 3;
+
+/** Fisher–Yates shuffle; returns up to `count` unique items. */
+function pickRandomItems(items, count) {
+  const pool = [...items];
+  for (let i = pool.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, Math.min(count, pool.length));
+}
+
+async function loadHomepage() {
+  const [homeResult, servicesResult, projectsResult] = await Promise.allSettled([
+    getHome(),
+    getServices({ homepage: true }),
+    getProjects(),
+  ]);
+
+  if (homeResult.status === 'rejected') {
+    throw homeResult.reason;
+  }
+
+  const homeData = homeResult.value?.data ?? {};
+  const poolProjectIds = Array.isArray(homeData?.projects?.poolProjectIds)
+    ? homeData.projects.poolProjectIds.filter((id) => typeof id === 'string' && id)
+    : [];
+
+  const projectsResponse =
+    projectsResult.status === 'fulfilled' ? projectsResult.value : null;
+  const allPublished = projectsResponse?.data?.projects ?? [];
+  const pool =
+    poolProjectIds.length > 0
+      ? allPublished.filter((project) => poolProjectIds.includes(project.id))
+      : allPublished;
+  // Randomize once per page load (inside the loader), not on React re-renders.
+  const selectedProjects = pickRandomItems(pool, HOMEPAGE_PROJECT_COUNT);
+
+  return {
+    home: homeResult.value,
+    services: servicesResult.status === 'fulfilled' ? servicesResult.value : null,
+    projects: projectsResponse
+      ? {
+          ...projectsResponse,
+          data: {
+            ...projectsResponse.data,
+            projects: selectedProjects,
+          },
+        }
+      : null,
+  };
+}
+
 export default function HomePage() {
-  const { data, loading, error } = usePublicQuery(() => getHome(), []);
-  const home = data?.data;
+  const { data, loading, error } = usePublicQuery(() => loadHomepage(), []);
+  const home = data?.home?.data ? normalizePublicMedia(data.home.data) : undefined;
+  const services = (data?.services?.data ?? []).map(mapService);
+  const projects = (data?.projects?.data?.projects ?? []).map(mapProject);
 
   useSeoMeta('/', {
     title: 'ODEH & PARTNERS DESIGN',
@@ -24,7 +81,9 @@ export default function HomePage() {
     return (
       <div className={styles.home}>
         <Navbar />
-        <PageLoader />
+        <main>
+          <PublicPageSkeleton variant="home" />
+        </main>
         <Footer />
       </div>
     );
@@ -40,14 +99,24 @@ export default function HomePage() {
     );
   }
 
+  const servicesContent = {
+    ...home.services,
+    services,
+  };
+
+  const projectsContent = {
+    ...home.projects,
+    projects,
+  };
+
   return (
     <div className={styles.home}>
       <Navbar />
       <main>
         <Hero content={home.hero} />
         <About content={home.about} />
-        <Services content={home.services} />
-        <Projects content={home.projects} />
+        <Services content={servicesContent} />
+        <Projects content={projectsContent} />
       </main>
       <Footer />
     </div>

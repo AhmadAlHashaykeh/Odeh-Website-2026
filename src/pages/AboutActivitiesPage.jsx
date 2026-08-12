@@ -1,7 +1,7 @@
 import { AboutPageShell } from '../components/AboutSection';
 import { OverviewHero } from '../components/AboutOverview';
 import { ActivitiesGallery } from '../components/AboutActivities';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getActivities } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import { mapActivity } from '../utils/contentMappers';
@@ -19,7 +19,7 @@ export default function AboutActivitiesPage() {
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="hero-grid" />
       </AboutPageShell>
     );
   }

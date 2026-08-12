@@ -2,13 +2,10 @@
 
 namespace Tests\Feature\Admin;
 
-use App\Models\Activity;
-use App\Models\Job;
 use App\Models\Project;
 use App\Models\ProjectCategory;
 use App\Models\Role;
 use App\Models\SeoPage;
-use App\Models\Service;
 use App\Models\User;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\SeoPageSeeder;

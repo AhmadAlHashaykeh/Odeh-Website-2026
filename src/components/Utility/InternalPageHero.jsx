@@ -27,7 +27,7 @@ export default function InternalPageHero({
             alt=""
             aria-hidden="true"
             className={styles.bgImage}
-            fetchPriority="high"
+            fetchpriority="high"
             decoding="async"
           />
         )}

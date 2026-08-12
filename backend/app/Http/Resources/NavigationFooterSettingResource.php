@@ -2,10 +2,12 @@
 
 namespace App\Http\Resources;
 
+use App\Models\NavigationFooterSetting;
+use App\Support\PublicMediaUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\NavigationFooterSetting */
+/** @mixin NavigationFooterSetting */
 class NavigationFooterSettingResource extends JsonResource
 {
     public function toArray(Request $request): array
@@ -14,7 +16,7 @@ class NavigationFooterSettingResource extends JsonResource
         $contactOffice = $this->contact_office ?? [];
         $directContacts = $this->direct_contacts ?? [];
 
-        return [
+        return PublicMediaUrl::transformPayload([
             'logo' => $this->logo,
             'navigationItems' => $this->navigation_items,
             'footerBrand' => $this->footer_brand,
@@ -24,6 +26,6 @@ class NavigationFooterSettingResource extends JsonResource
             'socialLinks' => $this->social_links,
             'copyright' => $this->copyright,
             'lastUpdated' => $this->updated_at?->toIso8601String(),
-        ];
+        ]);
     }
 }

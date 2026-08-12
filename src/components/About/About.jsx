@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './About.module.css';
 
 export default function About({ content = {} }) {
@@ -13,10 +14,11 @@ export default function About({ content = {} }) {
     content.body ??
     'Welcome to the online platform of ODEH & PARTNERS DESIGN, an avant-garde structural design firm with a global vision.';
   const stats = content.stats ?? [
-    { value: '7+', label: 'Years of Excellence' },
-    { value: '1000+', label: 'Projects Completed' },
+    { value: '+8', label: 'Years of Excellence' },
+    { value: '+1000', label: 'Projects Completed' },
   ];
-  const image = content.image ?? '/assets/about/odeh-about-office.webp';
+  const image =
+    resolveMediaUrl(content.image) || '/assets/about/odeh-about-office.webp';
   const imageAlt = content.imageAlt ?? 'ODEH & PARTNERS DESIGN workspace';
   const readMoreLabel = content.readMoreLabel ?? 'Read More';
   const readMorePath = content.readMorePath ?? '/about/overview';

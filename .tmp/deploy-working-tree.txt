@@ -1,0 +1,106 @@
+﻿ M backend/.env.example
+ M backend/README.md
+ M backend/app/Http/Controllers/Api/Admin/JobController.php
+ M backend/app/Http/Controllers/Api/Admin/ProjectController.php
+ M backend/app/Http/Requests/Admin/StoreProjectRequest.php
+ M backend/app/Http/Requests/Admin/UpdateAboutPageSettingRequest.php
+ M backend/app/Http/Requests/Admin/UpdateProjectRequest.php
+ M backend/app/Http/Resources/JobApplicationResource.php
+ M backend/app/Support/PublicMediaUrl.php
+ M backend/tests/Feature/Admin/ContentCrudTest.php
+ M backend/tests/Feature/Admin/WebsiteCmsSingletonsTest.php
+ M backend/tests/Feature/Public/JobApplicationSubmissionTest.php
+ M backend/tests/Feature/Public/PublicContentApiTest.php
+ M backend/tests/Unit/PublicMediaUrlTest.php
+ M package-lock.json
+ M package.json
+ M src/api/aboutPages/index.ts
+ M src/api/projects/index.ts
+ M src/api/uploads/index.ts
+ M src/components/Footer/Footer.jsx
+ M src/components/Projects/Projects.jsx
+ M src/components/SelectedProjects/CategoryCard.jsx
+ M src/components/SelectedProjects/CategoryCard.module.css
+ M src/components/SelectedProjects/index.js
+ M src/context/PublicSiteContext.jsx
+ M src/modules/admin/about-pages/components/AboutContentPanel.jsx
+ M src/modules/admin/about-pages/components/AboutSectionEditModal.jsx
+ M src/modules/admin/about-pages/hooks/useAboutPagesCms.js
+ M src/modules/admin/about-pages/mock/aboutPagesConfig.js
+ M src/modules/admin/about-pages/pages/AboutPagesCmsPage.jsx
+ M src/modules/admin/activities/components/ActivityQuickActions.jsx
+ D src/modules/admin/activities/components/ActivityQuickActions.module.css
+ M src/modules/admin/applications/components/ApplicationDetailsDrawer.jsx
+ M src/modules/admin/applications/components/ApplicationQuickActions.jsx
+ M src/modules/admin/applications/components/ApplicationQuickActions.module.css
+ M src/modules/admin/applications/hooks/useApplicationsListing.js
+ M src/modules/admin/applications/mock/applicationsConfig.js
+ M src/modules/admin/applications/pages/ApplicationsPage.jsx
+ M src/modules/admin/careers/components/JobQuickActions.jsx
+ D src/modules/admin/careers/components/JobQuickActions.module.css
+ M src/modules/admin/cms/action-flows/AdminFormDrawer.jsx
+ M src/modules/admin/cms/action-flows/AdminFormDrawer.module.css
+ M src/modules/admin/cms/action-flows/mapFormValuesToApi.js
+ M src/modules/admin/cms/action-flows/mapItemToForm.js
+ M src/modules/admin/cms/action-flows/moduleFormSchemas.js
+ M src/modules/admin/connect-page/components/ConnectPageEditModal.jsx
+ M src/modules/admin/connect-page/hooks/useConnectPageCms.js
+ M src/modules/admin/contact-messages/components/MessageDetailsDrawer.jsx
+ M src/modules/admin/contact-messages/components/MessageQuickActions.jsx
+ M src/modules/admin/contact-messages/components/MessageQuickActions.module.css
+ M src/modules/admin/contact-messages/hooks/useContactMessagesListing.js
+ M src/modules/admin/contact-messages/mock/contactMessagesConfig.js
+ M src/modules/admin/contact-messages/pages/ContactMessagesPage.jsx
+ M src/modules/admin/home-page/components/HomePageSectionEditModal.jsx
+ M src/modules/admin/home-page/hooks/useHomePageCms.js
+ M src/modules/admin/home-page/mock/homePageConfig.js
+ M src/modules/admin/hooks/useModuleApiActions.js
+ M src/modules/admin/legal-pages/components/LegalPageEditModal.jsx
+ M src/modules/admin/legal-pages/hooks/useLegalPagesCms.js
+ M src/modules/admin/navigation-footer/components/NavigationFooterEditModal.jsx
+ M src/modules/admin/navigation-footer/hooks/useNavigationFooterCms.js
+ M src/modules/admin/project-categories/components/CategoriesGridView.jsx
+ M src/modules/admin/project-categories/components/CategoriesGridView.module.css
+ M src/modules/admin/project-categories/components/CategoriesTableView.jsx
+ M src/modules/admin/project-categories/components/CategoriesTableView.module.css
+ M src/modules/admin/project-categories/components/CategoryDetailsDrawer.jsx
+ M src/modules/admin/project-categories/components/CategoryDetailsDrawer.module.css
+ M src/modules/admin/project-categories/components/CategoryQuickActions.jsx
+ D src/modules/admin/project-categories/components/CategoryQuickActions.module.css
+ M src/modules/admin/project-categories/hooks/useCategoriesListing.js
+ M src/modules/admin/projects/components/ProjectDetailsDrawer.jsx
+ M src/modules/admin/projects/components/ProjectQuickActions.jsx
+ D src/modules/admin/projects/components/ProjectQuickActions.module.css
+ M src/modules/admin/projects/components/ProjectsCardView.jsx
+ M src/modules/admin/projects/components/ProjectsTableView.jsx
+ M src/modules/admin/projects/components/ProjectsToolbar.jsx
+ M src/modules/admin/projects/hooks/useProjectsListing.js
+ M src/modules/admin/projects/mock/projectsConfig.js
+ M src/modules/admin/projects/pages/ProjectsPage.jsx
+ M src/modules/admin/seo/components/SeoOverflowMenu.jsx
+ D src/modules/admin/seo/components/SeoOverflowMenu.module.css
+ M src/modules/admin/services/components/ServiceQuickActions.jsx
+ D src/modules/admin/services/components/ServiceQuickActions.module.css
+ M src/modules/admin/team-members/components/TeamMemberQuickActions.jsx
+ D src/modules/admin/team-members/components/TeamMemberQuickActions.module.css
+ M src/modules/admin/ui/index.js
+ M src/modules/admin/users-roles/components/RoleQuickActions.jsx
+ D src/modules/admin/users-roles/components/RoleQuickActions.module.css
+ M src/modules/admin/users-roles/components/UserQuickActions.jsx
+ D src/modules/admin/users-roles/components/UserQuickActions.module.css
+ M src/modules/admin/website-settings/hooks/useWebsiteSettings.js
+ M src/pages/HomePage.jsx
+ M src/pages/ProjectCategoryPage.jsx
+ M src/pages/ProjectsPage.jsx
+ M src/utils/mediaUrl.ts
+ M vite.config.js
+?? backend/tests/Feature/Admin/ContactMessageStatusTest.php
+?? scripts/check-media-url.mjs
+?? src/components/SelectedProjects/RotatingCategoryImage.jsx
+?? src/components/SelectedProjects/RotatingCategoryImage.module.css
+?? src/hooks/useRotatingImage.js
+?? src/modules/admin/ui/components/OverflowMenu.jsx
+?? src/modules/admin/ui/components/OverflowMenu.module.css
+?? src/utils/categoryProjectImages.js
+?? src/utils/categoryProjectImages.test.ts
+?? src/utils/mediaUrl.test.ts

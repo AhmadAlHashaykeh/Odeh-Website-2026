@@ -23,6 +23,7 @@ class UpdateProjectRequest extends FormRequest
             'categoryId' => 'project_category_id',
             'coverImage' => 'cover_image',
             'projectType' => 'project_type',
+            'completionStatus' => 'completion_status',
             'displayOrder' => 'display_order',
             'isFeatured' => 'is_featured',
         ]);
@@ -34,9 +35,26 @@ class UpdateProjectRequest extends FormRequest
 
     public function rules(): array
     {
+        /** @var \App\Models\Project|null $project */
+        $project = $this->route('project');
+        $projectId = $project?->id ?? $this->route('id');
+        $categoryId = $this->input('project_category_id', $project?->project_category_id);
+
         return [
             'title' => ['sometimes', 'required', 'string', 'max:255'],
-            'slug' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'slug' => [
+                'sometimes',
+                'nullable',
+                'string',
+                'max:255',
+                Rule::unique('projects', 'slug')
+                    ->ignore($projectId)
+                    ->where(function ($query) use ($categoryId) {
+                        return $categoryId === null
+                            ? $query->whereNull('project_category_id')
+                            : $query->where('project_category_id', $categoryId);
+                    }),
+            ],
             'project_category_id' => ['sometimes', 'nullable', 'uuid', 'exists:project_categories,id'],
             'description' => ['sometimes', 'nullable', 'string'],
             'cover_image' => ['sometimes', 'nullable', 'string', 'max:2048'],
@@ -44,6 +62,7 @@ class UpdateProjectRequest extends FormRequest
             'gallery.*.src' => ['required_with:gallery', 'string'],
             'gallery.*.alt' => ['nullable', 'string'],
             'location' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'architect' => ['sometimes', 'nullable', 'string', 'max:255'],
             'project_type' => ['sometimes', 'nullable', 'string', 'max:255'],
             'area' => ['sometimes', 'nullable', 'string', 'max:255'],
             'services' => ['sometimes', 'nullable', 'string', 'max:255'],

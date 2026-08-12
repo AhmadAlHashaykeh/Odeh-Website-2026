@@ -21,6 +21,9 @@ class UpdateTeamMemberRequest extends FormRequest
         $this->mapCamelCaseInput([
             'fullName' => 'full_name',
             'displayOrder' => 'display_order',
+            'teamCategoryId' => 'team_category_id',
+            'teamRankId' => 'team_rank_id',
+            'linkedinUrl' => 'linkedin_url',
         ]);
     }
 
@@ -34,9 +37,12 @@ class UpdateTeamMemberRequest extends FormRequest
             'position' => ['sometimes', 'nullable', 'string', 'max:255'],
             'department' => ['sometimes', 'nullable', 'string', 'max:255'],
             'category' => ['sometimes', 'nullable', 'string', 'max:255'],
+            'team_category_id' => ['sometimes', 'required', 'uuid', 'exists:team_categories,id'],
+            'team_rank_id' => ['sometimes', 'required', 'uuid', 'exists:team_ranks,id'],
             'experience' => ['sometimes', 'nullable', 'string', 'max:255'],
             'photo' => ['sometimes', 'nullable', 'string', 'max:2048'],
             'email' => ['sometimes', 'nullable', 'email', 'max:255'],
+            'linkedin_url' => ['sometimes', 'nullable', 'url', 'max:2048'],
             'status' => ['sometimes', Rule::enum(TeamMemberStatus::class)],
             'display_order' => ['sometimes', 'integer', 'min:0'],
         ];

@@ -1,20 +1,32 @@
 import AdminIcon from '../../components/AdminIcons';
 import { Badge, Button } from '../../ui';
 import { getPanelSummary } from '../mock/aboutPagesConfig';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './AboutContentPanel.module.css';
 
 function AboutHeroPreview({ data }) {
   return (
     <div className={styles.heroPreview}>
       <div className={styles.heroMedia}>
-        <img src={data.backgroundImage} alt="" loading="lazy" aria-hidden="true" />
+        <img src={resolveMediaUrl(data.backgroundImage)} alt="" loading="lazy" aria-hidden="true" />
         <div className={styles.heroOverlay} aria-hidden="true" />
       </div>
       <div className={styles.heroContent}>
         <span className={styles.heroBadge}>{data.label}</span>
         <h3 className={styles.heroTitle}>{data.title}</h3>
+        {data.subtitle ? <p className={styles.heroDesc}>{data.subtitle}</p> : null}
         <p className={styles.heroDesc}>{data.description}</p>
       </div>
+    </div>
+  );
+}
+
+function AboutMetaPreview({ data }) {
+  return (
+    <div className={styles.storyPreview}>
+      <span className={styles.previewLabel}>Meta Title</span>
+      <h3 className={styles.storyTitle}>{data.title}</h3>
+      <p className={styles.storyBody}>{data.description}</p>
     </div>
   );
 }
@@ -23,7 +35,7 @@ function CompanyIntroPreview({ data }) {
   return (
     <div className={styles.introPreview}>
       <div className={styles.introImageWrap}>
-        <img src={data.image.src} alt={data.image.alt} loading="lazy" />
+        <img src={resolveMediaUrl(data.image.src)} alt={data.image.alt} loading="lazy" />
       </div>
       <div className={styles.introText}>
         <h3 className={styles.introTitle}>{data.title}</h3>
@@ -45,7 +57,7 @@ function OfficeGalleryPreview({ data }) {
       <div className={styles.thumbGrid}>
         {preview.map((image) => (
           <div key={image.src} className={styles.thumbCard}>
-            <img src={image.src} alt={image.alt} loading="lazy" />
+            <img src={resolveMediaUrl(image.src)} alt={image.alt} loading="lazy" />
           </div>
         ))}
       </div>
@@ -138,9 +150,13 @@ function GrowthTablePreview({ data }) {
 }
 
 function PanelPreview({ type, data }) {
+  if (!data) return null;
+
   switch (type) {
     case 'about-hero':
       return <AboutHeroPreview data={data} />;
+    case 'about-meta':
+      return <AboutMetaPreview data={data} />;
     case 'company-intro':
       return <CompanyIntroPreview data={data} />;
     case 'office-gallery':

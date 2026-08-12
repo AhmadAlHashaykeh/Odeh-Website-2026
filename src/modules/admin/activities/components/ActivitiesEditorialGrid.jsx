@@ -1,6 +1,7 @@
 import { StatusBadge } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import ActivityQuickActions from './ActivityQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ActivitiesEditorialGrid.module.css';
 
 export default function ActivitiesEditorialGrid({
@@ -29,8 +30,7 @@ export default function ActivitiesEditorialGrid({
               onClick={() => onActivityClick(activity.id)}
               aria-label={`View ${activity.title}`}
             >
-              <img
-                src={activity.coverImage}
+              <img src={resolveMediaUrl(activity.coverImage)}
                 alt={activity.title}
                 className={styles.image}
                 loading="lazy"

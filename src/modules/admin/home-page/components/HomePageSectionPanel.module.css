@@ -262,6 +262,13 @@
   color: var(--color-white);
 }
 
+.previewHint {
+  margin: 0.35rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
 .thumbGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

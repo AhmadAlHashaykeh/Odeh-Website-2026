@@ -78,17 +78,17 @@ export function useTeamMembersListing({ initialPerPage = 12 } = {}) {
   const statisticsFn = useCallback(
     () =>
       buildCountStatistics(teamApi.list, [
-        { id: 'total', label: 'Team Members', helper: 'Profiles on website', params: {} },
+        { id: 'total', label: 'Team Members', helper: 'Everyone in the directory', params: {} },
         {
           id: 'active',
-          label: 'Active',
-          helper: 'Visible profiles',
+          label: 'Visible',
+          helper: 'Shown on the website',
           params: { status: 'active' },
         },
         {
           id: 'hidden',
           label: 'Hidden',
-          helper: 'Not publicly visible',
+          helper: 'Not shown publicly',
           params: { status: 'hidden' },
         },
       ]),

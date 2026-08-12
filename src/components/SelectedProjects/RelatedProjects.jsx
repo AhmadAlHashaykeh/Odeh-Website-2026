@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './RelatedProjects.module.css';
 
 export default function RelatedProjects({ projects, categoryTitle }) {
@@ -25,8 +26,7 @@ export default function RelatedProjects({ projects, categoryTitle }) {
                 aria-label={`View project: ${project.title}`}
               >
                 <div className={styles.imageWrap}>
-                  <img
-                    src={project.coverImage}
+                  <img src={resolveMediaUrl(project.coverImage)}
                     alt={project.title}
                     className={styles.image}
                     loading="lazy"

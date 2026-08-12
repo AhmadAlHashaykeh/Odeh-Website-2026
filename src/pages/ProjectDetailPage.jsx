@@ -6,9 +6,10 @@ import {
   ProjectInfo,
   RelatedProjects,
 } from '../components/SelectedProjects';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getProject, getProjects } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 
 export default function ProjectDetailPage() {
   const { category, project: projectSlug } = useParams();
@@ -21,14 +22,14 @@ export default function ProjectDetailPage() {
   if (projectLoading || projectsLoading) {
     return (
       <AboutPageShell meta={{ title: 'Project | ODEH & PARTNERS DESIGN' }}>
-        <PageLoader />
+        <PublicPageSkeleton variant="detail" />
       </AboutPageShell>
     );
   }
 
-  const project = projectData?.data;
-  const categories = projectsData?.data?.categories ?? [];
-  const allProjects = projectsData?.data?.projects ?? [];
+  const project = projectData?.data ? normalizePublicMedia(projectData.data) : undefined;
+  const categories = (projectsData?.data?.categories ?? []).map(normalizePublicMedia);
+  const allProjects = (projectsData?.data?.projects ?? []).map(normalizePublicMedia);
   const categoryData = categories.find((item) => item.slug === category);
 
   if (projectError || !project || !categoryData) {
@@ -43,7 +44,9 @@ export default function ProjectDetailPage() {
 
   const meta = {
     title: `${project.title} | ${categoryTitle} | ODEH & PARTNERS DESIGN`,
-    description: project.description,
+    description: [project.architect, project.location, project.area, project.category]
+      .filter(Boolean)
+      .join(' · '),
   };
 
   const breadcrumbs = [
@@ -62,12 +65,12 @@ export default function ProjectDetailPage() {
         breadcrumbs={breadcrumbs}
         ariaLabel={project.title}
       />
+      <ProjectInfo project={project} />
       <GallerySlider
         gallery={project.gallery}
         title={project.title}
         ariaLabel={`${project.title} project gallery`}
       />
-      <ProjectInfo project={project} />
       <RelatedProjects projects={related} categoryTitle={categoryTitle} />
     </AboutPageShell>
   );

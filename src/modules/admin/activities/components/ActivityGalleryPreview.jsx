@@ -1,4 +1,5 @@
 import AdminIcon from '../../components/AdminIcons';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ActivityGalleryPreview.module.css';
 
 function extractFileName(src) {
@@ -54,8 +55,7 @@ export default function ActivityGalleryPreview({ gallery = [], coverImage }) {
           return (
             <div key={`${image.src}-${index}`} className={styles.item}>
               <div className={styles.thumb}>
-                <img
-                  src={image.src}
+                <img src={resolveMediaUrl(image.src)}
                   alt={image.alt || `Gallery image ${index + 1}`}
                   loading="lazy"
                 />

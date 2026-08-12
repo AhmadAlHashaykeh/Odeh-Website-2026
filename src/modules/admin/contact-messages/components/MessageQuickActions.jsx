@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-import AdminIcon from '../../components/AdminIcons';
+import { OverflowMenu } from '../../ui';
 import {
   contactMessageStatusLabels,
   contactMessagePriorityLabels,
@@ -8,13 +7,11 @@ import styles from './MessageQuickActions.module.css';
 
 function buildActions(message) {
   const statusActions = [
-    { id: 'mark-read', label: 'Mark as Read', icon: 'eye' },
-    { id: 'mark-replied', label: 'Mark as Replied', icon: 'check' },
-    { id: 'archive', label: 'Archive', icon: 'export' },
+    { id: 'mark-in-progress', label: 'Mark In Progress', icon: 'eye' },
+    { id: 'mark-resolved', label: 'Mark as Resolved', icon: 'check' },
   ].filter((action) => {
-    if (action.id === 'mark-read' && message.status !== 'new') return false;
-    if (action.id === 'mark-replied' && (message.status === 'replied' || message.status === 'archived')) return false;
-    if (action.id === 'archive' && message.status === 'archived') return false;
+    if (action.id === 'mark-in-progress' && message.status !== 'new') return false;
+    if (action.id === 'mark-resolved' && message.status === 'resolved') return false;
     return true;
   });
 
@@ -28,26 +25,7 @@ function buildActions(message) {
 }
 
 export default function MessageQuickActions({ message, onView, onAction }) {
-  const [open, setOpen] = useState(false);
-  const wrapRef = useRef(null);
-  const actions = buildActions(message);
-
-  useEffect(() => {
-    if (!open) return undefined;
-
-    const handleClick = (e) => {
-      if (!wrapRef.current?.contains(e.target)) {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, [open]);
-
   const handleAction = (actionId) => {
-    setOpen(false);
-
     if (actionId === 'view') {
       onView?.(message.id);
       return;
@@ -57,34 +35,12 @@ export default function MessageQuickActions({ message, onView, onAction }) {
   };
 
   return (
-    <div className={styles.wrap} ref={wrapRef}>
-      <button
-        type="button"
-        className={styles.trigger}
-        onClick={() => setOpen((prev) => !prev)}
-        aria-label={`Actions for ${message.senderName}`}
-        aria-expanded={open}
-      >
-        <AdminIcon name="more" size={16} />
-      </button>
-
-      {open && (
-        <div className={styles.menu} role="menu">
-          {actions.map((action) => (
-            <button
-              key={action.id}
-              type="button"
-              role="menuitem"
-              className={`${styles.menuItem} ${action.danger ? styles.danger : ''}`}
-              onClick={() => handleAction(action.id)}
-            >
-              <AdminIcon name={action.icon} size={15} />
-              {action.label}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
+    <OverflowMenu
+      items={buildActions(message)}
+      ariaLabel={`Actions for ${message.senderName}`}
+      onAction={handleAction}
+      triggerVariant="dark"
+    />
   );
 }
 
@@ -92,10 +48,9 @@ export function MessageStatusBadge({ status }) {
   const label = contactMessageStatusLabels[status] || status;
   const config = {
     new: styles.new,
-    read: styles.read,
-    replied: styles.replied,
-    archived: styles.archived,
-  }[status] || styles.read;
+    in_progress: styles.inProgress,
+    resolved: styles.resolved,
+  }[status] || styles.inProgress;
 
   return <span className={`${styles.statusBadge} ${config}`}>{label}</span>;
 }

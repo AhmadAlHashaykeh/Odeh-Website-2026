@@ -1,15 +1,28 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * Parses numeric prefix from strings like "7+", "1000+", "Middle East".
- * Returns { numeric, suffix, isNumeric }.
+ * Parses numeric stats like "+7", "+1000", legacy "7+", or plain "1000".
+ * Returns { numeric, prefix, suffix, isNumeric }.
  */
 function parseStatValue(value) {
-  const match = String(value).match(/^(\d+(?:\.\d+)?)(\+?)$/);
-  if (match) {
-    return { numeric: parseFloat(match[1]), suffix: match[2] || '', isNumeric: true };
+  const raw = String(value).trim();
+  const prefixPlus = raw.match(/^\+(\d+(?:\.\d+)?)$/);
+  if (prefixPlus) {
+    return { numeric: parseFloat(prefixPlus[1]), prefix: '+', suffix: '', isNumeric: true };
   }
-  return { numeric: 0, suffix: '', isNumeric: false, text: value };
+
+  const suffixPlus = raw.match(/^(\d+(?:\.\d+)?)\+$/);
+  if (suffixPlus) {
+    // Normalize legacy "7+" to prefix form for display.
+    return { numeric: parseFloat(suffixPlus[1]), prefix: '+', suffix: '', isNumeric: true };
+  }
+
+  const plain = raw.match(/^(\d+(?:\.\d+)?)$/);
+  if (plain) {
+    return { numeric: parseFloat(plain[1]), prefix: '', suffix: '', isNumeric: true };
+  }
+
+  return { numeric: 0, prefix: '', suffix: '', isNumeric: false, text: value };
 }
 
 function easeOutCubic(t) {
@@ -18,14 +31,16 @@ function easeOutCubic(t) {
 
 /**
  * Animates a number when the element enters the viewport.
- * @param {string|number} target - Display value (e.g. "7+", 1000)
+ * @param {string|number} target - Display value (e.g. "+7", 1000)
  * @param {{ duration?: number, threshold?: number }} [options]
  */
 export function useCountUp(target, options = {}) {
   const { duration = 1800, threshold = 0.2 } = options;
   const ref = useRef(null);
   const parsed = parseStatValue(target);
-  const [display, setDisplay] = useState(parsed.isNumeric ? '0' + parsed.suffix : parsed.text || target);
+  const [display, setDisplay] = useState(
+    parsed.isNumeric ? `${parsed.prefix}0${parsed.suffix}` : parsed.text || target,
+  );
   const hasAnimated = useRef(false);
 
   useEffect(() => {
@@ -45,7 +60,7 @@ export function useCountUp(target, options = {}) {
         const progress = Math.min((now - start) / duration, 1);
         const eased = easeOutCubic(progress);
         const current = Math.round(eased * endValue);
-        setDisplay(`${current}${parsed.suffix}`);
+        setDisplay(`${parsed.prefix}${current}${parsed.suffix}`);
 
         if (progress < 1) {
           requestAnimationFrame(tick);
@@ -75,7 +90,7 @@ export function useCountUp(target, options = {}) {
     requestAnimationFrame(checkInitial);
 
     return () => observer.disconnect();
-  }, [target, duration, threshold, parsed.isNumeric, parsed.numeric, parsed.suffix]);
+  }, [target, duration, threshold, parsed.isNumeric, parsed.numeric, parsed.prefix, parsed.suffix]);
 
   return { ref, display: parsed.isNumeric ? display : target };
 }

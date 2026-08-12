@@ -42,6 +42,7 @@ class ContentCrudTest extends TestCase
             ['/api/admin/services'],
             ['/api/admin/activities'],
             ['/api/admin/team-members'],
+            ['/api/admin/team-categories'],
             ['/api/admin/jobs'],
         ];
     }
@@ -129,12 +130,169 @@ class ContentCrudTest extends TestCase
         $this->putJson("/api/admin/projects/{$id}", [
             'title' => 'Fairmont Hotel Amman',
         ])->assertOk()
-            ->assertJsonPath('data.slug', 'fairmont-hotel-amman');
+            ->assertJsonPath('data.title', 'Fairmont Hotel Amman')
+            ->assertJsonPath('data.slug', 'fairmont-hotel');
 
         $this->deleteJson("/api/admin/projects/{$id}")
             ->assertNoContent();
 
         $this->assertDatabaseMissing('projects', ['id' => $id]);
+    }
+
+    public function test_project_completion_status_persists_on_create_and_update(): void
+    {
+        Sanctum::actingAs($this->user);
+
+        $category = ProjectCategory::query()->create([
+            'title' => 'Hospitality',
+            'slug' => 'hospitality',
+            'status' => 'published',
+        ]);
+
+        $create = $this->postJson('/api/admin/projects', [
+            'title' => 'Fairmont Hotel',
+            'projectCategoryId' => $category->id,
+            'completionStatus' => 'Completed, 2023',
+            'status' => 'published',
+        ]);
+
+        $create->assertCreated()
+            ->assertJsonPath('data.completionStatus', 'Completed, 2023');
+
+        $id = $create->json('data.id');
+
+        $this->assertDatabaseHas('projects', [
+            'id' => $id,
+            'completion_status' => 'Completed, 2023',
+        ]);
+
+        $this->putJson("/api/admin/projects/{$id}", [
+            'completionStatus' => 'In Progress',
+        ])->assertOk()
+            ->assertJsonPath('data.completionStatus', 'In Progress');
+
+        $this->assertDatabaseHas('projects', [
+            'id' => $id,
+            'completion_status' => 'In Progress',
+        ]);
+    }
+
+    public function test_project_slug_is_preserved_unless_explicitly_changed(): void
+    {
+        Sanctum::actingAs($this->user);
+
+        $category = ProjectCategory::query()->create([
+            'title' => 'Hospitality',
+            'slug' => 'hospitality',
+            'status' => 'published',
+        ]);
+
+        $create = $this->postJson('/api/admin/projects', [
+            'title' => 'Fairmont Hotel',
+            'projectCategoryId' => $category->id,
+            'status' => 'published',
+        ]);
+
+        $create->assertCreated()->assertJsonPath('data.slug', 'fairmont-hotel');
+        $id = $create->json('data.id');
+
+        $this->putJson("/api/admin/projects/{$id}", [
+            'title' => 'Fairmont Hotel Amman',
+        ])->assertOk()
+            ->assertJsonPath('data.slug', 'fairmont-hotel');
+
+        $this->putJson("/api/admin/projects/{$id}", [
+            'slug' => 'fairmont-amman',
+        ])->assertOk()
+            ->assertJsonPath('data.slug', 'fairmont-amman');
+    }
+
+    public function test_project_duplicate_slug_in_same_category_fails_validation(): void
+    {
+        Sanctum::actingAs($this->user);
+
+        $category = ProjectCategory::query()->create([
+            'title' => 'Hospitality',
+            'slug' => 'hospitality',
+            'status' => 'published',
+        ]);
+
+        Project::query()->create([
+            'title' => 'Existing Project',
+            'slug' => 'shared-slug',
+            'project_category_id' => $category->id,
+            'status' => 'published',
+        ]);
+
+        $this->postJson('/api/admin/projects', [
+            'title' => 'Another Project',
+            'slug' => 'shared-slug',
+            'projectCategoryId' => $category->id,
+            'status' => 'published',
+        ])->assertUnprocessable()
+            ->assertJsonValidationErrors(['slug']);
+
+        $create = $this->postJson('/api/admin/projects', [
+            'title' => 'Editable Project',
+            'projectCategoryId' => $category->id,
+            'status' => 'published',
+        ])->assertCreated();
+
+        $this->putJson('/api/admin/projects/'.$create->json('data.id'), [
+            'slug' => 'shared-slug',
+        ])->assertUnprocessable()
+            ->assertJsonValidationErrors(['slug']);
+    }
+
+    public function test_job_slug_is_preserved_unless_explicitly_changed(): void
+    {
+        Sanctum::actingAs($this->user);
+
+        $create = $this->postJson('/api/admin/jobs', [
+            'title' => 'Structural Engineer',
+            'status' => 'open',
+        ]);
+
+        $create->assertCreated()->assertJsonPath('data.slug', 'structural-engineer');
+        $id = $create->json('data.id');
+
+        $this->putJson("/api/admin/jobs/{$id}", [
+            'title' => 'Senior Structural Engineer',
+        ])->assertOk()
+            ->assertJsonPath('data.slug', 'structural-engineer');
+
+        $this->putJson("/api/admin/jobs/{$id}", [
+            'slug' => 'senior-structural-engineer',
+        ])->assertOk()
+            ->assertJsonPath('data.slug', 'senior-structural-engineer');
+    }
+
+    public function test_job_duplicate_slug_fails_validation(): void
+    {
+        Sanctum::actingAs($this->user);
+
+        Job::query()->create([
+            'title' => 'Existing Role',
+            'slug' => 'existing-role',
+            'status' => 'open',
+        ]);
+
+        $this->postJson('/api/admin/jobs', [
+            'title' => 'Another Role',
+            'slug' => 'existing-role',
+            'status' => 'open',
+        ])->assertUnprocessable()
+            ->assertJsonValidationErrors(['slug']);
+
+        $create = $this->postJson('/api/admin/jobs', [
+            'title' => 'Editable Role',
+            'status' => 'open',
+        ])->assertCreated();
+
+        $this->putJson('/api/admin/jobs/'.$create->json('data.id'), [
+            'slug' => 'existing-role',
+        ])->assertUnprocessable()
+            ->assertJsonValidationErrors(['slug']);
     }
 
     public function test_service_crud_works(): void
@@ -194,15 +352,37 @@ class ContentCrudTest extends TestCase
     {
         Sanctum::actingAs($this->user);
 
+        $category = \App\Models\TeamCategory::query()->create([
+            'name' => 'Structural Engineering',
+            'slug' => 'structural-engineering-test',
+            'border_color' => '#00a8c9',
+            'display_order' => 1,
+            'is_active' => true,
+        ]);
+
+        $rank = \App\Models\TeamRank::query()->create([
+            'name' => 'Senior Engineer',
+            'slug' => 'senior-engineer-test',
+            'color' => '#E85A78',
+            'display_order' => 1,
+            'is_active' => true,
+        ]);
+
         $create = $this->postJson('/api/admin/team-members', [
             'fullName' => 'Ahmad Odeh',
             'position' => 'Managing Director',
+            'teamCategoryId' => $category->id,
+            'teamRankId' => $rank->id,
             'status' => 'active',
         ]);
 
         $create->assertCreated()
             ->assertJsonPath('data.fullName', 'Ahmad Odeh')
-            ->assertJsonPath('data.slug', 'ahmad-odeh');
+            ->assertJsonPath('data.slug', 'ahmad-odeh')
+            ->assertJsonPath('data.teamCategoryId', $category->id)
+            ->assertJsonPath('data.teamRankId', $rank->id)
+            ->assertJsonPath('data.category.name', 'Structural Engineering')
+            ->assertJsonPath('data.rank.name', 'Senior Engineer');
 
         $id = $create->json('data.id');
 
@@ -213,6 +393,73 @@ class ContentCrudTest extends TestCase
 
         $this->deleteJson("/api/admin/team-members/{$id}")
             ->assertNoContent();
+    }
+
+    public function test_team_category_crud_and_delete_guard_work(): void
+    {
+        Sanctum::actingAs($this->user);
+
+        $create = $this->postJson('/api/admin/team-categories', [
+            'name' => 'Founders & Executive Leadership',
+            'borderColor' => '#c9a66b',
+            'status' => 'active',
+        ]);
+
+        $create->assertCreated()
+            ->assertJsonPath('data.name', 'Founders & Executive Leadership')
+            ->assertJsonPath('data.borderColor', '#c9a66b')
+            ->assertJsonPath('data.isActive', true);
+
+        $id = $create->json('data.id');
+
+        $this->putJson("/api/admin/team-categories/{$id}", [
+            'description' => 'Strategic leadership guiding the practice.',
+        ])->assertOk()
+            ->assertJsonPath('data.description', 'Strategic leadership guiding the practice.');
+
+        $member = TeamMember::query()->create([
+            'full_name' => 'Test Member',
+            'slug' => 'test-member',
+            'team_category_id' => $id,
+            'status' => 'active',
+            'display_order' => 1,
+        ]);
+
+        $this->deleteJson("/api/admin/team-categories/{$id}")
+            ->assertUnprocessable()
+            ->assertJsonFragment(['message' => 'Cannot delete "Founders & Executive Leadership" because it still has 1 team member(s). Reassign or remove those members first.']);
+
+        $member->delete();
+
+        $this->deleteJson("/api/admin/team-categories/{$id}")
+            ->assertNoContent();
+    }
+
+    public function test_team_category_reorder_updates_display_order(): void
+    {
+        Sanctum::actingAs($this->user);
+
+        $first = \App\Models\TeamCategory::query()->create([
+            'name' => 'Alpha',
+            'slug' => 'alpha',
+            'border_color' => '#c9a66b',
+            'display_order' => 1,
+            'is_active' => true,
+        ]);
+        $second = \App\Models\TeamCategory::query()->create([
+            'name' => 'Beta',
+            'slug' => 'beta',
+            'border_color' => '#4a7ab0',
+            'display_order' => 2,
+            'is_active' => true,
+        ]);
+
+        $this->postJson('/api/admin/team-categories/reorder', [
+            'orderedIds' => [$second->id, $first->id],
+        ])->assertOk();
+
+        $this->assertSame(1, $second->fresh()->display_order);
+        $this->assertSame(2, $first->fresh()->display_order);
     }
 
     public function test_job_crud_works(): void

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './RelatedActivities.module.css';
 
 export default function RelatedActivities({ activities }) {
@@ -24,8 +25,7 @@ export default function RelatedActivities({ activities }) {
                 aria-label={`View activity: ${activity.title}`}
               >
                 <div className={styles.imageWrap}>
-                  <img
-                    src={activity.coverImage}
+                  <img src={resolveMediaUrl(activity.coverImage)}
                     alt={activity.title}
                     className={styles.image}
                     loading="lazy"

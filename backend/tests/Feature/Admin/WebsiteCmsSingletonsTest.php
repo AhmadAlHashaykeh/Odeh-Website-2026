@@ -112,6 +112,56 @@ class WebsiteCmsSingletonsTest extends TestCase
             ->assertJsonPath('data.overview.hero.title', 'Updated Overview');
     }
 
+    public function test_authenticated_user_can_update_about_team_and_activities_page_shells(): void
+    {
+        Sanctum::actingAs($this->user);
+
+        $response = $this->putJson('/api/admin/about-pages', [
+            'team' => [
+                'meta' => [
+                    'title' => 'Updated Team Meta',
+                    'description' => 'Updated team meta description.',
+                ],
+                'hero' => [
+                    'label' => 'Updated Team Label',
+                    'title' => 'Updated Team Title',
+                    'subtitle' => 'Updated Team Subtitle',
+                    'description' => 'Updated team hero description.',
+                    'backgroundImage' => '/assets/about/team/hero.webp',
+                ],
+            ],
+            'activities' => [
+                'meta' => [
+                    'title' => 'Updated Activities Meta',
+                    'description' => 'Updated activities meta description.',
+                ],
+                'hero' => [
+                    'label' => 'Updated Activities Label',
+                    'title' => 'Updated Activities Title',
+                    'description' => 'Updated activities hero description.',
+                    'backgroundImage' => '/assets/about/activities/hero.jpg',
+                ],
+            ],
+        ]);
+
+        $response->assertOk()
+            ->assertJsonPath('data.team.hero.title', 'Updated Team Title')
+            ->assertJsonPath('data.team.hero.subtitle', 'Updated Team Subtitle')
+            ->assertJsonPath('data.team.meta.title', 'Updated Team Meta')
+            ->assertJsonPath('data.activities.hero.title', 'Updated Activities Title')
+            ->assertJsonPath('data.activities.meta.title', 'Updated Activities Meta');
+
+        $setting = AboutPageSetting::query()->first();
+
+        $this->assertSame('Updated Team Title', $setting->team['hero']['title']);
+        $this->assertSame('Updated Team Subtitle', $setting->team['hero']['subtitle']);
+        $this->assertSame('Updated Team Meta', $setting->team['meta']['title']);
+        $this->assertSame('Updated Activities Title', $setting->activities['hero']['title']);
+        $this->assertSame('Updated Activities Meta', $setting->activities['meta']['title']);
+        $this->assertArrayNotHasKey('hero-title', $setting->team['hero']);
+        $this->assertArrayNotHasKey('meta-title', $setting->team['meta']);
+    }
+
     public function test_authenticated_user_can_update_navigation_footer_singleton(): void
     {
         Sanctum::actingAs($this->user);

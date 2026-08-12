@@ -1,11 +1,12 @@
 import { StatusBadge } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import TeamMemberQuickActions from './TeamMemberQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './TeamMembersCardView.module.css';
 
 function MemberStatusBadge({ status }) {
   if (status === 'active') {
-    return <StatusBadge status="active" label="Active" />;
+    return <StatusBadge status="active" label="Visible" />;
   }
   return <StatusBadge status="inactive" label="Hidden" />;
 }
@@ -32,8 +33,7 @@ export default function TeamMembersCardView({
               onClick={() => onMemberClick(member.id)}
               aria-label={`View ${member.fullName}`}
             >
-              <img
-                src={member.photo}
+              <img src={resolveMediaUrl(member.photo)}
                 alt={member.fullName}
                 className={styles.portrait}
                 loading="lazy"
@@ -67,19 +67,34 @@ export default function TeamMembersCardView({
             <p className={styles.position}>{member.position}</p>
 
             <div className={styles.badges}>
-              <span className={styles.deptBadge}>{member.department}</span>
-              <span className={styles.categoryBadge}>{member.categoryLabel}</span>
+              <span className={styles.categoryBadge}>{member.categoryLabel || '—'}</span>
+              {member.rank?.name ? (
+                <span
+                  className={styles.rankBadge}
+                  style={{
+                    borderColor: member.rank.color,
+                    color: member.rank.color,
+                  }}
+                >
+                  {member.rank.name}
+                </span>
+              ) : null}
             </div>
 
             <div className={styles.details}>
-              <span className={styles.experience}>
-                <AdminIcon name="filter" size={12} />
-                {member.experience}
-              </span>
-              <a href={`mailto:${member.email}`} className={styles.email} onClick={(e) => e.stopPropagation()}>
-                <AdminIcon name="messages" size={12} />
-                {member.email}
-              </a>
+              {member.experience ? (
+                <span className={styles.experience}>{member.experience}</span>
+              ) : null}
+              {member.email ? (
+                <a
+                  href={`mailto:${member.email}`}
+                  className={styles.email}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <AdminIcon name="messages" size={12} />
+                  {member.email}
+                </a>
+              ) : null}
             </div>
 
             <div className={styles.footer}>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { getProjectPath } from '../../utils/contentPaths';
 import SafeImage from '../SafeImage/SafeImage';
 import styles from './Projects.module.css';
 
@@ -18,7 +19,7 @@ function FeaturedProjectCard({ project, className = '' }) {
   return (
     <article className={`${styles.featuredCard} ${className}`}>
       <Link
-        to={`/projects/${project.categorySlug}/${project.slug}`}
+        to={getProjectPath(project)}
         className={styles.cardLink}
         aria-label={`View ${project.title}`}
       >
@@ -50,7 +51,7 @@ function SecondaryProjectCard({ project, className = '' }) {
   return (
     <article className={`${styles.secondaryCard} ${className}`}>
       <Link
-        to={`/projects/${project.categorySlug}/${project.slug}`}
+        to={getProjectPath(project)}
         className={styles.cardLink}
         aria-label={`View ${project.title}`}
       >

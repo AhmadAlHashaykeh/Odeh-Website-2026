@@ -1,15 +1,6 @@
 import { StatusBadge } from '../../cms/components';
-import AdminIcon from '../../components/AdminIcons';
 import ProjectQuickActions from './ProjectQuickActions';
 import styles from './ProjectsTableView.module.css';
-
-function formatDate(value) {
-  return new Date(value).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
-}
 
 export default function ProjectsTableView({
   items,
@@ -39,14 +30,12 @@ export default function ProjectsTableView({
                 aria-label="Select all projects on this page"
               />
             </th>
-            <th className={styles.thumbCol}>Cover</th>
             <th>Project Name</th>
-            <th>Category</th>
+            <th>Area (m²)</th>
             <th>Location</th>
-            <th>Type</th>
+            <th>Architect</th>
+            <th>Category</th>
             <th>Status</th>
-            <th>Featured</th>
-            <th>Last Updated</th>
             <th className={styles.actionsCol} aria-label="Actions" />
           </tr>
         </thead>
@@ -65,21 +54,6 @@ export default function ProjectsTableView({
                   aria-label={`Select ${project.title}`}
                 />
               </td>
-              <td className={styles.thumbCol}>
-                <button
-                  type="button"
-                  className={styles.thumbBtn}
-                  onClick={() => onProjectClick(project.id)}
-                  aria-label={`View ${project.title}`}
-                >
-                  <img
-                    src={project.coverImage}
-                    alt=""
-                    className={styles.thumb}
-                    loading="lazy"
-                  />
-                </button>
-              </td>
               <td>
                 <button
                   type="button"
@@ -87,24 +61,13 @@ export default function ProjectsTableView({
                   onClick={() => onProjectClick(project.id)}
                 >
                   <span className={styles.name}>{project.title}</span>
-                  <span className={styles.slug}>/{project.slug}</span>
                 </button>
               </td>
-              <td className={styles.muted}>{project.category}</td>
-              <td className={styles.muted}>{project.location}</td>
-              <td className={styles.muted}>{project.projectType}</td>
+              <td className={styles.muted}>{project.area || '—'}</td>
+              <td className={styles.muted}>{project.location || '—'}</td>
+              <td className={styles.muted}>{project.architect || '—'}</td>
+              <td className={styles.muted}>{project.category || '—'}</td>
               <td><StatusBadge status={project.status} /></td>
-              <td>
-                {project.featured ? (
-                  <span className={styles.featuredBadge}>
-                    <AdminIcon name="star" size={12} />
-                    Featured
-                  </span>
-                ) : (
-                  <span className={styles.notFeatured}>—</span>
-                )}
-              </td>
-              <td className={styles.muted}>{formatDate(project.lastUpdated)}</td>
               <td className={styles.actionsCol}>
                 <ProjectQuickActions project={project} onView={onViewProject} onAction={onAction} />
               </td>

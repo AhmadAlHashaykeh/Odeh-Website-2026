@@ -1,7 +1,7 @@
 import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { AboutPageShell } from '../components/AboutSection';
 import { ApplicationThankYou } from '../components/Careers';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getCareers, getJob } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import { mapJob } from '../utils/contentMappers';
@@ -19,7 +19,7 @@ export default function JobApplicationThankYouPage() {
   if (jobLoading || careersLoading) {
     return (
       <AboutPageShell meta={{ title: 'Thank You | ODEH & PARTNERS DESIGN' }}>
-        <PageLoader />
+        <PublicPageSkeleton variant="centered" />
       </AboutPageShell>
     );
   }

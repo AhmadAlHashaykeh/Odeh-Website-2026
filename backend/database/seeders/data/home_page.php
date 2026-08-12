@@ -8,8 +8,8 @@ return [
         'headingAccent' => 'DESIGN',
         'description' => 'Delivering innovative structural engineering and design solutions across the Middle East with expertise, precision, and sustainability.',
         'stats' => [
-            ['value' => '1000+', 'label' => 'Projects Delivered'],
-            ['value' => '7+', 'label' => 'Years of Practice'],
+            ['value' => '+1000', 'label' => 'Projects Delivered'],
+            ['value' => '+8', 'label' => 'Years of Practice'],
             ['value' => 'Middle East', 'label' => 'Regional Focus'],
         ],
         'primaryCta' => ['label' => 'Explore Projects', 'path' => '/projects'],
@@ -24,8 +24,8 @@ return [
         'titleAccent' => 'PARTNERS DESIGN',
         'body' => 'Welcome to the online platform of ODEH & PARTNERS DESIGN, an avant-garde structural design firm with a global vision. Our practice transcends conventional boundaries by delivering innovative engineering solutions backed by technical expertise, cultural insight, and a commitment to excellence. From concept to construction, we create sustainable structures that shape the future of the built environment.',
         'stats' => [
-            ['value' => '7+', 'label' => 'Years of Excellence'],
-            ['value' => '1000+', 'label' => 'Projects Completed'],
+            ['value' => '+8', 'label' => 'Years of Excellence'],
+            ['value' => '+1000', 'label' => 'Projects Completed'],
         ],
         'image' => '/assets/about/odeh-about-office.webp',
         'imageAlt' => 'ODEH & PARTNERS DESIGN workspace',
@@ -52,6 +52,7 @@ return [
         'sectionLabel' => 'Selected Projects',
         'heading' => 'Engineering Excellence Across the Middle East',
         'description' => 'Landmark structures and infrastructure delivered with precision — a curated selection from our portfolio across the region.',
+        'poolProjectIds' => [],
         'projects' => [
             ['id' => 'himmeh-resort', 'title' => 'Himmeh Resort', 'category' => 'Resorts & Hotels', 'location' => 'Jordan', 'description' => 'The main challenges in the design were the arch vaults (the larger of which is over 7m high), multiple cross vaults, tapered cantilevers, and variable thickness slabs.', 'image' => '/assets/projects/himmeh-resort/cover.webp', 'slug' => 'himmeh-resort', 'categorySlug' => 'resorts-and-hotels', 'order' => 1],
             ['id' => 'leen-park', 'title' => 'Leen Park', 'category' => 'Resorts & Hotels', 'location' => 'Jordan, Dead Sea', 'description' => 'A collection of chalets designed with a luxurious touch, offering premium services in the Dead Sea area.', 'image' => '/assets/projects/leen-park/cover.webp', 'slug' => 'leen-park', 'categorySlug' => 'resorts-and-hotels', 'order' => 2],

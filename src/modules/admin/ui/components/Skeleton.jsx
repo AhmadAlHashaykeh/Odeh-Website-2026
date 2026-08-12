@@ -123,7 +123,7 @@ export function SkeletonList({ count = 5 }) {
 
 export function SkeletonLoader({
   variant = 'full',
-  viewMode = 'card',
+  viewMode = 'table',
   statsCount = 5,
   filterCount = 4,
   className = '',

@@ -12,14 +12,36 @@ import {
   PERMISSION_MODULES,
 } from '../mock/usersRolesConfig';
 
-const BACKEND_ACTION_MAP = {
-  view: 'canView',
-  create: 'canCreate',
-  edit: 'canUpdate',
-  delete: 'canDelete',
-};
-
 const UI_ACTIONS = ['view', 'create', 'edit', 'delete'];
+
+function getUserInitials(fullName) {
+  if (!fullName || typeof fullName !== 'string') return '?';
+
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return '?';
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+
+  return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
+}
+
+function roleDisplayName(role) {
+  if (!role) return '—';
+  if (typeof role === 'string') return role;
+  if (typeof role === 'object' && role.name) return role.name;
+  return '—';
+}
+
+/** Map API user payload to the shape the Users & Roles UI expects. */
+function normalizeUser(user) {
+  return {
+    ...user,
+    role: roleDisplayName(user.role),
+    initials: user.initials || getUserInitials(user.fullName),
+    lastLogin: user.lastLoginAt ?? user.lastLogin ?? null,
+    createdDate: user.createdAt ?? user.createdDate ?? null,
+    loginActivity: Array.isArray(user.loginActivity) ? user.loginActivity : [],
+  };
+}
 
 function permissionState(granted) {
   return granted ? 'granted' : 'denied';
@@ -101,7 +123,7 @@ export function useUsersRoles() {
         rolesApi.list({ per_page: 50 }),
       ]);
 
-      setUsers(usersResponse.data);
+      setUsers((usersResponse.data ?? []).map(normalizeUser));
       setRoles(rolesResponse.data);
 
       if (!matrixRoleId && rolesResponse.data.length > 0) {
@@ -392,23 +414,23 @@ export function useUsersRoles() {
       const payload = {
         fullName: values.fullName,
         email: values.email,
-        password: values.password || 'ChangeMe123!',
+        password: values.password,
         roleId: values.roleId,
         department: values.department,
         accessScope: values.accessScope,
-        status: 'invited',
+        status: 'active',
       };
 
       try {
         await usersApi.create(payload);
         closeInvite();
         await loadData();
-        showFeedback('User invitation sent.', 'success');
+        showFeedback('Admin account created.', 'success');
       } catch (error) {
         const mapped = error instanceof ApiError ? mapApiErrorsToForm(error.errors) : {};
         const message =
           Object.values(mapped).flat()[0] ??
-          (error instanceof ApiError ? error.message : 'Failed to invite user.');
+          (error instanceof ApiError ? error.message : 'Failed to create admin.');
         showFeedback(message, 'error');
       }
     },

@@ -15,6 +15,7 @@ class JobApplicationResource extends JsonResource
             'jobId' => $this->job_id,
             'jobTitle' => $this->whenLoaded('job', fn () => $this->job?->title),
             'jobSlug' => $this->whenLoaded('job', fn () => $this->job?->slug),
+            'department' => $this->whenLoaded('job', fn () => $this->job?->department),
             'fullName' => $this->full_name,
             'email' => $this->email,
             'phone' => $this->phone,

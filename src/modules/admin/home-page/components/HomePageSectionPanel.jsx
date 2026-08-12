@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import AdminIcon from '../../components/AdminIcons';
 import { Badge, Button } from '../../ui';
 import { getSectionSummary } from '../mock/homePageConfig';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './HomePageSectionPanel.module.css';
 
 function HeroPreview({ data }) {
@@ -34,7 +35,7 @@ function AboutPreview({ data }) {
   return (
     <div className={styles.aboutPreview}>
       <div className={styles.aboutImageWrap}>
-        <img src={data.image} alt={data.imageAlt} loading="lazy" />
+        <img src={resolveMediaUrl(data.image)} alt={data.imageAlt} loading="lazy" />
       </div>
       <div className={styles.aboutText}>
         <span className={styles.previewLabel}>{data.sectionLabel}</span>
@@ -59,7 +60,7 @@ function ServicesPreview({ data }) {
       <div className={styles.thumbGrid}>
         {preview.map((service) => (
           <div key={service.id} className={styles.thumbCard}>
-            <img src={service.image} alt={service.title} loading="lazy" />
+            <img src={resolveMediaUrl(service.image)} alt={service.title} loading="lazy" />
             <span className={styles.thumbLabel}>{service.title}</span>
           </div>
         ))}
@@ -72,18 +73,27 @@ function ServicesPreview({ data }) {
 }
 
 function ProjectsPreview({ data }) {
-  const [featured, ...secondary] = data.projects;
+  const projects = Array.isArray(data.projects) ? data.projects : [];
+  const [featured, ...secondary] = projects;
+  const poolCount = Array.isArray(data.poolProjectIds)
+    ? data.poolProjectIds.length
+    : projects.length;
 
   return (
     <div className={styles.projectsPreview}>
       <div className={styles.projectsHeader}>
         <span className={styles.previewLabel}>{data.sectionLabel}</span>
         <h3 className={styles.projectsHeading}>{data.heading}</h3>
+        <p className={styles.previewHint}>
+          {poolCount > 0
+            ? `${poolCount} in pool · homepage shows 3 at random`
+            : 'No pool selected yet · homepage uses all published projects'}
+        </p>
       </div>
       <div className={styles.projectsGrid}>
         {featured && (
           <div className={`${styles.projectCard} ${styles.projectFeatured}`}>
-            <img src={featured.image} alt={featured.title} loading="lazy" />
+            <img src={resolveMediaUrl(featured.image)} alt={featured.title} loading="lazy" />
             <div className={styles.projectMeta}>
               <span>{featured.category}</span>
               <strong>{featured.title}</strong>
@@ -92,9 +102,9 @@ function ProjectsPreview({ data }) {
         )}
         {secondary.length > 0 && (
           <div className={styles.projectStack}>
-            {secondary.map((project) => (
+            {secondary.slice(0, 2).map((project) => (
               <div key={project.id} className={styles.projectCard}>
-                <img src={project.image} alt={project.title} loading="lazy" />
+                <img src={resolveMediaUrl(project.image)} alt={project.title} loading="lazy" />
                 <div className={styles.projectMeta}>
                   <span>{project.category}</span>
                   <strong>{project.title}</strong>

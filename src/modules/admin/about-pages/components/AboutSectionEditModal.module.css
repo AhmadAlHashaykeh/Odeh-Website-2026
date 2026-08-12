@@ -11,6 +11,7 @@
 .imageListItem {
   display: flex;
   gap: 0.75rem;
+  align-items: center;
   padding: 0.65rem;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -30,6 +31,7 @@
   flex-direction: column;
   gap: 0.2rem;
   min-width: 0;
+  flex: 1;
 }
 
 .imageOrder {
@@ -48,6 +50,31 @@
   font-size: 0.68rem;
   color: rgba(232, 232, 232, 0.7);
   line-height: 1.4;
+}
+
+.imageRemoveBtn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  background: rgba(251, 113, 133, 0.12);
+  color: #fb7185;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.imageRemoveBtn:hover {
+  background: rgba(251, 113, 133, 0.22);
+  border-color: rgba(251, 113, 133, 0.55);
+}
+
+.imageRemoveBtn:focus-visible {
+  outline: 2px solid rgba(251, 113, 133, 0.7);
+  outline-offset: 2px;
 }
 
 .principleFormList {

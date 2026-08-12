@@ -90,7 +90,7 @@ function DrawerSkeleton() {
   );
 }
 
-export default function TeamMembersSkeleton({ viewMode = 'card', showDrawer = false }) {
+export default function TeamMembersSkeleton({ viewMode = 'table', showDrawer = false }) {
   return (
     <div className={styles.full} aria-busy="true" aria-label="Loading team members">
       <StatsSkeleton />

@@ -1,5 +1,6 @@
 import { StatusBadge } from '../../cms/components';
 import TeamMemberQuickActions from './TeamMemberQuickActions';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './TeamMembersTableView.module.css';
 
 function formatDate(value) {
@@ -12,7 +13,7 @@ function formatDate(value) {
 
 function MemberStatusBadge({ status }) {
   if (status === 'active') {
-    return <StatusBadge status="active" label="Active" />;
+    return <StatusBadge status="active" label="Visible" />;
   }
   return <StatusBadge status="inactive" label="Hidden" />;
 }
@@ -47,12 +48,11 @@ export default function TeamMembersTableView({
             </th>
             <th className={styles.thumbCol}>Photo</th>
             <th>Name</th>
-            <th>Position</th>
-            <th>Department</th>
-            <th>Category</th>
-            <th>Experience</th>
-            <th>Status</th>
-            <th>Last Updated</th>
+            <th>Job title</th>
+            <th>Section</th>
+            <th>Rank</th>
+            <th>Visibility</th>
+            <th>Updated</th>
             <th className={styles.actionsCol} aria-label="Actions" />
           </tr>
         </thead>
@@ -79,7 +79,7 @@ export default function TeamMembersTableView({
                   aria-label={`View ${member.fullName}`}
                 >
                   <img
-                    src={member.photo}
+                    src={resolveMediaUrl(member.photo)}
                     alt=""
                     className={styles.thumb}
                     loading="lazy"
@@ -93,14 +93,27 @@ export default function TeamMembersTableView({
                   onClick={() => onMemberClick(member.id)}
                 >
                   <span className={styles.name}>{member.fullName}</span>
-                  <span className={styles.slug}>{member.slug}</span>
                 </button>
               </td>
-              <td className={styles.muted}>{member.position}</td>
-              <td className={styles.muted}>{member.department}</td>
-              <td className={styles.muted}>{member.categoryLabel}</td>
-              <td className={styles.muted}>{member.experience}</td>
-              <td><MemberStatusBadge status={member.status} /></td>
+              <td className={styles.muted}>{member.position || '—'}</td>
+              <td className={styles.muted}>{member.categoryLabel || '—'}</td>
+              <td>
+                {member.rank?.name ? (
+                  <span className={styles.rankCell}>
+                    <span
+                      className={styles.rankDot}
+                      style={{ background: member.rank.color }}
+                      aria-hidden="true"
+                    />
+                    {member.rank.name}
+                  </span>
+                ) : (
+                  <span className={styles.muted}>—</span>
+                )}
+              </td>
+              <td>
+                <MemberStatusBadge status={member.status} />
+              </td>
               <td className={styles.muted}>{formatDate(member.lastUpdated)}</td>
               <td className={styles.actionsCol}>
                 <TeamMemberQuickActions member={member} onView={onViewMember} onAction={onAction} />

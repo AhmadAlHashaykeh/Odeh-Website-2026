@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Support\PublicMediaUrl;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,8 +18,8 @@ class ProjectCategoryResource extends JsonResource
             'title' => $this->title,
             'slug' => $this->slug,
             'description' => $this->description,
-            'coverImage' => $this->cover_image,
-            'featuredImage' => $this->featured_image,
+            'coverImage' => PublicMediaUrl::reference($this->cover_image),
+            'featuredImage' => PublicMediaUrl::reference($this->featured_image),
             'status' => $this->status->value,
             'published' => $this->status->value === 'published',
             'publicationStatus' => $this->status->value === 'published' ? 'published' : 'hidden',

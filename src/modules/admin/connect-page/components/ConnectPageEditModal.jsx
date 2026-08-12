@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Input, Select } from '../../ui';
 import { CmsModuleShortcut, SeoDelegationNotice } from '../../cms/components';
@@ -146,13 +147,14 @@ export default function ConnectPageEditModal({
   onClose,
   onSave,
 }) {
+  const formRef = useRef(null);
   const isHeader = editType === 'header';
   const title = getEditModalTitle(editType);
   const formKey = isHeader ? 'header' : linkData?.id;
 
   const handleSave = (event) => {
     event?.preventDefault?.();
-    onSave(event.currentTarget);
+    onSave(formRef.current);
   };
 
   const modalHeader = (
@@ -212,6 +214,7 @@ export default function ConnectPageEditModal({
     >
       <Form
         key={formKey}
+        ref={formRef}
         onSubmit={handleSave}
         className={`${drawerStyles.form} ${styles.form}`}
       >

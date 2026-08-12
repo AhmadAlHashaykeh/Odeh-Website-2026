@@ -8,6 +8,7 @@
  * @param {'left' | 'right'} [props.imagePosition='right'] - Image column placement on desktop
  */
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './ContentImageSection.module.css';
 
 export default function ContentImageSection({
@@ -40,8 +41,7 @@ export default function ContentImageSection({
 
           <div ref={imageRef} className={`${styles.imageWrap} reveal reveal-delay-2`}>
             <div className={styles.imageFrame}>
-              <img
-                src={image.src}
+              <img src={resolveMediaUrl(image.src)}
                 alt={image.alt}
                 loading="lazy"
                 width={image.width}

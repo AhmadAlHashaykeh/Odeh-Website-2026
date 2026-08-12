@@ -1,5 +1,6 @@
 import { Drawer, Button } from '../../ui';
 import AdminIcon from '../../components/AdminIcons';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './AdminLinkedItemsDrawer.module.css';
 
 export default function AdminLinkedItemsDrawer({
@@ -37,7 +38,7 @@ export default function AdminLinkedItemsDrawer({
             <div key={item.id} className={styles.item}>
               <div className={styles.thumb}>
                 {item.coverImage && (
-                  <img src={item.coverImage} alt="" loading="lazy" />
+                  <img src={resolveMediaUrl(item.coverImage)} alt="" loading="lazy" />
                 )}
               </div>
               <div className={styles.info}>

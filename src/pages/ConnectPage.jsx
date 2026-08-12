@@ -1,9 +1,10 @@
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { ConnectHero, ConnectLinkCard } from '../components/Connect';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getConnectPage } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
+import { normalizePublicMedia } from '../utils/mediaUrl';
 import styles from './ConnectPage.module.css';
 
 const FALLBACK_META = {
@@ -13,7 +14,7 @@ const FALLBACK_META = {
 
 export default function ConnectPage() {
   const { data, loading, error } = usePublicQuery(() => getConnectPage(), []);
-  const connect = data?.data;
+  const connect = data?.data ? normalizePublicMedia(data.data) : undefined;
   const heroRef = useScrollReveal();
   const linksRef = useScrollReveal(0.08);
 
@@ -28,7 +29,7 @@ export default function ConnectPage() {
       <div className={styles.page}>
         <div className={styles.atmosphere} aria-hidden="true" />
         <main className={styles.main}>
-          <PageLoader />
+          <PublicPageSkeleton variant="connect" />
         </main>
       </div>
     );

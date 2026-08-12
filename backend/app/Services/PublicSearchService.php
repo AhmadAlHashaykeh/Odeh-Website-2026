@@ -11,8 +11,6 @@ use App\Enums\ServiceStatus;
 use App\Enums\TeamMemberStatus;
 use App\Models\AboutPageSetting;
 use App\Models\Activity;
-use App\Models\ConnectPageSetting;
-use App\Models\HomePageSetting;
 use App\Models\Job;
 use App\Models\LegalPage;
 use App\Models\NavigationFooterSetting;
@@ -20,7 +18,6 @@ use App\Models\Project;
 use App\Models\ProjectCategory;
 use App\Models\Service;
 use App\Models\TeamMember;
-use App\Models\WebsiteSetting;
 
 class PublicSearchService
 {

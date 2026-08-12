@@ -7,6 +7,8 @@ export interface AboutPagesSetting {
   overview: Record<string, unknown>;
   approach: Record<string, unknown>;
   history: Record<string, unknown>;
+  team: Record<string, unknown>;
+  activities: Record<string, unknown>;
   lastUpdated?: string | null;
 }
 

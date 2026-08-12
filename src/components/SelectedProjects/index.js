@@ -1,6 +1,7 @@
 export { default as ProjectsHero } from './ProjectsHero';
 export { default as CategoryGrid } from './CategoryGrid';
 export { default as CategoryCard } from './CategoryCard';
+export { default as RotatingCategoryImage } from './RotatingCategoryImage';
 export { default as ProjectGrid } from './ProjectGrid';
 export { default as ProjectCard } from './ProjectCard';
 export { default as ProjectDetailHero } from './ProjectDetailHero';

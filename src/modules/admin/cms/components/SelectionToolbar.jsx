@@ -9,15 +9,27 @@ export default function SelectionToolbar({
   onBulkActionChange,
   onBulkApply,
   onDelete,
+  targetOptions = [],
+  targetValue = '',
+  onTargetChange,
+  targetAriaLabel = 'Target section',
+  showTargetForActions = [],
 }) {
   if (selectedCount === 0) return null;
+
+  const showTarget = showTargetForActions.includes(bulkAction);
+  const targetRequired = showTarget && !targetValue;
+  const applyDisabled = targetRequired;
 
   const handleApply = () => {
     if (bulkAction === 'delete') {
       onDelete?.();
-    } else {
-      onBulkApply?.(bulkAction);
+      return;
     }
+
+    if (targetRequired) return;
+
+    onBulkApply?.(bulkAction);
   };
 
   return (
@@ -36,6 +48,12 @@ export default function SelectionToolbar({
         value={bulkAction}
         onChange={onBulkActionChange}
         onApply={handleApply}
+        disabled={applyDisabled}
+        showTarget={showTarget}
+        targetOptions={targetOptions}
+        targetValue={targetValue}
+        onTargetChange={onTargetChange}
+        targetAriaLabel={targetAriaLabel}
       />
     </div>
   );

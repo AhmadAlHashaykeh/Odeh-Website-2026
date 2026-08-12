@@ -1,6 +1,10 @@
 import { useCallback, useMemo, useState } from 'react';
 import * as connectPageApi from '../../../../api/connectPage';
-import { extractFormValues } from '../../cms/action-flows/mapFormValuesToApi';
+import {
+  extractFormValues,
+  mapConnectHeaderFromForm,
+  mapConnectLinkFromForm,
+} from '../../cms/action-flows/mapFormValuesToApi';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
 import { useCmsSingleton } from '../../hooks/useCmsSingleton';
 import { copyToClipboard } from '../../utils/clipboard';
@@ -57,14 +61,13 @@ export function useConnectPageCms() {
       if (editingHeader) {
         nextData = {
           ...nextData,
-          meta: { ...nextData.meta, ...values },
-          hero: { ...nextData.hero, ...values },
+          ...mapConnectHeaderFromForm(nextData, values),
         };
       } else if (editingLinkId) {
         nextData = {
           ...nextData,
           links: nextData.links.map((link) =>
-            link.id === editingLinkId ? { ...link, ...values } : link,
+            link.id === editingLinkId ? mapConnectLinkFromForm(link, values) : link,
           ),
         };
       }

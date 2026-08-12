@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input, Select } from '../../ui';
 import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
@@ -11,7 +12,18 @@ function LogoForm({ data }) {
     <>
       <Form.Section title="Site Logo">
         <div className={styles.mediaField}>
-          <CoverImageField label="Logo Preview" src={data.src} alt={data.alt} />
+          <CoverImageField
+            label="Logo Preview"
+            name="src"
+            src={data.src}
+            alt={data.alt}
+            uploadModule="navigation-footer"
+            uploadField="logo"
+            onChange={(nextSrc) => {
+              const input = document.getElementById('logo-src');
+              if (input) input.value = nextSrc;
+            }}
+          />
         </div>
         <Form.Field label="Logo Path" htmlFor="logo-src">
           <Input.Field>
@@ -142,7 +154,18 @@ function FooterBrandForm({ data }) {
     <>
       <Form.Section title="Footer Brand">
         <div className={styles.mediaField}>
-          <CoverImageField label="Footer Logo" src={data.logo.src} alt={data.logo.alt} />
+          <CoverImageField
+            label="Footer Logo"
+            name="footer-logo-upload"
+            src={data.logo.src}
+            alt={data.logo.alt}
+            uploadModule="navigation-footer"
+            uploadField="footerLogo"
+            onChange={(nextSrc) => {
+              const input = document.getElementById('footer-logo-src');
+              if (input) input.value = nextSrc;
+            }}
+          />
         </div>
         <Form.Field label="Logo Path" htmlFor="footer-logo-src">
           <Input.Field>
@@ -437,6 +460,8 @@ export default function NavigationFooterEditModal({
   onClose,
   onSave,
 }) {
+  const formRef = useRef(null);
+
   if (!panelId || !panelData) return null;
 
   const title =
@@ -446,7 +471,7 @@ export default function NavigationFooterEditModal({
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.(panelId, e.currentTarget);
+    onSave?.(panelId, formRef.current);
   };
 
   const modalHeader = (
@@ -499,6 +524,7 @@ export default function NavigationFooterEditModal({
     >
       <Form
         key={`${panelId}-${editingNavItemId ?? 'root'}`}
+        ref={formRef}
         onSubmit={handleSave}
         className={`${drawerStyles.form} ${styles.form}`}
       >

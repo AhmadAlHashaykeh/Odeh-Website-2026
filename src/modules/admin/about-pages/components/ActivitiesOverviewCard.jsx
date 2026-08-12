@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import AdminIcon from '../../components/AdminIcons';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ActivitiesOverviewCard.module.css';
 
 export default function ActivitiesOverviewCard({ stats }) {
@@ -29,7 +30,7 @@ export default function ActivitiesOverviewCard({ stats }) {
         <div className={styles.activityGrid}>
           {stats.preview.map((activity) => (
             <div key={activity.id} className={styles.activityCard}>
-              <img src={activity.coverImage} alt={activity.title} loading="lazy" />
+              <img src={resolveMediaUrl(activity.coverImage)} alt={activity.title} loading="lazy" />
               <div className={styles.activityInfo}>
                 <strong>{activity.title}</strong>
                 <span>{activity.activityDate}</span>

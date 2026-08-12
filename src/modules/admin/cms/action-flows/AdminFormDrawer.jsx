@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { Modal, Button, Form, Badge, Input, Select } from '../../ui';
 import AdminIcon from '../../components/AdminIcons';
 import { SeoDelegationNotice } from '../components';
@@ -6,10 +6,26 @@ import { CoverImageField, GalleryPlaceholder } from './PlaceholderFieldGroup';
 import { MODULE_FORM_SCHEMAS } from './moduleFormSchemas';
 import { mapItemToFormValues } from './mapItemToForm';
 import { getFirstFieldError } from './formErrors';
+import { resolveUploadModule } from './uploadModuleMap';
 import inputStyles from '../../ui/components/Input.module.css';
 import styles from './AdminFormDrawer.module.css';
 
-const FULL_WIDTH_TYPES = new Set(['textarea', 'cover', 'gallery']);
+const FULL_WIDTH_TYPES = new Set(['textarea', 'cover', 'gallery', 'notice', 'color']);
+
+function parseGalleryValue(value) {
+  if (Array.isArray(value)) return value;
+
+  if (typeof value === 'string' && value.trim().startsWith('[')) {
+    try {
+      const parsed = JSON.parse(value);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  }
+
+  return [];
+}
 
 function isFullWidth(field) {
   return field.fullWidth || FULL_WIDTH_TYPES.has(field.type);
@@ -40,6 +56,60 @@ function groupFieldsIntoRows(fields) {
   return rows;
 }
 
+function ColorBorderField({ field, value, values, error, disabled }) {
+  const initial = value || '#7a7f85';
+  const [color, setColor] = useState(initial);
+  const [previewTitle, setPreviewTitle] = useState(
+    values[field.previewTitleField] || values.name || 'Category Name',
+  );
+
+  return (
+    <div className={styles.colorField}>
+      <Input.Field error={error}>
+        <div className={styles.colorControls}>
+          <input
+            type="color"
+            className={styles.colorPicker}
+            value={/^#[0-9A-Fa-f]{6}$/.test(color) ? color : '#7a7f85'}
+            disabled={disabled}
+            aria-label={`${field.label} picker`}
+            onChange={(event) => {
+              setColor(event.target.value);
+              const nameInput = document.getElementById(field.previewTitleField || 'name');
+              if (nameInput?.value) setPreviewTitle(nameInput.value);
+            }}
+          />
+          <input
+            id={field.name}
+            name={field.name}
+            type="text"
+            className={inputStyles.input}
+            value={color}
+            disabled={disabled}
+            aria-invalid={error ? true : undefined}
+            onChange={(event) => {
+              setColor(event.target.value);
+              const nameInput = document.getElementById(field.previewTitleField || 'name');
+              if (nameInput?.value) setPreviewTitle(nameInput.value);
+            }}
+            placeholder="#c9a66b"
+          />
+        </div>
+      </Input.Field>
+
+      <div
+        className={styles.borderPreview}
+        style={{ '--preview-border': color || '#7a7f85' }}
+        aria-live="polite"
+      >
+        <p className={styles.borderPreviewTitle}>{previewTitle || 'Category Name'}</p>
+        <div className={styles.borderPreviewBar} aria-hidden="true" />
+        <p className={styles.borderPreviewHint}>Border Preview</p>
+      </div>
+    </div>
+  );
+}
+
 function renderSelect(field, value, error, disabled) {
   const options = (field.options || []).map((opt) =>
     typeof opt === 'string' ? { value: opt, label: opt } : opt,
@@ -58,7 +128,7 @@ function renderSelect(field, value, error, disabled) {
   );
 }
 
-function renderField(field, values, fieldErrors, disabled) {
+function renderField(field, values, fieldErrors, disabled, uploadModule, onUploadingChange) {
   const value = values[field.name] ?? '';
   const error = getFirstFieldError(fieldErrors, field.name);
 
@@ -93,20 +163,47 @@ function renderField(field, values, fieldErrors, disabled) {
           />
         </Input.Field>
       );
+    case 'color':
+      return (
+        <ColorBorderField
+          field={field}
+          value={value}
+          values={values}
+          error={error}
+          disabled={disabled}
+        />
+      );
     case 'cover':
       return (
         <CoverImageField
           label={field.label}
+          name={field.name}
           src={typeof value === 'string' ? value : ''}
-          alt={values.title || values.fullName || 'Cover'}
+          alt={values.title || values.fullName || values.name || 'Cover'}
+          uploadModule={uploadModule}
+          uploadField={field.name}
+          disabled={disabled}
+          onUploadingChange={onUploadingChange}
         />
       );
     case 'gallery':
       return (
         <GalleryPlaceholder
           label={field.label}
-          images={Array.isArray(value) ? value : []}
+          name={field.name}
+          images={Array.isArray(value) ? value : parseGalleryValue(value)}
+          uploadModule={uploadModule}
+          uploadField={field.name}
+          disabled={disabled}
+          onUploadingChange={onUploadingChange}
         />
+      );
+    case 'notice':
+      return (
+        <div className={styles.fieldNotice} role="note">
+          {field.title && <p className={styles.fieldNoticeTitle}>{field.title}</p>}
+          <p className={styles.fieldNoticeText}>{field.content}</p>
+        </div>
       );
     default:
       return (
@@ -119,19 +216,35 @@ function renderField(field, values, fieldErrors, disabled) {
             defaultValue={value}
             disabled={disabled}
             aria-invalid={error ? true : undefined}
+            onInput={
+              field.name === 'name'
+                ? (event) => {
+                    const preview = document.querySelector(`.${styles.borderPreviewTitle}`);
+                    if (preview) preview.textContent = event.target.value || 'Category Name';
+                  }
+                : undefined
+            }
           />
         </Input.Field>
       );
   }
 }
 
-function renderFieldGroup(field, values, fieldErrors, disabled) {
+function renderFieldGroup(field, values, fieldErrors, disabled, uploadModule, onUploadingChange) {
   const error = getFirstFieldError(fieldErrors, field.name);
 
   if (field.type === 'cover' || field.type === 'gallery') {
     return (
       <div key={field.name} className={styles.mediaField}>
-        {renderField(field, values, fieldErrors, disabled)}
+        {renderField(field, values, fieldErrors, disabled, uploadModule, onUploadingChange)}
+      </div>
+    );
+  }
+
+  if (field.type === 'notice') {
+    return (
+      <div key={field.name || field.title} className={styles.mediaField}>
+        {renderField(field, values, fieldErrors, disabled, uploadModule, onUploadingChange)}
       </div>
     );
   }
@@ -145,7 +258,7 @@ function renderFieldGroup(field, values, fieldErrors, disabled) {
       error={error}
       htmlFor={field.name}
     >
-      {renderField(field, values, fieldErrors, disabled)}
+      {renderField(field, values, fieldErrors, disabled, uploadModule, onUploadingChange)}
     </Form.Field>
   );
 }
@@ -162,7 +275,15 @@ export default function AdminFormDrawer({
   fieldOptions = {},
 }) {
   const formRef = useRef(null);
+  const [activeUploads, setActiveUploads] = useState(0);
   const schema = MODULE_FORM_SCHEMAS[moduleKey];
+  const uploadModule = resolveUploadModule(moduleKey);
+  const isUploading = activeUploads > 0;
+  const saveDisabled = submitting || isUploading;
+
+  const handleUploadingChange = (uploading) => {
+    setActiveUploads((count) => Math.max(0, count + (uploading ? 1 : -1)));
+  };
   const values = useMemo(
     () => (mode === 'edit' ? mapItemToFormValues(moduleKey, item) : {}),
     [moduleKey, mode, item],
@@ -215,7 +336,7 @@ export default function AdminFormDrawer({
         className={styles.closeBtn}
         onClick={onClose}
         aria-label="Close modal"
-        disabled={submitting}
+        disabled={saveDisabled}
       >
         <AdminIcon name="close" size={18} />
       </button>
@@ -224,7 +345,7 @@ export default function AdminFormDrawer({
 
   const modalFooter = (
     <>
-      <Button variant="secondary" onClick={onClose} disabled={submitting}>
+      <Button variant="secondary" onClick={onClose} disabled={saveDisabled}>
         Cancel
       </Button>
       <Button
@@ -232,9 +353,9 @@ export default function AdminFormDrawer({
         icon={<AdminIcon name="check" size={16} />}
         onClick={handleSave}
         loading={submitting}
-        disabled={submitting}
+        disabled={saveDisabled}
       >
-        {mode === 'edit' ? 'Save Changes' : 'Save Item'}
+        {isUploading ? 'Uploading Image…' : mode === 'edit' ? 'Save Changes' : 'Save Item'}
       </Button>
     </>
   );
@@ -258,13 +379,27 @@ export default function AdminFormDrawer({
           <Form.Section key={section.title} title={section.title}>
             {groupFieldsIntoRows(section.fields).map((row, rowIndex) => {
               if (row.length === 1) {
-                return renderFieldGroup(row[0], values, fieldErrors, submitting);
+                return renderFieldGroup(
+                  row[0],
+                  values,
+                  fieldErrors,
+                  saveDisabled,
+                  uploadModule,
+                  handleUploadingChange,
+                );
               }
 
               return (
                 <Form.Row key={`${section.title}-row-${rowIndex}`}>
                   {row.map((field) =>
-                    renderFieldGroup(field, values, fieldErrors, submitting),
+                    renderFieldGroup(
+                      field,
+                      values,
+                      fieldErrors,
+                      saveDisabled,
+                      uploadModule,
+                      handleUploadingChange,
+                    ),
                   )}
                 </Form.Row>
               );

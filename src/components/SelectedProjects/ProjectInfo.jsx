@@ -19,32 +19,30 @@ export default function ProjectInfo({ project }) {
   const sectionRef = useScrollReveal(0.08);
 
   const specs = [
-    { label: 'Type', value: project.type },
-    { label: 'Area', value: project.area },
-    { label: 'Status', value: project.status },
-    { label: 'Services', value: project.services },
+    { label: 'Area (m²)', value: project.area },
+    { label: 'Location', value: project.location },
+    { label: 'Architect', value: project.architect },
+    { label: 'Category', value: project.category },
   ].filter((item) => item.value);
+
+  if (specs.length === 0) return null;
 
   return (
     <section className={styles.info} aria-label="Project information">
       <div className="container">
         <div ref={sectionRef} className={`${styles.layout} reveal`}>
-          <p className={styles.description}>{project.description}</p>
-
-          {specs.length > 0 && (
-            <aside className={styles.specPanel} aria-label="Project specifications">
-              <dl className={styles.specList}>
-                {specs.map((spec, index) => (
-                  <SpecRow
-                    key={spec.label}
-                    label={spec.label}
-                    value={spec.value}
-                    isLast={index === specs.length - 1}
-                  />
-                ))}
-              </dl>
-            </aside>
-          )}
+          <aside className={styles.specPanel} aria-label="Project specifications">
+            <dl className={styles.specList}>
+              {specs.map((spec, index) => (
+                <SpecRow
+                  key={spec.label}
+                  label={spec.label}
+                  value={spec.value}
+                  isLast={index === specs.length - 1}
+                />
+              ))}
+            </dl>
+          </aside>
         </div>
       </div>
     </section>

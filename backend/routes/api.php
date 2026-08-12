@@ -26,6 +26,7 @@ use App\Http\Controllers\Api\Admin\AboutPageSettingController;
 use App\Http\Controllers\Api\Admin\ActivityController;
 use App\Http\Controllers\Api\Admin\ConnectPageSettingController;
 use App\Http\Controllers\Api\Admin\DashboardController;
+use App\Http\Controllers\Api\Admin\ImageUploadController;
 use App\Http\Controllers\Api\Admin\HomePageSettingController;
 use App\Http\Controllers\Api\Admin\JobController;
 use App\Http\Controllers\Api\Admin\LegalPageController;
@@ -34,7 +35,9 @@ use App\Http\Controllers\Api\Admin\ProjectCategoryController;
 use App\Http\Controllers\Api\Admin\ProjectController;
 use App\Http\Controllers\Api\Admin\SeoPageController;
 use App\Http\Controllers\Api\Admin\ServiceController;
+use App\Http\Controllers\Api\Admin\TeamCategoryController;
 use App\Http\Controllers\Api\Admin\TeamMemberController;
+use App\Http\Controllers\Api\Admin\TeamRankController;
 use App\Http\Controllers\Api\Admin\WebsiteSettingController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
@@ -77,11 +80,15 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('admin')->middleware('auth:sanctum')->group(function () {
     Route::get('dashboard/stats', [DashboardController::class, 'stats']);
+    Route::post('uploads/image', [ImageUploadController::class, 'store']);
 
     Route::apiResource('project-categories', ProjectCategoryController::class);
     Route::apiResource('projects', ProjectController::class);
     Route::apiResource('services', ServiceController::class);
     Route::apiResource('activities', ActivityController::class);
+    Route::post('team-categories/reorder', [TeamCategoryController::class, 'reorder']);
+    Route::apiResource('team-categories', TeamCategoryController::class);
+    Route::apiResource('team-ranks', TeamRankController::class);
     Route::apiResource('team-members', TeamMemberController::class);
     Route::apiResource('jobs', JobController::class);
 

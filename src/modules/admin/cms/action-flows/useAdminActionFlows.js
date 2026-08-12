@@ -110,7 +110,7 @@ export function useAdminActionFlows({
     [onFormSave, formDrawer, moduleKey, showFeedback, closeFormDrawer, apiContext],
   );
 
-  const handleGallerySave = useCallback(async () => {
+  const handleGallerySave = useCallback(async (updatedMedia) => {
     if (!onGallerySave) {
       showFeedback('Gallery save is not available for this module.', 'error');
       return;
@@ -119,7 +119,7 @@ export function useAdminActionFlows({
     setIsSubmitting(true);
 
     try {
-      await onGallerySave(galleryDrawer.item);
+      await onGallerySave(galleryDrawer.item, updatedMedia);
       showFeedback(`Gallery updated for "${getItemLabel(moduleKey, galleryDrawer.item)}"`);
       closeGalleryDrawer();
     } catch (error) {
@@ -296,6 +296,8 @@ export function useAdminActionFlows({
         case 'toggle-visibility':
           if (moduleKey === 'services') {
             openStatusConfirm(item, item?.status === 'hidden' ? 'show' : 'hide');
+          } else if (moduleKey === 'team-categories') {
+            openStatusConfirm(item, item?.isActive ? 'hide' : 'show');
           } else {
             openStatusConfirm(
               item,

@@ -73,7 +73,9 @@ export default function UserDetailsDrawer({ user, roles, onClose }) {
             </div>
             <div className={styles.metaItem}>
               <span className={styles.metaLabel}>Created</span>
-              <span className={styles.metaValue}>{formatDate(user.createdDate)}</span>
+              <span className={styles.metaValue}>
+                {formatDate(user.createdDate ?? user.createdAt)}
+              </span>
             </div>
             <div className={styles.metaItem}>
               <span className={styles.metaLabel}>User ID</span>
@@ -85,7 +87,9 @@ export default function UserDetailsDrawer({ user, roles, onClose }) {
         <section className={styles.section}>
           <h3 className={styles.sectionTitle}>Role & Permissions</h3>
           <div className={styles.roleBlock}>
-            <span className={styles.roleBadge}>{user.role}</span>
+            <span className={styles.roleBadge}>
+              {typeof user.role === 'object' && user.role ? user.role.name : user.role || '—'}
+            </span>
             <p className={styles.permCount}>
               {permSummary.count} permissions across {moduleLabels.length} modules
             </p>
@@ -115,7 +119,7 @@ export default function UserDetailsDrawer({ user, roles, onClose }) {
 
         <section className={styles.section}>
           <h3 className={styles.sectionTitle}>Login Activity</h3>
-          {user.loginActivity.length === 0 ? (
+          {(user.loginActivity ?? []).length === 0 ? (
             <p className={styles.emptyActivity}>No login activity recorded yet.</p>
           ) : (
             <ul className={styles.activityList}>

@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import Carousel from '../Carousel/Carousel';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import OfficeGalleryLightbox from './OfficeGalleryLightbox';
 import styles from './OverviewOfficeSlider.module.css';
 
@@ -22,7 +23,7 @@ function SlideImage({ image, index, onOpen }) {
         onClick={() => onOpen(index)}
       >
         <div className={styles.imageWrap}>
-          <img src={image.src} alt={image.alt} loading="lazy" draggable={false} decoding="async" />
+          <img src={resolveMediaUrl(image.src)} alt={image.alt} loading="lazy" draggable={false} decoding="async" />
           <span className={styles.expandHint} aria-hidden="true">
             <ExpandIcon />
           </span>

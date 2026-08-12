@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import GalleryLightbox from './GalleryLightbox';
 import { ArrowIcon } from './GalleryIcons';
 import styles from './GallerySlider.module.css';
@@ -177,8 +178,7 @@ export default function GallerySlider({
                     className={`${styles.thumb} ${index === activeIndex ? styles.thumbActive : ''}`}
                     onClick={() => goTo(index)}
                   >
-                    <img
-                      src={image.src}
+                    <img src={resolveMediaUrl(image.src)}
                       alt=""
                       aria-hidden="true"
                       loading="lazy"

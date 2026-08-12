@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import * as websiteSettingsApi from '../../../../api/websiteSettings';
 import * as seoApi from '../../../../api/seo';
 import { ApiError } from '../../../../api/client';
+import { usePublicSite } from '../../../../context/PublicSiteContext';
 import { useActionFeedback } from '../../hooks/useActionFeedback';
 import { useCmsSingleton } from '../../hooks/useCmsSingleton';
 import { openExternalUrl } from '../../utils/openExternalUrl';
@@ -16,6 +17,7 @@ const SECTION_PATCH_MAP = {
 };
 
 export function useWebsiteSettings() {
+  const { refresh: refreshPublicSite } = usePublicSite();
   const singleton = useCmsSingleton({
     showFn: websiteSettingsApi.show,
     updateFn: websiteSettingsApi.update,
@@ -90,13 +92,17 @@ export function useWebsiteSettings() {
         result = { success: false, error: new ApiError('Settings not loaded.', 0) };
       }
 
+      if (result.success) {
+        await refreshPublicSite();
+      }
+
       closeEdit();
       showFeedback(
         result.success ? 'Setting saved.' : (result.error?.message ?? 'Failed to save setting.'),
         result.success ? 'success' : 'error',
       );
     },
-    [singleton, closeEdit, showFeedback],
+    [singleton, closeEdit, showFeedback, refreshPublicSite],
   );
 
   const previewWebsite = useCallback(() => {
@@ -106,11 +112,14 @@ export function useWebsiteSettings() {
   const saveDraft = useCallback(async () => {
     if (!singleton.data) return;
     const result = await singleton.update(singleton.data);
+    if (result.success) {
+      await refreshPublicSite();
+    }
     showFeedback(
       result.success ? 'Website settings saved.' : 'Failed to save settings.',
       result.success ? 'success' : 'error',
     );
-  }, [singleton, showFeedback]);
+  }, [singleton, showFeedback, refreshPublicSite]);
 
   return {
     settings,

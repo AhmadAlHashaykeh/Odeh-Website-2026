@@ -20,7 +20,7 @@ export default function ReachOutHero({
           alt=""
           aria-hidden="true"
           className={styles.bgImage}
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
         />
         <div className={styles.overlay} />

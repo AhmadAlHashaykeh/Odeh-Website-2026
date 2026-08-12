@@ -18,7 +18,7 @@ export function useApiListing({
   initialPerPage = 12,
   statisticsFn,
 }) {
-  const [viewMode, setViewMode] = useState('card');
+  const [viewMode, setViewMode] = useState('table');
   const [searchQuery, setSearchQuery] = useState('');
   const debouncedSearch = useDebouncedValue(searchQuery, 350);
   const [currentPage, setCurrentPage] = useState(1);

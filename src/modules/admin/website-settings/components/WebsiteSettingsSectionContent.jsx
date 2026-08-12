@@ -3,12 +3,13 @@ import AdminIcon from '../../components/AdminIcons';
 import WebsiteSettingCard from './WebsiteSettingCard';
 import WebsiteShortcutCard from './WebsiteShortcutCard';
 import { websiteSettingsShortcuts } from '../mock/websiteSettingsConfig';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './WebsiteSettingsSectionContent.module.css';
 
 function LogoPreview({ logo }) {
   return (
     <div className={styles.logoPreview}>
-      <img src={logo.src} alt={logo.alt} loading="lazy" />
+      <img src={resolveMediaUrl(logo.src)} alt={logo.alt} loading="lazy" />
     </div>
   );
 }
@@ -16,7 +17,7 @@ function LogoPreview({ logo }) {
 function FaviconPreview({ favicon }) {
   return (
     <div className={styles.faviconPreview}>
-      <img src={favicon.src} alt="" loading="lazy" aria-hidden="true" />
+      <img src={resolveMediaUrl(favicon.src)} alt="" loading="lazy" aria-hidden="true" />
     </div>
   );
 }

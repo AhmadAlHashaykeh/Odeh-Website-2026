@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { StatusBadge, SeoDelegationNotice } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ServiceDetailsDrawer.module.css';
 
 function formatDate(value) {
@@ -67,7 +68,7 @@ export default function ServiceDetailsDrawer({ service, onClose }) {
         </button>
 
         <div className={styles.hero}>
-          <img src={service.image} alt={service.title} className={styles.heroImage} />
+          <img src={resolveMediaUrl(service.image)} alt={service.title} className={styles.heroImage} />
           <div className={styles.heroOverlay} aria-hidden="true" />
           <div className={styles.heroInfo}>
             <span className={styles.slug}>/{service.slug}</span>

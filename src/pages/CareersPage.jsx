@@ -1,6 +1,6 @@
 import { AboutPageShell } from '../components/AboutSection';
 import { CareersHero, CareersIntro, JobList } from '../components/Careers';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getCareers } from '../api/public/content';
 import { usePublicQuery } from '../hooks/usePublicQuery';
 import { mapJob } from '../utils/contentMappers';
@@ -20,7 +20,7 @@ export default function CareersPage() {
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="hero-grid" />
       </AboutPageShell>
     );
   }

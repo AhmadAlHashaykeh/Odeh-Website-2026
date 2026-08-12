@@ -1,0 +1,251 @@
+.skeleton {
+  width: 100%;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Hero variants ── */
+
+.hero {
+  position: relative;
+  min-height: clamp(320px, 45vh, 480px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  background: linear-gradient(
+    180deg,
+    rgba(31, 31, 31, 0.95) 0%,
+    rgba(37, 37, 37, 0.98) 55%,
+    var(--color-bg) 100%
+  );
+}
+
+.heroCompact {
+  min-height: clamp(260px, 38vh, 400px);
+}
+
+.heroFull {
+  min-height: calc(100vh - var(--navbar-height));
+  align-items: center;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 20%, rgba(0, 138, 166, 0.1), transparent 70%),
+    linear-gradient(rgba(0, 138, 166, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 138, 166, 0.03) 1px, transparent 1px);
+  background-size: auto, 48px 48px, 48px 48px;
+  opacity: 0.6;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 640px;
+}
+
+.breadcrumbs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Section layouts ── */
+
+.section {
+  padding-block: var(--section-spacing);
+}
+
+.sectionTight {
+  padding-block: var(--section-spacing-sm);
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--section-grid-gap);
+  align-items: start;
+}
+
+.imageBlock {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+.galleryBlock {
+  aspect-ratio: 16 / 7;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--section-spacing-sm);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--section-grid-gap);
+}
+
+.cardItem {
+  aspect-ratio: 3 / 4;
+}
+
+.cardItemWide {
+  aspect-ratio: 16 / 10;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.teamCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formField {
+  height: 3rem;
+  border-radius: var(--radius-sm);
+}
+
+.formFieldWide {
+  grid-column: 1 / -1;
+  height: 8rem;
+}
+
+.searchBar {
+  height: 3.25rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 2rem;
+}
+
+.resultList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.resultItem {
+  height: 5.5rem;
+  border-radius: var(--radius-md);
+}
+
+.documentSection {
+  margin-bottom: 2rem;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-block: clamp(4rem, 12vw, 8rem);
+  gap: 1rem;
+}
+
+.connectColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.connectHero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.connectLink {
+  height: 3.75rem;
+  border-radius: var(--radius-md);
+}
+
+.homeSection {
+  padding-block: var(--section-spacing);
+}
+
+.homeSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--section-grid-gap);
+  align-items: center;
+}
+
+.servicesRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--section-grid-gap);
+}
+
+.serviceCard {
+  aspect-ratio: 3 / 4;
+}
+
+@media (max-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .twoCol,
+  .homeSplit,
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardGrid,
+  .servicesRow {
+    grid-template-columns: 1fr;
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}

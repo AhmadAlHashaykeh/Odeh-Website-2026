@@ -15,6 +15,8 @@ export interface Project {
   location?: string | null;
   projectType?: string | null;
   area?: string | null;
+  services?: string | null;
+  completionStatus?: string | null;
   year?: number | null;
   status: string;
   published: boolean;

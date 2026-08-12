@@ -11,18 +11,6 @@ export default function ProjectsToolbar({
   categoryFilter,
   onCategoryFilterChange,
   categoryOptions,
-  featuredFilter,
-  onFeaturedFilterChange,
-  featuredOptions,
-  publishedFilter,
-  onPublishedFilterChange,
-  publishedOptions,
-  yearFilter,
-  onYearFilterChange,
-  yearOptions,
-  typeFilter,
-  onTypeFilterChange,
-  typeOptions,
   sortBy,
   onSortChange,
   sortOptions,
@@ -40,7 +28,7 @@ export default function ProjectsToolbar({
           <SearchField
             value={searchValue}
             onChange={onSearchChange}
-            placeholder="Search projects by name, location, type..."
+            placeholder="Search by name, location, architect..."
             ariaLabel="Search projects"
           />
         </div>
@@ -84,38 +72,6 @@ export default function ProjectsToolbar({
           options={statusOptions}
           icon="filter"
           ariaLabel="Filter by status"
-        />
-        <FilterDropdown
-          label="Featured"
-          value={featuredFilter}
-          onChange={onFeaturedFilterChange}
-          options={featuredOptions}
-          icon="star"
-          ariaLabel="Filter by featured"
-        />
-        <FilterDropdown
-          label="Publication"
-          value={publishedFilter}
-          onChange={onPublishedFilterChange}
-          options={publishedOptions}
-          icon="external"
-          ariaLabel="Filter by publication"
-        />
-        <FilterDropdown
-          label="Year"
-          value={yearFilter}
-          onChange={onYearFilterChange}
-          options={yearOptions}
-          icon="filter"
-          ariaLabel="Filter by year"
-        />
-        <FilterDropdown
-          label="Type"
-          value={typeFilter}
-          onChange={onTypeFilterChange}
-          options={typeOptions}
-          icon="projects"
-          ariaLabel="Filter by project type"
         />
         <FilterDropdown
           label="Sort"

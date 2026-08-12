@@ -245,6 +245,7 @@ export default function Carousel({ children, className = '' }) {
           onPointerCancel={handlePointerUp}
           onPointerLeave={handlePointerLeave}
           onWheel={handleWheel}
+          onDragStart={(e) => e.preventDefault()}
         >
           {Children.toArray(children).map((child) => (
                 <div key={child.key} className={styles.slide} data-slide>

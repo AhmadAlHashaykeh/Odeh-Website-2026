@@ -1,6 +1,6 @@
 import { AboutPageShell } from '../components/AboutSection';
 import { ReachOutHero, ContactSection, OfficeMap } from '../components/ReachOut';
-import PageLoader from '../components/Utility/PageLoader';
+import PublicPageSkeleton from '../components/Utility/PublicPageSkeleton';
 import { getReachOutPage } from '../api/public/content';
 import { usePublicSite } from '../context/PublicSiteContext';
 import { usePublicQuery } from '../hooks/usePublicQuery';
@@ -18,7 +18,7 @@ export default function ReachOutPage() {
   if (loading) {
     return (
       <AboutPageShell meta={FALLBACK_META}>
-        <PageLoader />
+        <PublicPageSkeleton variant="form" />
       </AboutPageShell>
     );
   }

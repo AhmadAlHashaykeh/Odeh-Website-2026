@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { usePageMeta } from '../../../../hooks/usePageMeta';
 import { useAdminBreadcrumbs } from '../../cms/hooks/useAdminBreadcrumbs';
 import {
@@ -10,13 +10,13 @@ import {
   AdminActionFlowsHost,
 } from '../../cms/components';
 import * as teamApi from '../../../../api/team';
-import { useModuleApiActions, handleListingDelete } from '../../hooks/useModuleApiActions';
+import * as teamCategoriesApi from '../../../../api/teamCategories';
+import * as teamRanksApi from '../../../../api/teamRanks';
+import { useModuleApiActions, handleListingDelete, applyBulkUpdates } from '../../hooks/useModuleApiActions';
 import { useTeamMembersListing } from '../hooks/useTeamMembersListing';
 import {
   teamMembersPageMeta,
   statusFilterOptions,
-  categoryFilterOptions,
-  experienceFilterOptions,
   sortOptions,
   bulkActionOptions,
 } from '../mock/teamMembersConfig';
@@ -28,9 +28,82 @@ import TeamMembersEmptyState from '../components/TeamMembersEmptyState';
 import TeamMembersSkeleton from '../components/TeamMembersSkeleton';
 import styles from './TeamMembersPage.module.css';
 
+const RANK_COLOR_HINTS = {
+  'founder-executive': 'blue',
+  'associate-partner': 'lime',
+  'senior-engineer': 'pink',
+  engineer: 'green',
+  'academic-expert': 'teal',
+  'support-services': 'light blue',
+};
+
 export default function TeamMembersPage() {
   const listing = useTeamMembersListing({ initialPerPage: 12 });
   const [bulkAction, setBulkAction] = useState(bulkActionOptions[0]?.value || '');
+  const [moveTargetId, setMoveTargetId] = useState('');
+  const [categoryRecords, setCategoryRecords] = useState([]);
+  const [rankRecords, setRankRecords] = useState([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    Promise.all([
+      teamCategoriesApi.list({ per_page: 50, status: 'active', sort: 'display_order' }),
+      teamRanksApi.list({ per_page: 50, status: 'active', sort: 'display_order' }),
+    ])
+      .then(([categoriesResponse, ranksResponse]) => {
+        if (cancelled) return;
+        setCategoryRecords(categoriesResponse.data ?? []);
+        setRankRecords(ranksResponse.data ?? []);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setCategoryRecords([]);
+        setRankRecords([]);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const sectionOptions = useMemo(() => {
+    return [
+      { value: 'all', label: 'All sections' },
+      ...categoryRecords.map((category) => ({
+        value: category.slug,
+        label: category.name,
+      })),
+    ];
+  }, [categoryRecords]);
+
+  const moveTargetOptions = useMemo(
+    () => [
+      { value: '', label: 'Choose section…' },
+      ...categoryRecords.map((category) => ({
+        value: category.id,
+        label: category.name,
+      })),
+    ],
+    [categoryRecords],
+  );
+
+  const fieldOptions = useMemo(
+    () => ({
+      teamCategoryId: categoryRecords.map((category) => ({
+        value: category.id,
+        label: category.name,
+      })),
+      teamRankId: rankRecords.map((rank) => {
+        const hint = RANK_COLOR_HINTS[rank.slug];
+        return {
+          value: rank.id,
+          label: hint ? `${rank.name} (${hint})` : rank.name,
+        };
+      }),
+    }),
+    [categoryRecords, rankRecords],
+  );
 
   const flows = useModuleApiActions({
     moduleKey: 'team-members',
@@ -45,16 +118,52 @@ export default function TeamMembersPage() {
     description: teamMembersPageMeta.description,
   });
 
-  const departmentOptions = useMemo(
-    () => [
-      { value: 'all', label: 'All Departments' },
-      ...listing.departments.map((dept) => ({ value: dept, label: dept })),
-    ],
-    [listing.departments],
-  );
+  const handleBulkActionChange = (value) => {
+    setBulkAction(value);
+    if (value !== 'move') {
+      setMoveTargetId('');
+    }
+  };
 
-  const handleBulkApply = () => {
-    if (bulkAction === 'delete') listing.openDeleteModal();
+  const handleBulkApply = async () => {
+    if (bulkAction === 'delete') {
+      listing.openDeleteModal();
+      return;
+    }
+
+    if (bulkAction === 'move') {
+      if (!moveTargetId) {
+        flows.showFeedback('Choose a section to move the selected members into.', 'error');
+        return;
+      }
+
+      const moved = await applyBulkUpdates({
+        api: teamApi,
+        listing,
+        flows,
+        bulkAction: 'move',
+        payloadMap: {
+          move: { teamCategoryId: moveTargetId },
+        },
+      });
+
+      if (moved) {
+        setMoveTargetId('');
+        setBulkAction(bulkActionOptions[0]?.value || 'show');
+      }
+      return;
+    }
+
+    await applyBulkUpdates({
+      api: teamApi,
+      listing,
+      flows,
+      bulkAction,
+      payloadMap: {
+        show: { status: 'active' },
+        hide: { status: 'hidden' },
+      },
+    });
   };
 
   const handleDeleteConfirm = async () => {
@@ -85,18 +194,12 @@ export default function TeamMembersPage() {
           <TeamMembersToolbar
             searchValue={listing.searchQuery}
             onSearchChange={listing.setSearchQuery}
-            departmentFilter={listing.departmentFilter}
-            onDepartmentFilterChange={listing.setDepartmentFilter}
-            departmentOptions={departmentOptions}
-            categoryFilter={listing.categoryFilter}
-            onCategoryFilterChange={listing.setCategoryFilter}
-            categoryOptions={categoryFilterOptions}
+            sectionFilter={listing.categoryFilter}
+            onSectionFilterChange={listing.setCategoryFilter}
+            sectionOptions={sectionOptions}
             statusFilter={listing.statusFilter}
             onStatusFilterChange={listing.setStatusFilter}
             statusOptions={statusFilterOptions}
-            experienceFilter={listing.experienceFilter}
-            onExperienceFilterChange={listing.setExperienceFilter}
-            experienceOptions={experienceFilterOptions}
             sortBy={listing.sortBy}
             onSortChange={listing.setSortBy}
             sortOptions={sortOptions}
@@ -104,8 +207,6 @@ export default function TeamMembersPage() {
             onViewChange={listing.setViewMode}
             onRefresh={listing.simulateRefresh}
             isRefreshing={listing.isRefreshing}
-            onBulkActionsClick={listing.openDeleteModal}
-            bulkActionsDisabled={listing.selectedIds.size === 0}
           />
 
           <SelectionToolbar
@@ -113,9 +214,14 @@ export default function TeamMembersPage() {
             onClearSelection={listing.clearSelection}
             bulkActionOptions={bulkActionOptions}
             bulkAction={bulkAction}
-            onBulkActionChange={setBulkAction}
+            onBulkActionChange={handleBulkActionChange}
             onBulkApply={handleBulkApply}
             onDelete={listing.openDeleteModal}
+            showTargetForActions={['move']}
+            targetOptions={moveTargetOptions}
+            targetValue={moveTargetId}
+            onTargetChange={setMoveTargetId}
+            targetAriaLabel="Move selected members to section"
           />
 
           <div className={styles.contentArea}>
@@ -176,7 +282,11 @@ export default function TeamMembersPage() {
         onClose={listing.closeMember}
       />
 
-      <AdminActionFlowsHost moduleKey="team-members" flows={flows} />
+      <AdminActionFlowsHost
+        moduleKey="team-members"
+        flows={flows}
+        fieldOptions={fieldOptions}
+      />
     </div>
   );
 }

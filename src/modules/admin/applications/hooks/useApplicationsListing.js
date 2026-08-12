@@ -18,19 +18,49 @@ const SORT_MAP = {
 };
 
 function mapApplication(application) {
+  const notes = application.adminNotes
+    ? [
+        {
+          id: `note-${application.id}`,
+          author: 'Admin',
+          content: application.adminNotes,
+          createdAt: application.lastUpdated ?? application.submittedAt,
+        },
+      ]
+    : Array.isArray(application.notes)
+      ? application.notes
+      : [];
+
+  const timeline = Array.isArray(application.timeline)
+    ? application.timeline
+    : [
+        {
+          id: `submitted-${application.id}`,
+          type: 'submitted',
+          label: 'Application submitted',
+          description: 'Candidate submitted their application.',
+          timestamp: application.submittedAt ?? application.lastUpdated,
+        },
+      ];
+
   return {
     ...application,
-    applicantName: application.fullName,
+    applicantName: application.fullName ?? '',
     submittedDate: application.submittedAt?.split('T')[0] ?? application.submittedAt,
     cvFileName: application.cvOriginalName,
+    cvFileSize: application.cvSize ?? application.cvFileSize,
     coverLetterPreview: application.coverLetter,
     linkedInUrl: application.linkedinUrl,
+    department: application.department ?? '—',
+    source: application.source ?? 'Careers page',
+    timeline,
+    notes,
+    notesCount: application.notesCount ?? notes.length,
   };
 }
 
 function getInitialViewMode() {
-  if (typeof window === 'undefined') return 'table';
-  return window.innerWidth <= 768 ? 'card' : 'table';
+  return 'table';
 }
 
 export function useApplicationsListing({ initialPerPage = 12, initialJobFilter = ALL } = {}) {
@@ -113,10 +143,10 @@ export function useApplicationsListing({ initialPerPage = 12, initialJobFilter =
         { id: 'total', label: 'Total Applications', helper: 'All candidates', params: {} },
         { id: 'new', label: 'New', helper: 'Awaiting review', params: { status: 'new' } },
         {
-          id: 'reviewed',
-          label: 'Reviewed',
+          id: 'reviewing',
+          label: 'In Review',
           helper: 'Initial screening done',
-          params: { status: 'reviewed' },
+          params: { status: 'reviewing' },
         },
         {
           id: 'shortlisted',

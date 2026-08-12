@@ -85,13 +85,15 @@ class JobController extends Controller
 
         $data = $request->validated();
 
-        if (array_key_exists('title', $data) || array_key_exists('slug', $data)) {
+        if (array_key_exists('slug', $data) && filled($data['slug'])) {
             $slugInput = $data;
             if (! array_key_exists('title', $slugInput)) {
                 $slugInput['title'] = $job->title;
             }
 
             $data['slug'] = $this->resolveSlug($slugInput, $job, $job->id);
+        } else {
+            unset($data['slug']);
         }
 
         $job->update($data);

@@ -1,12 +1,16 @@
+import { useRef, useState } from 'react';
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input } from '../../ui';
-import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
+import { CoverImageField, GalleryPlaceholder } from '../../cms/action-flows/PlaceholderFieldGroup';
 import { panelEditTitles } from '../mock/aboutPagesConfig';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
+import { resolveMediaPath, resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './AboutSectionEditModal.module.css';
 
-function HeroForm({ data }) {
+function HeroForm({ data, showSubtitle = false }) {
+  const backgroundPath = resolveMediaPath(data.backgroundImage);
+
   return (
     <>
       <Form.Section title="Page Header">
@@ -32,6 +36,19 @@ function HeroForm({ data }) {
             />
           </Input.Field>
         </Form.Field>
+        {showSubtitle ? (
+          <Form.Field label="Subtitle" htmlFor="hero-subtitle">
+            <Input.Field>
+              <input
+                id="hero-subtitle"
+                name="hero-subtitle"
+                type="text"
+                className={inputStyles.input}
+                defaultValue={data.subtitle}
+              />
+            </Input.Field>
+          </Form.Field>
+        ) : null}
         <Form.Field label="Description" htmlFor="hero-description">
           <Input.Field>
             <textarea
@@ -46,7 +63,18 @@ function HeroForm({ data }) {
       </Form.Section>
       <Form.Section title="Background Image">
         <div className={styles.mediaField}>
-          <CoverImageField label="Hero Background" src={data.backgroundImage} alt={data.ariaLabel} />
+          <CoverImageField
+            label="Hero Background"
+            name="backgroundImage"
+            src={data.backgroundImage}
+            alt={data.ariaLabel}
+            uploadModule="about-pages"
+            uploadField="backgroundImage"
+            onChange={(nextSrc) => {
+              const input = document.getElementById('hero-bg');
+              if (input) input.value = nextSrc;
+            }}
+          />
         </div>
         <Form.Field label="Image Path" htmlFor="hero-bg">
           <Input.Field>
@@ -55,12 +83,41 @@ function HeroForm({ data }) {
               name="hero-bg"
               type="text"
               className={inputStyles.input}
-              defaultValue={data.backgroundImage}
+              defaultValue={backgroundPath}
             />
           </Input.Field>
         </Form.Field>
       </Form.Section>
     </>
+  );
+}
+
+function MetaForm({ data }) {
+  return (
+    <Form.Section title="SEO / Meta">
+      <Form.Field label="Meta Title" htmlFor="meta-title">
+        <Input.Field>
+          <input
+            id="meta-title"
+            name="meta-title"
+            type="text"
+            className={inputStyles.input}
+            defaultValue={data.title}
+          />
+        </Input.Field>
+      </Form.Field>
+      <Form.Field label="Meta Description" htmlFor="meta-description">
+        <Input.Field>
+          <textarea
+            id="meta-description"
+            name="meta-description"
+            className={`${inputStyles.input} ${inputStyles.textarea}`}
+            defaultValue={data.description}
+            rows={3}
+          />
+        </Input.Field>
+      </Form.Field>
+    </Form.Section>
   );
 }
 
@@ -93,7 +150,18 @@ function CompanyIntroForm({ data }) {
       </Form.Section>
       <Form.Section title="Featured Image">
         <div className={styles.mediaField}>
-          <CoverImageField label="Office Image" src={data.image.src} alt={data.image.alt} />
+          <CoverImageField
+            label="Office Image"
+            name="intro-image-src"
+            src={data.image.src}
+            alt={data.image.alt}
+            uploadModule="about-pages"
+            uploadField="image"
+            onChange={(nextSrc) => {
+              const input = document.getElementById('intro-image-src');
+              if (input) input.value = nextSrc;
+            }}
+          />
         </div>
         <Form.Row>
           <Form.Field label="Image Path" htmlFor="intro-image-src">
@@ -125,6 +193,17 @@ function CompanyIntroForm({ data }) {
 }
 
 function OfficeGalleryForm({ data }) {
+  const [images, setImages] = useState(() =>
+    (data.images ?? []).map((image) => ({
+      ...image,
+      src: resolveMediaPath(image),
+    })),
+  );
+
+  const handleRemove = (index) => {
+    setImages((prev) => prev.filter((_, itemIndex) => itemIndex !== index));
+  };
+
   return (
     <>
       <Form.Section title="Gallery Header">
@@ -151,16 +230,34 @@ function OfficeGalleryForm({ data }) {
           </Input.Field>
         </Form.Field>
       </Form.Section>
-      <Form.Section title={`Office Images (${data.images.length})`}>
+      <Form.Section title={`Office Images (${images.length})`}>
+        <div className={styles.mediaField}>
+          <GalleryPlaceholder
+            label="Office Gallery"
+            name="gallery-images"
+            images={images}
+            onChange={setImages}
+            uploadModule="about-pages"
+            uploadField="gallery"
+          />
+        </div>
         <div className={styles.imageList}>
-          {data.images.map((image, index) => (
-            <div key={image.src} className={styles.imageListItem}>
-              <img src={image.src} alt={image.alt} className={styles.imageThumb} />
+          {images.map((image, index) => (
+            <div key={`${image.src}-${index}`} className={styles.imageListItem}>
+              <img src={resolveMediaUrl(image.src)} alt={image.alt} className={styles.imageThumb} />
               <div className={styles.imageInfo}>
                 <span className={styles.imageOrder}>#{index + 1}</span>
                 <span className={styles.imagePath}>{image.src}</span>
                 <span className={styles.imageAlt}>{image.alt}</span>
               </div>
+              <button
+                type="button"
+                className={styles.imageRemoveBtn}
+                onClick={() => handleRemove(index)}
+                aria-label={`Remove image ${index + 1}`}
+              >
+                <AdminIcon name="trash" size={14} />
+              </button>
             </div>
           ))}
         </div>
@@ -349,6 +446,7 @@ function GrowthTableForm({ data }) {
                   <td>
                     <input
                       type="number"
+                      name={`growth-year-${index}`}
                       className={inputStyles.input}
                       defaultValue={row.year}
                       aria-label={`Year row ${index + 1}`}
@@ -357,6 +455,7 @@ function GrowthTableForm({ data }) {
                   <td>
                     <input
                       type="number"
+                      name={`growth-projects-${index}`}
                       className={inputStyles.input}
                       defaultValue={row.projects}
                       aria-label={`Projects row ${index + 1}`}
@@ -365,6 +464,7 @@ function GrowthTableForm({ data }) {
                   <td>
                     <input
                       type="number"
+                      name={`growth-area-${index}`}
                       className={inputStyles.input}
                       defaultValue={row.area}
                       aria-label={`Area row ${index + 1}`}
@@ -385,7 +485,13 @@ function PanelForm({ panelId, data }) {
     case 'overview-hero':
     case 'approach-hero':
     case 'history-hero':
+    case 'activities-hero':
       return <HeroForm data={data} />;
+    case 'team-hero':
+      return <HeroForm data={data} showSubtitle />;
+    case 'team-meta':
+    case 'activities-meta':
+      return <MetaForm data={data} />;
     case 'overview-intro':
       return <CompanyIntroForm data={data} />;
     case 'overview-gallery':
@@ -410,13 +516,15 @@ export default function AboutSectionEditModal({
   onClose,
   onSave,
 }) {
+  const formRef = useRef(null);
+
   if (!panelId || !panelData) return null;
 
   const title = panelEditTitles[panelId];
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.(panelId, e.currentTarget);
+    onSave?.(panelId, formRef.current);
   };
 
   const modalHeader = (
@@ -467,7 +575,12 @@ export default function AboutSectionEditModal({
       footer={modalFooter}
       ariaLabelledBy="about-panel-modal-title"
     >
-      <Form key={panelId} onSubmit={handleSave} className={`${drawerStyles.form} ${styles.form}`}>
+      <Form
+        key={panelId}
+        ref={formRef}
+        onSubmit={handleSave}
+        className={`${drawerStyles.form} ${styles.form}`}
+      >
         <PanelForm panelId={panelId} data={panelData} />
       </Form>
     </Modal>

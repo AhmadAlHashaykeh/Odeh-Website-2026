@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { resolveMediaUrl } from '../../utils/mediaUrl';
 import styles from './ProjectCard.module.css';
 
 export default function ProjectCard({ project, priority = false }) {
@@ -10,8 +11,7 @@ export default function ProjectCard({ project, priority = false }) {
         aria-label={`View project: ${project.title}`}
       >
         <div className={styles.imageWrap}>
-          <img
-            src={project.coverImage}
+          <img src={resolveMediaUrl(project.coverImage)}
             alt={project.title}
             className={styles.image}
             loading={priority ? 'eager' : 'lazy'}

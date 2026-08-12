@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { StatusBadge, SeoDelegationNotice } from '../../cms/components';
 import AdminIcon from '../../components/AdminIcons';
 import ActivityGalleryPreview from './ActivityGalleryPreview';
+import { resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './ActivityDetailsDrawer.module.css';
 
 function formatDate(value) {
@@ -73,7 +74,7 @@ export default function ActivityDetailsDrawer({ activity, onClose }) {
         </button>
 
         <div className={styles.coverWrap}>
-          <img src={activity.coverImage} alt={activity.title} className={styles.cover} />
+          <img src={resolveMediaUrl(activity.coverImage)} alt={activity.title} className={styles.cover} />
           <div className={styles.coverOverlay} aria-hidden="true" />
           <div className={styles.coverInfo}>
             <span className={styles.dateLabel}>{activity.activityDate}</span>
@@ -198,7 +199,7 @@ export default function ActivityDetailsDrawer({ activity, onClose }) {
                 {activity.relatedActivities.map((related) => (
                   <div key={related.id} className={styles.relatedCard}>
                     <div className={styles.relatedThumb}>
-                      <img src={related.coverImage} alt={related.title} loading="lazy" />
+                      <img src={resolveMediaUrl(related.coverImage)} alt={related.title} loading="lazy" />
                     </div>
                     <div className={styles.relatedInfo}>
                       <span className={styles.relatedTitle}>{related.title}</span>

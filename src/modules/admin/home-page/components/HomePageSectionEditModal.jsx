@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
 import AdminIcon from '../../components/AdminIcons';
 import { Modal, Button, Form, Badge, Input } from '../../ui';
 import { CmsModuleShortcut } from '../../cms/components';
@@ -5,6 +6,8 @@ import { CoverImageField } from '../../cms/action-flows/PlaceholderFieldGroup';
 import { sectionEditTitles } from '../mock/homePageConfig';
 import inputStyles from '../../ui/components/Input.module.css';
 import drawerStyles from '../../cms/action-flows/AdminFormDrawer.module.css';
+import { getProjects } from '../../../../api/public/content';
+import { resolveMediaPath, resolveMediaUrl } from '../../../../utils/mediaUrl';
 import styles from './HomePageSectionEditModal.module.css';
 
 function StatFields({ stats, prefix }) {
@@ -145,7 +148,14 @@ function HeroForm({ data }) {
 
       <Form.Section title="Hero Media">
         <div className={styles.mediaField}>
-          <CoverImageField label="Hero Poster Image" src={data.posterImage} alt="Hero poster" />
+          <CoverImageField
+            label="Hero Poster Image"
+            name="posterImage"
+            src={data.posterImage}
+            alt="Hero poster"
+            uploadModule="home-page"
+            uploadField="posterImage"
+          />
         </div>
         <Form.Field label="Hero Video" htmlFor="hero-video" helper="MP4 source used behind the poster">
           <Input.Field>
@@ -164,9 +174,17 @@ function HeroForm({ data }) {
 }
 
 function AboutForm({ data }) {
+  const stats =
+    data.stats?.length > 0
+      ? data.stats
+      : [
+          { value: '', label: '' },
+          { value: '', label: '' },
+        ];
+
   return (
     <>
-      <Form.Section title="Homepage Section Framing">
+      <Form.Section title="Section Header">
         <Form.Field label="Section Label" htmlFor="about-label">
           <Input.Field>
             <input
@@ -178,6 +196,72 @@ function AboutForm({ data }) {
             />
           </Input.Field>
         </Form.Field>
+        <Form.Row>
+          <Form.Field label="Title Main" htmlFor="about-title-main">
+            <Input.Field>
+              <input
+                id="about-title-main"
+                name="about-title-main"
+                type="text"
+                className={inputStyles.input}
+                defaultValue={data.titleMain}
+              />
+            </Input.Field>
+          </Form.Field>
+          <Form.Field label="Title Accent" htmlFor="about-title-accent">
+            <Input.Field>
+              <input
+                id="about-title-accent"
+                name="about-title-accent"
+                type="text"
+                className={inputStyles.input}
+                defaultValue={data.titleAccent}
+              />
+            </Input.Field>
+          </Form.Field>
+        </Form.Row>
+        <Form.Field label="Body Copy" htmlFor="about-body">
+          <Input.Field>
+            <textarea
+              id="about-body"
+              name="about-body"
+              className={`${inputStyles.input} ${inputStyles.textarea}`}
+              defaultValue={data.body}
+              rows={5}
+            />
+          </Input.Field>
+        </Form.Field>
+      </Form.Section>
+
+      <Form.Section title="Statistics">
+        <StatFields stats={stats} prefix="about" />
+      </Form.Section>
+
+      <Form.Section title="Featured Image">
+        <div className={styles.mediaField}>
+          <CoverImageField
+            label="About Section Image"
+            name="about-image"
+            src={data.image}
+            alt={data.imageAlt || 'About section image'}
+            uploadModule="home-page"
+            uploadField="aboutImage"
+          />
+        </div>
+        <Form.Field label="Image Alt Text" htmlFor="about-image-alt">
+          <Input.Field>
+            <input
+              id="about-image-alt"
+              name="about-image-alt"
+              type="text"
+              className={inputStyles.input}
+              defaultValue={data.imageAlt}
+            />
+          </Input.Field>
+        </Form.Field>
+      </Form.Section>
+
+      <Form.Section title="Call to Action">
         <Form.Row>
           <Form.Field label="Read More Label" htmlFor="about-readmore-label">
             <Input.Field>
@@ -202,15 +286,12 @@ function AboutForm({ data }) {
             </Input.Field>
           </Form.Field>
         </Form.Row>
-        <p className={styles.formNote}>
-          Title, body copy, stats, and image are sourced from About Pages → Overview. Edit them there, not here.
-        </p>
       </Form.Section>
 
       <Form.Section title="Related Content">
         <CmsModuleShortcut
           title="Open About Pages"
-          description="Edit company introduction, overview hero, and office gallery."
+          description="Edit the full About Overview page, team, and activities content."
           path="/admin/about-pages"
           icon="about"
         />
@@ -274,7 +355,7 @@ function ServicesForm({ data }) {
         <div className={styles.cardList}>
           {data.services.map((service) => (
             <div key={service.id} className={styles.cardListItem}>
-              <img src={service.image} alt={service.title} className={styles.cardThumb} />
+              <img src={resolveMediaUrl(service.image)} alt={service.title} className={styles.cardThumb} />
               <div className={styles.cardInfo}>
                 <span className={styles.cardOrder}>#{service.order}</span>
                 <strong>{service.title}</strong>
@@ -298,6 +379,91 @@ function ServicesForm({ data }) {
 }
 
 function ProjectsForm({ data }) {
+  const initialPoolIds = Array.isArray(data.poolProjectIds) ? data.poolProjectIds : [];
+  const [options, setOptions] = useState([]);
+  const [selectedIds, setSelectedIds] = useState(initialPoolIds);
+  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getProjects()
+      .then((response) => {
+        if (cancelled) return;
+        const projects = response?.data?.projects ?? [];
+        setOptions(Array.isArray(projects) ? projects : []);
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError('Unable to load published projects.');
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const selectedSet = useMemo(() => new Set(selectedIds), [selectedIds]);
+
+  const filteredOptions = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    if (!query) return options;
+
+    return options.filter((project) => {
+      const haystack = [project.title, project.category, project.location, project.slug]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase();
+      return haystack.includes(query);
+    });
+  }, [options, search]);
+
+  const poolPayload = useMemo(() => {
+    const byId = new Map(options.map((project) => [project.id, project]));
+    const orderedSelected = selectedIds
+      .map((id) => byId.get(id))
+      .filter(Boolean);
+
+    const previews = orderedSelected.map((project, index) => ({
+      id: project.id,
+      title: project.title,
+      category: project.category ?? '',
+      location: project.location ?? '',
+      description: project.description ?? '',
+      image: resolveMediaPath(project.coverImage ?? project.image),
+      slug: project.slug,
+      categorySlug: project.categorySlug ?? '',
+      order: index + 1,
+    }));
+
+    return JSON.stringify({
+      ids: selectedIds,
+      previews,
+    });
+  }, [options, selectedIds]);
+
+  const toggleProject = (projectId) => {
+    setSelectedIds((current) =>
+      current.includes(projectId)
+        ? current.filter((id) => id !== projectId)
+        : [...current, projectId],
+    );
+  };
+
+  const selectAllFiltered = () => {
+    setSelectedIds((current) => {
+      const next = new Set(current);
+      filteredOptions.forEach((project) => next.add(project.id));
+      return Array.from(next);
+    });
+  };
+
+  const clearSelection = () => setSelectedIds([]);
+
   return (
     <>
       <Form.Section title="Section Header">
@@ -334,35 +500,84 @@ function ProjectsForm({ data }) {
             />
           </Input.Field>
         </Form.Field>
-        <Form.Field label="Displayed Project Count" htmlFor="projects-count">
-          <Input.Field>
-            <input
-              id="projects-count"
-              name="projects-count"
-              type="number"
-              className={inputStyles.input}
-              defaultValue={data.projects.length}
-              readOnly
-            />
-          </Input.Field>
-        </Form.Field>
       </Form.Section>
 
-      <Form.Section title="Selected Project Cards">
-        <div className={styles.cardList}>
-          {data.projects.map((project) => (
-            <div key={project.id} className={styles.cardListItem}>
-              <img src={project.image} alt={project.title} className={styles.cardThumb} />
-              <div className={styles.cardInfo}>
-                <span className={styles.cardOrder}>#{project.order}</span>
-                <strong>{project.title}</strong>
-                <span className={styles.cardPath}>
-                  /projects/{project.categorySlug}/{project.slug}
-                </span>
-              </div>
-            </div>
-          ))}
+      <Form.Section title="Homepage Project Pool">
+        <p className={styles.formNote}>
+          Choose the projects that can appear in this section. The homepage picks 3 at random from
+          this pool on each page load — not from the full portfolio.
+        </p>
+
+        <input type="hidden" name="projects-pool" value={poolPayload} />
+
+        <div className={styles.poolToolbar}>
+          <Input.Field>
+            <input
+              type="search"
+              className={inputStyles.input}
+              placeholder="Search projects…"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              aria-label="Search projects"
+            />
+          </Input.Field>
+          <div className={styles.poolActions}>
+            <button type="button" className={styles.poolActionBtn} onClick={selectAllFiltered}>
+              Select visible
+            </button>
+            <button type="button" className={styles.poolActionBtn} onClick={clearSelection}>
+              Clear
+            </button>
+          </div>
         </div>
+
+        <div className={styles.poolMeta}>
+          <strong>{selectedIds.length}</strong> selected
+          {!loading && <span>· {options.length} published</span>}
+        </div>
+
+        {loading && <p className={styles.formNote}>Loading projects…</p>}
+        {loadError && <p className={styles.formNote}>{loadError}</p>}
+
+        {!loading && !loadError && (
+          <div className={styles.poolList}>
+            {filteredOptions.length === 0 ? (
+              <p className={styles.formNote}>No projects match this search.</p>
+            ) : (
+              filteredOptions.map((project) => {
+                const checked = selectedSet.has(project.id);
+                const image = resolveMediaUrl(project.coverImage ?? project.image);
+
+                return (
+                  <label
+                    key={project.id}
+                    className={`${styles.poolItem} ${checked ? styles.poolItemSelected : ''}`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={() => toggleProject(project.id)}
+                      className={styles.poolCheckbox}
+                    />
+                    {image ? (
+                      <img src={image} alt="" className={styles.cardThumb} loading="lazy" />
+                    ) : (
+                      <span className={styles.poolThumbFallback} aria-hidden="true" />
+                    )}
+                    <span className={styles.cardInfo}>
+                      <strong>{project.title}</strong>
+                      <span className={styles.cardPath}>
+                        {[project.category, project.location].filter(Boolean).join(' · ') ||
+                          project.slug}
+                      </span>
+                    </span>
+                  </label>
+                );
+              })
+            )}
+          </div>
+        )}
+
         <Form.Row>
           <Form.Field label="View All Label" htmlFor="projects-viewall-label">
             <Input.Field>
@@ -387,12 +602,10 @@ function ProjectsForm({ data }) {
             </Input.Field>
           </Form.Field>
         </Form.Row>
-        <p className={styles.formNote}>
-          Project selection is derived from featuredProjects (first 3). Edit project details in the Projects module.
-        </p>
+
         <CmsModuleShortcut
           title="Manage Projects"
-          description="Edit project titles, galleries, categories, and featured status."
+          description="Edit project titles, galleries, categories, and publishing status."
           path="/admin/projects"
           icon="projects"
         />
@@ -423,13 +636,15 @@ export default function HomePageSectionEditModal({
   onClose,
   onSave,
 }) {
+  const formRef = useRef(null);
+
   if (!sectionId || !sectionData) return null;
 
   const title = sectionEditTitles[sectionId];
 
   const handleSave = (e) => {
     e.preventDefault();
-    onSave?.(sectionId, e.currentTarget);
+    onSave?.(sectionId, formRef.current);
   };
 
   const modalHeader = (
@@ -480,7 +695,12 @@ export default function HomePageSectionEditModal({
       footer={modalFooter}
       ariaLabelledBy="home-section-modal-title"
     >
-      <Form key={sectionId} onSubmit={handleSave} className={`${drawerStyles.form} ${styles.form}`}>
+      <Form
+        key={sectionId}
+        ref={formRef}
+        onSubmit={handleSave}
+        className={`${drawerStyles.form} ${styles.form}`}
+      >
         <SectionForm sectionId={sectionId} data={sectionData} />
       </Form>
     </Modal>

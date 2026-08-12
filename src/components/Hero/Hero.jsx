@@ -5,8 +5,8 @@ import { useHeroVideo } from '../../hooks/useHeroVideo';
 import styles from './Hero.module.css';
 
 const DEFAULT_STATS = [
-  { value: '1000+', label: 'Projects Delivered' },
-  { value: '7+', label: 'Years of Practice' },
+  { value: '+1000', label: 'Projects Delivered' },
+  { value: '+8', label: 'Years of Practice' },
   { value: 'Middle East', label: 'Regional Focus' },
 ];
 
@@ -38,7 +38,7 @@ export default function Hero({ content = {} }) {
                 src={posterImage}
                 alt=""
                 aria-hidden="true"
-                fetchPriority="high"
+                fetchpriority="high"
                 decoding="sync"
                 width={1920}
                 height={1080}

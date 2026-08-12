@@ -2,12 +2,30 @@
   width: 56px;
 }
 
-.thumb {
+.thumbBtn {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.thumbRotator {
   width: 44px;
   height: 32px;
   border-radius: var(--radius-sm);
-  object-fit: cover;
   border: 1px solid var(--color-border);
+}
+
+.thumb {
+  border-radius: var(--radius-sm);
+}
+
+.autoImageHint {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  color: var(--color-accent-light);
 }
 
 .slugCell {
