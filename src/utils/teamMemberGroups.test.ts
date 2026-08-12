@@ -49,7 +49,7 @@ describe('groupTeamMembers', () => {
     expect(groups.map((group) => group.title)).toEqual([
       'Board of Directors',
       'Structural Engineering',
-      'Other Team Members',
+      'Team Members',
     ]);
     expect(groups[0].members.map((m: { slug: string }) => m.slug)).toEqual(['b']);
     expect(groups[1].members.map((m: { slug: string }) => m.slug)).toEqual(['a']);

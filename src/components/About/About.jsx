@@ -14,8 +14,8 @@ export default function About({ content = {} }) {
     content.body ??
     'Welcome to the online platform of ODEH & PARTNERS DESIGN, an avant-garde structural design firm with a global vision.';
   const stats = content.stats ?? [
-    { value: '7+', label: 'Years of Excellence' },
-    { value: '1000+', label: 'Projects Completed' },
+    { value: '+8', label: 'Years of Excellence' },
+    { value: '+1000', label: 'Projects Completed' },
   ];
   const image =
     resolveMediaUrl(content.image) || '/assets/about/odeh-about-office.webp';

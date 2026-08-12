@@ -93,7 +93,7 @@ function DrawerSkeleton() {
   );
 }
 
-export default function ServicesSkeleton({ viewMode = 'card', showDrawer = false }) {
+export default function ServicesSkeleton({ viewMode = 'table', showDrawer = false }) {
   return (
     <div className={styles.full} aria-busy="true" aria-label="Loading services">
       <StatsSkeleton />

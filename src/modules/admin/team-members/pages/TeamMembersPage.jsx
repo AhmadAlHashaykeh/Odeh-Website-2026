@@ -40,6 +40,7 @@ const RANK_COLOR_HINTS = {
 export default function TeamMembersPage() {
   const listing = useTeamMembersListing({ initialPerPage: 12 });
   const [bulkAction, setBulkAction] = useState(bulkActionOptions[0]?.value || '');
+  const [moveTargetId, setMoveTargetId] = useState('');
   const [categoryRecords, setCategoryRecords] = useState([]);
   const [rankRecords, setRankRecords] = useState([]);
 
@@ -67,24 +68,32 @@ export default function TeamMembersPage() {
   }, []);
 
   const sectionOptions = useMemo(() => {
-    const primary = categoryRecords.filter((category) => category.slug !== 'other-team-members');
     return [
       { value: 'all', label: 'All sections' },
-      ...primary.map((category) => ({
+      ...categoryRecords.map((category) => ({
         value: category.slug,
         label: category.name,
       })),
     ];
   }, [categoryRecords]);
 
+  const moveTargetOptions = useMemo(
+    () => [
+      { value: '', label: 'Choose section…' },
+      ...categoryRecords.map((category) => ({
+        value: category.id,
+        label: category.name,
+      })),
+    ],
+    [categoryRecords],
+  );
+
   const fieldOptions = useMemo(
     () => ({
-      teamCategoryId: categoryRecords
-        .filter((category) => category.slug !== 'other-team-members')
-        .map((category) => ({
-          value: category.id,
-          label: category.name,
-        })),
+      teamCategoryId: categoryRecords.map((category) => ({
+        value: category.id,
+        label: category.name,
+      })),
       teamRankId: rankRecords.map((rank) => {
         const hint = RANK_COLOR_HINTS[rank.slug];
         return {
@@ -109,9 +118,39 @@ export default function TeamMembersPage() {
     description: teamMembersPageMeta.description,
   });
 
+  const handleBulkActionChange = (value) => {
+    setBulkAction(value);
+    if (value !== 'move') {
+      setMoveTargetId('');
+    }
+  };
+
   const handleBulkApply = async () => {
     if (bulkAction === 'delete') {
       listing.openDeleteModal();
+      return;
+    }
+
+    if (bulkAction === 'move') {
+      if (!moveTargetId) {
+        flows.showFeedback('Choose a section to move the selected members into.', 'error');
+        return;
+      }
+
+      const moved = await applyBulkUpdates({
+        api: teamApi,
+        listing,
+        flows,
+        bulkAction: 'move',
+        payloadMap: {
+          move: { teamCategoryId: moveTargetId },
+        },
+      });
+
+      if (moved) {
+        setMoveTargetId('');
+        setBulkAction(bulkActionOptions[0]?.value || 'show');
+      }
       return;
     }
 
@@ -175,9 +214,14 @@ export default function TeamMembersPage() {
             onClearSelection={listing.clearSelection}
             bulkActionOptions={bulkActionOptions}
             bulkAction={bulkAction}
-            onBulkActionChange={setBulkAction}
+            onBulkActionChange={handleBulkActionChange}
             onBulkApply={handleBulkApply}
             onDelete={listing.openDeleteModal}
+            showTargetForActions={['move']}
+            targetOptions={moveTargetOptions}
+            targetValue={moveTargetId}
+            onTargetChange={setMoveTargetId}
+            targetAriaLabel="Move selected members to section"
           />
 
           <div className={styles.contentArea}>

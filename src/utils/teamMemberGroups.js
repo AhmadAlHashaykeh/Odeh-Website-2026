@@ -1,14 +1,14 @@
 /**
  * Group public team members by CMS team categories (departments/sections).
  * Card border colours come from team ranks.
- * Falls back to "Other Team Members" when category is missing.
+ * Falls back to "Team Members" when category is missing.
  */
 
 const FALLBACK_CATEGORY = {
-  id: 'other-team-members',
-  name: 'Other Team Members',
-  slug: 'other-team-members',
-  borderColor: '#7a7f85',
+  id: 'team-members',
+  name: 'Team Members',
+  slug: 'team-members',
+  borderColor: '#3dcf6a',
   displayOrder: Number.MAX_SAFE_INTEGER,
   description: null,
 };
@@ -74,7 +74,7 @@ function resolveMemberRankColor(member) {
 
 /**
  * Partition members into ordered category sections.
- * Empty categories are omitted. Uncategorized members go to Other Team Members.
+ * Empty categories are omitted. Uncategorized members go to Team Members.
  * Card colours are derived from each member's rank.
  */
 export function groupTeamMembers(members = []) {

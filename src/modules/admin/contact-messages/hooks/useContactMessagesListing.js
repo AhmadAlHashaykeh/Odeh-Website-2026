@@ -26,8 +26,7 @@ function mapContactMessage(message) {
 }
 
 function getInitialViewMode() {
-  if (typeof window === 'undefined') return 'table';
-  return window.innerWidth <= 768 ? 'card' : 'table';
+  return 'table';
 }
 
 export function useContactMessagesListing({ initialPerPage = 12 } = {}) {

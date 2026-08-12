@@ -2,9 +2,10 @@
   display: flex;
   align-items: flex-end;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
-.wrap > div:first-child {
+.wrap > div {
   min-width: 180px;
 }
 

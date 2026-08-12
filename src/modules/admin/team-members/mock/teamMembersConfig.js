@@ -1,7 +1,7 @@
 export const teamMembersPageMeta = {
   title: 'Team Members',
   description:
-    'Add and edit people shown on the website. Choose a Section (where they appear) and a Rank (card colour).',
+    'Add and edit people shown on the website. Select members to move them between Board of Directors and Team Members in bulk.',
   breadcrumbs: [
     { label: 'Admin', path: '/admin/dashboard' },
     { label: 'Team Members' },
@@ -30,5 +30,6 @@ export const sortOptions = [
 export const bulkActionOptions = [
   { value: 'show', label: 'Make visible' },
   { value: 'hide', label: 'Hide from website' },
+  { value: 'move', label: 'Move to section…' },
   { value: 'delete', label: 'Delete' },
 ];

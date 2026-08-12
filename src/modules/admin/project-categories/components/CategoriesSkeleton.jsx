@@ -71,7 +71,7 @@ function TableSkeleton() {
   );
 }
 
-export default function CategoriesSkeleton({ viewMode = 'card' }) {
+export default function CategoriesSkeleton({ viewMode = 'table' }) {
   return (
     <div className={styles.full} aria-busy="true" aria-label="Loading categories">
       <StatsSkeleton />

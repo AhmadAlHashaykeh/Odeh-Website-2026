@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Public team page sections:
+ * Public team page sections (must match the site):
  * - Board of Directors (leadership)
  * - Team Members (everyone else)
  *
@@ -21,12 +21,5 @@ return [
         'description' => null,
         'border_color' => '#3DCF6A',
         'display_order' => 2,
-    ],
-    [
-        'name' => 'Other Team Members',
-        'slug' => 'other-team-members',
-        'description' => null,
-        'border_color' => '#7A7F85',
-        'display_order' => 99,
     ],
 ];

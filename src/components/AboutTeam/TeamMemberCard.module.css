@@ -73,18 +73,6 @@
   transition: opacity 0.45s ease;
 }
 
-.rankMark {
-  position: absolute;
-  left: 0.9rem;
-  bottom: 0.9rem;
-  width: 1.65rem;
-  height: 2px;
-  border-radius: 999px;
-  background: var(--role-accent, var(--color-accent));
-  box-shadow: 0 0 12px color-mix(in srgb, var(--role-accent, var(--color-accent)) 45%, transparent);
-  z-index: 1;
-}
-
 .card:hover .photo {
   transform: scale(1.04);
 }

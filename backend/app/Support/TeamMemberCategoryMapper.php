@@ -18,10 +18,6 @@ class TeamMemberCategoryMapper
                 return 'board-of-directors';
             }
 
-            if (self::includesAny($department, ['other'])) {
-                return 'other-team-members';
-            }
-
             return 'team-members';
         }
 
@@ -33,11 +29,7 @@ class TeamMemberCategoryMapper
             return 'board-of-directors';
         }
 
-        if ($position !== '' || $legacyCategory !== '') {
-            return 'team-members';
-        }
-
-        return 'other-team-members';
+        return 'team-members';
     }
 
     private static function normalize(?string $value): string

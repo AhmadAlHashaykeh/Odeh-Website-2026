@@ -103,7 +103,7 @@ function DrawerSkeleton() {
   );
 }
 
-export default function ActivitiesSkeleton({ viewMode = 'card' }) {
+export default function ActivitiesSkeleton({ viewMode = 'table' }) {
   return (
     <div className={styles.full} aria-busy="true" aria-label="Loading activities">
       <StatsSkeleton />

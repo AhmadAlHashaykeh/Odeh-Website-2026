@@ -97,8 +97,8 @@ return [
         ],
         'counters' => [
             'items' => [
-                ['label' => 'Years of Experience', 'value' => '8+'],
-                ['label' => 'Qualified Employees', 'value' => '30+'],
+                ['label' => 'Years of Experience', 'value' => '+8'],
+                ['label' => 'Qualified Employees', 'value' => '+30'],
             ],
         ],
         'growthTable' => [
@@ -107,7 +107,7 @@ return [
             'columns' => [
                 ['key' => 'year', 'label' => 'Year'],
                 ['key' => 'projects', 'label' => 'Completed Projects', 'align' => 'right'],
-                ['key' => 'area', 'label' => 'Area of Completed Projects (m²)', 'align' => 'right'],
+                ['key' => 'area', 'label' => 'Area', 'align' => 'right'],
             ],
             'rows' => [
                 ['year' => 2018, 'projects' => 85, 'area' => 160210],

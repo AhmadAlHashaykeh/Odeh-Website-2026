@@ -21,7 +21,7 @@ class TeamMemberSeeder extends Seeder
             $keepSlugs[] = $item['slug'];
 
             $category = $categoriesBySlug->get($item['category_slug'] ?? '')
-                ?? $categoriesBySlug->get('other-team-members');
+                ?? $categoriesBySlug->get('team-members');
             $rank = $ranksBySlug->get($item['rank_slug'] ?? '');
 
             TeamMember::query()->updateOrCreate(

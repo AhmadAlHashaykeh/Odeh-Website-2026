@@ -60,8 +60,7 @@ function mapApplication(application) {
 }
 
 function getInitialViewMode() {
-  if (typeof window === 'undefined') return 'table';
-  return window.innerWidth <= 768 ? 'card' : 'table';
+  return 'table';
 }
 
 export function useApplicationsListing({ initialPerPage = 12, initialJobFilter = ALL } = {}) {

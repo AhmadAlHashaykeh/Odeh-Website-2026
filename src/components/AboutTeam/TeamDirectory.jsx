@@ -53,7 +53,6 @@ function TeamGroupSection({ group, startIndex }) {
             email={member.email}
             linkedinUrl={member.linkedinUrl}
             photo={member.photo}
-            roleStyle={member.roleStyle}
             layout={cardLayout}
             priority={startIndex + index < 3}
           />

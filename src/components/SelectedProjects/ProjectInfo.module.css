@@ -119,6 +119,7 @@
 
   .specRow,
   .specRow:nth-child(odd),
+  .specRow:nth-child(even),
   .specRow:nth-last-child(-n + 2) {
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);

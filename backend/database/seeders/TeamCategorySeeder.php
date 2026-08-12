@@ -30,27 +30,26 @@ class TeamCategorySeeder extends Seeder
             );
         }
 
-        // Remove legacy categories that are no longer on the org chart.
+        $fallback = TeamCategory::query()->where('slug', 'team-members')->first();
+
+        // Reassign members from removed/legacy categories, then delete those categories.
         TeamCategory::query()
             ->whereNotIn('slug', $keepSlugs)
-            ->each(function (TeamCategory $category): void {
-                if ($category->members()->exists()) {
-                    $category->forceFill(['is_active' => false])->saveQuietly();
-
-                    return;
+            ->each(function (TeamCategory $category) use ($fallback): void {
+                if ($fallback && $category->members()->exists()) {
+                    TeamMember::query()
+                        ->where('team_category_id', $category->id)
+                        ->each(function (TeamMember $member) use ($fallback): void {
+                            $member->forceFill([
+                                'team_category_id' => $fallback->id,
+                                'category' => $fallback->name,
+                                'department' => $fallback->name,
+                            ])->saveQuietly();
+                        });
                 }
 
                 $category->delete();
             });
-
-        // Clean empty inactive leftovers from earlier seed runs.
-        TeamCategory::query()
-            ->where('is_active', false)
-            ->whereNotIn('slug', $keepSlugs)
-            ->whereDoesntHave('members')
-            ->delete();
-
-        $fallback = TeamCategory::query()->where('slug', 'other-team-members')->first();
 
         if (! $fallback) {
             return;
@@ -65,6 +64,7 @@ class TeamCategorySeeder extends Seeder
                 $member->forceFill([
                     'team_category_id' => $fallback->id,
                     'category' => $fallback->name,
+                    'department' => $fallback->name,
                 ])->saveQuietly();
             });
     }

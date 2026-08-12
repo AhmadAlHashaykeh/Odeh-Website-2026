@@ -36,23 +36,15 @@ export default function TeamMemberCard({
   email,
   linkedinUrl,
   photo,
-  roleStyle,
   layout = 'portrait',
   priority = false,
 }) {
-  const roleVars = roleStyle
-    ? {
-        '--role-accent': roleStyle.accentColor,
-      }
-    : undefined;
-
   const isLeadership = layout === 'leadership';
   const hasContacts = Boolean(email || linkedinUrl);
 
   return (
     <article
       className={`${styles.card} ${isLeadership ? styles.cardLeadership : ''}`}
-      style={roleVars}
     >
       <div className={styles.photoFrame}>
         {photo ? (
@@ -71,7 +63,6 @@ export default function TeamMemberCard({
           </div>
         )}
         <div className={styles.photoFade} aria-hidden="true" />
-        <span className={styles.rankMark} aria-hidden="true" />
       </div>
 
       <div className={styles.info}>

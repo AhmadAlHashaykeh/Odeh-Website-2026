@@ -8,8 +8,8 @@ return [
         'headingAccent' => 'DESIGN',
         'description' => 'Delivering innovative structural engineering and design solutions across the Middle East with expertise, precision, and sustainability.',
         'stats' => [
-            ['value' => '1000+', 'label' => 'Projects Delivered'],
-            ['value' => '7+', 'label' => 'Years of Practice'],
+            ['value' => '+1000', 'label' => 'Projects Delivered'],
+            ['value' => '+8', 'label' => 'Years of Practice'],
             ['value' => 'Middle East', 'label' => 'Regional Focus'],
         ],
         'primaryCta' => ['label' => 'Explore Projects', 'path' => '/projects'],
@@ -24,8 +24,8 @@ return [
         'titleAccent' => 'PARTNERS DESIGN',
         'body' => 'Welcome to the online platform of ODEH & PARTNERS DESIGN, an avant-garde structural design firm with a global vision. Our practice transcends conventional boundaries by delivering innovative engineering solutions backed by technical expertise, cultural insight, and a commitment to excellence. From concept to construction, we create sustainable structures that shape the future of the built environment.',
         'stats' => [
-            ['value' => '7+', 'label' => 'Years of Excellence'],
-            ['value' => '1000+', 'label' => 'Projects Completed'],
+            ['value' => '+8', 'label' => 'Years of Excellence'],
+            ['value' => '+1000', 'label' => 'Projects Completed'],
         ],
         'image' => '/assets/about/odeh-about-office.webp',
         'imageAlt' => 'ODEH & PARTNERS DESIGN workspace',

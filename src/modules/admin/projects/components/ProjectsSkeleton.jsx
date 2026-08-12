@@ -1,6 +1,6 @@
 import { SkeletonLoader } from '../../ui';
 
-export default function ProjectsSkeleton({ viewMode = 'card' }) {
+export default function ProjectsSkeleton({ viewMode = 'table' }) {
   return (
     <SkeletonLoader
       variant="full"
